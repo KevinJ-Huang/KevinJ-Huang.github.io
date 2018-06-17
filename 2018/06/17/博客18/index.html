@@ -123,7 +123,7 @@
 
 
 
-  <meta name="keywords" content="深度学习项目," />
+  <meta name="keywords" content="每周计划," />
 
 
 
@@ -134,26 +134,18 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp; 这是我本人所做的第一个比较正式的深度学习项目，现在项目做完已经两三个月了，写一下对这个项目的总结。&amp;emsp;&amp;emsp; 首先项目的目的，即利用kinect相机获取的RGBD图像，分别将其RGB特征和深度特征提取出来，进行融合，最后实现分类，并在目标检测框架下实现目标检测。其实我一直觉得，这个项目完全可以把初始图片变成4通道的图像，然后随便找一个分类网络做就行了。不过既">
-<meta name="keywords" content="深度学习项目">
+<meta name="description" content="&amp;emsp;&amp;emsp; 最近公司使用算法要用pytorch，所以本人暂时放弃使用tensorflow，为了练手pytorch，本人首先使用pytorch将tensorflow版本的mnist转换成pytorch版本，tensorflow原版本如下所示：1234567891011121314151617181920212223242526272829303132333435363738394041">
+<meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="项目《面向机械臂抓取应用的RGBD深度学习算法研究》总结报告">
-<meta property="og:url" content="http://kevinj-huang.github.io/2018/05/26/博客6/index.html">
+<meta property="og:title" content="tensorflow的mnist改写成pytorch">
+<meta property="og:url" content="http://kevinj-huang.github.io/2018/06/17/博客18/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="&amp;emsp;&amp;emsp; 这是我本人所做的第一个比较正式的深度学习项目，现在项目做完已经两三个月了，写一下对这个项目的总结。&amp;emsp;&amp;emsp; 首先项目的目的，即利用kinect相机获取的RGBD图像，分别将其RGB特征和深度特征提取出来，进行融合，最后实现分类，并在目标检测框架下实现目标检测。其实我一直觉得，这个项目完全可以把初始图片变成4通道的图像，然后随便找一个分类网络做就行了。不过既">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; 最近公司使用算法要用pytorch，所以本人暂时放弃使用tensorflow，为了练手pytorch，本人首先使用pytorch将tensorflow版本的mnist转换成pytorch版本，tensorflow原版本如下所示：1234567891011121314151617181920212223242526272829303132333435363738394041">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2018/04/14/5ad2016dbb613.png">
-<meta property="og:image" content="https://i.loli.net/2018/04/14/5ad204408bfa6.png">
-<meta property="og:image" content="https://i.loli.net/2018/04/14/5ad205dfaea94.png">
-<meta property="og:image" content="https://i.loli.net/2018/04/14/5ad20b1b5f09f.png">
-<meta property="og:image" content="https://i.loli.net/2018/04/14/5ad20b747d3db.png">
-<meta property="og:image" content="https://i.loli.net/2018/04/14/5ad20dbf2ab5d.png">
-<meta property="og:image" content="https://i.loli.net/2018/04/14/5ad20e527e07f.png">
-<meta property="og:updated_time" content="2018-04-14T14:32:32.000Z">
+<meta property="og:updated_time" content="2018-06-17T15:04:37.703Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="项目《面向机械臂抓取应用的RGBD深度学习算法研究》总结报告">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 这是我本人所做的第一个比较正式的深度学习项目，现在项目做完已经两三个月了，写一下对这个项目的总结。&amp;emsp;&amp;emsp; 首先项目的目的，即利用kinect相机获取的RGBD图像，分别将其RGB特征和深度特征提取出来，进行融合，最后实现分类，并在目标检测框架下实现目标检测。其实我一直觉得，这个项目完全可以把初始图片变成4通道的图像，然后随便找一个分类网络做就行了。不过既">
-<meta name="twitter:image" content="https://i.loli.net/2018/04/14/5ad2016dbb613.png">
+<meta name="twitter:title" content="tensorflow的mnist改写成pytorch">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 最近公司使用算法要用pytorch，所以本人暂时放弃使用tensorflow，为了练手pytorch，本人首先使用pytorch将tensorflow版本的mnist转换成pytorch版本，tensorflow原版本如下所示：1234567891011121314151617181920212223242526272829303132333435363738394041">
 
 
 
@@ -183,13 +175,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2018/05/26/博客6/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2018/06/17/博客18/"/>
 
 
 
 
 
-  <title>项目《面向机械臂抓取应用的RGBD深度学习算法研究》总结报告 | Resistence</title>
+  <title>tensorflow的mnist改写成pytorch | Resistence</title>
   
 
 
@@ -345,7 +337,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/05/26/博客6/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/06/17/博客18/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -362,7 +354,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">项目《面向机械臂抓取应用的RGBD深度学习算法研究》总结报告</h2>
+          <h2 class="post-title" itemprop="name headline">tensorflow的mnist改写成pytorch</h2>
         
 
         <div class="post-meta">
@@ -374,8 +366,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-26T21:46:58+08:00">
-                2018-05-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-17T23:04:37+08:00">
+                2018-06-17
               </time>
             
 
@@ -390,8 +382,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-14T22:32:32+08:00">
-                2018-04-14
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-17T23:04:37+08:00">
+                2018-06-17
               </time>
             
           </span>
@@ -409,8 +401,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/项目总结/" itemprop="url" rel="index">
-                    <span itemprop="name">项目总结</span>
+                  <a href="/categories/pytorch笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">pytorch笔记</span>
                   </a>
                 </span>
 
@@ -426,7 +418,7 @@
 
           
           
-             <span id="/2018/05/26/博客6/" class="leancloud_visitors" data-flag-title="项目《面向机械臂抓取应用的RGBD深度学习算法研究》总结报告">
+             <span id="/2018/06/17/博客18/" class="leancloud_visitors" data-flag-title="tensorflow的mnist改写成pytorch">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -456,7 +448,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  574字
+                  1,071字
                 </span>
               
 
@@ -472,7 +464,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2分钟
+                  6分钟
                 </span>
               
             </div>
@@ -493,37 +485,10 @@
       
 
       
-        <p>&emsp;&emsp; 这是我本人所做的第一个比较正式的深度学习项目，现在项目做完已经两三个月了，写一下对这个项目的总结。<br>&emsp;&emsp; 首先项目的目的，即利用kinect相机获取的RGBD图像，分别将其RGB特征和深度特征提取出来，进行融合，最后实现分类，并在目标检测框架下实现目标检测。其实我一直觉得，这个项目完全可以把初始图片变成4通道的图像，然后随便找一个分类网络做就行了。不过既然是老师要求做特征融合，那么我也只能用两个通道的网络去做了。<br>&emsp;&emsp; 融合网络该怎么设计，这个问题很重要，我参考了一些特征融合的论文，决定用稀疏自编码器先提取图像的低维特征，低维特征的图如下：</p>
-<center class="single">
- <img src="https://i.loli.net/2018/04/14/5ad2016dbb613.png" width="230/">
-</center>
-
-<p>然后再使用卷积神经网络提取图像的高维特征，再对两个特征各自赋上一个自适应的权重，进行相加，融合层示意图如下：</p>
-<center class="single">
- <img src="https://i.loli.net/2018/04/14/5ad204408bfa6.png" width="230/">
-</center>
-
-<p>最后送将融合特征入全连接层，就实现了分类，整个网络框架如下：</p>
-<center class="single">
- <img src="https://i.loli.net/2018/04/14/5ad205dfaea94.png" width="380/">
-</center>
-
-<p>至于网络为什么这么浅嘛，因为我在训练深度图的时候发现，对于深度特征而言，网络深度越深，分类正确率反而会下降，对此我将深度图的网络设计为只有一层，同时使用了预处理手段，增加了图像的对比度，使得特征更明显，预处理前后示意图如下(左原图，右结果图）：</p>
-<center class="half">
-    <img src="https://i.loli.net/2018/04/14/5ad20b1b5f09f.png" width="185/">   <img src="https://i.loli.net/2018/04/14/5ad20b747d3db.png" width="195/">
-</center>
-
-<p>对于RGB图像，由于所要分类的物体特征不是很复杂，没必要把网络搞得太深，这样我将RGB网络设计为了三层，使网络整体大小合理。<br>&emsp;&emsp; 最后，将上述设计好的网络放在faster-rcnn框架下进行训练，网络整体示意图如下：</p>
-<center class="single">
- <img src="https://i.loli.net/2018/04/14/5ad20dbf2ab5d.png" width="380/">
-</center>
-
-<p>目标检测示意图如下所示，这样这个水项目就做完了，也算是锻炼了基本的调参能力了。</p>
-<center class="single">
- <img src="https://i.loli.net/2018/04/14/5ad20e527e07f.png" width="280/">
-</center>
-
-<p>相关代码以后有时间上传到github上，毕竟只是修修改改，感觉很low，希望不要被笑话。</p>
+        <p>&emsp;&emsp; 最近公司使用算法要用pytorch，所以本人暂时放弃使用tensorflow，为了练手pytorch，本人首先使用pytorch将tensorflow版本的mnist转换成pytorch版本，tensorflow原版本如下所示：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">'MNIST_data'</span>, one_hot=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line">sess = tf.InteractiveSession()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x = tf.placeholder(tf.float32, shape=[<span class="keyword">None</span>, <span class="number">784</span>])</span><br><span class="line">y_ = tf.placeholder(tf.float32, shape=[<span class="keyword">None</span>, <span class="number">10</span>])</span><br><span class="line">W = tf.Variable(tf.zeros([<span class="number">784</span>,<span class="number">10</span>]))</span><br><span class="line">b = tf.Variable(tf.zeros([<span class="number">10</span>]))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line"></span><br><span class="line">y = tf.matmul(x,W) + b</span><br><span class="line"></span><br><span class="line">cross_entropy = tf.reduce_mean(</span><br><span class="line">    tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y))</span><br><span class="line"></span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.5</span>).minimize(cross_entropy)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">  batch = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">  train_step.run(feed_dict=&#123;x: batch[<span class="number">0</span>], y_: batch[<span class="number">1</span>]&#125;)</span><br><span class="line">correct_prediction = tf.equal(tf.argmax(y,<span class="number">1</span>), tf.argmax(y_,<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))</span><br><span class="line"></span><br><span class="line">print(accuracy.eval(feed_dict=&#123;x: mnist.test.images, y_: mnist.test.labels&#125;))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">weight_variable</span><span class="params">(shape)</span>:</span></span><br><span class="line">  initial = tf.truncated_normal(shape, stddev=<span class="number">0.1</span>)</span><br><span class="line">  <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bias_variable</span><span class="params">(shape)</span>:</span></span><br><span class="line">  initial = tf.constant(<span class="number">0.1</span>, shape=shape)</span><br><span class="line">  <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv2d</span><span class="params">(x, W)</span>:</span></span><br><span class="line">  <span class="keyword">return</span> tf.nn.conv2d(x, W, strides=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">max_pool_2x2</span><span class="params">(x)</span>:</span></span><br><span class="line">  <span class="keyword">return</span> tf.nn.max_pool(x, ksize=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">                        strides=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</span><br><span class="line"></span><br><span class="line">W_conv1 = weight_variable([<span class="number">5</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">32</span>])</span><br><span class="line">b_conv1 = bias_variable([<span class="number">32</span>])</span><br><span class="line">x_image = tf.reshape(x, [<span class="number">-1</span>,<span class="number">28</span>,<span class="number">28</span>,<span class="number">1</span>])</span><br><span class="line">h_conv1 = tf.nn.relu(conv2d(x_image, W_conv1) + b_conv1)</span><br><span class="line">h_pool1 = max_pool_2x2(h_conv1)</span><br><span class="line"></span><br><span class="line">W_conv2 = weight_variable([<span class="number">5</span>, <span class="number">5</span>, <span class="number">32</span>, <span class="number">64</span>])</span><br><span class="line">b_conv2 = bias_variable([<span class="number">64</span>])</span><br><span class="line">h_conv2 = tf.nn.relu(conv2d(h_pool1, W_conv2) + b_conv2)</span><br><span class="line">h_pool2 = max_pool_2x2(h_conv2)</span><br><span class="line"></span><br><span class="line">W_fc1 = weight_variable([<span class="number">7</span> * <span class="number">7</span> * <span class="number">64</span>, <span class="number">1024</span>])</span><br><span class="line">b_fc1 = bias_variable([<span class="number">1024</span>])</span><br><span class="line"></span><br><span class="line">h_pool2_flat = tf.reshape(h_pool2, [<span class="number">-1</span>, <span class="number">7</span>*<span class="number">7</span>*<span class="number">64</span>])</span><br><span class="line">h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat, W_fc1) + b_fc1)</span><br><span class="line">keep_prob = tf.placeholder(tf.float32)</span><br><span class="line">h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)</span><br><span class="line">W_fc2 = weight_variable([<span class="number">1024</span>, <span class="number">10</span>])</span><br><span class="line">b_fc2 = bias_variable([<span class="number">10</span>])</span><br><span class="line"></span><br><span class="line">y_conv = tf.matmul(h_fc1_drop, W_fc2) + b_fc2</span><br><span class="line">cross_entropy = tf.reduce_mean(</span><br><span class="line">    tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y_conv))</span><br><span class="line">train_step = tf.train.AdamOptimizer(<span class="number">1e-4</span>).minimize(cross_entropy)</span><br><span class="line">correct_prediction = tf.equal(tf.argmax(y_conv,<span class="number">1</span>), tf.argmax(y_,<span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))</span><br><span class="line"></span><br><span class="line">saver = tf.train.Saver()  <span class="comment"># defaults to saving all variables</span></span><br><span class="line"></span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">20000</span>):</span><br><span class="line">  batch = mnist.train.next_batch(<span class="number">50</span>)</span><br><span class="line">  <span class="keyword">if</span> i%<span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">    train_accuracy = accuracy.eval(feed_dict=&#123;</span><br><span class="line">        x:batch[<span class="number">0</span>], y_: batch[<span class="number">1</span>], keep_prob: <span class="number">1.0</span>&#125;)</span><br><span class="line">    print(<span class="string">"step %d, training accuracy %g"</span>%(i, train_accuracy))</span><br><span class="line"></span><br><span class="line">  train_step.run(feed_dict=&#123;x: batch[<span class="number">0</span>], y_: batch[<span class="number">1</span>], keep_prob: <span class="number">0.5</span>&#125;)</span><br><span class="line">saver.save(sess, <span class="string">'/home/XXX/learning_tensorflow/form/model.ckpt'</span>)  <span class="comment">#保存模型参数，注意把这里改为自己的路径</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">"test accuracy %g"</span>%accuracy.eval(feed_dict=&#123;</span><br><span class="line">    x: mnist.test.images, y_: mnist.test.labels, keep_prob: <span class="number">1.0</span>&#125;))</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;改写成pytorch版本后如下所示：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> torchvision.transforms <span class="keyword">as</span> transforms</span><br><span class="line"><span class="keyword">import</span> torchvision.datasets <span class="keyword">as</span> dsets</span><br><span class="line"></span><br><span class="line">train_dataset = dsets.MNIST(root = <span class="string">'../../data_sets/mnist'</span>,</span><br><span class="line">                           train = <span class="keyword">True</span>,</span><br><span class="line">                           transform = transforms.ToTensor(),</span><br><span class="line">                           download = <span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Net</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(Net,self).__init__()</span><br><span class="line">        self.conv1 = nn.Conv2d(<span class="number">1</span>, <span class="number">32</span>, kernel_size=<span class="number">5</span>,stride=<span class="number">1</span>,padding=<span class="number">2</span>)</span><br><span class="line">        self.conv2 = nn.Conv2d(<span class="number">32</span>, <span class="number">64</span>, kernel_size=<span class="number">5</span>,stride=<span class="number">1</span>,padding=<span class="number">2</span>)</span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">7</span>*<span class="number">7</span>*<span class="number">64</span>, <span class="number">1024</span>)</span><br><span class="line">        self.fc2 = nn.Linear(<span class="number">1024</span>,<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x, target = None)</span>:</span></span><br><span class="line">        x = F.max_pool2d(F.relu(self.conv1(x)),kernel_size=<span class="number">2</span>,stride=<span class="number">2</span>,padding=<span class="number">0</span>)</span><br><span class="line">        x = F.max_pool2d(F.relu(self.conv2(x)),kernel_size=<span class="number">2</span>,stride=<span class="number">2</span>,padding=<span class="number">0</span>)</span><br><span class="line">        x = x.view(<span class="number">-1</span>,<span class="number">7</span>*<span class="number">7</span>*<span class="number">64</span>)</span><br><span class="line">        x = F.relu(self.fc1(x))</span><br><span class="line">        x = F.dropout(x,training=<span class="keyword">True</span>)</span><br><span class="line">        x = self.fc2(x)</span><br><span class="line">        x = F.log_softmax(x,dim=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line">model = Net()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(args)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> args.cuda:</span><br><span class="line">        model.cuda()</span><br><span class="line">    criterion = nn.CrossEntropyLoss()</span><br><span class="line">    training_accuracy = <span class="number">0</span></span><br><span class="line">    train_loader = torch.utils.data.DataLoader(dataset = train_dataset,</span><br><span class="line">                                           batch_size = args.batch_size,</span><br><span class="line">                                           shuffle = <span class="keyword">True</span>)</span><br><span class="line">    optimizer = torch.optim.Adam(model.parameters(), lr=args.learning_rate)</span><br><span class="line">    model.train()</span><br><span class="line">    <span class="keyword">for</span> epochs <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">20000</span>):</span><br><span class="line">        <span class="keyword">for</span> i,(images,labels) <span class="keyword">in</span> enumerate(train_loader):</span><br><span class="line">            <span class="keyword">if</span> args.cuda:</span><br><span class="line">                images, labels = images.cuda(), labels.cuda()</span><br><span class="line">            images = Variable(images.view(<span class="number">-1</span>,<span class="number">1</span>,<span class="number">28</span>,<span class="number">28</span>))</span><br><span class="line">            labels = Variable(labels)</span><br><span class="line">            optimizer.zero_grad()</span><br><span class="line">            outputs = model(images)</span><br><span class="line">            loss = criterion(outputs,labels)</span><br><span class="line">            loss.backward()</span><br><span class="line">            optimizer.step()</span><br><span class="line">            <span class="keyword">if</span> i%<span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">                pred = outputs.data.max(<span class="number">1</span>)[<span class="number">1</span>]</span><br><span class="line">                training_accuracy += pred.eq(labels.data[<span class="number">1</span>]).sum()</span><br><span class="line">                print(<span class="string">'epochs:%d,Loss:%5f,Acuuracy:%g'</span>%(epochs,loss,training_accuracy))</span><br><span class="line">                training_accuracy = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</span><br><span class="line">    parser = argparse.ArgumentParser()</span><br><span class="line">    parser.add_argument(<span class="string">'--learning_rate'</span>, default=<span class="number">1e-3</span>, type=float, help=<span class="string">'learning rate for the stochastic gradient update.'</span>)</span><br><span class="line">    parser.add_argument(<span class="string">'--batch_size'</span>, type=int, default=<span class="number">50</span>, help=<span class="string">'input batch size for training (default: 64)'</span>)</span><br><span class="line">    parser.add_argument(<span class="string">'--cuda'</span>, action=<span class="string">'store_true'</span>, default=<span class="keyword">True</span>,help=<span class="string">'Enable CUDA training'</span>)</span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    main(args)</span><br></pre></td></tr></table></figure></p>
+<p>几点感受:<br>1.pytorch不需要定义静态图，可以直接上手使用，网络定义更加方便快捷。<br>2.许多功能定义封装非常完善，不需要自己手写。<br>3.变量的定义和训练使用非常方便。</p>
+<p>参考：<br>1.<a href="https://blog.csdn.net/victoriaw/article/details/72354307" target="_blank" rel="noopener">https://blog.csdn.net/victoriaw/article/details/72354307</a><br>2.<a href="https://blog.csdn.net/caichao08/article/details/78997033" target="_blank" rel="noopener">https://blog.csdn.net/caichao08/article/details/78997033</a><br>3.<a href="https://blog.csdn.net/sparta_117/article/details/66965760" target="_blank" rel="noopener">https://blog.csdn.net/sparta_117/article/details/66965760</a></p>
 
       
     </div>
@@ -544,7 +509,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2018/05/26/博客6/" title="项目《面向机械臂抓取应用的RGBD深度学习算法研究》总结报告">http://kevinj-huang.github.io/2018/05/26/博客6/</a>
+    <a href="http://kevinj-huang.github.io/2018/06/17/博客18/" title="tensorflow的mnist改写成pytorch">http://kevinj-huang.github.io/2018/06/17/博客18/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -559,7 +524,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/深度学习项目/" rel="tag"># 深度学习项目</a>
+            <a href="/tags/每周计划/" rel="tag"># 每周计划</a>
           
         </div>
       
@@ -587,14 +552,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/06/08/博客17/" rel="next" title="阅读论文《Loss Functions for Image Restoration With Neural Networks》">
+                <i class="fa fa-chevron-left"></i> 阅读论文《Loss Functions for Image Restoration With Neural Networks》
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/26/博客5/" rel="prev" title="阅读论文《Texture Networks:Feed-forward Synthesis of Textures and Stylized Images》">
-                阅读论文《Texture Networks:Feed-forward Synthesis of Textures and Stylized Images》 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/17/博客19/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
