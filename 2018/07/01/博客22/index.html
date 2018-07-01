@@ -134,21 +134,24 @@
 
 
 
-<meta name="description" content="最近做公司的项目接触到了这些，因此了解一下 U_net&amp;emsp;&amp;emsp; U-net，顾名思义，是一个U型的网络,最初用来做图像分割。是一种编码器-解码器结构。编码器逐渐减少池化层的空间维度，解码器逐步修复物体的细节和空间维度。编码器和解码器之间通常存在快捷连接，因此能帮助解码器更好地修复目标的细节。U-Net 是这种方法中最常用的结构，结构如下图所示：         &amp;emsp;&amp;ems">
+<meta name="description" content="&amp;emsp;&amp;emsp; 反卷积又被称为转置卷积（transpose convolution)，一般被认为是卷积的逆过程，这样我们首先来看一下卷积的过程:令：input-size：i，kener-size:k，stride:s，padding-size:p，那么output-size为： o=[\frac{i+2p-k}{s}]+1same padding认为输入和输出大小一样（stride为1时">
 <meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dncnn,U-net了解">
-<meta property="og:url" content="http://kevinj-huang.github.io/2018/06/17/博客21/index.html">
+<meta property="og:title" content="反卷积">
+<meta property="og:url" content="http://kevinj-huang.github.io/2018/07/01/博客22/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="最近做公司的项目接触到了这些，因此了解一下 U_net&amp;emsp;&amp;emsp; U-net，顾名思义，是一个U型的网络,最初用来做图像分割。是一种编码器-解码器结构。编码器逐渐减少池化层的空间维度，解码器逐步修复物体的细节和空间维度。编码器和解码器之间通常存在快捷连接，因此能帮助解码器更好地修复目标的细节。U-Net 是这种方法中最常用的结构，结构如下图所示：         &amp;emsp;&amp;ems">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; 反卷积又被称为转置卷积（transpose convolution)，一般被认为是卷积的逆过程，这样我们首先来看一下卷积的过程:令：input-size：i，kener-size:k，stride:s，padding-size:p，那么output-size为： o=[\frac{i+2p-k}{s}]+1same padding认为输入和输出大小一样（stride为1时">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2018/06/17/5b266a40bd580.png">
-<meta property="og:image" content="https://i.loli.net/2018/06/17/5b266e935cb42.png">
-<meta property="og:updated_time" content="2018-06-17T23:06:00.000Z">
+<meta property="og:image" content="https://i.loli.net/2018/06/24/5b2f9528a91a3.gif">
+<meta property="og:image" content="https://i.loli.net/2018/06/24/5b2f981dc408f.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/06/24/5b2f9f8014cfc.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/24/5b2f9f0f05f20.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/24/5b2fa7abe707d.png">
+<meta property="og:updated_time" content="2018-07-01T15:04:52.699Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dncnn,U-net了解">
-<meta name="twitter:description" content="最近做公司的项目接触到了这些，因此了解一下 U_net&amp;emsp;&amp;emsp; U-net，顾名思义，是一个U型的网络,最初用来做图像分割。是一种编码器-解码器结构。编码器逐渐减少池化层的空间维度，解码器逐步修复物体的细节和空间维度。编码器和解码器之间通常存在快捷连接，因此能帮助解码器更好地修复目标的细节。U-Net 是这种方法中最常用的结构，结构如下图所示：         &amp;emsp;&amp;ems">
-<meta name="twitter:image" content="https://i.loli.net/2018/06/17/5b266a40bd580.png">
+<meta name="twitter:title" content="反卷积">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 反卷积又被称为转置卷积（transpose convolution)，一般被认为是卷积的逆过程，这样我们首先来看一下卷积的过程:令：input-size：i，kener-size:k，stride:s，padding-size:p，那么output-size为： o=[\frac{i+2p-k}{s}]+1same padding认为输入和输出大小一样（stride为1时">
+<meta name="twitter:image" content="https://i.loli.net/2018/06/24/5b2f9528a91a3.gif">
 
 
 
@@ -178,13 +181,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2018/06/17/博客21/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2018/07/01/博客22/"/>
 
 
 
 
 
-  <title>Dncnn,U-net了解 | Resistence</title>
+  <title>反卷积 | Resistence</title>
   
 
 
@@ -340,7 +343,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/06/17/博客21/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/07/01/博客22/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -357,7 +360,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Dncnn,U-net了解</h2>
+          <h2 class="post-title" itemprop="name headline">反卷积</h2>
         
 
         <div class="post-meta">
@@ -369,8 +372,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-17T23:08:38+08:00">
-                2018-06-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-01T23:04:52+08:00">
+                2018-07-01
               </time>
             
 
@@ -385,8 +388,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-18T07:06:00+08:00">
-                2018-06-18
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-01T23:04:52+08:00">
+                2018-07-01
               </time>
             
           </span>
@@ -421,7 +424,7 @@
 
           
           
-             <span id="/2018/06/17/博客21/" class="leancloud_visitors" data-flag-title="Dncnn,U-net了解">
+             <span id="/2018/07/01/博客22/" class="leancloud_visitors" data-flag-title="反卷积">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -451,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  605字
+                  466字
                 </span>
               
 
@@ -488,20 +491,28 @@
       
 
       
-        <p>最近做公司的项目接触到了这些，因此了解一下</p>
-<h4 id="U-net"><a href="#U-net" class="headerlink" title="U_net"></a>U_net</h4><p>&emsp;&emsp; U-net，顾名思义，是一个U型的网络,最初用来做图像分割。是一种编码器-解码器结构。编码器逐渐减少池化层的空间维度，解码器逐步修复物体的细节和空间维度。编码器和解码器之间通常存在快捷连接，因此能帮助解码器更好地修复目标的细节。U-Net 是这种方法中最常用的结构，结构如下图所示：</p>
+        <p>&emsp;&emsp; 反卷积又被称为转置卷积（transpose convolution)，一般被认为是卷积的逆过程，这样我们首先来看一下卷积的过程:<br>令：input-size：i，kener-size:k，stride:s，padding-size:p，那么output-size为：</p>
+<script type="math/tex; mode=display">o=[\frac{i+2p-k}{s}]+1</script><p>same padding认为输入和输出大小一样（stride为1时，如下所示）：</p>
 <center class="half">
-    <img src="https://i.loli.net/2018/06/17/5b266a40bd580.png" ,width="500">
+    <img src="https://i.loli.net/2018/06/24/5b2f9528a91a3.gif" width="300/">
 </center>
 
-<p>&emsp;&emsp;左侧为一个下采样过程，分4组卷积操作（蓝色箭头）进行。每组卷积操作后进行一次maxpool操作（红色箭头），将图片进一步缩小为原来的1/2。通过4组操作将572×572×1大小的输入图片，计算为32×32×1024 大小。<br>&emsp;&emsp;右侧的上采样过程。上采样过程使用的是4组反卷积（浅绿色箭头），每次上采样将图片扩展为原来的2 倍， 然后将对应层的图片（特征图）进行剪裁和复制，然后concat到上卷积的结果上（灰色箭头）。<br>&emsp;&emsp;上采样过程结束后，得到388×388×64 大小的图，最后用一个1×1种颜色。</p>
-<h4 id="Dncnn"><a href="#Dncnn" class="headerlink" title="Dncnn"></a>Dncnn</h4><p>&emsp;&emsp;该网络用来进行去噪，主要思路为：<br>（1）一个端到端的可训练的CNN网络，采用残差学习策略，在网络的隐层隐式地移除干净图片（clean image）。即输入为带噪的观测图片（noisy image），输出为移除了干净图片的残差（噪声）图片（residual image）。这样做的动机是，用残差学习刻画恒等映射或近似的恒等映射，效果要比直接学习干净图片要相对好，以输出与噪声的l2范数为损失函数来训练网络；<br>（2）网络中利用了BN层（Batch Normalization），实验表明BN层与残差学习共同使用可以提高模型的性能，DnCNN在不同噪声水平上训练，得到的结果要优于现在的最优结果。<br>网络的结构如下所示：</p>
+<p>&emsp;&emsp; 如果输入图像的大小为4<em>4，用一个3</em>3大小的卷积核去卷积，那么可以得到一个2*2大小的特征图，如果用A表示输入的特征，B表示输出的特征，C表示卷积核，那么该计算的数学含义是，首先将A大小resize成[16,1]大小的向量，那么卷积的特征图C可以表示成以下[4,16]大小形式：</p>
 <center class="half">
-    <img src="https://i.loli.net/2018/06/17/5b266e935cb42.png" ,width="500">
+    <img src="https://i.loli.net/2018/06/24/5b2f981dc408f.jpg" width="200\">
 </center>
 
-<p>&emsp;&emsp;该网络的思路可以被用来做图像去块，图像超分辨等问题。</p>
-<p>参考：<br>1.<a href="https://blog.csdn.net/gbyy42299/article/details/78954282" target="_blank" rel="noopener">https://blog.csdn.net/gbyy42299/article/details/78954282</a><br>2.<a href="https://blog.csdn.net/qq_18293213/article/details/72423592" target="_blank" rel="noopener">https://blog.csdn.net/qq_18293213/article/details/72423592</a><br>3.<a href="https://blog.csdn.net/qq_27022241/article/details" target="_blank" rel="noopener">https://blog.csdn.net/qq_27022241/article/details</a><br>4.<a href="https://blog.csdn.net/edogawachia/article/details/78643190" target="_blank" rel="noopener">https://blog.csdn.net/edogawachia/article/details/78643190</a></p>
+<p>&emsp;&emsp; 卷积就可以表示为B=C<em>A。很显然，卷积后B的大小为[4,1],再resize成[2,2]大小就是B了。<br>&emsp;&emsp; 那么反卷积就很显然了，对B用C的转置（大小为[16,4])做上述矩阵相乘的运算，就可以得到A的大小(大小为[16,1])。当然，因为B=C</em>A,所以B左乘C的转置不一定等于A，因为C和C的转置相乘不一定为单位矩阵（当且仅当C为正交矩阵时成立）。该过程如下所示（右图）,可与卷积过程（Valid）对比（左图）：</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/06/24/5b2f9f8014cfc.png" width="200\"> <img src="https://i.loli.net/2018/06/24/5b2f9f0f05f20.png" width="200\">
+</center>
+
+<p>可见，反卷积时要在特征图外面补0，大小范围为k-1。<br>&emsp;&emsp; 当stride=2时，卷积就变成了空洞卷积，很显然，正向卷积时，stride=2会使特征图尺寸变小很多，反向卷积时，就要补0这样才能恢复到原来的大小。一般如下图所示：</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/06/24/5b2fa7abe707d.png" width="300\">
+</center>
+
+<p>总而言之，反卷积实质上是转置卷积，是一种上采样的方法。<br>参考：<br>1.<a href="https://www.zhihu.com/question/43609045?sort=created" target="_blank" rel="noopener">https://www.zhihu.com/question/43609045?sort=created</a><br>2.<a href="https://blog.csdn.net/scythe666/article/details/78529777" target="_blank" rel="noopener">https://blog.csdn.net/scythe666/article/details/78529777</a></p>
 
       
     </div>
@@ -522,7 +533,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2018/06/17/博客21/" title="Dncnn,U-net了解">http://kevinj-huang.github.io/2018/06/17/博客21/</a>
+    <a href="http://kevinj-huang.github.io/2018/07/01/博客22/" title="反卷积">http://kevinj-huang.github.io/2018/07/01/博客22/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -565,8 +576,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/17/博客20/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2018/07/01/博客28/" rel="next" title="阅读论文《LOW-LIGHT IMAGE ENHANCEMENT USING CNN AND BRIGHT CHANNEL PRIOR》">
+                <i class="fa fa-chevron-left"></i> 阅读论文《LOW-LIGHT IMAGE ENHANCEMENT USING CNN AND BRIGHT CHANNEL PRIOR》
               </a>
             
           </div>
@@ -574,6 +585,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/01/博客21/" rel="prev" title="Dncnn,U-net了解">
+                Dncnn,U-net了解 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -632,17 +647,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -674,7 +680,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -685,7 +691,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -778,22 +784,6 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#U-net"><span class="nav-number">1.</span> <span class="nav-text">U_net</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dncnn"><span class="nav-number">2.</span> <span class="nav-text">Dncnn</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
 
@@ -821,7 +811,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">15.5k</span>
+    <span title="Site words total count">20.0k</span>
   
 </div>
 

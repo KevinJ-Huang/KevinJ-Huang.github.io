@@ -123,7 +123,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="每周计划," />
 
 
 
@@ -134,20 +134,26 @@
 
 
 
-<meta name="description" content="title: 图像raw数据categories: opencv笔记tags: 每周计划 mathjax: truebayer格式数据&amp;emsp;&amp;emsp; bayer格式数据，其一般格式是，奇数行为RGRG，偶数行一般为GBGB。在获取图像时，如果采集rgb数据，需要三块滤镜且完全对齐，这无疑是非常麻烦的一件事。在实际中发现人眼对绿色更敏感，bayer格式图片在一个滤镜上设置不同颜色，绿色格">
+<meta name="description" content="&amp;emsp;&amp;emsp; 这是2018CVPR的一篇论文，旨在说明使用深度学习的方法使得暗光条件下的图像更明显。一般来说低光照条件下的图像噪点更多，使用一些方法增强图像或是引入更多的噪点，或是由于曝光时间过长导致抖动产生图像上的模糊。而目前增强暗光图像的方法还不试用于非常暗光和非常短曝光时间的图像，所以文章认为可以充分利用raw类型的数据进行图像增强。如下图所示，一般增强后的图像中噪点非常多：">
+<meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Resistence">
-<meta property="og:url" content="http://kevinj-huang.github.io/2018/06/17/博客20/index.html">
+<meta property="og:title" content="阅读论文《Learning to See in the Dark》">
+<meta property="og:url" content="http://kevinj-huang.github.io/2018/06/24/博客19/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="title: 图像raw数据categories: opencv笔记tags: 每周计划 mathjax: truebayer格式数据&amp;emsp;&amp;emsp; bayer格式数据，其一般格式是，奇数行为RGRG，偶数行一般为GBGB。在获取图像时，如果采集rgb数据，需要三块滤镜且完全对齐，这无疑是非常麻烦的一件事。在实际中发现人眼对绿色更敏感，bayer格式图片在一个滤镜上设置不同颜色，绿色格">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; 这是2018CVPR的一篇论文，旨在说明使用深度学习的方法使得暗光条件下的图像更明显。一般来说低光照条件下的图像噪点更多，使用一些方法增强图像或是引入更多的噪点，或是由于曝光时间过长导致抖动产生图像上的模糊。而目前增强暗光图像的方法还不试用于非常暗光和非常短曝光时间的图像，所以文章认为可以充分利用raw类型的数据进行图像增强。如下图所示，一般增强后的图像中噪点非常多：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2018/06/12/5b1fcf7946b6c.png">
-<meta property="og:image" content="https://i.loli.net/2018/06/12/5b1fde79bb85b.png">
-<meta property="og:updated_time" content="2018-06-17T23:07:10.000Z">
+<meta property="og:image" content="https://i.loli.net/2018/06/11/5b1e7f785cd47.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/12/5b1f2b1b1be78.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/12/5b1f335ee5e02.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/12/5b1f43c9e906f.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/12/5b1f443aed1f1.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/12/5b1f44d6704c3.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/12/5b1f63fc4de82.png">
+<meta property="og:updated_time" content="2018-06-24T14:22:14.165Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Resistence">
-<meta name="twitter:description" content="title: 图像raw数据categories: opencv笔记tags: 每周计划 mathjax: truebayer格式数据&amp;emsp;&amp;emsp; bayer格式数据，其一般格式是，奇数行为RGRG，偶数行一般为GBGB。在获取图像时，如果采集rgb数据，需要三块滤镜且完全对齐，这无疑是非常麻烦的一件事。在实际中发现人眼对绿色更敏感，bayer格式图片在一个滤镜上设置不同颜色，绿色格">
-<meta name="twitter:image" content="https://i.loli.net/2018/06/12/5b1fcf7946b6c.png">
+<meta name="twitter:title" content="阅读论文《Learning to See in the Dark》">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 这是2018CVPR的一篇论文，旨在说明使用深度学习的方法使得暗光条件下的图像更明显。一般来说低光照条件下的图像噪点更多，使用一些方法增强图像或是引入更多的噪点，或是由于曝光时间过长导致抖动产生图像上的模糊。而目前增强暗光图像的方法还不试用于非常暗光和非常短曝光时间的图像，所以文章认为可以充分利用raw类型的数据进行图像增强。如下图所示，一般增强后的图像中噪点非常多：">
+<meta name="twitter:image" content="https://i.loli.net/2018/06/11/5b1e7f785cd47.png">
 
 
 
@@ -177,13 +183,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2018/06/17/博客20/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2018/06/24/博客19/"/>
 
 
 
 
 
-  <title> | Resistence</title>
+  <title>阅读论文《Learning to See in the Dark》 | Resistence</title>
   
 
 
@@ -339,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/06/17/博客20/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/06/24/博客19/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -356,7 +362,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline"></h2>
+          <h2 class="post-title" itemprop="name headline">阅读论文《Learning to See in the Dark》</h2>
         
 
         <div class="post-meta">
@@ -368,8 +374,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-17T23:08:30+08:00">
-                2018-06-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-24T22:22:14+08:00">
+                2018-06-24
               </time>
             
 
@@ -384,13 +390,35 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-18T07:07:10+08:00">
-                2018-06-18
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-24T22:22:14+08:00">
+                2018-06-24
               </time>
             
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">论文笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -398,7 +426,7 @@
 
           
           
-             <span id="/2018/06/17/博客20/" class="leancloud_visitors" data-flag-title="">
+             <span id="/2018/06/24/博客19/" class="leancloud_visitors" data-flag-title="阅读论文《Learning to See in the Dark》">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -428,7 +456,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  478字
+                  1,083字
                 </span>
               
 
@@ -444,7 +472,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2分钟
+                  4分钟
                 </span>
               
             </div>
@@ -465,23 +493,72 @@
       
 
       
-        <hr>
-<p>title: 图像raw数据<br>categories: opencv笔记<br>tags: 每周计划</p>
-<h2 id="mathjax-true"><a href="#mathjax-true" class="headerlink" title="mathjax: true"></a>mathjax: true</h2><h4 id="bayer格式数据"><a href="#bayer格式数据" class="headerlink" title="bayer格式数据"></a>bayer格式数据</h4><p>&emsp;&emsp; bayer格式数据，其一般格式是，奇数行为RGRG，偶数行一般为GBGB。在获取图像时，如果采集rgb数据，需要三块滤镜且完全对齐，这无疑是非常麻烦的一件事。在实际中发现人眼对绿色更敏感，bayer格式图片在一个滤镜上设置不同颜色，绿色格式数目是r和g像素之和。如下图所示：</p>
+        <p>&emsp;&emsp; 这是2018CVPR的一篇论文，旨在说明使用深度学习的方法使得暗光条件下的图像更明显。一般来说低光照条件下的图像噪点更多，使用一些方法增强图像或是引入更多的噪点，或是由于曝光时间过长导致抖动产生图像上的模糊。而目前增强暗光图像的方法还不试用于非常暗光和非常短曝光时间的图像，所以文章认为可以充分利用raw类型的数据进行图像增强。如下图所示，一般增强后的图像中噪点非常多：</p>
 <center class="half">
-   <img src="https://i.loli.net/2018/06/12/5b1fcf7946b6c.png" width="200/">
+
+    <img src="https://i.loli.net/2018/06/11/5b1e7f785cd47.png" width="500/">
+
 </center>
 
-<p>&emsp;&emsp;每一个像素仅仅包括光谱的一部分，所以可以通过插值的方法去恢复像素的RGB值。插值具体算法可参考其他介绍。在opencv里实现bayer格式和rgb转换如下所示：</p>
-<pre><code class="lang-cpp">cvtColor(bayerImage,bgrImage,CV_BayerGR2BGR);
-</code></pre>
-<h4 id="X-trans类型数据"><a href="#X-trans类型数据" class="headerlink" title="X-trans类型数据"></a>X-trans类型数据</h4><p>&emsp;&emsp; bayer类型数据由于过小的重复像素排列，会导致摩尔纹的产生，bayer类型数据的排列是2x2的，并且是机械排列的。x-trans则引入了随机性的因素，阵列单元数据的排列是6x6的，引入了一定的随机性因素，使得单元内部看上去像素排列比较杂乱。X-trans类型数据也因此相对能更好的抑制摩尔纹。两者对比如下图所示：</p>
+
+
+<p>&emsp;&emsp; 论文首先是制作数据集，使用长曝光（100-300倍曝光时间于原图像）的方式获得目标图像。并使用方法避免抖动，同时图像数据也包括室内和室外数据，主要通过两种相机获得使得输入图像数据排列有两种形式。</p>
+<p>&emsp;&emsp; 在网络处理数据时，这里是使用看FCN结构。输入数据时，bayer数据被分为四个通道，并进行两倍的下采样（如下图）。对于X-trans类型的图像数据，数据被安排成6x6的块，可以通过交换相邻元素的方法将其分到九个通道里（下图没有显示）。然后减去图像的黑色像素并按照一定尺度对图像像素进行缩放，最后网络输出是12通道只有一半分辨率的图像数据,通过一个sub-pixel层可以恢复到原来的分辨率。</p>
 <center class="half">
-   <img src="https://i.loli.net/2018/06/12/5b1fde79bb85b.png" width="300/">
+
+    <img src="https://i.loli.net/2018/06/12/5b1f2b1b1be78.png" width="500/">
+
 </center>
 
-<p>&emsp;&emsp; 此外，和bayer类型数据相比较，X-trans类型数据还有两点不同：1.在Bayer排列中，任意行或列都只包含两种色彩，或者是红与绿，或者是蓝与绿。而在X-Trans排列中，任意行或者列都包含三种色彩；2.在同样的像素区域内（比如6×6），Bayer排列有18个绿色像素，而X-Trans排列则有20个绿色像素，这样x-trans在高感成像上的效果要更好。</p>
-<p>参考：<br>1.<a href="https://blog.csdn.net/bingqingsuimeng/article/details/61917513" target="_blank" rel="noopener">https://blog.csdn.net/bingqingsuimeng/article/details/61917513</a><br>2.<a href="https://blog.csdn.net/laviolette/article/details/6691534" target="_blank" rel="noopener">https://blog.csdn.net/laviolette/article/details/6691534</a><br>3.<a href="http://qiuliang.com/purchase_guide/fujifilm_x_system_guide/fujifilm_x_trans_cmos.htm" target="_blank" rel="noopener">http://qiuliang.com/purchase_guide/fujifilm_x_system_guide/fujifilm_x_trans_cmos.htm</a></p>
+
+
+<p>&emsp;&emsp; 网络使用可快速处理图像的CAN或U-net作为核心架构，由于需要处理全分辨率的图像，所以不使用全连接的结构，默认使用的基本架构是U-net。此外，上图中的放大系数在测试时可以通过用户的设定来决定图像的输出亮度。输出的图像是在RGB空间的，调整不同放大系数的结果如下图所示。</p>
+<center class="half">
+
+    <img src="https://i.loli.net/2018/06/12/5b1f335ee5e02.png" width="500/">
+
+</center>
+
+
+
+<p>&emsp;&emsp; 我们使用 L1 损失和 Adam 优化器，从零开始训练我们的网络。在训练期间，网络输入是原始的短曝光图像，在 sRGB 空间中的真实数据是相应的长曝光时间图像(由一个原始图像处理库 libraw 处理过得参考图像)。我们为每台相机训练一个网络，并将原始图像和参考图像之间曝光时间的倍数差作为我们的放大因子(例如，x100，x250，或x300)。在每次训练迭代中，我们随机裁剪一个512×512的补丁用于训练并利用翻转、旋转等操作来随机增强数据。初始学习率设定为0.0001，在2000次迭代后学习率降为0.00001，训练一共进行4000次迭代。</p>
+<p>&emsp;&emsp; 最终的实验结果要比传统的增强算法/传统增强算法加上去噪都要好，同时在测试其他手机获取的图像也有较好的效果。如下图所示：</p>
+<center class="half">
+
+    <img src="https://i.loli.net/2018/06/12/5b1f43c9e906f.png" width="400/">
+
+</center>
+
+
+
+<center class="half">
+
+    <img src="https://i.loli.net/2018/06/12/5b1f443aed1f1.png" width="400/">
+
+</center>
+
+
+
+<p>&emsp;&emsp; 主观问卷调查也是我们的方法效果更好：</p>
+<center class="half">
+
+    <img src="https://i.loli.net/2018/06/12/5b1f44d6704c3.png" width="400/">
+
+</center>
+
+
+
+<p>&emsp;&emsp; 此外，论文还做了一些对比组实验，主要是从PSNR和SSIM指标上进行对比，对比结果如下表所示：</p>
+<center class="half">
+
+    <img src="https://i.loli.net/2018/06/12/5b1f63fc4de82.png" width="400/">
+
+</center>
+
+
+
+<p>&emsp;&emsp; 简而言之就是，U-net在PSNR上要比CAN要好，SSIM上比CAN略差，但是CAN处理后的图像容易出现色彩失真；raw数据的效果要比rgb数据的效果要好；L1损失，L2损失和SSIM损失效果相近，但是加上GAN的感知损失准确率会明显下降；此外，还通过对比说明我们的数据组织形式也是合理的；最后，将目标图像做直方图均衡化后再作为目标图像的效果没有直接用目标图像的效果好，虽然更亮但是不够清晰，可以用原来目标图像训练出的结果再直方图均衡化。</p>
+<p>&emsp;&emsp; 当然，整个过程还有很多不足，包括：数据集种类不是很足，缺少人物和动图；放大系数需要手动调节；只针对特定相机，泛化性能不是很好；对图像处理的速度不足够快等。</p>
 
       
     </div>
@@ -502,7 +579,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2018/06/17/博客20/" title="">http://kevinj-huang.github.io/2018/06/17/博客20/</a>
+    <a href="http://kevinj-huang.github.io/2018/06/24/博客19/" title="阅读论文《Learning to See in the Dark》">http://kevinj-huang.github.io/2018/06/24/博客19/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -514,6 +591,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/每周计划/" rel="tag"># 每周计划</a>
+          
+        </div>
       
 
       
@@ -539,8 +622,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/17/博客19/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2018/06/24/博客20/" rel="next" title="图像raw数据">
+                <i class="fa fa-chevron-left"></i> 图像raw数据
               </a>
             
           </div>
@@ -549,8 +632,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/17/博客21/" rel="prev" title="Dncnn,U-net了解">
-                Dncnn,U-net了解 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/27/博客23/" rel="prev" title="图像采样方法">
+                图像采样方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -610,17 +693,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -652,7 +726,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -663,7 +737,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -756,22 +830,6 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mathjax-true"><span class="nav-number">1.</span> <span class="nav-text">mathjax: true</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bayer格式数据"><span class="nav-number">1.0.1.</span> <span class="nav-text">bayer格式数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#X-trans类型数据"><span class="nav-number">1.0.2.</span> <span class="nav-text">X-trans类型数据</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
 
@@ -799,7 +857,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">15.5k</span>
+    <span title="Site words total count">20.0k</span>
   
 </div>
 
@@ -1155,6 +1213,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
   
 
 

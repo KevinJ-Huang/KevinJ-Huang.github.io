@@ -134,18 +134,23 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp; 最近公司使用算法要用pytorch，所以本人暂时放弃使用tensorflow，为了练手pytorch，本人首先使用pytorch将tensorflow版本的mnist转换成pytorch版本，tensorflow原版本如下所示：1234567891011121314151617181920212223242526272829303132333435363738394041">
+<meta name="description" content="&amp;emsp;&amp;emsp; 最近听几场讲座都听到了一些有关GAN的应用,今年GAN更是刷了很多会议论文,了解一些常用的GAN网络,对于后面做科研还是做工程项目都很有帮助。一般的GAN网络存在着以下一些问题：训练不稳定，需要平衡生成器和判别器之间的训练；缺乏相应指示GAN训练好坏的指标等。下面依次简要介绍目前常用的几种GAN:WGAN,LSGAN，DCGAN。 WGAN&amp;emsp;&amp;emsp; WGA">
 <meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tensorflow的mnist改写成pytorch">
-<meta property="og:url" content="http://kevinj-huang.github.io/2018/06/17/博客18/index.html">
+<meta property="og:title" content="几种GAN的学习">
+<meta property="og:url" content="http://kevinj-huang.github.io/2018/06/30/博客25/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="&amp;emsp;&amp;emsp; 最近公司使用算法要用pytorch，所以本人暂时放弃使用tensorflow，为了练手pytorch，本人首先使用pytorch将tensorflow版本的mnist转换成pytorch版本，tensorflow原版本如下所示：1234567891011121314151617181920212223242526272829303132333435363738394041">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; 最近听几场讲座都听到了一些有关GAN的应用,今年GAN更是刷了很多会议论文,了解一些常用的GAN网络,对于后面做科研还是做工程项目都很有帮助。一般的GAN网络存在着以下一些问题：训练不稳定，需要平衡生成器和判别器之间的训练；缺乏相应指示GAN训练好坏的指标等。下面依次简要介绍目前常用的几种GAN:WGAN,LSGAN，DCGAN。 WGAN&amp;emsp;&amp;emsp; WGA">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-17T15:04:37.703Z">
+<meta property="og:image" content="https://i.loli.net/2018/06/29/5b36521284c74.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/30/5b373e42ad6dc.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/30/5b37544d1317a.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/30/5b3754f456f7d.png">
+<meta property="og:updated_time" content="2018-06-30T10:13:55.803Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tensorflow的mnist改写成pytorch">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 最近公司使用算法要用pytorch，所以本人暂时放弃使用tensorflow，为了练手pytorch，本人首先使用pytorch将tensorflow版本的mnist转换成pytorch版本，tensorflow原版本如下所示：1234567891011121314151617181920212223242526272829303132333435363738394041">
+<meta name="twitter:title" content="几种GAN的学习">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 最近听几场讲座都听到了一些有关GAN的应用,今年GAN更是刷了很多会议论文,了解一些常用的GAN网络,对于后面做科研还是做工程项目都很有帮助。一般的GAN网络存在着以下一些问题：训练不稳定，需要平衡生成器和判别器之间的训练；缺乏相应指示GAN训练好坏的指标等。下面依次简要介绍目前常用的几种GAN:WGAN,LSGAN，DCGAN。 WGAN&amp;emsp;&amp;emsp; WGA">
+<meta name="twitter:image" content="https://i.loli.net/2018/06/29/5b36521284c74.png">
 
 
 
@@ -175,13 +180,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2018/06/17/博客18/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2018/06/30/博客25/"/>
 
 
 
 
 
-  <title>tensorflow的mnist改写成pytorch | Resistence</title>
+  <title>几种GAN的学习 | Resistence</title>
   
 
 
@@ -337,7 +342,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/06/17/博客18/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/06/30/博客25/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -354,7 +359,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">tensorflow的mnist改写成pytorch</h2>
+          <h2 class="post-title" itemprop="name headline">几种GAN的学习</h2>
         
 
         <div class="post-meta">
@@ -366,8 +371,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-17T23:04:37+08:00">
-                2018-06-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-30T18:13:55+08:00">
+                2018-06-30
               </time>
             
 
@@ -382,8 +387,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-17T23:04:37+08:00">
-                2018-06-17
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-30T18:13:55+08:00">
+                2018-06-30
               </time>
             
           </span>
@@ -401,8 +406,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pytorch笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">pytorch笔记</span>
+                  <a href="/categories/机器学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习笔记</span>
                   </a>
                 </span>
 
@@ -418,7 +423,7 @@
 
           
           
-             <span id="/2018/06/17/博客18/" class="leancloud_visitors" data-flag-title="tensorflow的mnist改写成pytorch">
+             <span id="/2018/06/30/博客25/" class="leancloud_visitors" data-flag-title="几种GAN的学习">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -448,7 +453,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,071字
+                  991字
                 </span>
               
 
@@ -464,7 +469,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6分钟
+                  4分钟
                 </span>
               
             </div>
@@ -485,10 +490,33 @@
       
 
       
-        <p>&emsp;&emsp; 最近公司使用算法要用pytorch，所以本人暂时放弃使用tensorflow，为了练手pytorch，本人首先使用pytorch将tensorflow版本的mnist转换成pytorch版本，tensorflow原版本如下所示：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">'MNIST_data'</span>, one_hot=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line">sess = tf.InteractiveSession()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x = tf.placeholder(tf.float32, shape=[<span class="keyword">None</span>, <span class="number">784</span>])</span><br><span class="line">y_ = tf.placeholder(tf.float32, shape=[<span class="keyword">None</span>, <span class="number">10</span>])</span><br><span class="line">W = tf.Variable(tf.zeros([<span class="number">784</span>,<span class="number">10</span>]))</span><br><span class="line">b = tf.Variable(tf.zeros([<span class="number">10</span>]))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line"></span><br><span class="line">y = tf.matmul(x,W) + b</span><br><span class="line"></span><br><span class="line">cross_entropy = tf.reduce_mean(</span><br><span class="line">    tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y))</span><br><span class="line"></span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.5</span>).minimize(cross_entropy)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">  batch = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">  train_step.run(feed_dict=&#123;x: batch[<span class="number">0</span>], y_: batch[<span class="number">1</span>]&#125;)</span><br><span class="line">correct_prediction = tf.equal(tf.argmax(y,<span class="number">1</span>), tf.argmax(y_,<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))</span><br><span class="line"></span><br><span class="line">print(accuracy.eval(feed_dict=&#123;x: mnist.test.images, y_: mnist.test.labels&#125;))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">weight_variable</span><span class="params">(shape)</span>:</span></span><br><span class="line">  initial = tf.truncated_normal(shape, stddev=<span class="number">0.1</span>)</span><br><span class="line">  <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bias_variable</span><span class="params">(shape)</span>:</span></span><br><span class="line">  initial = tf.constant(<span class="number">0.1</span>, shape=shape)</span><br><span class="line">  <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv2d</span><span class="params">(x, W)</span>:</span></span><br><span class="line">  <span class="keyword">return</span> tf.nn.conv2d(x, W, strides=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">max_pool_2x2</span><span class="params">(x)</span>:</span></span><br><span class="line">  <span class="keyword">return</span> tf.nn.max_pool(x, ksize=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">                        strides=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</span><br><span class="line"></span><br><span class="line">W_conv1 = weight_variable([<span class="number">5</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">32</span>])</span><br><span class="line">b_conv1 = bias_variable([<span class="number">32</span>])</span><br><span class="line">x_image = tf.reshape(x, [<span class="number">-1</span>,<span class="number">28</span>,<span class="number">28</span>,<span class="number">1</span>])</span><br><span class="line">h_conv1 = tf.nn.relu(conv2d(x_image, W_conv1) + b_conv1)</span><br><span class="line">h_pool1 = max_pool_2x2(h_conv1)</span><br><span class="line"></span><br><span class="line">W_conv2 = weight_variable([<span class="number">5</span>, <span class="number">5</span>, <span class="number">32</span>, <span class="number">64</span>])</span><br><span class="line">b_conv2 = bias_variable([<span class="number">64</span>])</span><br><span class="line">h_conv2 = tf.nn.relu(conv2d(h_pool1, W_conv2) + b_conv2)</span><br><span class="line">h_pool2 = max_pool_2x2(h_conv2)</span><br><span class="line"></span><br><span class="line">W_fc1 = weight_variable([<span class="number">7</span> * <span class="number">7</span> * <span class="number">64</span>, <span class="number">1024</span>])</span><br><span class="line">b_fc1 = bias_variable([<span class="number">1024</span>])</span><br><span class="line"></span><br><span class="line">h_pool2_flat = tf.reshape(h_pool2, [<span class="number">-1</span>, <span class="number">7</span>*<span class="number">7</span>*<span class="number">64</span>])</span><br><span class="line">h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat, W_fc1) + b_fc1)</span><br><span class="line">keep_prob = tf.placeholder(tf.float32)</span><br><span class="line">h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)</span><br><span class="line">W_fc2 = weight_variable([<span class="number">1024</span>, <span class="number">10</span>])</span><br><span class="line">b_fc2 = bias_variable([<span class="number">10</span>])</span><br><span class="line"></span><br><span class="line">y_conv = tf.matmul(h_fc1_drop, W_fc2) + b_fc2</span><br><span class="line">cross_entropy = tf.reduce_mean(</span><br><span class="line">    tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y_conv))</span><br><span class="line">train_step = tf.train.AdamOptimizer(<span class="number">1e-4</span>).minimize(cross_entropy)</span><br><span class="line">correct_prediction = tf.equal(tf.argmax(y_conv,<span class="number">1</span>), tf.argmax(y_,<span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))</span><br><span class="line"></span><br><span class="line">saver = tf.train.Saver()  <span class="comment"># defaults to saving all variables</span></span><br><span class="line"></span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">20000</span>):</span><br><span class="line">  batch = mnist.train.next_batch(<span class="number">50</span>)</span><br><span class="line">  <span class="keyword">if</span> i%<span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">    train_accuracy = accuracy.eval(feed_dict=&#123;</span><br><span class="line">        x:batch[<span class="number">0</span>], y_: batch[<span class="number">1</span>], keep_prob: <span class="number">1.0</span>&#125;)</span><br><span class="line">    print(<span class="string">"step %d, training accuracy %g"</span>%(i, train_accuracy))</span><br><span class="line"></span><br><span class="line">  train_step.run(feed_dict=&#123;x: batch[<span class="number">0</span>], y_: batch[<span class="number">1</span>], keep_prob: <span class="number">0.5</span>&#125;)</span><br><span class="line">saver.save(sess, <span class="string">'/home/XXX/learning_tensorflow/form/model.ckpt'</span>)  <span class="comment">#保存模型参数，注意把这里改为自己的路径</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">"test accuracy %g"</span>%accuracy.eval(feed_dict=&#123;</span><br><span class="line">    x: mnist.test.images, y_: mnist.test.labels, keep_prob: <span class="number">1.0</span>&#125;))</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;改写成pytorch版本后如下所示：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> torchvision.transforms <span class="keyword">as</span> transforms</span><br><span class="line"><span class="keyword">import</span> torchvision.datasets <span class="keyword">as</span> dsets</span><br><span class="line"></span><br><span class="line">train_dataset = dsets.MNIST(root = <span class="string">'../../data_sets/mnist'</span>,</span><br><span class="line">                           train = <span class="keyword">True</span>,</span><br><span class="line">                           transform = transforms.ToTensor(),</span><br><span class="line">                           download = <span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Net</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(Net,self).__init__()</span><br><span class="line">        self.conv1 = nn.Conv2d(<span class="number">1</span>, <span class="number">32</span>, kernel_size=<span class="number">5</span>,stride=<span class="number">1</span>,padding=<span class="number">2</span>)</span><br><span class="line">        self.conv2 = nn.Conv2d(<span class="number">32</span>, <span class="number">64</span>, kernel_size=<span class="number">5</span>,stride=<span class="number">1</span>,padding=<span class="number">2</span>)</span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">7</span>*<span class="number">7</span>*<span class="number">64</span>, <span class="number">1024</span>)</span><br><span class="line">        self.fc2 = nn.Linear(<span class="number">1024</span>,<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x, target = None)</span>:</span></span><br><span class="line">        x = F.max_pool2d(F.relu(self.conv1(x)),kernel_size=<span class="number">2</span>,stride=<span class="number">2</span>,padding=<span class="number">0</span>)</span><br><span class="line">        x = F.max_pool2d(F.relu(self.conv2(x)),kernel_size=<span class="number">2</span>,stride=<span class="number">2</span>,padding=<span class="number">0</span>)</span><br><span class="line">        x = x.view(<span class="number">-1</span>,<span class="number">7</span>*<span class="number">7</span>*<span class="number">64</span>)</span><br><span class="line">        x = F.relu(self.fc1(x))</span><br><span class="line">        x = F.dropout(x,training=<span class="keyword">True</span>)</span><br><span class="line">        x = self.fc2(x)</span><br><span class="line">        x = F.log_softmax(x,dim=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line">model = Net()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(args)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> args.cuda:</span><br><span class="line">        model.cuda()</span><br><span class="line">    criterion = nn.CrossEntropyLoss()</span><br><span class="line">    training_accuracy = <span class="number">0</span></span><br><span class="line">    train_loader = torch.utils.data.DataLoader(dataset = train_dataset,</span><br><span class="line">                                           batch_size = args.batch_size,</span><br><span class="line">                                           shuffle = <span class="keyword">True</span>)</span><br><span class="line">    optimizer = torch.optim.Adam(model.parameters(), lr=args.learning_rate)</span><br><span class="line">    model.train()</span><br><span class="line">    <span class="keyword">for</span> epochs <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">20000</span>):</span><br><span class="line">        <span class="keyword">for</span> i,(images,labels) <span class="keyword">in</span> enumerate(train_loader):</span><br><span class="line">            <span class="keyword">if</span> args.cuda:</span><br><span class="line">                images, labels = images.cuda(), labels.cuda()</span><br><span class="line">            images = Variable(images.view(<span class="number">-1</span>,<span class="number">1</span>,<span class="number">28</span>,<span class="number">28</span>))</span><br><span class="line">            labels = Variable(labels)</span><br><span class="line">            optimizer.zero_grad()</span><br><span class="line">            outputs = model(images)</span><br><span class="line">            loss = criterion(outputs,labels)</span><br><span class="line">            loss.backward()</span><br><span class="line">            optimizer.step()</span><br><span class="line">            <span class="keyword">if</span> i%<span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">                pred = outputs.data.max(<span class="number">1</span>)[<span class="number">1</span>]</span><br><span class="line">                training_accuracy += pred.eq(labels.data[<span class="number">1</span>]).sum()</span><br><span class="line">                print(<span class="string">'epochs:%d,Loss:%5f,Acuuracy:%g'</span>%(epochs,loss,training_accuracy))</span><br><span class="line">                training_accuracy = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</span><br><span class="line">    parser = argparse.ArgumentParser()</span><br><span class="line">    parser.add_argument(<span class="string">'--learning_rate'</span>, default=<span class="number">1e-3</span>, type=float, help=<span class="string">'learning rate for the stochastic gradient update.'</span>)</span><br><span class="line">    parser.add_argument(<span class="string">'--batch_size'</span>, type=int, default=<span class="number">50</span>, help=<span class="string">'input batch size for training (default: 64)'</span>)</span><br><span class="line">    parser.add_argument(<span class="string">'--cuda'</span>, action=<span class="string">'store_true'</span>, default=<span class="keyword">True</span>,help=<span class="string">'Enable CUDA training'</span>)</span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    main(args)</span><br></pre></td></tr></table></figure></p>
-<p>几点感受:<br>1.pytorch不需要定义静态图，可以直接上手使用，网络定义更加方便快捷。<br>2.许多功能定义封装非常完善，不需要自己手写。<br>3.变量的定义和训练使用非常方便。</p>
-<p>参考：<br>1.<a href="https://blog.csdn.net/victoriaw/article/details/72354307" target="_blank" rel="noopener">https://blog.csdn.net/victoriaw/article/details/72354307</a><br>2.<a href="https://blog.csdn.net/caichao08/article/details/78997033" target="_blank" rel="noopener">https://blog.csdn.net/caichao08/article/details/78997033</a><br>3.<a href="https://blog.csdn.net/sparta_117/article/details/66965760" target="_blank" rel="noopener">https://blog.csdn.net/sparta_117/article/details/66965760</a></p>
+        <p>&emsp;&emsp; 最近听几场讲座都听到了一些有关GAN的应用,今年GAN更是刷了很多会议论文,了解一些常用的GAN网络,对于后面做科研还是做工程项目都很有帮助。一般的GAN网络存在着以下一些问题：训练不稳定，需要平衡生成器和判别器之间的训练；缺乏相应指示GAN训练好坏的指标等。下面依次简要介绍目前常用的几种GAN:WGAN,LSGAN，DCGAN。</p>
+<h4 id="WGAN"><a href="#WGAN" class="headerlink" title="WGAN"></a>WGAN</h4><p>&emsp;&emsp; WGAN是Wasserstein GAN的jiancheng简称，其目标是使GAN的训练达到稳定。WGAN主要从损失函数对GAN进行了改进，主要包括判别器最后一层去掉sigmoid，生成器和判别器的loss不取log，将更新后的权重限制在一定范围内，比如【-0.01,0.01】,以满足lipschitz条件。<br>&emsp;&emsp; WGAN的依据是交叉熵（JS散度）不适合衡量具有不相交部分分布之间的距离，而是使用Wasserstein距离去衡量生成数据和真实数据之间的距离，理论上解决了训练不稳定的问题。同时给定一个说明GAN训练好坏的指标，该指标越小，表明GAN训练越差。距离表达公式摘自下图。</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/06/29/5b36521284c74.png" width="600/">
+</center>
+
+<p>注：Lipschitz限制是在样本空间中，要求判别器函数D(x)梯度值不大于一个有限的常数K，通过权重值限制的方式保证了权重参数的有界性，间接限制了其梯度信息。</p>
+<h4 id="DCGAN"><a href="#DCGAN" class="headerlink" title="DCGAN"></a>DCGAN</h4><p>&emsp;&emsp; DCGAN还是解决GAN训练不稳定的问题，将生成器和判别器换成了两个卷积神经网络。其结构如下图所示：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/06/30/5b373e42ad6dc.png" width="500/">
+</center>
+
+<p>DCGAN对GAN的主要变化如下：<br>1.将pooling层convolutions替代，其中，在discriminator上用strided convolutions替代，在generator上用fractional-strided convolutions替代。<br>2.在generator和discriminator上都使用batchnorm。好处是帮助梯度传播到每一层，防止generator把所有的样本都收敛到同一个点。直接将BN应用到所有层会导致样本震荡和模型不稳定，通过在generator输出层和discriminator输入层不采用BN可以防止这种现象。<br>3.移除全连接层。<br>4.此外，还在预处理中将图像scale到tanh的[-1, 1]。LeakyReLU的斜率是0.2。将momentum参数beta从0.9降为0.5来防止震荡和不稳定，等。</p>
+<h4 id="LSGAN"><a href="#LSGAN" class="headerlink" title="LSGAN"></a>LSGAN</h4><p>&emsp;&emsp; LSGANs的英文全称是Least Squares GANs。其核心思想是将GAN的目标函数由交叉熵损失换成最小二乘损失，缓解了GAN训练不稳定和生成图像质量差多样性不足的问题。<br>&emsp;&emsp; 作者认为GAN以交叉熵作为损失，会使得生成器不会再优化那些被判别器识别为真实图片的生成图片，即使这些生成图片距离判别器的决策边界仍然很远，也就是距真实数据比较远。这意味着生成器的生成图片质量并不高。为什么生成器不再优化优化生成图片呢？是因为生成器已经完成我们为它设定的目标——尽可能地混淆判别器，所以交叉熵损失已经很小了。而最小二乘就不一样了，要想最小二乘损失比较小，在混淆判别器的前提下还得让生成器把距离决策边界比较远的生成图片拉向决策边界。<br>&emsp;&emsp; 为什么最小二乘损失可以使得GAN的训练更稳定呢？作者对这一点介绍的并不是很详细，只是说sigmoid交叉熵损失很容易就达到饱和状态（饱和是指梯度为0），而最小二乘损失只在一点达到饱和，如图2所示： </p>
+<center class="half">
+   <img src="https://i.loli.net/2018/06/30/5b37544d1317a.png" width="500/">
+</center>
+
+<p>损失函数如下所示：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/06/30/5b3754f456f7d.png" width="500/">
+</center>
+
+
+
+
+<p>参考：<br>1.<a href="https://blog.csdn.net/victoriaw/article/details/56486471" target="_blank" rel="noopener">https://blog.csdn.net/victoriaw/article/details/56486471</a><br>2.<a href="https://blog.csdn.net/qq_25737169/article/details/78857788" target="_blank" rel="noopener">https://blog.csdn.net/qq_25737169/article/details/78857788</a><br>3.<a href="https://blog.csdn.net/stdcoutzyx/article/details/53872121" target="_blank" rel="noopener">https://blog.csdn.net/stdcoutzyx/article/details/53872121</a><br>4.<a href="https://blog.csdn.net/victoriaw/article/details/60755698" target="_blank" rel="noopener">https://blog.csdn.net/victoriaw/article/details/60755698</a></p>
 
       
     </div>
@@ -509,7 +537,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2018/06/17/博客18/" title="tensorflow的mnist改写成pytorch">http://kevinj-huang.github.io/2018/06/17/博客18/</a>
+    <a href="http://kevinj-huang.github.io/2018/06/30/博客25/" title="几种GAN的学习">http://kevinj-huang.github.io/2018/06/30/博客25/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -552,8 +580,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/08/博客17/" rel="next" title="阅读论文《Loss Functions for Image Restoration With Neural Networks》">
-                <i class="fa fa-chevron-left"></i> 阅读论文《Loss Functions for Image Restoration With Neural Networks》
+              <a href="/2018/06/27/博客23/" rel="next" title="图像采样方法">
+                <i class="fa fa-chevron-left"></i> 图像采样方法
               </a>
             
           </div>
@@ -562,8 +590,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/17/博客19/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/01/博客28/" rel="prev" title="阅读论文《LOW-LIGHT IMAGE ENHANCEMENT USING CNN AND BRIGHT CHANNEL PRIOR》">
+                阅读论文《LOW-LIGHT IMAGE ENHANCEMENT USING CNN AND BRIGHT CHANNEL PRIOR》 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -623,8 +651,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -656,7 +693,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -667,7 +704,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -760,6 +797,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#WGAN"><span class="nav-number">1.</span> <span class="nav-text">WGAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DCGAN"><span class="nav-number">2.</span> <span class="nav-text">DCGAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LSGAN"><span class="nav-number">3.</span> <span class="nav-text">LSGAN</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -787,7 +840,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">15.5k</span>
+    <span title="Site words total count">20.0k</span>
   
 </div>
 
