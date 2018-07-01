@@ -1783,7 +1783,7 @@ pre .javascript .function {
   width: 0;
   z-index: 1040;
   box-shadow: inset 0 2px 6px #000;
-  background: #555;
+  background: #222;
   -webkit-transform: translateZ(0);
 }
 .sidebar a {
@@ -1796,7 +1796,7 @@ pre .javascript .function {
 .sidebar-inner {
   position: relative;
   padding: 20px 10px;
-  color: #555;
+  color: #999;
   text-align: center;
 }
 .site-overview-wrap {
@@ -1949,7 +1949,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #4fd7ff;
+  background: #d0ff75;
 }
 .links-of-blogroll {
   font-size: 13px;
