@@ -123,7 +123,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="每周计划," />
 
 
 
@@ -134,20 +134,21 @@
 
 
 
-<meta name="description" content="title:WGAN-GPcategories:机器学习笔记tags:每周计划 mathjax:true&amp;emsp;&amp;emsp; 最近做项目用到了GP-WGAN，所以感觉有必要了解一下，这里简要参考别人的博客自己做一个总结吧。&amp;emsp;&amp;emsp; GAN通过训练判别器和生成器来使得生成器生成的数据分布上尽可能和真实样本的分布完全一致。但是在GAN训练的过程中常常会存在训练不稳定的现象。因此蒙">
+<meta name="description" content="&amp;emsp;&amp;emsp; 最近做项目用到了GP-WGAN，所以感觉有必要了解一下，这里简要参考别人的博客自己做一个总结吧。&amp;emsp;&amp;emsp; GAN通过训练判别器和生成器来使得生成器生成的数据分布上尽可能和真实样本的分布完全一致。但是在GAN训练的过程中常常会存在训练不稳定的现象。因此蒙特利尔大学的研究者对WGAN进行改进，提出了一种替代WGAN判别器中权重剪枝的方法，即具有梯度惩罚的WGA">
+<meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Resistence">
+<meta property="og:title" content="WGAN-GP">
 <meta property="og:url" content="http://kevinj-huang.github.io/2018/08/05/博客29/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="title:WGAN-GPcategories:机器学习笔记tags:每周计划 mathjax:true&amp;emsp;&amp;emsp; 最近做项目用到了GP-WGAN，所以感觉有必要了解一下，这里简要参考别人的博客自己做一个总结吧。&amp;emsp;&amp;emsp; GAN通过训练判别器和生成器来使得生成器生成的数据分布上尽可能和真实样本的分布完全一致。但是在GAN训练的过程中常常会存在训练不稳定的现象。因此蒙">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; 最近做项目用到了GP-WGAN，所以感觉有必要了解一下，这里简要参考别人的博客自己做一个总结吧。&amp;emsp;&amp;emsp; GAN通过训练判别器和生成器来使得生成器生成的数据分布上尽可能和真实样本的分布完全一致。但是在GAN训练的过程中常常会存在训练不稳定的现象。因此蒙特利尔大学的研究者对WGAN进行改进，提出了一种替代WGAN判别器中权重剪枝的方法，即具有梯度惩罚的WGA">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2018/07/07/5b40c6882a4b4.jpg">
 <meta property="og:image" content="https://i.loli.net/2018/07/07/5b40d100c6448.jpeg">
 <meta property="og:image" content="https://i.loli.net/2018/07/07/5b40d5f41ec40.jpeg">
-<meta property="og:updated_time" content="2018-08-05T15:28:28.374Z">
+<meta property="og:updated_time" content="2018-08-05T15:33:32.201Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Resistence">
-<meta name="twitter:description" content="title:WGAN-GPcategories:机器学习笔记tags:每周计划 mathjax:true&amp;emsp;&amp;emsp; 最近做项目用到了GP-WGAN，所以感觉有必要了解一下，这里简要参考别人的博客自己做一个总结吧。&amp;emsp;&amp;emsp; GAN通过训练判别器和生成器来使得生成器生成的数据分布上尽可能和真实样本的分布完全一致。但是在GAN训练的过程中常常会存在训练不稳定的现象。因此蒙">
+<meta name="twitter:title" content="WGAN-GP">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 最近做项目用到了GP-WGAN，所以感觉有必要了解一下，这里简要参考别人的博客自己做一个总结吧。&amp;emsp;&amp;emsp; GAN通过训练判别器和生成器来使得生成器生成的数据分布上尽可能和真实样本的分布完全一致。但是在GAN训练的过程中常常会存在训练不稳定的现象。因此蒙特利尔大学的研究者对WGAN进行改进，提出了一种替代WGAN判别器中权重剪枝的方法，即具有梯度惩罚的WGA">
 <meta name="twitter:image" content="https://i.loli.net/2018/07/07/5b40c6882a4b4.jpg">
 
 
@@ -184,7 +185,7 @@
 
 
 
-  <title> | Resistence</title>
+  <title>WGAN-GP | Resistence</title>
   
 
 
@@ -357,7 +358,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline"></h2>
+          <h2 class="post-title" itemprop="name headline">WGAN-GP</h2>
         
 
         <div class="post-meta">
@@ -369,7 +370,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-05T23:28:28+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-05T23:33:32+08:00">
                 2018-08-05
               </time>
             
@@ -385,13 +386,35 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-05T23:28:28+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-05T23:33:32+08:00">
                 2018-08-05
               </time>
             
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -399,7 +422,7 @@
 
           
           
-             <span id="/2018/08/05/博客29/" class="leancloud_visitors" data-flag-title="">
+             <span id="/2018/08/05/博客29/" class="leancloud_visitors" data-flag-title="WGAN-GP">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -429,7 +452,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  700字
+                  683字
                 </span>
               
 
@@ -445,7 +468,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3分钟
+                  2分钟
                 </span>
               
             </div>
@@ -466,9 +489,7 @@
       
 
       
-        <hr>
-<p>title:WGAN-GP<br>categories:机器学习笔记<br>tags:每周计划</p>
-<h2 id="mathjax-true"><a href="#mathjax-true" class="headerlink" title="mathjax:true"></a>mathjax:true</h2><p>&emsp;&emsp; 最近做项目用到了GP-WGAN，所以感觉有必要了解一下，这里简要参考别人的博客自己做一个总结吧。<br>&emsp;&emsp; GAN通过训练判别器和生成器来使得生成器生成的数据分布上尽可能和真实样本的分布完全一致。但是在GAN训练的过程中常常会存在训练不稳定的现象。因此蒙特利尔大学的研究者对WGAN进行改进，提出了一种替代WGAN判别器中权重剪枝的方法，即具有梯度惩罚的WGAN，从而避免训练不稳定的情况。<br>&emsp;&emsp; 在WGAN中，作者将权重剪切到一定范围内，如[-0.01,0.01]，发生了这样的情况，如下图所示：</p>
+        <p>&emsp;&emsp; 最近做项目用到了GP-WGAN，所以感觉有必要了解一下，这里简要参考别人的博客自己做一个总结吧。<br>&emsp;&emsp; GAN通过训练判别器和生成器来使得生成器生成的数据分布上尽可能和真实样本的分布完全一致。但是在GAN训练的过程中常常会存在训练不稳定的现象。因此蒙特利尔大学的研究者对WGAN进行改进，提出了一种替代WGAN判别器中权重剪枝的方法，即具有梯度惩罚的WGAN，从而避免训练不稳定的情况。<br>&emsp;&emsp; 在WGAN中，作者将权重剪切到一定范围内，如[-0.01,0.01]，发生了这样的情况，如下图所示：</p>
 <center class="half">
    <img src="https://i.loli.net/2018/07/07/5b40c6882a4b4.jpg" ,width="300/">
 </center>
@@ -506,7 +527,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2018/08/05/博客29/" title="">http://kevinj-huang.github.io/2018/08/05/博客29/</a>
+    <a href="http://kevinj-huang.github.io/2018/08/05/博客29/" title="WGAN-GP">http://kevinj-huang.github.io/2018/08/05/博客29/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -518,6 +539,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/每周计划/" rel="tag"># 每周计划</a>
+          
+        </div>
       
 
       
@@ -543,8 +570,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/05/博客33/" rel="next" title="阅读论文《Deep Photo Enhancer:Unpaired Learning for Image Enhancement from Photographs with GANs》">
-                <i class="fa fa-chevron-left"></i> 阅读论文《Deep Photo Enhancer:Unpaired Learning for Image Enhancement from Photographs with GANs》
+              <a href="/2018/08/05/博客30/" rel="next" title="Instance norm">
+                <i class="fa fa-chevron-left"></i> Instance norm
               </a>
             
           </div>
@@ -610,17 +637,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -755,22 +773,6 @@
 		<!--my custom code end-->
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mathjax-true"><span class="nav-number">1.</span> <span class="nav-text">mathjax:true</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -1155,6 +1157,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
   
 
 
