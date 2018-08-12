@@ -123,7 +123,7 @@
 
 
 
-  <meta name="keywords" content="深度学习项目," />
+  <meta name="keywords" content="每周计划," />
 
 
 
@@ -134,21 +134,24 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp; 这是2017腾讯AI Lab的一篇论文，当前阶段主要关注空间上图像质量的风格转换，对于时间方面的后续在做视频时再补充。 空间风格转换&amp;emsp;&amp;emsp; 和DPED一样，论文的idea是将网络分成了生成网络和损失网络两个部分，生成网络用来生成图片，损失网络用来产生损失函数方便训练。下面对这两个部分分别介绍一下： 生成网络部分&amp;emsp;&amp;emsp; 在生成网络部分，这">
-<meta name="keywords" content="深度学习项目">
+<meta name="description" content="RefineNet&amp;emsp;&amp;emsp; 这个网络主要针对使用膨胀卷积在不进行下采样扩大感受野出现的限制（限制高层特征和输出尺度只能为输入的1/8，膨胀卷积导致严重的细节损失），以及FCN8-s不能有效利用中间层信息。这里认为所有层的信息对于语义分割都是有帮助的。高层的信息识别图像的区域类别，底层有利于保留轮廓、细节等信息。RefineNet结合这些特征进行设计。&amp;emsp;&amp;emsp; 网络结">
+<meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阅读论文《 Real-Time Neural Style Transfer for Videos》">
-<meta property="og:url" content="http://kevinj-huang.github.io/2018/05/26/博客2/index.html">
+<meta property="og:title" content="常见的图像分割网络了解（中）">
+<meta property="og:url" content="http://kevinj-huang.github.io/2018/08/11/博客40/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="&amp;emsp;&amp;emsp; 这是2017腾讯AI Lab的一篇论文，当前阶段主要关注空间上图像质量的风格转换，对于时间方面的后续在做视频时再补充。 空间风格转换&amp;emsp;&amp;emsp; 和DPED一样，论文的idea是将网络分成了生成网络和损失网络两个部分，生成网络用来生成图片，损失网络用来产生损失函数方便训练。下面对这两个部分分别介绍一下： 生成网络部分&amp;emsp;&amp;emsp; 在生成网络部分，这">
+<meta property="og:description" content="RefineNet&amp;emsp;&amp;emsp; 这个网络主要针对使用膨胀卷积在不进行下采样扩大感受野出现的限制（限制高层特征和输出尺度只能为输入的1/8，膨胀卷积导致严重的细节损失），以及FCN8-s不能有效利用中间层信息。这里认为所有层的信息对于语义分割都是有帮助的。高层的信息识别图像的区域类别，底层有利于保留轮廓、细节等信息。RefineNet结合这些特征进行设计。&amp;emsp;&amp;emsp; 网络结">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2018/03/28/5abb069334bf4.png">
-<meta property="og:image" content="https://i.loli.net/2018/03/28/5abb07644372b.png">
-<meta property="og:updated_time" content="2018-03-30T01:22:50.000Z">
+<meta property="og:image" content="https://i.loli.net/2018/08/11/5b6eda25d519b.jpeg">
+<meta property="og:image" content="https://i.loli.net/2018/08/11/5b6ee0199ab0a.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/11/5b6ee3fbd6b5f.jpeg">
+<meta property="og:image" content="https://i.loli.net/2018/08/11/5b6eed219402e.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/11/5b6ef2e6e3e41.png">
+<meta property="og:updated_time" content="2018-08-11T14:39:06.463Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阅读论文《 Real-Time Neural Style Transfer for Videos》">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 这是2017腾讯AI Lab的一篇论文，当前阶段主要关注空间上图像质量的风格转换，对于时间方面的后续在做视频时再补充。 空间风格转换&amp;emsp;&amp;emsp; 和DPED一样，论文的idea是将网络分成了生成网络和损失网络两个部分，生成网络用来生成图片，损失网络用来产生损失函数方便训练。下面对这两个部分分别介绍一下： 生成网络部分&amp;emsp;&amp;emsp; 在生成网络部分，这">
-<meta name="twitter:image" content="https://i.loli.net/2018/03/28/5abb069334bf4.png">
+<meta name="twitter:title" content="常见的图像分割网络了解（中）">
+<meta name="twitter:description" content="RefineNet&amp;emsp;&amp;emsp; 这个网络主要针对使用膨胀卷积在不进行下采样扩大感受野出现的限制（限制高层特征和输出尺度只能为输入的1/8，膨胀卷积导致严重的细节损失），以及FCN8-s不能有效利用中间层信息。这里认为所有层的信息对于语义分割都是有帮助的。高层的信息识别图像的区域类别，底层有利于保留轮廓、细节等信息。RefineNet结合这些特征进行设计。&amp;emsp;&amp;emsp; 网络结">
+<meta name="twitter:image" content="https://i.loli.net/2018/08/11/5b6eda25d519b.jpeg">
 
 
 
@@ -178,13 +181,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2018/05/26/博客2/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2018/08/11/博客40/"/>
 
 
 
 
 
-  <title>阅读论文《 Real-Time Neural Style Transfer for Videos》 | Resistence</title>
+  <title>常见的图像分割网络了解（中） | Resistence</title>
   
 
 
@@ -340,7 +343,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/05/26/博客2/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/08/11/博客40/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -357,7 +360,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">阅读论文《 Real-Time Neural Style Transfer for Videos》</h2>
+          <h2 class="post-title" itemprop="name headline">常见的图像分割网络了解（中）</h2>
         
 
         <div class="post-meta">
@@ -369,8 +372,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-26T21:46:58+08:00">
-                2018-05-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-11T22:39:06+08:00">
+                2018-08-11
               </time>
             
 
@@ -385,8 +388,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-30T09:22:50+08:00">
-                2018-03-30
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-11T22:39:06+08:00">
+                2018-08-11
               </time>
             
           </span>
@@ -404,8 +407,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
+                  <a href="/categories/机器学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习笔记</span>
                   </a>
                 </span>
 
@@ -421,7 +424,7 @@
 
           
           
-             <span id="/2018/05/26/博客2/" class="leancloud_visitors" data-flag-title="阅读论文《 Real-Time Neural Style Transfer for Videos》">
+             <span id="/2018/08/11/博客40/" class="leancloud_visitors" data-flag-title="常见的图像分割网络了解（中）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -451,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  693字
+                  793字
                 </span>
               
 
@@ -467,7 +470,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2分钟
+                  3分钟
                 </span>
               
             </div>
@@ -488,15 +491,33 @@
       
 
       
-        <p>&emsp;&emsp; 这是2017腾讯AI Lab的一篇论文，当前阶段主要关注空间上图像质量的风格转换，对于时间方面的后续在做视频时再补充。</p>
-<h3 id="空间风格转换"><a href="#空间风格转换" class="headerlink" title="空间风格转换"></a>空间风格转换</h3><p>&emsp;&emsp; 和DPED一样，论文的idea是将网络分成了生成网络和损失网络两个部分，生成网络用来生成图片，损失网络用来产生损失函数方便训练。下面对这两个部分分别介绍一下：</p>
-<h4 id="生成网络部分"><a href="#生成网络部分" class="headerlink" title="生成网络部分"></a>生成网络部分</h4><p>&emsp;&emsp; 在生成网络部分，这里应该是用了之前一些论文的思想，使用三个卷积层先将图像分辨率降为原来的四分之一，然后跟随五个残差快使图像迅速收敛，最后再加两个反卷积和一个卷积层生成一个和输入分辨率相同的图片。网络结构如下图所示：<br><img src="https:///i.loli.net/2018/03/28/5abb069334bf4.png" alt=""><br><img src="https:///i.loli.net/2018/03/28/5abb07644372b.png" alt=""><br>&emsp;&emsp; 优点：使用较少的图像通道减少模型尺寸，且方便产生时间序列，Johnson等人提出的风格化网络[12] 有5个残差块，每个残差块产生128个特征图。本文通过实验发现使用较少数量的特征映射会产生视觉上相似的结果，同时为存储模型和缩短推理时间节省大量空间。</p>
-<h4 id="损失函数部分"><a href="#损失函数部分" class="headerlink" title="损失函数部分"></a>损失函数部分</h4><p>&emsp;&emsp; 这里只考虑空间损失部分，文章将空间损失分成了内容损失，风格损失和总方差正则化损失。分别定义如下：<br>&emsp;&emsp; 内容损失:</p>
-<script type="math/tex; mode=display">L_{content}^l(x,x^d)=\cfrac{1}{C_lH_lW_l}||\phi_l(x)-\phi_l(x^d)||^2_2</script><p>&emsp;&emsp; 这里的损失函数是定义在vgg19的特征之上的，$\phi(x)$表示的是第l层的特征，C、H、W表示的是该处特征的维数，很显然，这个内容损失表示的是输入图x和输出图像$x^d$在l层之间的差距，文章使用了和DPED相同的relu4_2层计算损失。<br>&emsp;&emsp; 风格损失：这里首先定义了Gram矩阵，如下:</p>
-<script type="math/tex; mode=display">G^l_{i,j}(x)=\cfrac{1}{C_lH_l}\sum_{h=1}^{H_l}\sum_{l=1}^{W_l}\phi_l(x)_{h,w,i}\phi_l(x)_{h,w,j}</script><p>&emsp;&emsp; 这里i,j指的是通道，通过这个函数，计算一张图像通道的内积，得到哪些通道之间倾向于一起被激活，损失函数定义如下：</p>
-<script type="math/tex; mode=display">L_{style}^l(s,x^d)=\cfrac{1}{C_l^2}||G^l(s)-G^l(x^d)||_F^2</script><p>其中s表示的是目标图像。<br>&emsp;&emsp; 为了全面捕捉不同尺度的风格信息，论文使用损失网络不同层次的一组格拉姆矩阵来计算整体风格损失。这里选择ReLU1_2，ReLU2_2，ReLU3_2，ReLU4_2作为计算风格损失的层次。<br>&emsp;&emsp; 此外为了获得空间平滑，这里还加了一个方差正则化损失：</p>
-<script type="math/tex; mode=display">R_V{^\eta}=\sum_{i,j}(||x_{i,j+1}^d-x_{i,j}^d||^2+(||x_{i+1,j}^d-x_{i,j}^d||^2)</script><p>&emsp;&emsp; 最后，将上述损失函数合在一起，构成了一个整体空间损失函数，如下：</p>
-<script type="math/tex; mode=display">L_{spatial}(x,x^d,s)=\alpha\sum_lL_{content}(x,x^d)+\beta\sum_lL_{style}(s,x^d)+\gamma R_V{^\eta}</script><p>&emsp;&emsp; 通过对这个损失函数进行训练，获得迁移后的图像。</p>
+        <h4 id="RefineNet"><a href="#RefineNet" class="headerlink" title="RefineNet"></a>RefineNet</h4><p>&emsp;&emsp; 这个网络主要针对使用膨胀卷积在不进行下采样扩大感受野出现的限制（限制高层特征和输出尺度只能为输入的1/8，膨胀卷积导致严重的细节损失），以及FCN8-s不能有效利用中间层信息。这里认为所有层的信息对于语义分割都是有帮助的。高层的信息识别图像的区域类别，底层有利于保留轮廓、细节等信息。RefineNet结合这些特征进行设计。<br>&emsp;&emsp; 网络结构如下所示，这里主要是将不同分辨率的特征图进行融合，最左边一栏使用的是ResNet,即将图像通过预训练好的ResNet获得特征图(这个ResNet按特征图的分辨率分成四个ResNet blocks,不同的block输出不同分辨率的特征图，这样就有高层和低层特征之分），然后向右把四个blocks分别作为4个path通过RefineNet block进行融合，最后获得一个refined特征图。除了RefineNet-4，所有的RefineNet block 都是二输入的，用于融合不同level做refine。</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/08/11/5b6eda25d519b.jpeg" ,width="600/">
+</center>
+
+<p>&emsp;&emsp; RefineNet和之前分割网络的对比如下所示，可以看出其融合了各层的信息：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/08/11/5b6ee0199ab0a.png" ,width="800/">
+</center>
+
+<p>&emsp;&emsp; 具体的block如下图所示：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/08/11/5b6ee3fbd6b5f.jpeg" ,width="700/">
+</center>
+
+<p>&emsp;&emsp; 其中各部分分别是，RCU:从残差网络中提取出来的单元结构；Multi-resolution fusion：将特征图用一个卷积层自适应卷积成一样大小，再上采样，做element-wise 的相加，第一个Refine Block除外。Chained residual pooling：这里使用链式结构很容易获得背景的context,且使用大量的identity mapping这样的连接允许梯度直接传播，池化也使得模型对于学习率的变化不是那么敏感;Output convolutions：输出前再加一个RCU。<br>&emsp;&emsp; 这个网络充分融合了各层特征和上下文信息，思路值得借鉴。</p>
+<h4 id="PSPNet"><a href="#PSPNet" class="headerlink" title="PSPNet"></a>PSPNet</h4><p>&emsp;&emsp; 这个网络和上一个网络的思路不太一样，主要是考虑不同感受野下的全局信息，因此使用了金字塔池化的方法。网络结构图如下所示：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/08/11/5b6eed219402e.png" ,width="800/">
+</center>
+
+<p>&emsp;&emsp; 对于输入图像，这里首先通过ResNet网络获得特征图，这个特征图通过一个全局平均池化层之后，又通过金字塔池化层获得不同子区域的特征，然后上采样并和前面的全局特征concat在一起，这样的特征就包括了全局特征和局部特征，最后将输出通过一个卷积得到预测结果。<br>&emsp;&emsp; 这里值得一提的是对于resnet网络的训练，除了使用softmax loss,即图4中loss1训练最后的主分类器外,还引入了res4b22 residule模块,构造另一个辅助分类器,损失函数为loss2,并引入一个权重参数来控制loss2的权重,辅助分类器可以帮助优化学习过程。如下图所示：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/08/11/5b6ef2e6e3e41.png" ,width="700/">
+</center>
+
+<p>参考：<br>1.<a href="https://blog.csdn.net/qq_36165459/article/details/78345269" target="_blank" rel="noopener">https://blog.csdn.net/qq_36165459/article/details/78345269</a><br>2.<a href="https://blog.csdn.net/u010067397/article/details/78836173" target="_blank" rel="noopener">https://blog.csdn.net/u010067397/article/details/78836173</a><br>3.<a href="https://blog.csdn.net/u011961856/article/details/77165427" target="_blank" rel="noopener">https://blog.csdn.net/u011961856/article/details/77165427</a><br>4.<a href="https://blog.csdn.net/yxq5997/article/details/53695779?utm_source=itdadao&amp;utm_medium=referral" target="_blank" rel="noopener">https://blog.csdn.net/yxq5997/article/details/53695779?utm_source=itdadao&amp;utm_medium=referral</a></p>
 
       
     </div>
@@ -517,7 +538,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2018/05/26/博客2/" title="阅读论文《 Real-Time Neural Style Transfer for Videos》">http://kevinj-huang.github.io/2018/05/26/博客2/</a>
+    <a href="http://kevinj-huang.github.io/2018/08/11/博客40/" title="常见的图像分割网络了解（中）">http://kevinj-huang.github.io/2018/08/11/博客40/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -532,7 +553,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/深度学习项目/" rel="tag"># 深度学习项目</a>
+            <a href="/tags/每周计划/" rel="tag"># 每周计划</a>
           
         </div>
       
@@ -560,14 +581,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/08/11/博客39/" rel="next" title="获得tensorflow模型的参数量">
+                <i class="fa fa-chevron-left"></i> 获得tensorflow模型的参数量
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/26/博客6/" rel="prev" title="项目《面向机械臂抓取应用的RGBD深度学习算法研究》总结报告">
-                项目《面向机械臂抓取应用的RGBD深度学习算法研究》总结报告 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/12/博客41/" rel="prev" title="引导滤波">
+                引导滤波 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -782,7 +807,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#空间风格转换"><span class="nav-number">1.</span> <span class="nav-text">空间风格转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成网络部分"><span class="nav-number">1.1.</span> <span class="nav-text">生成网络部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#损失函数部分"><span class="nav-number">1.2.</span> <span class="nav-text">损失函数部分</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#RefineNet"><span class="nav-number">1.</span> <span class="nav-text">RefineNet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PSPNet"><span class="nav-number">2.</span> <span class="nav-text">PSPNet</span></a></li></ol></div>
             
 
           </div>
