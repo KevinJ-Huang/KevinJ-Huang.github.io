@@ -134,18 +134,24 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp; 本周事情较多，所以在这个上面画的时间少了一点，主要是更改了一个C++源码，链接：https://blog.csdn.net/qq_35724402/article/details/60466536。更改后如下所示：1234567891011121314151617181920212223import cv2import argparseimport numpy as np">
+<meta name="description" content="deeplab-v3&amp;emsp;&amp;emsp; 在看deeplab-v3之间简要了解一下deeplab-v1和deeplab-v2网络。deeplab-v1网络主要是在保持feature map不变小的情况下，尽可能的增大感受野，这里采用了空洞卷积的方法，最后加上全连接的条件随机场进行优化。&amp;emsp;&amp;emsp; deeplab-v2主要是参考了多尺度在深度学习里的优点，设计了不同的空洞卷积核，从">
 <meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="opencv操作(2)：一些杂知识">
-<meta property="og:url" content="http://kevinj-huang.github.io/2018/06/05/博客15/index.html">
+<meta property="og:title" content="常见的图像分割网络了解（下）">
+<meta property="og:url" content="http://kevinj-huang.github.io/2018/08/18/博客43/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="&amp;emsp;&amp;emsp; 本周事情较多，所以在这个上面画的时间少了一点，主要是更改了一个C++源码，链接：https://blog.csdn.net/qq_35724402/article/details/60466536。更改后如下所示：1234567891011121314151617181920212223import cv2import argparseimport numpy as np">
+<meta property="og:description" content="deeplab-v3&amp;emsp;&amp;emsp; 在看deeplab-v3之间简要了解一下deeplab-v1和deeplab-v2网络。deeplab-v1网络主要是在保持feature map不变小的情况下，尽可能的增大感受野，这里采用了空洞卷积的方法，最后加上全连接的条件随机场进行优化。&amp;emsp;&amp;emsp; deeplab-v2主要是参考了多尺度在深度学习里的优点，设计了不同的空洞卷积核，从">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-05T14:30:13.362Z">
+<meta property="og:image" content="https://i.loli.net/2018/08/18/5b77d5e940ca8.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/18/5b77e75692670.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/18/5b77ecab07e51.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/18/5b77efc40c58e.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/18/5b77f3d200ec2.jpeg">
+<meta property="og:updated_time" content="2018-08-18T10:32:56.353Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="opencv操作(2)：一些杂知识">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 本周事情较多，所以在这个上面画的时间少了一点，主要是更改了一个C++源码，链接：https://blog.csdn.net/qq_35724402/article/details/60466536。更改后如下所示：1234567891011121314151617181920212223import cv2import argparseimport numpy as np">
+<meta name="twitter:title" content="常见的图像分割网络了解（下）">
+<meta name="twitter:description" content="deeplab-v3&amp;emsp;&amp;emsp; 在看deeplab-v3之间简要了解一下deeplab-v1和deeplab-v2网络。deeplab-v1网络主要是在保持feature map不变小的情况下，尽可能的增大感受野，这里采用了空洞卷积的方法，最后加上全连接的条件随机场进行优化。&amp;emsp;&amp;emsp; deeplab-v2主要是参考了多尺度在深度学习里的优点，设计了不同的空洞卷积核，从">
+<meta name="twitter:image" content="https://i.loli.net/2018/08/18/5b77d5e940ca8.png">
 
 
 
@@ -175,13 +181,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2018/06/05/博客15/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2018/08/18/博客43/"/>
 
 
 
 
 
-  <title>opencv操作(2)：一些杂知识 | Resistence</title>
+  <title>常见的图像分割网络了解（下） | Resistence</title>
   
 
 
@@ -337,7 +343,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/06/05/博客15/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/08/18/博客43/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -354,7 +360,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">opencv操作(2)：一些杂知识</h2>
+          <h2 class="post-title" itemprop="name headline">常见的图像分割网络了解（下）</h2>
         
 
         <div class="post-meta">
@@ -366,8 +372,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T22:30:13+08:00">
-                2018-06-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-18T18:32:56+08:00">
+                2018-08-18
               </time>
             
 
@@ -382,8 +388,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-05T22:30:13+08:00">
-                2018-06-05
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-18T18:32:56+08:00">
+                2018-08-18
               </time>
             
           </span>
@@ -401,8 +407,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/opencv笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">opencv笔记</span>
+                  <a href="/categories/机器学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习笔记</span>
                   </a>
                 </span>
 
@@ -418,7 +424,7 @@
 
           
           
-             <span id="/2018/06/05/博客15/" class="leancloud_visitors" data-flag-title="opencv操作(2)：一些杂知识">
+             <span id="/2018/08/18/博客43/" class="leancloud_visitors" data-flag-title="常见的图像分割网络了解（下）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -448,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  280字
+                  743字
                 </span>
               
 
@@ -464,7 +470,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1分钟
+                  3分钟
                 </span>
               
             </div>
@@ -485,9 +491,33 @@
       
 
       
-        <p>&emsp;&emsp; 本周事情较多，所以在这个上面画的时间少了一点，主要是更改了一个C++源码，链接：<a href="https://blog.csdn.net/qq_35724402/article/details/60466536。更改后如下所示：" target="_blank" rel="noopener">https://blog.csdn.net/qq_35724402/article/details/60466536。更改后如下所示：</a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(args)</span>:</span></span><br><span class="line">    img = cv2.imread(args.file)</span><br><span class="line">    hsv = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)</span><br><span class="line">    channels = cv2.split(hsv)</span><br><span class="line">    channels[<span class="number">1</span>] = <span class="number">255</span>*np.ones([img.shape[<span class="number">0</span>],img.shape[<span class="number">1</span>]]).astype(np.uint8)</span><br><span class="line">    channels[<span class="number">2</span>] = <span class="number">200</span>*np.ones([img.shape[<span class="number">0</span>],img.shape[<span class="number">1</span>]]).astype(np.uint8)</span><br><span class="line">    hsv = cv2.merge(channels)</span><br><span class="line">    rgb = cv2.cvtColor(hsv,cv2.COLOR_HSV2BGR)</span><br><span class="line">    cv2.imshow(<span class="string">'image'</span>,rgb)</span><br><span class="line">    cv2.waitKey(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</span><br><span class="line">    parser = argparse.ArgumentParser()</span><br><span class="line">    parser.add_argument(<span class="string">"--file"</span>,default=<span class="string">"test.png"</span>,help=<span class="string">"Image that input"</span>)</span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    main(args)</span><br></pre></td></tr></table></figure></p>
-<p>具体效果可以参考链接里所示。<br>这里主要应用到的opencv处理技术有：<br>（1）cv2.cvtColor，可以用来进行图像通道的转换。<br>（2）cv2.split,可以将图像通道进行分离。<br>（3）cv2.merge,可以对图像通道进行合并。<br>实际上上述操作均可以通过数组赋值的方式完成，不再赘述。</p>
-<p>参考：<br>1、<a href="https://blog.csdn.net/mokeding/article/details/17630625" target="_blank" rel="noopener">https://blog.csdn.net/mokeding/article/details/17630625</a><br>2、<a href="https://blog.csdn.net/qq_35724402/article/details/60466536" target="_blank" rel="noopener">https://blog.csdn.net/qq_35724402/article/details/60466536</a></p>
+        <h4 id="deeplab-v3"><a href="#deeplab-v3" class="headerlink" title="deeplab-v3"></a>deeplab-v3</h4><p>&emsp;&emsp; 在看deeplab-v3之间简要了解一下deeplab-v1和deeplab-v2网络。deeplab-v1网络主要是在保持feature map不变小的情况下，尽可能的增大感受野，这里采用了空洞卷积的方法，最后加上全连接的条件随机场进行优化。<br>&emsp;&emsp; deeplab-v2主要是参考了多尺度在深度学习里的优点，设计了不同的空洞卷积核，从而获得不同的感受野，如下图所示：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/08/18/5b77d5e940ca8.png" ,width="500/">
+</center>
+
+<p>&emsp;&emsp; deeplab-v3网络做了进一步的改进，主要包括：<br>1.使用深层次的空洞卷积<br>&emsp;&emsp; 一般的ResNet卷积到最后feature的大小会非常小，这会损失大量的信息，这里将下面ResNet里的block4拿出来，做多次复制接在后面，使用空洞卷积提取后面的信息扩大感受野，卷积中采用不同的采样率保持out_stride = 16，从而减少了计算量。如下图所示：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/08/18/5b77e75692670.png" ,width="700/">
+</center>
+
+<p>2.使用多尺度空洞卷积，和v2差不多，相当于将上面的部分空洞卷积在原有基础上乘上不同的rate，建立多个分支。此外，还加入了BN层。<br>3.空洞金字塔池化<br>&emsp;&emsp; 具有不同采样率的上述模块在卷积时可以获得多尺度信息，但是论文也发现，在采样率增加时卷积核里有效的权重数会减少，也就是说在采样接近特征图大小的极端情况下，3x3的卷积会退化成1x1的卷积，只有中间的权重发挥作用，如下图所示：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/08/18/5b77ecab07e51.png" ,width="500/">
+</center>
+
+<p>&emsp;&emsp; 为了解决这个问题，这里采样图片级特征，在模型最后的特征映射上应用全局平均，将结果经过1×1的卷积，卷积核为256个，再双线性上采样得到所需的空间维度。所以ASPP包括：1.一个1×1卷积和三个3×3的采样率为rates={6,12,18}的空洞卷积，滤波器数量为256，包含BN层。针对output_stride=16的情况。如下图(a)部分Atrous Spatial Pyramid Pooling。2.图像级特征，即将特征做全局平均池化，经过卷积，再融合。如下图(b)部分Image Pooling。如下图所示：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/08/18/5b77efc40c58e.png" ,width="700/">
+</center>
+
+<h4 id="与deeplab-v3"><a href="#与deeplab-v3" class="headerlink" title="与deeplab-v3+"></a>与deeplab-v3+</h4><p>&emsp;&emsp; deeplab-v3对输出直接做上采样恢复到原来的尺寸大小，这会损失大量的细节信息。所以这里引入了decoder部分希望能较好的恢复细节信息，具体操作是encoder部分继续使用deeplab-v3,对于decoder部分：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/08/18/5b77f3d200ec2.jpeg" ,width="600/">
+</center>
+
+<p>&emsp;&emsp; 先使用1x1卷积将低层特征进行通道压缩，再和上采样后的通道进行concat，前面的低层特征相当于是一个权重，从而保留高级特征的同时，也引入了低层的细节和边缘等信息。</p>
+<p>参考：<br>1.<a href="https://blog.csdn.net/u011974639/article/details/79134409" target="_blank" rel="noopener">https://blog.csdn.net/u011974639/article/details/79134409</a><br>2.<a href="https://blog.csdn.net/caicai2526/article/details/79984950" target="_blank" rel="noopener">https://blog.csdn.net/caicai2526/article/details/79984950</a><br>3.<a href="https://blog.csdn.net/u011974639/article/details/79144773" target="_blank" rel="noopener">https://blog.csdn.net/u011974639/article/details/79144773</a><br>4.<a href="https://blog.csdn.net/JYZhang_CVML/article/details/79594940" target="_blank" rel="noopener">https://blog.csdn.net/JYZhang_CVML/article/details/79594940</a></p>
 
       
     </div>
@@ -508,7 +538,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2018/06/05/博客15/" title="opencv操作(2)：一些杂知识">http://kevinj-huang.github.io/2018/06/05/博客15/</a>
+    <a href="http://kevinj-huang.github.io/2018/08/18/博客43/" title="常见的图像分割网络了解（下）">http://kevinj-huang.github.io/2018/08/18/博客43/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -551,8 +581,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/05/博客14/" rel="next" title="使用tensorflow实现logistic回归">
-                <i class="fa fa-chevron-left"></i> 使用tensorflow实现logistic回归
+              <a href="/2018/08/17/博客42/" rel="next" title="loss收敛过小或finetune时跑飞情况分析">
+                <i class="fa fa-chevron-left"></i> loss收敛过小或finetune时跑飞情况分析
               </a>
             
           </div>
@@ -560,10 +590,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/08/博客16/" rel="prev" title="准确率，精确度，召回率的概念">
-                准确率，精确度，召回率的概念 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -622,8 +648,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -758,6 +793,22 @@
 		<!--my custom code end-->
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#deeplab-v3"><span class="nav-number">1.</span> <span class="nav-text">deeplab-v3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#与deeplab-v3"><span class="nav-number">2.</span> <span class="nav-text">与deeplab-v3+</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

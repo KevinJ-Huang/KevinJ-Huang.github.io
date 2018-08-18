@@ -123,7 +123,7 @@
 
 
 
-  <meta name="keywords" content="每周计划," />
+  <meta name="keywords" content="深度学习项目," />
 
 
 
@@ -134,18 +134,24 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp; 本周事情较多，所以在这个上面画的时间少了一点，主要是更改了一个C++源码，链接：https://blog.csdn.net/qq_35724402/article/details/60466536。更改后如下所示：1234567891011121314151617181920212223import cv2import argparseimport numpy as np">
-<meta name="keywords" content="每周计划">
+<meta name="description" content="&amp;emsp;&amp;emsp; 最近在跑REDNet去噪网络，基于pytorch框架，输入输出图像被归一化到了0-1之间，loss使用的是L2 loss，理论最终收敛值为33左右。结果在之前训练好模型的基础上finetune,出现了这种情况：         &amp;emsp;&amp;emsp; 当使用L1或者输入为0-255时，并没有出现这种情况。这里使用L2 loss，输入0-1之间，loss先下降，再上升，这">
+<meta name="keywords" content="深度学习项目">
 <meta property="og:type" content="article">
-<meta property="og:title" content="opencv操作(2)：一些杂知识">
-<meta property="og:url" content="http://kevinj-huang.github.io/2018/06/05/博客15/index.html">
+<meta property="og:title" content="loss收敛过小或finetune时跑飞情况分析">
+<meta property="og:url" content="http://kevinj-huang.github.io/2018/08/17/博客42/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="&amp;emsp;&amp;emsp; 本周事情较多，所以在这个上面画的时间少了一点，主要是更改了一个C++源码，链接：https://blog.csdn.net/qq_35724402/article/details/60466536。更改后如下所示：1234567891011121314151617181920212223import cv2import argparseimport numpy as np">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; 最近在跑REDNet去噪网络，基于pytorch框架，输入输出图像被归一化到了0-1之间，loss使用的是L2 loss，理论最终收敛值为33左右。结果在之前训练好模型的基础上finetune,出现了这种情况：         &amp;emsp;&amp;emsp; 当使用L1或者输入为0-255时，并没有出现这种情况。这里使用L2 loss，输入0-1之间，loss先下降，再上升，这">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-05T14:30:13.362Z">
+<meta property="og:image" content="https://i.loli.net/2018/08/16/5b7544de57ca9.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/17/5b768a3c8d678.jpeg">
+<meta property="og:image" content="https://i.loli.net/2018/08/17/5b768bbcf15f3.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/17/5b76d99318e72.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/17/5b76da0483085.png">
+<meta property="og:updated_time" content="2018-08-17T15:21:34.533Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="opencv操作(2)：一些杂知识">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 本周事情较多，所以在这个上面画的时间少了一点，主要是更改了一个C++源码，链接：https://blog.csdn.net/qq_35724402/article/details/60466536。更改后如下所示：1234567891011121314151617181920212223import cv2import argparseimport numpy as np">
+<meta name="twitter:title" content="loss收敛过小或finetune时跑飞情况分析">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 最近在跑REDNet去噪网络，基于pytorch框架，输入输出图像被归一化到了0-1之间，loss使用的是L2 loss，理论最终收敛值为33左右。结果在之前训练好模型的基础上finetune,出现了这种情况：         &amp;emsp;&amp;emsp; 当使用L1或者输入为0-255时，并没有出现这种情况。这里使用L2 loss，输入0-1之间，loss先下降，再上升，这">
+<meta name="twitter:image" content="https://i.loli.net/2018/08/16/5b7544de57ca9.png">
 
 
 
@@ -175,13 +181,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2018/06/05/博客15/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2018/08/17/博客42/"/>
 
 
 
 
 
-  <title>opencv操作(2)：一些杂知识 | Resistence</title>
+  <title>loss收敛过小或finetune时跑飞情况分析 | Resistence</title>
   
 
 
@@ -337,7 +343,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/06/05/博客15/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/08/17/博客42/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -354,7 +360,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">opencv操作(2)：一些杂知识</h2>
+          <h2 class="post-title" itemprop="name headline">loss收敛过小或finetune时跑飞情况分析</h2>
         
 
         <div class="post-meta">
@@ -366,8 +372,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T22:30:13+08:00">
-                2018-06-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-17T23:21:34+08:00">
+                2018-08-17
               </time>
             
 
@@ -382,8 +388,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-05T22:30:13+08:00">
-                2018-06-05
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-17T23:21:34+08:00">
+                2018-08-17
               </time>
             
           </span>
@@ -401,8 +407,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/opencv笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">opencv笔记</span>
+                  <a href="/categories/项目总结/" itemprop="url" rel="index">
+                    <span itemprop="name">项目总结</span>
                   </a>
                 </span>
 
@@ -418,7 +424,7 @@
 
           
           
-             <span id="/2018/06/05/博客15/" class="leancloud_visitors" data-flag-title="opencv操作(2)：一些杂知识">
+             <span id="/2018/08/17/博客42/" class="leancloud_visitors" data-flag-title="loss收敛过小或finetune时跑飞情况分析">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -448,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  280字
+                  1,035字
                 </span>
               
 
@@ -464,7 +470,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1分钟
+                  4分钟
                 </span>
               
             </div>
@@ -485,9 +491,60 @@
       
 
       
-        <p>&emsp;&emsp; 本周事情较多，所以在这个上面画的时间少了一点，主要是更改了一个C++源码，链接：<a href="https://blog.csdn.net/qq_35724402/article/details/60466536。更改后如下所示：" target="_blank" rel="noopener">https://blog.csdn.net/qq_35724402/article/details/60466536。更改后如下所示：</a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(args)</span>:</span></span><br><span class="line">    img = cv2.imread(args.file)</span><br><span class="line">    hsv = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)</span><br><span class="line">    channels = cv2.split(hsv)</span><br><span class="line">    channels[<span class="number">1</span>] = <span class="number">255</span>*np.ones([img.shape[<span class="number">0</span>],img.shape[<span class="number">1</span>]]).astype(np.uint8)</span><br><span class="line">    channels[<span class="number">2</span>] = <span class="number">200</span>*np.ones([img.shape[<span class="number">0</span>],img.shape[<span class="number">1</span>]]).astype(np.uint8)</span><br><span class="line">    hsv = cv2.merge(channels)</span><br><span class="line">    rgb = cv2.cvtColor(hsv,cv2.COLOR_HSV2BGR)</span><br><span class="line">    cv2.imshow(<span class="string">'image'</span>,rgb)</span><br><span class="line">    cv2.waitKey(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</span><br><span class="line">    parser = argparse.ArgumentParser()</span><br><span class="line">    parser.add_argument(<span class="string">"--file"</span>,default=<span class="string">"test.png"</span>,help=<span class="string">"Image that input"</span>)</span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    main(args)</span><br></pre></td></tr></table></figure></p>
-<p>具体效果可以参考链接里所示。<br>这里主要应用到的opencv处理技术有：<br>（1）cv2.cvtColor，可以用来进行图像通道的转换。<br>（2）cv2.split,可以将图像通道进行分离。<br>（3）cv2.merge,可以对图像通道进行合并。<br>实际上上述操作均可以通过数组赋值的方式完成，不再赘述。</p>
-<p>参考：<br>1、<a href="https://blog.csdn.net/mokeding/article/details/17630625" target="_blank" rel="noopener">https://blog.csdn.net/mokeding/article/details/17630625</a><br>2、<a href="https://blog.csdn.net/qq_35724402/article/details/60466536" target="_blank" rel="noopener">https://blog.csdn.net/qq_35724402/article/details/60466536</a></p>
+        <p>&emsp;&emsp; 最近在跑REDNet去噪网络，基于pytorch框架，输入输出图像被归一化到了0-1之间，loss使用的是L2 loss，理论最终收敛值为33左右。结果在之前训练好模型的基础上finetune,出现了这种情况：</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/08/16/5b7544de57ca9.png" ,width="800">
+</center>
+
+<p>&emsp;&emsp; 当使用L1或者输入为0-255时，并没有出现这种情况。这里使用L2 loss，输入0-1之间，loss先下降，再上升，这是很反常的，一般来说有以下问题导致：<br>1.学习率设置不正确。<br>2.训练数据出现了偏差。<br>3.梯度更新出现问题，爆炸或者消失。</p>
+<p>&emsp;&emsp; 这里后来经过分析，很可能是学习率设置导致，当然梯度更新不正确也有影响，学习率设置不正确分析如下：</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/08/17/5b768a3c8d678.jpeg" ,width="600">
+</center>
+
+<p>&emsp;&emsp; 也就是说，学习率如果设置过大，会导致其直接跑到另外一边，从而导致loss跑飞。当然真实的loss变化是在一个奇异空间里的，不是图上的那种二维曲线。<br>&emsp;&emsp; 但是最后还发现了一个现象，那就是最后的网络的收敛值只有30出头，而不是理论的33.多，也就是说网络学习不充分！如下图所示：</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/08/17/5b768bbcf15f3.png" ,width="400">
+</center>
+
+<p>&emsp;&emsp; 网络学习不充分，前面finetune的loss还跑飞了一段，很可能网络的梯度更新出现了问题，需要打印网络的每层梯度进行查看，代码如下所示：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">self.optimizer.step()</span><br><span class="line"><span class="keyword">for</span> params <span class="keyword">in</span> self.net.named_parameters():</span><br><span class="line">    [name,param] = params</span><br><span class="line">    print(name,<span class="string">':'</span>,param.grad.data.mean())</span><br><span class="line">    print(count)</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp; 迭代2000次，打印出来梯度值就是下图左图这个样子，右图是数据归一化到0-255之间时各层的梯度值：</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/08/17/5b76d99318e72.png" ,width="250">  <img src="https://i.loli.net/2018/08/17/5b76da0483085.png" ,width="210">
+</center>
+
+<p>&emsp;&emsp; 上图的现象说明了当数据归一化到0-1之间时，该网络的中间部分几乎没有学习，参数缺少更新，为了验证这个想法，我分别输出迭代2000次时0-1输入时该网络的残差的均值和输入0-255时网络的残差的均值，分别为2.5x10^-3和0.26，差了两个数量级，验证了猜想，即输入为0-1时网络基本没有学到东西。<br>&emsp;&emsp; 由于网络的残差是在deconv10层，直接获得该层输出的代码（不通过参数返回的方式）如下所示：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">activation = &#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_activation</span><span class="params">(name)</span>:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hook</span><span class="params">(model, input, output)</span>:</span></span><br><span class="line">    activation[name] = output.detach()</span><br><span class="line">    <span class="keyword">return</span> hook</span><br><span class="line">model = self.net</span><br><span class="line">model.deconv10.register_forward_hook(get_activation(<span class="string">'deconv10'</span>))</span><br><span class="line">output = model(lr_imgs)</span><br><span class="line">print(<span class="string">'res:'</span>, activation[<span class="string">'deconv10'</span>].mean())</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp; 现在通过结论寻找原因，当输出为output,网络权重为w，损失函数为L2 loss，目标为target,分析loss对权重更新也就是梯度的影响，如下式所示：</p>
+<script type="math/tex; mode=display">\frac{\partial (output-target)^2}{\partial w}=\frac{\partial(output-target)^2}{\partial(output)}\frac{\partial (output)}{\partial w}=a*\frac{\partial (output)}{\partial w}</script><p>其中a是和output-target一个数量级的数值，由于output和target都是在0-1之间，a的值只能更小了，应该远远小于1。如果loss是L1 loss,那么a就是1，在$\frac{\partial (output)}{\partial w}$相同的情况下，L1 loss对梯度大小的贡献要大于L2 loss对梯度大小的贡献，更有利于中间部分get到梯度，输入为0-255时可同理分析得到，损失函数为L2时，a应该是一个比1远远大的值，损失函数为L1时，a会略微比1大。这样来看，对于梯度大小的贡献排序是L2(0-255)&gt;L1(0-255)&gt;L1(0-1)&gt;L2(0-1)。<br>&emsp;&emsp; 我比较了一下输入为0-1时L2，L1 loss和输入为0-255时L2 loss和L1 loss的网络收敛的PSNR值，对比如下表，可以看出来上面的分析基本正确：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>输入与Loss</th>
+<th>PSNR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L2(0-1)</td>
+<td>30.4</td>
+</tr>
+<tr>
+<td>L1(0-1)</td>
+<td>33.24</td>
+</tr>
+<tr>
+<td>L1(0-255)</td>
+<td>33.97</td>
+</tr>
+<tr>
+<td>L2(0-255)</td>
+<td>34.05</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&emsp;&emsp;  同理，因为初始学习率设置不合理，loss向上震荡后，输入为0-1,loss为L2 loss梯度回传受阻，所以此时finetune会导致loss无法回来（梯度回传受阻，参数无法有效更新），只能不断向上，从而出现跑飞的情况。<br>&emsp;&emsp; 上面只是我简短的对这种情况下loss训练异常的分析，如有不足请大家多多指正，多多交流。</p>
 
       
     </div>
@@ -508,7 +565,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2018/06/05/博客15/" title="opencv操作(2)：一些杂知识">http://kevinj-huang.github.io/2018/06/05/博客15/</a>
+    <a href="http://kevinj-huang.github.io/2018/08/17/博客42/" title="loss收敛过小或finetune时跑飞情况分析">http://kevinj-huang.github.io/2018/08/17/博客42/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -523,7 +580,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/每周计划/" rel="tag"># 每周计划</a>
+            <a href="/tags/深度学习项目/" rel="tag"># 深度学习项目</a>
           
         </div>
       
@@ -551,8 +608,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/05/博客14/" rel="next" title="使用tensorflow实现logistic回归">
-                <i class="fa fa-chevron-left"></i> 使用tensorflow实现logistic回归
+              <a href="/2018/08/12/博客41/" rel="next" title="引导滤波">
+                <i class="fa fa-chevron-left"></i> 引导滤波
               </a>
             
           </div>
@@ -561,8 +618,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/08/博客16/" rel="prev" title="准确率，精确度，召回率的概念">
-                准确率，精确度，召回率的概念 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/18/博客43/" rel="prev" title="常见的图像分割网络了解（下）">
+                常见的图像分割网络了解（下） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
