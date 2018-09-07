@@ -123,7 +123,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="每周计划," />
 
 
 
@@ -134,16 +134,20 @@
 
 
 
-<meta name="description" content="闷声不响发大财,这才是最吼的">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Resistence">
-<meta property="og:url" content="http://kevinj-huang.github.io/archives/2018/09/index.html">
+<meta name="description" content="&amp;emsp;&amp;emsp; 在深度学习项目里常常用到一些梯度学习算法，最常见的我们使用的SGD,Adagrad,Adam,RMSProp和momentum,这里参考网上别人写的教程简要理解一下这些梯度下降算法。 SGD&amp;emsp;&amp;emsp; 说SGD,就必须先说一下批量梯度下降BGD,其训练的是整个训练集的梯度，即： \theta=\theta-\eta \nabla _\theta J(\the">
+<meta name="keywords" content="每周计划">
+<meta property="og:type" content="article">
+<meta property="og:title" content="几种常见的梯度算法总结">
+<meta property="og:url" content="http://kevinj-huang.github.io/2018/09/07/博客46/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="闷声不响发大财,这才是最吼的">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; 在深度学习项目里常常用到一些梯度学习算法，最常见的我们使用的SGD,Adagrad,Adam,RMSProp和momentum,这里参考网上别人写的教程简要理解一下这些梯度下降算法。 SGD&amp;emsp;&amp;emsp; 说SGD,就必须先说一下批量梯度下降BGD,其训练的是整个训练集的梯度，即： \theta=\theta-\eta \nabla _\theta J(\the">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2018/09/07/5b9281f5a81f6.png">
+<meta property="og:updated_time" content="2018-09-07T13:56:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Resistence">
-<meta name="twitter:description" content="闷声不响发大财,这才是最吼的">
+<meta name="twitter:title" content="几种常见的梯度算法总结">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 在深度学习项目里常常用到一些梯度学习算法，最常见的我们使用的SGD,Adagrad,Adam,RMSProp和momentum,这里参考网上别人写的教程简要理解一下这些梯度下降算法。 SGD&amp;emsp;&amp;emsp; 说SGD,就必须先说一下批量梯度下降BGD,其训练的是整个训练集的梯度，即： \theta=\theta-\eta \nabla _\theta J(\the">
+<meta name="twitter:image" content="https://i.loli.net/2018/09/07/5b9281f5a81f6.png">
 
 
 
@@ -173,13 +177,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/archives/2018/09/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2018/09/07/博客46/"/>
 
 
 
 
 
-  <title>归档 | Resistence</title>
+  <title>几种常见的梯度算法总结 | Resistence</title>
   
 
 
@@ -207,7 +211,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -321,110 +325,277 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/09/07/博客46/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Resistence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Resistence">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
-         
+          <h2 class="post-title" itemprop="name headline">几种常见的梯度算法总结</h2>
         
-        OK! 目前共计 45 篇日志。 继续努力。
-      </span>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-07T21:56:46+08:00">
+                2018-09-07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-07T21:56:24+08:00">
+                2018-09-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/09/07/博客46/" class="leancloud_visitors" data-flag-title="几种常见的梯度算法总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,438字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <p>&emsp;&emsp; 在深度学习项目里常常用到一些梯度学习算法，最常见的我们使用的SGD,Adagrad,Adam,RMSProp和momentum,这里参考网上别人写的教程简要理解一下这些梯度下降算法。</p>
+<h3 id="SGD"><a href="#SGD" class="headerlink" title="SGD"></a>SGD</h3><p>&emsp;&emsp; 说SGD,就必须先说一下批量梯度下降BGD,其训练的是整个训练集的梯度，即：</p>
+<script type="math/tex; mode=display">\theta=\theta-\eta \nabla _\theta J(\theta)</script><p>其中$\eta$是学习率，下同，用来控制更新参数的力度。优点是对于凸目标函数，其可以保证全局最优，对于非凸目标函数，可以保证一个局部最优。但是存在一个明显的缺点，就是在数据量较大时更新会非常慢，无法处理动态产生的新样本，在这种情况下，就需要考虑SGD。一般的SGD只利用单独的数据，虽然优化速度快，但是可能会导致收敛更复杂，出现更多的动荡。所以我们一般使用的SGD实际上是MSGD。<br>&emsp;&emsp; MSGD不同于原始的SGD只利用单个数据，这个梯度下降算法是将整个数据分成n个batch，每个batch分成m个样本，每次更新参数利用一个batch的数据（xi，yi)而不是整个训练集的数据，其更新参数如下所示：</p>
+<script type="math/tex; mode=display">\theta=\theta-\eta \nabla _\theta J(\theta ;x^{(i,i+m)};y^{(i,i+m)})</script><p>通过这种批量的梯度下降，减少了原始SGD参数更新中的动荡；同时利用先进深度学习库中常见的高度优化矩阵操作来高效地计算小批量的梯度。<br>当然MSGD也存在许多困难，主要表现如下：<br>1.学习率选择较为困难，太小的学习率收敛太慢，过大的学习率会偏离最优点。<br>2.目前可采用的方法是在训练过程中调整学习率大小，例如模拟退火算法：预先定义一个迭代次数m，每执行完m次训练便减小学习率，或者当损失值低于一个阈值时减小学习率。然而迭代次数和阈值必须事先定义，因此无法适应数据集的特点。<br>3.一般情况下神经网络面临的是非凸的优化函数，这也意味着优化容易陷入到局部最优，也就是陷入到马鞍面中，即在坡面上，一部分点是上升的，一部分点是下降的。而这种情况比较容易出现在平坦区域，在这种区域中，所有方向的梯度值都几乎是0，此时SGD很难发挥作用。<br>介于此，可以使用一些优化算法对SGD做进一步的优化，常见的有;</p>
+<h3 id="Momentum"><a href="#Momentum" class="headerlink" title="Momentum"></a>Momentum</h3><p>&emsp;&emsp; SGD的问题是其依赖于当前batch的梯度，因此导致下降不稳定，出现来回波动的情况，如下图所示：</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/09/07/5b9281f5a81f6.png" width="600/">
+</center>
+
+<p>所以引入动量的方式，加速SGD的优化过程，它模拟的是物体运动时的惯性，在更新梯度时上保留之前更新的方向，同时利用当前batch的梯度微调最终的更新方向。这样一来，可以在一定程度上增加稳定性，从而学习地更快，并且还有一定摆脱局部最优的能力：</p>
+<script type="math/tex; mode=display">v_t = \gamma v_{t-1}+\eta \nabla_{\theta}J(\theta)</script><script type="math/tex; mode=display">\theta = \theta - v_t</script><p>根据上式，可以更直观理解动量的含义，当前梯度和上次梯度加权，当方向一致时，累加导致更新步长变大；如果方向不同，则相互抵消导致更新趋向于平衡。</p>
+<h3 id="Adagrad"><a href="#Adagrad" class="headerlink" title="Adagrad"></a>Adagrad</h3><p>&emsp;&emsp; Adagrad算法能够在训练中自动的对learning rate进行调整，对于出现频率较低参数采用较大的α更新；相反，对于出现频率较高的参数采用较小的α更新。因此，Adagrad非常适合处理稀疏数据。Adagrad为每个参数$\theta_i$提供一个和自身相关的学习率：</p>
+<script type="math/tex; mode=display">\theta_{t+1,i}=\theta_{t,i}-\frac{\eta}{\sqrt{G_{t,ii}+\epsilon}}\nabla_{\theta}J(\theta_{t,i})</script><p>&emsp;&emsp; 其中$G_t$是对角矩阵，每个对角线位置i,i为对应的参数$\theta_i$从第一轮到第t轮的平方和，$\epsilon$是平滑项，防止除0。通过该式，还可以看出，随着训练次数的增加，分母变大，学习率会自动下降。但是训练的中后期，分母上梯度平方的累加将会越来越大，从而梯度趋近于0，使得训练提前结束。</p>
+<h3 id="RMSprop"><a href="#RMSprop" class="headerlink" title="RMSprop"></a>RMSprop</h3><p>&emsp;&emsp; RMSprop是Geoff Hinton提出的一种自适应学习率方法。Adagrad会累加之前所有的梯度平方，而RMSprop仅仅是计算对应的平均值，因此可缓解Adagrad算法学习率下降较快的问题。下面的$g<em>{t,i}$表示$\nabla</em>{\theta}J(\theta_{t,i})$</p>
+<script type="math/tex; mode=display">E[g^2]_t=\gamma E[g^2]_{t-1}+(1-\gamma)g^2_t</script><script type="math/tex; mode=display">\theta_{t+1}=\theta_t - \frac{\eta}{\sqrt{E[g^2]_t+\epsilon}}g_t</script><h3 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h3><p>&emsp;&emsp; Adam(Adaptive Moment Estimation)是另一种自适应学习率的方法。与RMSprop相比，其在梯度平方估计（二阶矩）的基础上增加了对梯度（一阶矩）的估计，Adam的优点主要在于经过偏置校正后，每一次迭代学习率都有个确定范围，使得参数比较平稳。公式表达如下：</p>
+<script type="math/tex; mode=display">m_t=\beta_1m_{t-1}+(1-\beta_1)g_t</script><script type="math/tex; mode=display">v_t=\beta_2v_{t-1}+(1-\beta_2)g^2_t</script><script type="math/tex; mode=display">m'_t=\frac{m_t}{1-\beta_1^t}</script><script type="math/tex; mode=display">v'_t=\frac{v_t}{1-\beta_2^t}</script><script type="math/tex; mode=display">\theta_{t+1}=\theta_t - \frac{\eta}{\sqrt{v'_t+\epsilon}}m'_t</script><p>&emsp;&emsp; 上式中$m_t$，$v_t$分别是对梯度的一阶矩估计和二阶矩估计，可以看作对期望$E[g_t]$，$E[g^2_t]$的近似；$m’_t$，$v’_t$是对$m_t$，$v_t$的校正，这样可以近似为对期望的无偏估计。在数据比较稀疏的时候，adaptive的方法能得到更好的效果，例如Adagrad，RMSprop, Adam 等。Adam 方法也会比 RMSprop方法收敛的结果要好一些, 所以在实际应用中 ，Adam为最常用的方法，可以比较快地得到一个预估结果。</p>
+<p>参考：<br>1.<a href="https://blog.csdn.net/liujiandu101/article/details/55190814" target="_blank" rel="noopener">https://blog.csdn.net/liujiandu101/article/details/55190814</a><br>2.<a href="https://blog.csdn.net/sxf1061926959/article/details/74453600" target="_blank" rel="noopener">https://blog.csdn.net/sxf1061926959/article/details/74453600</a><br>3.<a href="http://lib.csdn.net/article/deeplearning/47027" target="_blank" rel="noopener">http://lib.csdn.net/article/deeplearning/47027</a><br>4.<a href="https://www.cnblogs.com/darkknightzh/p/5785137.html" target="_blank" rel="noopener">https://www.cnblogs.com/darkknightzh/p/5785137.html</a><br>5.<a href="http://ruder.io/optimizing-gradient-descent/index.html" target="_blank" rel="noopener">http://ruder.io/optimizing-gradient-descent/index.html</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Resistence
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://kevinj-huang.github.io/2018/09/07/博客46/" title="几种常见的梯度算法总结">http://kevinj-huang.github.io/2018/09/07/博客46/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/每周计划/" rel="tag"># 每周计划</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
         
-        
+
         
 
         
           
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2018">2018</h2>
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
           </div>
         
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/07/博客46/" itemprop="url">
-              
-                <span itemprop="name">几种常见的梯度算法总结</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-07T21:56:46+08:00"
-              content="2018-09-07" >
-          09-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+        </div>
+      
       
 
-        
-        
-        
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/06/博客45/" rel="next" title="Bilateral Upsample">
+                <i class="fa fa-chevron-left"></i> Bilateral Upsample
+              </a>
+            
+          </div>
 
-        
-        
+          <span class="post-nav-divider"></span>
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/06/博客45/" itemprop="url">
-              
-                <span itemprop="name">Bilateral Upsample</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-06T22:11:43+08:00"
-              content="2018-09-06" >
-          09-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
-    </div>
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -432,6 +603,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTI3OC8xMTgxNA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -454,8 +634,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -590,6 +779,22 @@
 		<!--my custom code end-->
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SGD"><span class="nav-number">1.</span> <span class="nav-text">SGD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Momentum"><span class="nav-number">2.</span> <span class="nav-text">Momentum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adagrad"><span class="nav-number">3.</span> <span class="nav-text">Adagrad</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RMSprop"><span class="nav-number">4.</span> <span class="nav-text">RMSprop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adam"><span class="nav-number">5.</span> <span class="nav-text">Adam</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -768,6 +973,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -797,6 +1006,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
