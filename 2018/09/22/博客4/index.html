@@ -123,7 +123,7 @@
 
 
 
-  <meta name="keywords" content="深度学习项目," />
+  <meta name="keywords" content="每周计划," />
 
 
 
@@ -134,21 +134,20 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp; 这是2017年CVPR做快速风格迁移的一篇论文，由于首先需要提高单幅图片的质量，对于这篇论文，本人还是先关注一下如何生成图像以及构建空间上的损失函数。这篇论文对于当前一般转换中使用的前馈网络里出现的问题，例如训练的照片分辨率比较固定，导致测试图片偏离训练图片尺寸太大或者太小时会出现局部失真的情况。事实上这种情况在前面本人跑DPED时就非常明显，使用快手图片生成的效果图局部">
-<meta name="keywords" content="深度学习项目">
+<meta name="description" content="&amp;emsp;&amp;emsp; 这篇文章的核心是通过构建一个风格学习网络来实现快速的风格迁移，对于损失函数方面则没有什么创新，这里只对论文的大致思想做一个简要的介绍。&amp;emsp;&amp;emsp; 如上图所示，整个网络架构由风格学习网络P和风格转换网络T组成，学习的目标是content loss和style loss,定义和之前一致，这里不再赘述。对于风格转换网络，论文简要说明此网络是用编码器、解码器组成的。">
+<meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阅读论文《Multimodal Transfer:A Hierarchical Deep    Convolutional Neural Network for Fast Artistic Style Transfer》">
-<meta property="og:url" content="http://kevinj-huang.github.io/2018/05/26/博客3/index.html">
+<meta property="og:title" content="阅读论文《Exploring the structure of a real-time, arbitrary neural artistic stylization network》">
+<meta property="og:url" content="http://kevinj-huang.github.io/2018/09/22/博客4/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="&amp;emsp;&amp;emsp; 这是2017年CVPR做快速风格迁移的一篇论文，由于首先需要提高单幅图片的质量，对于这篇论文，本人还是先关注一下如何生成图像以及构建空间上的损失函数。这篇论文对于当前一般转换中使用的前馈网络里出现的问题，例如训练的照片分辨率比较固定，导致测试图片偏离训练图片尺寸太大或者太小时会出现局部失真的情况。事实上这种情况在前面本人跑DPED时就非常明显，使用快手图片生成的效果图局部">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; 这篇文章的核心是通过构建一个风格学习网络来实现快速的风格迁移，对于损失函数方面则没有什么创新，这里只对论文的大致思想做一个简要的介绍。&amp;emsp;&amp;emsp; 如上图所示，整个网络架构由风格学习网络P和风格转换网络T组成，学习的目标是content loss和style loss,定义和之前一致，这里不再赘述。对于风格转换网络，论文简要说明此网络是用编码器、解码器组成的。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://i.loli.net/2018/03/30/5abd32a38888c.png">
-<meta property="og:image" content="https://i.loli.net/2018/03/30/5abd35bf965dc.png">
-<meta property="og:updated_time" content="2018-03-30T01:25:10.000Z">
+<meta property="og:image" content="http://i.loli.net/2018/04/03/5ac3155a41dad.png">
+<meta property="og:updated_time" content="2018-09-22T02:32:57.418Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阅读论文《Multimodal Transfer:A Hierarchical Deep    Convolutional Neural Network for Fast Artistic Style Transfer》">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 这是2017年CVPR做快速风格迁移的一篇论文，由于首先需要提高单幅图片的质量，对于这篇论文，本人还是先关注一下如何生成图像以及构建空间上的损失函数。这篇论文对于当前一般转换中使用的前馈网络里出现的问题，例如训练的照片分辨率比较固定，导致测试图片偏离训练图片尺寸太大或者太小时会出现局部失真的情况。事实上这种情况在前面本人跑DPED时就非常明显，使用快手图片生成的效果图局部">
-<meta name="twitter:image" content="http://i.loli.net/2018/03/30/5abd32a38888c.png">
+<meta name="twitter:title" content="阅读论文《Exploring the structure of a real-time, arbitrary neural artistic stylization network》">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 这篇文章的核心是通过构建一个风格学习网络来实现快速的风格迁移，对于损失函数方面则没有什么创新，这里只对论文的大致思想做一个简要的介绍。&amp;emsp;&amp;emsp; 如上图所示，整个网络架构由风格学习网络P和风格转换网络T组成，学习的目标是content loss和style loss,定义和之前一致，这里不再赘述。对于风格转换网络，论文简要说明此网络是用编码器、解码器组成的。">
+<meta name="twitter:image" content="http://i.loli.net/2018/04/03/5ac3155a41dad.png">
 
 
 
@@ -178,13 +177,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2018/05/26/博客3/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2018/09/22/博客4/"/>
 
 
 
 
 
-  <title>阅读论文《Multimodal Transfer:A Hierarchical Deep    Convolutional Neural Network for Fast Artistic Style Transfer》 | Resistence</title>
+  <title>阅读论文《Exploring the structure of a real-time, arbitrary neural artistic stylization network》 | Resistence</title>
   
 
 
@@ -340,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/05/26/博客3/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/09/22/博客4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -357,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">阅读论文《Multimodal Transfer:A Hierarchical Deep    Convolutional Neural Network for Fast Artistic Style Transfer》</h2>
+          <h2 class="post-title" itemprop="name headline">阅读论文《Exploring the structure of a real-time, arbitrary neural artistic stylization network》</h2>
         
 
         <div class="post-meta">
@@ -369,8 +368,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-26T21:46:58+08:00">
-                2018-05-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-22T10:32:57+08:00">
+                2018-09-22
               </time>
             
 
@@ -385,8 +384,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-30T09:25:10+08:00">
-                2018-03-30
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-22T10:32:57+08:00">
+                2018-09-22
               </time>
             
           </span>
@@ -404,8 +403,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
+                  <a href="/categories/论文笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">论文笔记</span>
                   </a>
                 </span>
 
@@ -421,7 +420,7 @@
 
           
           
-             <span id="/2018/05/26/博客3/" class="leancloud_visitors" data-flag-title="阅读论文《Multimodal Transfer:A Hierarchical Deep    Convolutional Neural Network for Fast Artistic Style Transfer》">
+             <span id="/2018/09/22/博客4/" class="leancloud_visitors" data-flag-title="阅读论文《Exploring the structure of a real-time, arbitrary neural artistic stylization network》">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -451,7 +450,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,178字
+                  287字
                 </span>
               
 
@@ -467,7 +466,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4分钟
+                  1分钟
                 </span>
               
             </div>
@@ -488,17 +487,7 @@
       
 
       
-        <p>&emsp;&emsp; 这是2017年CVPR做快速风格迁移的一篇论文，由于首先需要提高单幅图片的质量，对于这篇论文，本人还是先关注一下如何生成图像以及构建空间上的损失函数。这篇论文对于当前一般转换中使用的前馈网络里出现的问题，例如训练的照片分辨率比较固定，导致测试图片偏离训练图片尺寸太大或者太小时会出现局部失真的情况。事实上这种情况在前面本人跑DPED时就非常明显，使用快手图片生成的效果图局部失真很严重，所以个人感觉这篇论文还是比较有参考意义的。<br>&emsp;&emsp; 和前面的很多论文类似，这篇论文也是将网络给分成了生成部分和损失部分，总体结构如下：<br><img src="http://i.loli.net/2018/03/30/5abd32a38888c.png" alt=""><br>&emsp;&emsp; 网络的整体思路差不多就是，将不同尺寸的输出图与不同尺寸的输入图进行比较得到各个层次的损失函数，再将这些损失函数组合起来进行训练。<br>&emsp;&emsp; 下面分别对这损失函数和生成网络两部分作介绍。</p>
-<h4 id="损失网络"><a href="#损失网络" class="headerlink" title="损失网络"></a>损失网络</h4><h5 id="单一层的风格损失函数"><a href="#单一层的风格损失函数" class="headerlink" title="单一层的风格损失函数"></a>单一层的风格损失函数</h5><p>&emsp;&emsp; 这里定义损失和之前一些论文定义内容损失的方式一样，是在vgg19上进行相应的定义的，具体如下图所示：<br><img src="https://i.loli.net/2018/03/30/5abd35bf965dc.png" alt=""><br>&emsp;&emsp; 这里将每层的损失函数给分为了内容损失和纹理损失，定义的标准和之前许多论文一样，内容损失函数的定义如下：</p>
-<script type="math/tex; mode=display">L_{content}(y_k,y_c,l)=\sum_{i=1}^N||F_i^l(y_k)-F_i^l(y_c)||_2^2</script><p>&emsp;&emsp; 所以，内容损失函数就是如图上各个层的误差平方和，如上式，其中$y_k$表示生成图，$y_c$表示内容目标（下同），$F_i^l$就是第l层的第i个特征图。<br>&emsp;&emsp; 然后就是纹理损失或者风格损失的定义了，和前面的论文一样，这里也定义了Gram算子，这里不再赘述。纹理损失的定义如下：</p>
-<script type="math/tex; mode=display">L_{text}(y_k,y_s)=\sum_{l\epsilon L}||G^l(y_k)-G^l(y_s)||_2^2</script><p>&emsp;&emsp; 这种Gram算子放弃了空间域的信息，保留了颜色和强度的统计信息。$y_s$表示风格化目标。<br>&emsp;&emsp; 最后将这两者结合起来，构成了每层的损失：</p>
-<script type="math/tex; mode=display">L_s(y_k,y_c,y_s)=\alpha L_{content}(y_k,y_c)+\beta L_{text}(y_k,y_s)</script><p>&emsp;&emsp; 这里$\alpha$ ,$\beta$分别是两部分的权重。</p>
-<h5 id="层级风格化损失函数"><a href="#层级风格化损失函数" class="headerlink" title="层级风格化损失函数"></a>层级风格化损失函数</h5><p>&emsp;&emsp; 正如同第一个图所示，这里是将那张图中每一个网络输出部分的损失函数提取出来，组合成一个新的损失函数，如下所示：</p>
-<script type="math/tex; mode=display">L_H=\sum_{k=1}^K\lambda_kL_s^k(y_k,y_c,y_s)</script><p>&emsp;&emsp; 这里k指的是第k个输出部分，总共有K个输出，在本文中，K=3。所以，对这个损失函数进行优化，优化的每一个网络部分的参数公式如下：</p>
-<script type="math/tex; mode=display">\theta_k=argmin_{\theta_k}Ex～X(\sum_{i>=k}^K\lambda_iL_S^k(f(U_{j=1}^k\theta_j,x),y_c^i,y_s^i))</script><p>&emsp;&emsp; $\theta_k$就是所需要学习的网络每部分的最佳参数。<br>&emsp;&emsp; 从这个公式也可以看出，k值越大，所需要学习的损失函数也就越少，即前层的损失有助于减少后层的损失,这样就减少了大量的内存以及运行时间。</p>
-<h4 id="生成网络的构建"><a href="#生成网络的构建" class="headerlink" title="生成网络的构建"></a>生成网络的构建</h4><p>&emsp;&emsp; 单独的传输网络缺点是只能针对某一个尺寸的图像进行训练，这样导致捕捉图像的细节范围受到了限制。这里通过设计不同的子网层次，学习不同的层次特征。这种设计能够使图像学习不同层次的特征，同时后面的子网也能够增强和改进前面子网的效果，有利于增强模型的鲁棒性。</p>
-<h5 id="风格子网"><a href="#风格子网" class="headerlink" title="风格子网"></a>风格子网</h5><p>&emsp;&emsp; 风格子网先分别提取RGB特征和亮度特征，因为人对图片的亮度比较敏感。对于RGB特征网络，包括三个卷积层（9x9,3x3,3x3)和三个残差模块，亮度特征网络结构与之类似，但是卷积深度不一样，两者联合起来之后再通过一个卷积模块（内含三个残差块，其中两个用于上采样）输出，这里不使用反卷积是为了避免产生棋盘伪影。</p>
-<h5 id="增强子网和细化子网"><a href="#增强子网和细化子网" class="headerlink" title="增强子网和细化子网"></a>增强子网和细化子网</h5><p>&emsp;&emsp; 样式子网对原图进行了大量的改变，使用增强子网可以用来进一步增加细节，细化子网则进行进一步的提取。增强子网的形式和样式子网相似，里面使用了上采样，对图像进行扩大，而细化子网只由三个卷积层，三个残差块，两个调整卷积层和一个输出层组成。正如前面所言，这样降低了学习的复杂性，加快了计算</p>
+        <p>&emsp;&emsp; 这篇文章的核心是通过构建一个风格学习网络来实现快速的风格迁移，对于损失函数方面则没有什么创新，这里只对论文的大致思想做一个简要的介绍。<br><img src="http://i.loli.net/2018/04/03/5ac3155a41dad.png" alt=""><br>&emsp;&emsp; 如上图所示，整个网络架构由风格学习网络P和风格转换网络T组成，学习的目标是content loss和style loss,定义和之前一致，这里不再赘述。对于风格转换网络，论文简要说明此网络是用编码器、解码器组成的。当然为每幅画训练一个网络是浪费时间的，论文引入了风格学习网络。这种风格网络是基于训练好的Inception-v3架构的，这样可以直接得到一种图像的风格，并将其和转换网络T网络结合，从而获得风格图像。<br>&emsp;&emsp; 这篇论文给我的启发是，如果要对图像进行增强，可以先行学习图像的某种特征（例如光亮、纹理等），再将其与所要转换的图像进行融合，获得目标图像。</p>
 
       
     </div>
@@ -519,7 +508,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2018/05/26/博客3/" title="阅读论文《Multimodal Transfer:A Hierarchical Deep    Convolutional Neural Network for Fast Artistic Style Transfer》">http://kevinj-huang.github.io/2018/05/26/博客3/</a>
+    <a href="http://kevinj-huang.github.io/2018/09/22/博客4/" title="阅读论文《Exploring the structure of a real-time, arbitrary neural artistic stylization network》">http://kevinj-huang.github.io/2018/09/22/博客4/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -534,7 +523,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/深度学习项目/" rel="tag"># 深度学习项目</a>
+            <a href="/tags/每周计划/" rel="tag"># 每周计划</a>
           
         </div>
       
@@ -562,8 +551,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/26/博客2/" rel="next" title="阅读论文《 Real-Time Neural Style Transfer for Videos》">
-                <i class="fa fa-chevron-left"></i> 阅读论文《 Real-Time Neural Style Transfer for Videos》
+              <a href="/2018/09/22/博客52/" rel="next" title="论文随笔《Fast and Accurate Single Image Super-Resolution via Information 》">
+                <i class="fa fa-chevron-left"></i> 论文随笔《Fast and Accurate Single Image Super-Resolution via Information 》
               </a>
             
           </div>
@@ -572,8 +561,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/26/博客6/" rel="prev" title="项目《面向机械臂抓取应用的RGBD深度学习算法研究》总结报告">
-                项目《面向机械臂抓取应用的RGBD深度学习算法研究》总结报告 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/22/博客3/" rel="prev" title="阅读论文《Multimodal Transfer:A Hierarchical Deep    Convolutional Neural Network for Fast Artistic Style Transfer》">
+                阅读论文《Multimodal Transfer:A Hierarchical Deep    Convolutional Neural Network for Fast Artistic Style Transfer》 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -633,17 +622,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -675,7 +655,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -686,7 +666,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -779,22 +759,6 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#损失网络"><span class="nav-number">1.</span> <span class="nav-text">损失网络</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单一层的风格损失函数"><span class="nav-number">1.1.</span> <span class="nav-text">单一层的风格损失函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#层级风格化损失函数"><span class="nav-number">1.2.</span> <span class="nav-text">层级风格化损失函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成网络的构建"><span class="nav-number">2.</span> <span class="nav-text">生成网络的构建</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#风格子网"><span class="nav-number">2.1.</span> <span class="nav-text">风格子网</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#增强子网和细化子网"><span class="nav-number">2.2.</span> <span class="nav-text">增强子网和细化子网</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
 
@@ -822,7 +786,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">40.7k</span>
+    <span title="Site words total count">43.2k</span>
   
 </div>
 

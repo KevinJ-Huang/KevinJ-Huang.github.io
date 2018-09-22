@@ -123,7 +123,7 @@
 
 
 
-  <meta name="keywords" content="深度学习项目," />
+  <meta name="keywords" content="每周计划," />
 
 
 
@@ -134,20 +134,18 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp; 这篇文章基本沿用了前面构建损失函数的一些思路，对于损失函数部分，这里的纹理损失函数仍然是基于Gram算子的，不同的是，这里的Gram算子只针对一张图作为目标，以其他图像的Gram算子和它的几何距离作为，定义如下： L_T=\sum_{l \epsilon L_T}||G^l(x)-G^l(x_0)||_2^2&amp;emsp;&amp;emsp; 这里的$x_0$就是那个选定的基准图像">
-<meta name="keywords" content="深度学习项目">
+<meta name="description" content="结构化程序设计&amp;emsp;&amp;emsp; C语言使用结构化程序设计：程序=数据结构+算法。程序由全局变量以及多个相互调用的函数组成，算法以函数的形式实现，用于对数据结构进行操作。&amp;emsp;&amp;emsp; 结构化程序设计有许多不足，主要包括：1.结构化程序设计中，函数和其操作的数据结构，没有直观的联系。2.随着程序规模的增加，程序变得难以理解：比如很难看出某个数据结构到底有哪些函数可以对其进行操作，任">
+<meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阅读论文《Texture Networks:Feed-forward Synthesis of Textures and Stylized Images》">
-<meta property="og:url" content="http://kevinj-huang.github.io/2018/05/26/博客5/index.html">
+<meta property="og:title" content="类与对象基本概念(一)">
+<meta property="og:url" content="http://kevinj-huang.github.io/2018/09/22/博客51/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="&amp;emsp;&amp;emsp; 这篇文章基本沿用了前面构建损失函数的一些思路，对于损失函数部分，这里的纹理损失函数仍然是基于Gram算子的，不同的是，这里的Gram算子只针对一张图作为目标，以其他图像的Gram算子和它的几何距离作为，定义如下： L_T=\sum_{l \epsilon L_T}||G^l(x)-G^l(x_0)||_2^2&amp;emsp;&amp;emsp; 这里的$x_0$就是那个选定的基准图像">
+<meta property="og:description" content="结构化程序设计&amp;emsp;&amp;emsp; C语言使用结构化程序设计：程序=数据结构+算法。程序由全局变量以及多个相互调用的函数组成，算法以函数的形式实现，用于对数据结构进行操作。&amp;emsp;&amp;emsp; 结构化程序设计有许多不足，主要包括：1.结构化程序设计中，函数和其操作的数据结构，没有直观的联系。2.随着程序规模的增加，程序变得难以理解：比如很难看出某个数据结构到底有哪些函数可以对其进行操作，任">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2018/04/03/5ac36cd83064c.png">
-<meta property="og:updated_time" content="2018-04-03T12:43:50.000Z">
+<meta property="og:updated_time" content="2018-09-21T12:36:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阅读论文《Texture Networks:Feed-forward Synthesis of Textures and Stylized Images》">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 这篇文章基本沿用了前面构建损失函数的一些思路，对于损失函数部分，这里的纹理损失函数仍然是基于Gram算子的，不同的是，这里的Gram算子只针对一张图作为目标，以其他图像的Gram算子和它的几何距离作为，定义如下： L_T=\sum_{l \epsilon L_T}||G^l(x)-G^l(x_0)||_2^2&amp;emsp;&amp;emsp; 这里的$x_0$就是那个选定的基准图像">
-<meta name="twitter:image" content="https://i.loli.net/2018/04/03/5ac36cd83064c.png">
+<meta name="twitter:title" content="类与对象基本概念(一)">
+<meta name="twitter:description" content="结构化程序设计&amp;emsp;&amp;emsp; C语言使用结构化程序设计：程序=数据结构+算法。程序由全局变量以及多个相互调用的函数组成，算法以函数的形式实现，用于对数据结构进行操作。&amp;emsp;&amp;emsp; 结构化程序设计有许多不足，主要包括：1.结构化程序设计中，函数和其操作的数据结构，没有直观的联系。2.随着程序规模的增加，程序变得难以理解：比如很难看出某个数据结构到底有哪些函数可以对其进行操作，任">
 
 
 
@@ -177,13 +175,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2018/05/26/博客5/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2018/09/22/博客51/"/>
 
 
 
 
 
-  <title>阅读论文《Texture Networks:Feed-forward Synthesis of Textures and Stylized Images》 | Resistence</title>
+  <title>类与对象基本概念(一) | Resistence</title>
   
 
 
@@ -339,7 +337,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/05/26/博客5/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/09/22/博客51/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -356,7 +354,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">阅读论文《Texture Networks:Feed-forward Synthesis of Textures and Stylized Images》</h2>
+          <h2 class="post-title" itemprop="name headline">类与对象基本概念(一)</h2>
         
 
         <div class="post-meta">
@@ -368,8 +366,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-26T21:46:58+08:00">
-                2018-05-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-22T10:19:00+08:00">
+                2018-09-22
               </time>
             
 
@@ -384,8 +382,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-03T20:43:50+08:00">
-                2018-04-03
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-21T20:36:50+08:00">
+                2018-09-21
               </time>
             
           </span>
@@ -403,8 +401,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
+                  <a href="/categories/C-初学笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">C++初学笔记</span>
                   </a>
                 </span>
 
@@ -420,7 +418,7 @@
 
           
           
-             <span id="/2018/05/26/博客5/" class="leancloud_visitors" data-flag-title="阅读论文《Texture Networks:Feed-forward Synthesis of Textures and Stylized Images》">
+             <span id="/2018/09/22/博客51/" class="leancloud_visitors" data-flag-title="类与对象基本概念(一)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -450,7 +448,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  344字
+                  1,215字
                 </span>
               
 
@@ -466,7 +464,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1分钟
+                  5分钟
                 </span>
               
             </div>
@@ -487,10 +485,13 @@
       
 
       
-        <p>&emsp;&emsp; 这篇文章基本沿用了前面构建损失函数的一些思路，对于损失函数部分，这里的纹理损失函数仍然是基于Gram算子的，不同的是，这里的Gram算子只针对一张图作为目标，以其他图像的Gram算子和它的几何距离作为，定义如下：</p>
-<script type="math/tex; mode=display">L_T=\sum_{l \epsilon L_T}||G^l(x)-G^l(x_0)||_2^2</script><p>&emsp;&emsp; 这里的$x_0$就是那个选定的基准图像，x是生成的图像，下同。<br>&emsp;&emsp; 对于内容损失，同前面论文，还是定义在CNN的某几层上面，定义如下：</p>
-<script type="math/tex; mode=display">L_{C}(x;y)=\sum_{l \epsilon L_C}\sum_{i=1}^{N_1}||F_i^l(x)-F_i^l(y)||^2_2</script><p>&emsp;&emsp; 论文发现使用多尺度架构可以在减少参数的情况下产生更小的纹理损失和训练的更快，网络架构如下所示：<br><img src="https://i.loli.net/2018/04/03/5ac36cd83064c.png" alt=""><br>&emsp;&emsp; 所以在具体的网络实现上，这里的输入是若干张原图像y和噪声图z，随着join数目的加深，图像的尺寸也不断增加，这里输入图像尺寸的增加主要通过上采样的方式得到。图中每个卷积块包括两个3x3的过滤器和一个1x1的过滤器。一般输入图像y的数目控制在3个。加入的噪声和图像数目总共为5或者6.<br>&emsp;&emsp; 所以，学习目标为：</p>
-<script type="math/tex; mode=display">\theta_{x_0}=argmin_{\theta}E[L_T(g(y,z;\theta),x_0)+\alpha L_c(g(y,z;\theta),y)]</script><p>&emsp;&emsp; 通过调整参数$\alpha$可以调整生成图像纹理特征和内容特征所占比例。lun</p>
+        <h3 id="结构化程序设计"><a href="#结构化程序设计" class="headerlink" title="结构化程序设计"></a>结构化程序设计</h3><p>&emsp;&emsp; C语言使用结构化程序设计：程序=数据结构+算法。程序由全局变量以及多个相互调用的函数组成，算法以函数的形式实现，用于对数据结构进行操作。<br>&emsp;&emsp; 结构化程序设计有许多不足，主要包括：<br>1.结构化程序设计中，函数和其操作的数据结构，没有直观的联系。<br>2.随着程序规模的增加，程序变得难以理解：比如很难看出某个数据结构到底有哪些函数可以对其进行操作，任意两个函数之间到底存在怎样的调用关系。<br>3.结构化程序设计没有封装和隐藏的概念。要访问某个数据结构的某个变量，就可以直接访问，那么当该变量的定义有改动的时候，就要把所有访问该变量的语句找出来修改，十分不利于程序的维护和扩充。<br>4.同时也难以查错，当某个数据结构的值不正确时，难以找到是哪个函数导致的。<br>5.重用：在编写某个程序时，发现其需要的某项功能，在现有的某个程序里已经有了相同或类似的实现，那么自然希望能够将那部分代码抽取出来，在新程序中使用。<br>5.总之，结构化程序，在规模庞大的时.会变得难以理解，难以扩充，难以查错，难以重用。</p>
+<h3 id="面向对象程序设计"><a href="#面向对象程序设计" class="headerlink" title="面向对象程序设计"></a>面向对象程序设计</h3><p>&emsp;&emsp; 上述问题可以通过面向对象的程序设计解决。面向对象程序设计=类+类+…..+类。设计程序的过程，就是设计类的过程。<br>&emsp;&emsp; 面向对象的程序设计方法：<br>1.将某类客观事物共同特点（属性）归纳出来，形成一个数据结构（可以多个变量描述事物的属性）；<br>2.将这类事物所能进行的行为也归纳出来，形成一个个函数，这些函数可以用来操作数据结构（这一步叫“抽象”）。<br>&emsp;&emsp; 然后，通过某种语法形式，将数据结构和操作该数据结构的函数捆绑在一起，形成一个“类”，从而使得数据结构的算法呈现出显而易见的紧密关系，这就是封装。面向对象程序设计具有抽象、封装、继承、多态四个基本特点。</p>
+<h3 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h3><h4 id="从客观事物抽象出类"><a href="#从客观事物抽象出类" class="headerlink" title="从客观事物抽象出类"></a>从客观事物抽象出类</h4><p>&emsp;&emsp; 例：写一个程序，输入矩形的长和宽，输出面积和周长。<br>这里就可以将长宽变量和设置长宽，求面积，求周长的三个函数封装在一起，就能形成一个矩形类。<br>&emsp;&emsp; 长宽变量成为该矩形类的成员变量，三个函数称为该类的成员函数。成员变量和成员函数统称为类的成员。实际上，类看上去就像带函数的结构。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CRectangle</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> w,h;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">Area</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> w*h;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">Perimeter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>*(w+h);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">(<span class="keyword">int</span> w_,<span class="keyword">int</span> h_)</span></span>&#123;</span><br><span class="line">        w = w_;</span><br><span class="line">        h = h_;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;<span class="comment">//必须有分号</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>  w,h;</span><br><span class="line">    CRectangle r;<span class="comment">//r是一个对象</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; w &gt;&gt; h;</span><br><span class="line">    r.Init(w,h);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; r.Area() &lt;&lt; <span class="built_in">endl</span> &lt;&lt; r.Perimeter();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp; 通过类，就可以定义变量。类定义出来的变量，也称为类的实例，也就是所谓的对象。C++中，类的名字就是用户自定义的类型的名字。可以像使用基本类型那样来使用它。CRectangle就是一种用户自定义的类型。</p>
+<h4 id="对象的内存分配"><a href="#对象的内存分配" class="headerlink" title="对象的内存分配"></a>对象的内存分配</h4><p>&emsp;&emsp; 和结构对象一样，对象所占用的内存空间大小，等于所有成员变量的大小之和。对于上述的CRectangle类，sizeof(CRectangle)=8。每个对象各有自己的存储空间，一个对象或某个成员变量被改变了，不会影响到另一个对象。<br>&emsp;&emsp; 和结构变量一样，对象之间可以用“=”进行赋值，但是不能用“==”，“ !=”，“ &gt;”,“ &lt;”，“ &gt;=”，进行比较，除非这些运算符经过了重载。<br>用法1：对象名.成员名<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CRectangle r1,r2;</span><br><span class="line">r1.w = <span class="number">5</span>；</span><br><span class="line">r2.Init(<span class="number">5</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp; Init作用在r2上，即Init函数执行期间访问的w和h是属于r2这个对象的，执行r2.Init不会影响到r1。<br>用法2. 指针-&gt;成员名<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CRectangle r1,r2;</span><br><span class="line">CRectangle *p1 = &amp; r1;</span><br><span class="line">CRectangle *p2 = &amp; r2;</span><br><span class="line">p1-&gt;w = <span class="number">5</span>;</span><br><span class="line">p2-&gt;Init(<span class="number">5</span>,<span class="number">4</span>); <span class="comment">//Init作用在p2指向的对象上</span></span><br></pre></td></tr></table></figure></p>
+<p>用法3. 引用名.成员名<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CRectangle r2;</span><br><span class="line">CRectangle &amp; rr = r2;</span><br><span class="line">rr.w = <span class="number">5</span>;</span><br><span class="line">rr.Init(<span class="number">5</span>,<span class="number">4</span>); <span class="comment">//rr的值变了，r2的值也变</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintRectangle</span><span class="params">(CRectangle &amp; r)</span></span>&#123;</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; r.Area() &lt;&lt; <span class="string">","</span> &lt;&lt; r.Perimeter();</span><br><span class="line">&#125;</span><br><span class="line">CRectangle r3;</span><br><span class="line">r3.Init(<span class="number">5</span>,<span class="number">4</span>);</span><br><span class="line">PrintRectangle(r3);</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -511,7 +512,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2018/05/26/博客5/" title="阅读论文《Texture Networks:Feed-forward Synthesis of Textures and Stylized Images》">http://kevinj-huang.github.io/2018/05/26/博客5/</a>
+    <a href="http://kevinj-huang.github.io/2018/09/22/博客51/" title="类与对象基本概念(一)">http://kevinj-huang.github.io/2018/09/22/博客51/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -526,7 +527,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/深度学习项目/" rel="tag"># 深度学习项目</a>
+            <a href="/tags/每周计划/" rel="tag"># 每周计划</a>
           
         </div>
       
@@ -554,14 +555,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/09/20/博客50/" rel="next" title="卷积网络对图像微小的变化产生非常差的效果">
+                <i class="fa fa-chevron-left"></i> 卷积网络对图像微小的变化产生非常差的效果
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/26/博客4/" rel="prev" title="阅读论文《Exploring the structure of a real-time, arbitrary neural artistic stylization network》">
-                阅读论文《Exploring the structure of a real-time, arbitrary neural artistic stylization network》 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/22/博客52/" rel="prev" title="论文随笔《Fast and Accurate Single Image Super-Resolution via Information 》">
+                论文随笔《Fast and Accurate Single Image Super-Resolution via Information 》 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -621,8 +626,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -654,7 +668,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -665,7 +679,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -758,6 +772,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#结构化程序设计"><span class="nav-number">1.</span> <span class="nav-text">结构化程序设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象程序设计"><span class="nav-number">2.</span> <span class="nav-text">面向对象程序设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类和对象"><span class="nav-number">3.</span> <span class="nav-text">类和对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从客观事物抽象出类"><span class="nav-number">3.1.</span> <span class="nav-text">从客观事物抽象出类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象的内存分配"><span class="nav-number">3.2.</span> <span class="nav-text">对象的内存分配</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -785,7 +815,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">40.7k</span>
+    <span title="Site words total count">43.2k</span>
   
 </div>
 
