@@ -134,22 +134,26 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp; 传统GAN的原理已经了解，写博客还是为了学习新东西，cycleGAN网上已经有了很多介绍，这里也是参考别人写的东西，自己再学习了解。&amp;emsp;&amp;emsp; cycleGAN个人感觉主要可以用于风格迁移，可以用来处理图像转换过程中数据unpair的问题。其本质是两个对称的GAN,构成一个环形网络。两个GAN共享两个生成器，并各自带一个判别器，即总共两个判别器和两个生成器。">
+<meta name="description" content="&amp;emsp;&amp;emsp; 本人今年暑假实习参加了PIRM2018举办的移动端图像处理比赛，并在比赛的track B中获得第一名（Track A为移动端超分辨任务，Track B为移动端图像增强任务）,本人所在队伍代号。当然在这个过程中自己还有很多不足，这里本人参考了官方给的report（https://arxiv.org/pdf/1810.01641.pdf）， 对部分队伍的方案进行了总结，如下所">
 <meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cycleGAN">
-<meta property="og:url" content="http://kevinj-huang.github.io/2018/07/27/博客34/index.html">
+<meta property="og:title" content="PIRM2018 移动端挑战赛总结">
+<meta property="og:url" content="http://kevinj-huang.github.io/2018/11/02/博客63/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="&amp;emsp;&amp;emsp; 传统GAN的原理已经了解，写博客还是为了学习新东西，cycleGAN网上已经有了很多介绍，这里也是参考别人写的东西，自己再学习了解。&amp;emsp;&amp;emsp; cycleGAN个人感觉主要可以用于风格迁移，可以用来处理图像转换过程中数据unpair的问题。其本质是两个对称的GAN,构成一个环形网络。两个GAN共享两个生成器，并各自带一个判别器，即总共两个判别器和两个生成器。">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; 本人今年暑假实习参加了PIRM2018举办的移动端图像处理比赛，并在比赛的track B中获得第一名（Track A为移动端超分辨任务，Track B为移动端图像增强任务）,本人所在队伍代号。当然在这个过程中自己还有很多不足，这里本人参考了官方给的report（https://arxiv.org/pdf/1810.01641.pdf）， 对部分队伍的方案进行了总结，如下所">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2018/07/27/5b5b127fc9249.png">
-<meta property="og:image" content="https://i.loli.net/2018/07/27/5b5b26180a4eb.png">
-<meta property="og:image" content="https://i.loli.net/2018/07/27/5b5b266835294.png">
-<meta property="og:updated_time" content="2018-07-27T14:11:58.543Z">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbaefe9a83ce.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbafb692bf87.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb06d644a17.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb0c3e31ef3.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb0fa63db26.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb13ba8b336.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb18445c28a.png">
+<meta property="og:updated_time" content="2018-11-02T13:29:04.734Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cycleGAN">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 传统GAN的原理已经了解，写博客还是为了学习新东西，cycleGAN网上已经有了很多介绍，这里也是参考别人写的东西，自己再学习了解。&amp;emsp;&amp;emsp; cycleGAN个人感觉主要可以用于风格迁移，可以用来处理图像转换过程中数据unpair的问题。其本质是两个对称的GAN,构成一个环形网络。两个GAN共享两个生成器，并各自带一个判别器，即总共两个判别器和两个生成器。">
-<meta name="twitter:image" content="https://i.loli.net/2018/07/27/5b5b127fc9249.png">
+<meta name="twitter:title" content="PIRM2018 移动端挑战赛总结">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 本人今年暑假实习参加了PIRM2018举办的移动端图像处理比赛，并在比赛的track B中获得第一名（Track A为移动端超分辨任务，Track B为移动端图像增强任务）,本人所在队伍代号。当然在这个过程中自己还有很多不足，这里本人参考了官方给的report（https://arxiv.org/pdf/1810.01641.pdf）， 对部分队伍的方案进行了总结，如下所">
+<meta name="twitter:image" content="https://i.loli.net/2018/10/08/5bbaefe9a83ce.png">
 
 
 
@@ -179,13 +183,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2018/07/27/博客34/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2018/11/02/博客63/"/>
 
 
 
 
 
-  <title>cycleGAN | Resistence</title>
+  <title>PIRM2018 移动端挑战赛总结 | Resistence</title>
   
 
 
@@ -341,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/07/27/博客34/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/11/02/博客63/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -358,7 +362,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">cycleGAN</h2>
+          <h2 class="post-title" itemprop="name headline">PIRM2018 移动端挑战赛总结</h2>
         
 
         <div class="post-meta">
@@ -370,8 +374,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-27T22:11:58+08:00">
-                2018-07-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-02T21:29:04+08:00">
+                2018-11-02
               </time>
             
 
@@ -386,8 +390,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-27T22:11:58+08:00">
-                2018-07-27
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-02T21:29:04+08:00">
+                2018-11-02
               </time>
             
           </span>
@@ -422,7 +426,7 @@
 
           
           
-             <span id="/2018/07/27/博客34/" class="leancloud_visitors" data-flag-title="cycleGAN">
+             <span id="/2018/11/02/博客63/" class="leancloud_visitors" data-flag-title="PIRM2018 移动端挑战赛总结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -452,7 +456,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  574字
+                  963字
                 </span>
               
 
@@ -468,7 +472,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2分钟
+                  3分钟
                 </span>
               
             </div>
@@ -489,27 +493,41 @@
       
 
       
-        <p>&emsp;&emsp; 传统GAN的原理已经了解，写博客还是为了学习新东西，cycleGAN网上已经有了很多介绍，这里也是参考别人写的东西，自己再学习了解。<br>&emsp;&emsp; cycleGAN个人感觉主要可以用于风格迁移，可以用来处理图像转换过程中数据unpair的问题。其本质是两个对称的GAN,构成一个环形网络。两个GAN共享两个生成器，并各自带一个判别器，即总共两个判别器和两个生成器。其基于的原理是，一个A类型的图片，经过两次变换，可以变回自己，B类型亦然。表示如下：</p>
-<script type="math/tex; mode=display">G_{B2A}(G_{A2B}(x))=x</script><script type="math/tex; mode=display">G_{A2B}(G_{B2A}(y))=y</script><p>&emsp;&emsp; cycleGAN的模型结构如下所示：</p>
+        <p>&emsp;&emsp; 本人今年暑假实习参加了PIRM2018举办的移动端图像处理比赛，并在比赛的track B中获得第一名（Track A为移动端超分辨任务，Track B为移动端图像增强任务）,本人所在队伍代号。当然在这个过程中自己还有很多不足，这里本人参考了官方给的report（<a href="https://arxiv.org/pdf/1810.01641.pdf），" target="_blank" rel="noopener">https://arxiv.org/pdf/1810.01641.pdf），</a> 对部分队伍的方案进行了总结，如下所示：</p>
+<h4 id="TEAM-ALEX"><a href="#TEAM-ALEX" class="headerlink" title="TEAM ALEX"></a>TEAM ALEX</h4><p>&emsp;&emsp; 这个队伍提出的方案是一个残差网络模块(针对track A)，其由20个残差块组成，很显然如果不对图片进行降采样的话会消耗大量的计算资源，这里网络将图像降采样到正常图像大小的四分之一，最后上采样时使用subpixel进行上采样，网络结构如下图所示。有意思的是这里的下采样使用的是desubpixel，也就是将图像从空间大小维度转换到channel维度上，这样还不损失信息，这个思想值得借鉴。</p>
 <center class="half">
-   <img src="https://i.loli.net/2018/07/27/5b5b127fc9249.png" ,width="300/">
+    <img src="https://i.loli.net/2018/10/08/5bbaefe9a83ce.png" width="700/">
 </center>
 
-<p>&emsp;&emsp; 介绍一下损失函数，对于生成网络x到y及其判别网络,目标函数为：</p>
-<script type="math/tex; mode=display">L_{GAN}(G,D_Y,X,Y)=E_{y-Pdata(y)}[logD_Y(y)]+E_{x-Pdata(x)}[log(1-D_Y(G(x))]</script><p>该公式的目的是为了让生成网络生成图像Y,和真实的Y尽可能相似。同理也可以构建生成网络y-x，及其判别网络的目标函数。<br>&emsp;&emsp; 上述损失函数其实和一般的GAN的损失函数没有什么区别，而单纯使用这个损失函数是没有办法进行训练的，因为由于训练数据是unpair的，所以映射G完全可以将所有的x都映射成y，从而使损失无效。因此这里提出了循环一致性损失，要求F和G两个映射可以分别将y和x变回去，即$F(G(x))=x$和$G(F(y))=y$,循环一致性损失定义如下：</p>
-<script type="math/tex; mode=display">L_{cyc}(F,G,X,Y)=E_{x-Pdata(x)}[||F(G(x))-x||_1]+E_{y-Pdata(y)}[||G(F(y)-y||_1]</script><p>&emsp;&emsp; 最终的损失函数综合了G和F的GAN损失和循环一致性损失，如下所示：</p>
-<script type="math/tex; mode=display">L_{total}=L_{GAN}(F,D_Y,X,Y)+L_{GAN}(G,D_X,X,Y)+\lambda L_{cyc}(F,G,X,Y)</script><p>&emsp;&emsp; 最终的目标就是求得使目标最小的生成网络G,F,在实际训练过程中，上面的生成判别损失使用LSGA。cycleGAN的通俗解释图如下所示：</p>
+<h4 id="KAIST-VICLAB"><a href="#KAIST-VICLAB" class="headerlink" title="KAIST-VICLAB"></a>KAIST-VICLAB</h4><p>&emsp;&emsp; 对于track-A，这里也是进行了4倍下采样，然后通过8个卷积层，最后通过subpixel进行上采样，这里还结合了error feedback ,Xunit等方法加速网络训练，这些部分本人还不是很了解。此外，其还对输入图像使用高斯模糊对降采样的部分进行degrade，对目标的高分辨图像做增强（看图例中的意思好像是在track B中使用的）。<br>&emsp;&emsp; 对于track-B，这里没有使用stride=2的卷积做下采样，而是每层获得的feature map变为四个更小的feature map，并且将它们分不到batch维度上，称为space-to-batch，最后其还引入了RGAN进行训练，这部分本人还不是很懂。（下图左图为track A,右图为track B)。</p>
 <center class="half">
-   <img src="https://i.loli.net/2018/07/27/5b5b26180a4eb.png" ,width="300/">
+    <img src="https://i.loli.net/2018/10/08/5bbafb692bf87.png" width="900/">
 </center>
 
+<h4 id="CARN-CVL"><a href="#CARN-CVL" class="headerlink" title="CARN CVL"></a>CARN CVL</h4><p>&emsp;&emsp; 这个队伍提交的网络就叫CARN，这个网络是作为一个解决回归问题的网络。通过回归模块将特征从低维转换到高维，这里每个回归模块都结合了一个anchor point，因此可以通过anchor和特征之间的关系，模拟不同的输出和输入图像的回归。这里堆积了很多个这样的回归模块，其实现通过卷积层来实现。feature layer的数目为2，且每一层使用stride=2的卷积做下采样，最后通过subpixel shuffle做上采样。（下图中左图为网络结构，右图为回归模块）。</p>
 <center class="half">
-   <img src="https://i.loli.net/2018/07/27/5b5b266835294.png" ,width="300/">
+    <img src="https://i.loli.net/2018/10/08/5bbb06d644a17.png" width="900/">
 </center>
 
-<p>&emsp;&emsp; 在判别损失部分的训练和正常的GAN一样，使得生成的A和目标A尽可能接近，B亦然。在循环一致性损失，就是让A生成的B通过B2A和原来的A尽可能接近，B生成的A通过A2B和原来的B尽可能接近。</p>
-<p>参考：<br>1.<a href="https://blog.csdn.net/u011501388/article/details/77948644" target="_blank" rel="noopener">https://blog.csdn.net/u011501388/article/details/77948644</a><br>2.<a href="https://www.jianshu.com/p/64bf39804c80" target="_blank" rel="noopener">https://www.jianshu.com/p/64bf39804c80</a><br>3.<a href="https://yq.aliyun.com/articles/229300" target="_blank" rel="noopener">https://yq.aliyun.com/articles/229300</a></p>
+<h4 id="EsS"><a href="#EsS" class="headerlink" title="EsS"></a>EsS</h4><p>&emsp;&emsp; 这个网络比较简单，就是将DPED的网络前两层使用stride=2进行下采样，然后中间加了一个skip连接，结构如下图所示:</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/10/08/5bbb0c3e31ef3.png" width="500/">
+</center>
 
+<h4 id="IV-SR"><a href="#IV-SR" class="headerlink" title="IV SR+"></a>IV SR+</h4><p>&emsp;&emsp; 这里提出的网络包括特征提取、FCB模块和两个反卷积层，这个FCB模块参考了CliuqueNet和MobileNet，前者我没听说过。这里的FCB包括一个输入的卷积层和四个在深度和像素维度上都双向密集连接的卷积层。网络如下图所示:</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/10/08/5bbb0fa63db26.png" width="900/">
+</center>
+
+<h4 id="BOE-SBG"><a href="#BOE-SBG" class="headerlink" title="BOE-SBG"></a>BOE-SBG</h4><p>&emsp;&emsp; 对于Track A，这里使用了denseblock，并且将denseblock、卷积等操作放在不同的level上去改善效果。对于Track B，其使用Mux和Demux模块反复进行上采样和下采样，主要通过subpixel实现。如下图所示(Track A在上面，Track B在下面，右边是denseblock的结构)</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/10/08/5bbb13ba8b336.png" width="900/">
+</center>
+
+<h4 id="Rainbow"><a href="#Rainbow" class="headerlink" title="Rainbow"></a>Rainbow</h4><p>&emsp;&emsp; 其track A的网络如下图左图所示，还是使用stride=2进行下采样。对track B如下图右边所示，这里提出了一个大的的Teacher网络和小的student网络，通过前者指导后者进行学习。具体而言就是计算两者之间的feature map的loss来实现。不得不说这个想法很有意思。</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/10/08/5bbb18445c28a.png" width="700/">
+</center>
       
     </div>
     
@@ -529,7 +547,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2018/07/27/博客34/" title="cycleGAN">http://kevinj-huang.github.io/2018/07/27/博客34/</a>
+    <a href="http://kevinj-huang.github.io/2018/11/02/博客63/" title="PIRM2018 移动端挑战赛总结">http://kevinj-huang.github.io/2018/11/02/博客63/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -572,8 +590,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/23/博客32/" rel="next" title="亚像素">
-                <i class="fa fa-chevron-left"></i> 亚像素
+              <a href="/2018/10/15/博客62/" rel="next" title="阅读论文《Gated Fusion Network for Single Image Dehazing》">
+                <i class="fa fa-chevron-left"></i> 阅读论文《Gated Fusion Network for Single Image Dehazing》
               </a>
             
           </div>
@@ -582,8 +600,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/29/博客35/" rel="prev" title="一些图像基本算法的了解1（SIFT,HOG)">
-                一些图像基本算法的了解1（SIFT,HOG) <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/02/博客60/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -643,8 +661,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -779,6 +806,22 @@
 		<!--my custom code end-->
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#TEAM-ALEX"><span class="nav-number">1.</span> <span class="nav-text">TEAM ALEX</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KAIST-VICLAB"><span class="nav-number">2.</span> <span class="nav-text">KAIST-VICLAB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CARN-CVL"><span class="nav-number">3.</span> <span class="nav-text">CARN CVL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EsS"><span class="nav-number">4.</span> <span class="nav-text">EsS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IV-SR"><span class="nav-number">5.</span> <span class="nav-text">IV SR+</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BOE-SBG"><span class="nav-number">6.</span> <span class="nav-text">BOE-SBG</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Rainbow"><span class="nav-number">7.</span> <span class="nav-text">Rainbow</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
