@@ -134,21 +134,25 @@
 
 
 
-<meta name="description" content="最近做公司的项目接触到了这些，因此了解一下 U_net&amp;emsp;&amp;emsp; U-net，顾名思义，是一个U型的网络,最初用来做图像分割。是一种编码器-解码器结构。编码器逐渐减少池化层的空间维度，解码器逐步修复物体的细节和空间维度。编码器和解码器之间通常存在快捷连接，因此能帮助解码器更好地修复目标的细节。U-Net 是这种方法中最常用的结构，结构如下图所示：         &amp;emsp;&amp;ems">
+<meta name="description" content="感知机题目要求如下：                 首先我们产生数据(注意，我们的data后面都加上一个1，是为了计算感知机里的偏置也就是常数项）： 12345678import numpy as npfrom matplotlib import pyplot as pltdef produce():    data = np.array([[1,2,1],[2,3,1],[3,3,1],[2,">
 <meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dncnn,U-net了解">
-<meta property="og:url" content="http://kevinj-huang.github.io/2018/07/01/博客21/index.html">
+<meta property="og:title" content="感知机和SVM算法的实现(sklearn)">
+<meta property="og:url" content="http://kevinj-huang.github.io/2018/11/02/博客64/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="最近做公司的项目接触到了这些，因此了解一下 U_net&amp;emsp;&amp;emsp; U-net，顾名思义，是一个U型的网络,最初用来做图像分割。是一种编码器-解码器结构。编码器逐渐减少池化层的空间维度，解码器逐步修复物体的细节和空间维度。编码器和解码器之间通常存在快捷连接，因此能帮助解码器更好地修复目标的细节。U-Net 是这种方法中最常用的结构，结构如下图所示：         &amp;emsp;&amp;ems">
+<meta property="og:description" content="感知机题目要求如下：                 首先我们产生数据(注意，我们的data后面都加上一个1，是为了计算感知机里的偏置也就是常数项）： 12345678import numpy as npfrom matplotlib import pyplot as pltdef produce():    data = np.array([[1,2,1],[2,3,1],[3,3,1],[2,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2018/06/17/5b266a40bd580.png">
-<meta property="og:image" content="https://i.loli.net/2018/06/17/5b266e935cb42.png">
-<meta property="og:updated_time" content="2018-07-01T15:05:03.027Z">
+<meta property="og:image" content="https://i.loli.net/2018/10/17/5bc6ba67b417b.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/17/5bc6ba81bee00.png">
+<meta property="og:image" content="https://i.loli.net/2018/11/02/5bdc5490921a4.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/17/5bc6ebdf6c9bc.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/17/5bc6ba81bee00.png">
+<meta property="og:image" content="https://i.loli.net/2018/11/02/5bdc54b9a669d.png">
+<meta property="og:updated_time" content="2018-11-02T13:47:00.846Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dncnn,U-net了解">
-<meta name="twitter:description" content="最近做公司的项目接触到了这些，因此了解一下 U_net&amp;emsp;&amp;emsp; U-net，顾名思义，是一个U型的网络,最初用来做图像分割。是一种编码器-解码器结构。编码器逐渐减少池化层的空间维度，解码器逐步修复物体的细节和空间维度。编码器和解码器之间通常存在快捷连接，因此能帮助解码器更好地修复目标的细节。U-Net 是这种方法中最常用的结构，结构如下图所示：         &amp;emsp;&amp;ems">
-<meta name="twitter:image" content="https://i.loli.net/2018/06/17/5b266a40bd580.png">
+<meta name="twitter:title" content="感知机和SVM算法的实现(sklearn)">
+<meta name="twitter:description" content="感知机题目要求如下：                 首先我们产生数据(注意，我们的data后面都加上一个1，是为了计算感知机里的偏置也就是常数项）： 12345678import numpy as npfrom matplotlib import pyplot as pltdef produce():    data = np.array([[1,2,1],[2,3,1],[3,3,1],[2,">
+<meta name="twitter:image" content="https://i.loli.net/2018/10/17/5bc6ba67b417b.png">
 
 
 
@@ -178,13 +182,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2018/07/01/博客21/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2018/11/02/博客64/"/>
 
 
 
 
 
-  <title>Dncnn,U-net了解 | Resistence</title>
+  <title>感知机和SVM算法的实现(sklearn) | Resistence</title>
   
 
 
@@ -340,7 +344,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/07/01/博客21/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/11/02/博客64/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -357,7 +361,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Dncnn,U-net了解</h2>
+          <h2 class="post-title" itemprop="name headline">感知机和SVM算法的实现(sklearn)</h2>
         
 
         <div class="post-meta">
@@ -369,8 +373,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-01T23:05:03+08:00">
-                2018-07-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-02T21:47:42+08:00">
+                2018-11-02
               </time>
             
 
@@ -385,8 +389,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-01T23:05:03+08:00">
-                2018-07-01
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-02T21:47:00+08:00">
+                2018-11-02
               </time>
             
           </span>
@@ -404,8 +408,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习笔记</span>
+                  <a href="/categories/机器学习实践笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习实践笔记</span>
                   </a>
                 </span>
 
@@ -421,7 +425,7 @@
 
           
           
-             <span id="/2018/07/01/博客21/" class="leancloud_visitors" data-flag-title="Dncnn,U-net了解">
+             <span id="/2018/11/02/博客64/" class="leancloud_visitors" data-flag-title="感知机和SVM算法的实现(sklearn)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -451,7 +455,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  605字
+                  596字
                 </span>
               
 
@@ -467,7 +471,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2分钟
+                  3分钟
                 </span>
               
             </div>
@@ -488,20 +492,44 @@
       
 
       
-        <p>最近做公司的项目接触到了这些，因此了解一下</p>
-<h4 id="U-net"><a href="#U-net" class="headerlink" title="U_net"></a>U_net</h4><p>&emsp;&emsp; U-net，顾名思义，是一个U型的网络,最初用来做图像分割。是一种编码器-解码器结构。编码器逐渐减少池化层的空间维度，解码器逐步修复物体的细节和空间维度。编码器和解码器之间通常存在快捷连接，因此能帮助解码器更好地修复目标的细节。U-Net 是这种方法中最常用的结构，结构如下图所示：</p>
+        <h2 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h2><p>题目要求如下：</p>
 <center class="half">
-    <img src="https://i.loli.net/2018/06/17/5b266a40bd580.png" ,width="500">
+    <img src="https://i.loli.net/2018/10/17/5bc6ba67b417b.png" width="800/">
 </center>
 
-<p>&emsp;&emsp;左侧为一个下采样过程，分4组卷积操作（蓝色箭头）进行。每组卷积操作后进行一次maxpool操作（红色箭头），将图片进一步缩小为原来的1/2。通过4组操作将572×572×1大小的输入图片，计算为32×32×1024 大小。<br>&emsp;&emsp;右侧的上采样过程。上采样过程使用的是4组反卷积（浅绿色箭头），每次上采样将图片扩展为原来的2 倍， 然后将对应层的图片（特征图）进行剪裁和复制，然后concat到上卷积的结果上（灰色箭头）。<br>&emsp;&emsp;上采样过程结束后，得到388×388×64 大小的图，最后用一个1×1种颜色。</p>
-<h4 id="Dncnn"><a href="#Dncnn" class="headerlink" title="Dncnn"></a>Dncnn</h4><p>&emsp;&emsp;该网络用来进行去噪，主要思路为：<br>（1）一个端到端的可训练的CNN网络，采用残差学习策略，在网络的隐层隐式地移除干净图片（clean image）。即输入为带噪的观测图片（noisy image），输出为移除了干净图片的残差（噪声）图片（residual image）。这样做的动机是，用残差学习刻画恒等映射或近似的恒等映射，效果要比直接学习干净图片要相对好，以输出与噪声的l2范数为损失函数来训练网络；<br>（2）网络中利用了BN层（Batch Normalization），实验表明BN层与残差学习共同使用可以提高模型的性能，DnCNN在不同噪声水平上训练，得到的结果要优于现在的最优结果。<br>网络的结构如下所示：</p>
 <center class="half">
-    <img src="https://i.loli.net/2018/06/17/5b266e935cb42.png" ,width="500">
+    <img src="https://i.loli.net/2018/10/17/5bc6ba81bee00.png" width="600/">
 </center>
 
-<p>&emsp;&emsp;该网络的思路可以被用来做图像去块，图像超分辨等问题。</p>
-<p>参考：<br>1.<a href="https://blog.csdn.net/gbyy42299/article/details/78954282" target="_blank" rel="noopener">https://blog.csdn.net/gbyy42299/article/details/78954282</a><br>2.<a href="https://blog.csdn.net/qq_18293213/article/details/72423592" target="_blank" rel="noopener">https://blog.csdn.net/qq_18293213/article/details/72423592</a><br>3.<a href="https://blog.csdn.net/qq_27022241/article/details" target="_blank" rel="noopener">https://blog.csdn.net/qq_27022241/article/details</a><br>4.<a href="https://blog.csdn.net/edogawachia/article/details/78643190" target="_blank" rel="noopener">https://blog.csdn.net/edogawachia/article/details/78643190</a></p>
+<p>首先我们产生数据(注意，我们的data后面都加上一个1，是为了计算感知机里的偏置也就是常数项）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">produce</span><span class="params">()</span>:</span></span><br><span class="line">    data = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">3</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]])</span><br><span class="line">    label = np.array([<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">-1</span>,<span class="number">-1</span>])</span><br><span class="line">    <span class="keyword">return</span> data,label</span><br></pre></td></tr></table></figure>
+<p>感知机计算函数如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sign</span><span class="params">(w,x)</span>:</span></span><br><span class="line">    res = np.dot(w,x)</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>然后就是计算感知机系数的过程，如果一轮迭代后权重发生改变，则继续循环，否则说明权重已经收敛，就停止计算，返回权重</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calulate_w</span><span class="params">(iters)</span>:</span></span><br><span class="line">    data,label = produce()</span><br><span class="line">    w = np.array([<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(iters):</span><br><span class="line">        w_old = w</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">            res = sign(w,data[j])</span><br><span class="line">            <span class="keyword">if</span> label[j]*res &lt;= <span class="number">0</span>:</span><br><span class="line">                w = w + label[j]*data[j]</span><br><span class="line">        <span class="keyword">if</span> (w_old == w).all==<span class="keyword">True</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> w</span><br></pre></td></tr></table></figure>
+<p>最后就是将我们计算得到的结果画出来，如下所示:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    data, label = produce()</span><br><span class="line">    w = calulate_w(<span class="number">100</span>)</span><br><span class="line">    print(w)</span><br><span class="line">    X_true = data[:<span class="number">3</span>]</span><br><span class="line">    X_false = data[<span class="number">3</span>:]</span><br><span class="line">    plt.scatter(X_true[:, <span class="number">0</span>], X_true[:, <span class="number">1</span>],c=<span class="string">'r'</span>,label=<span class="string">'+'</span>)</span><br><span class="line">    plt.scatter(X_false[:, <span class="number">0</span>], X_false[:, <span class="number">1</span>], c=<span class="string">'b'</span>, label=<span class="string">'-'</span>)</span><br><span class="line">    plt.xlabel(<span class="string">'x'</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'y'</span>)</span><br><span class="line">    plt.title(<span class="string">'Perpetron'</span>)</span><br><span class="line">    x1 = np.arange(<span class="number">0</span>,<span class="number">4.0</span>,<span class="number">0.1</span>)</span><br><span class="line">    y1 = (-w[<span class="number">2</span>]-w[<span class="number">0</span>]*x1)/w[<span class="number">1</span>]</span><br><span class="line">    plt.plot(x1,y1)</span><br><span class="line">    plt.legend()</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<pre><code>[-7  9 -1]
+</code></pre><p><img src="https://i.loli.net/2018/11/02/5bdc5490921a4.png" alt="output_10_1.png" title="output_10_1.png"></p>
+<p>结果图和w计算结果如上图所示。</p>
+<h2 id="SVM分类（使用sklearn"><a href="#SVM分类（使用sklearn" class="headerlink" title="SVM分类（使用sklearn)"></a>SVM分类（使用sklearn)</h2><p>题目要求如下：</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/10/17/5bc6ebdf6c9bc.png" width="800/">
+</center>
+
+<center class="half">
+    <img src="https://i.loli.net/2018/10/17/5bc6ba81bee00.png" width="600/">
+</center>
+
+<p>产生数据同上：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">produce</span><span class="params">()</span>:</span></span><br><span class="line">    data = array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>],</span><br><span class="line">        [<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>],</span><br><span class="line">        [<span class="number">3</span>,<span class="number">3</span>,<span class="number">1</span>],</span><br><span class="line">        [<span class="number">2</span>,<span class="number">1</span>,<span class="number">-1</span>],</span><br><span class="line">        [<span class="number">3</span>,<span class="number">2</span>,<span class="number">-1</span>]])</span><br><span class="line">    x=data[:,<span class="number">0</span>:<span class="number">2</span>]</span><br><span class="line">    y=data[:,<span class="number">2</span>]</span><br><span class="line">    <span class="keyword">return</span> x,y,data</span><br></pre></td></tr></table></figure>
+<p>计算svm的系数，调包即可：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">compute_svm</span><span class="params">(x,y)</span>:</span></span><br><span class="line">    clf=svm.SVC(kernel=<span class="string">'linear'</span>,C=<span class="number">1000</span>)</span><br><span class="line">    clf.fit(x,y)</span><br><span class="line">    <span class="keyword">return</span> clf</span><br></pre></td></tr></table></figure>
+<p>最后得出结果，画图如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    x,y,data = produce()</span><br><span class="line">    clf = compute_svm(x,y)</span><br><span class="line">    w = clf.coef_[<span class="number">0</span>]</span><br><span class="line">    print(<span class="string">'weight for svm:'</span>,w)</span><br><span class="line">    x0 = data[:<span class="number">3</span>,:]</span><br><span class="line">    x1 = data[<span class="number">3</span>:,:]</span><br><span class="line">    plt.scatter(x0[:, <span class="number">0</span>], x0[:, <span class="number">1</span>], c=<span class="string">'r'</span>, label=<span class="string">'+'</span>)</span><br><span class="line">    plt.scatter(x1[:, <span class="number">0</span>], x1[:, <span class="number">1</span>], c=<span class="string">'b'</span>, label=<span class="string">'-'</span>)</span><br><span class="line">    a = -w[<span class="number">0</span>] / w[<span class="number">1</span>]</span><br><span class="line">    xx = arange(<span class="number">0</span>,<span class="number">4.0</span>,<span class="number">0.1</span>)</span><br><span class="line">    yy = a * xx - clf.intercept_[<span class="number">0</span>] / w[<span class="number">1</span>]</span><br><span class="line">    plt.plot(xx, yy)</span><br><span class="line">    plt.title(<span class="string">'svm for linear'</span>)</span><br><span class="line">    plt.xlabel(<span class="string">'density'</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'ratio_sugar'</span>)</span><br><span class="line">    plt.legend()</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<pre><code>(&#39;weight for svm:&#39;, array([-1.,  2.]))
+</code></pre><p><img src="https://i.loli.net/2018/11/02/5bdc54b9a669d.png" alt="output_20_1.png" title="output_20_1.png"></p>
+<p>可得图和权重结果。</p>
 
       
     </div>
@@ -522,7 +550,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2018/07/01/博客21/" title="Dncnn,U-net了解">http://kevinj-huang.github.io/2018/07/01/博客21/</a>
+    <a href="http://kevinj-huang.github.io/2018/11/02/博客64/" title="感知机和SVM算法的实现(sklearn)">http://kevinj-huang.github.io/2018/11/02/博客64/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -565,8 +593,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/01/博客22/" rel="next" title="反卷积">
-                <i class="fa fa-chevron-left"></i> 反卷积
+              <a href="/2018/11/02/博客60/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -574,10 +602,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/01/博客27/" rel="prev" title="tf.depth_to_space和torch.nn.pixel_shuffle">
-                tf.depth_to_space和torch.nn.pixel_shuffle <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -791,7 +815,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#U-net"><span class="nav-number">1.</span> <span class="nav-text">U_net</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dncnn"><span class="nav-number">2.</span> <span class="nav-text">Dncnn</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#感知机"><span class="nav-number">1.</span> <span class="nav-text">感知机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SVM分类（使用sklearn"><span class="nav-number">2.</span> <span class="nav-text">SVM分类（使用sklearn)</span></a></li></ol></div>
             
 
           </div>
