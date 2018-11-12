@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="UqlC4pwKIm" />
+  <meta name="baidu-site-verification" content="d3U0dGeqGw" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="1C1XSuJ8TgM2O0mcZvsgzEdy0IdRZOJfxDYPyh18U9Q" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="每周计划," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="11月6日Bi-box行人检测（ECCV2018）来源：https://zhuanlan.zhihu.com/p/45706089。简要思想：这篇论文是通过预测行人目标的可见部分来指导网络学习，从而解决行人检测过程中出现的遮挡问题。这篇论文还是借鉴一般的faster-rcnn,但是输出两个框，一个是行人可见部分，一个是行人的完整部分。具体算法流程如下：基于Fast R-CNN检测框架，首先产生目标">
+<meta name="keywords" content="每周计划">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每周AI学习（I）">
+<meta property="og:url" content="http://kevinj-huang.github.io/2018/11/12/博客69/index.html">
+<meta property="og:site_name" content="Resistence">
+<meta property="og:description" content="11月6日Bi-box行人检测（ECCV2018）来源：https://zhuanlan.zhihu.com/p/45706089。简要思想：这篇论文是通过预测行人目标的可见部分来指导网络学习，从而解决行人检测过程中出现的遮挡问题。这篇论文还是借鉴一般的faster-rcnn,但是输出两个框，一个是行人可见部分，一个是行人的完整部分。具体算法流程如下：基于Fast R-CNN检测框架，首先产生目标">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2018/11/06/5be1b0a037fc0.png">
+<meta property="og:image" content="https://i.loli.net/2018/11/07/5be23f3378602.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-5702a85b3c2da523cd3cc3a1e85da3dc_hd.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-0105609ba81f96535e405e207cd312de_hd.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-162f71857e46392fa0c249c0b14e24c3_hd.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-7ccb40aa733d16dc187796dcd060dc46_hd.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-50b5804abbe6f1e82a654e0217d7ffe1_hd.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-38cef007ce203e5765f86618bb37067d_hd.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-ecb969976cd276a3ef3124a333d53b70_hd.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-e33ac7f0f83f8121f0ec6e563cbd09f6_hd.jpg">
+<meta property="og:image" content="https://img-blog.csdn.net/20180710212049433?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pid2d5Y20=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-c68cae19da95f9a24c37fdf2fb8e8cfc_hd.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-91868a5543db4b3f7c285930f3493bcb_hd.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-853cca77b6ce850000686c6626e3181d_hd.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-6963dcdc2b00b38b51bfbb0124fe0974_hd.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-b7805f52179e0313c97b67984866a98f_hd.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-3a16a2e9bfa0b5693101233ad19b55bd_hd.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-a5ada5fb9ee0355b44e6a78f81ac1c58_hd.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-f3a05a22ccf82a2a767c68a8b4e39b35_hd.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-f89a142991f0aa025dd567ff840e9f83_hd.jpg">
+<meta property="og:updated_time" content="2018-11-11T05:59:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="每周AI学习（I）">
+<meta name="twitter:description" content="11月6日Bi-box行人检测（ECCV2018）来源：https://zhuanlan.zhihu.com/p/45706089。简要思想：这篇论文是通过预测行人目标的可见部分来指导网络学习，从而解决行人检测过程中出现的遮挡问题。这篇论文还是借鉴一般的faster-rcnn,但是输出两个框，一个是行人可见部分，一个是行人的完整部分。具体算法流程如下：基于Fast R-CNN检测框架，首先产生目标">
+<meta name="twitter:image" content="https://i.loli.net/2018/11/06/5be1b0a037fc0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kevinj-huang.github.io/2018/11/12/博客69/"/>
+
+
+
+
+
+  <title>每周AI学习（I） | Resistence</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-111723881-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Resistence</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">My Awesome Site</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/11/12/博客69/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Resistence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Resistence">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">每周AI学习（I）</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-12T22:56:10+08:00">
+                2018-11-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-11T13:59:00+08:00">
+                2018-11-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">AI学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/11/12/博客69/" class="leancloud_visitors" data-flag-title="每周AI学习（I）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7,766字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  28分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="11月6日"><a href="#11月6日" class="headerlink" title="11月6日"></a>11月6日</h4><h5 id="Bi-box行人检测（ECCV2018）"><a href="#Bi-box行人检测（ECCV2018）" class="headerlink" title="Bi-box行人检测（ECCV2018）"></a>Bi-box行人检测（ECCV2018）</h5><p>来源：<a href="https://zhuanlan.zhihu.com/p/45706089。" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/45706089。</a><br><strong>简要思想</strong>：这篇论文是通过预测行人目标的可见部分来指导网络学习，从而解决行人检测过程中出现的遮挡问题。这篇论文还是借鉴一般的faster-rcnn,但是输出两个框，一个是行人可见部分，一个是行人的完整部分。具体算法流程如下：<br>基于Fast R-CNN检测框架，首先产生目标候选框，将图像和目标候选框输入卷积神经网络，然后通过RoI pooling提取每个目标候选框的特征，对这些特征进行分类和回归，分别得到两个box，分别代表行人目标整体和可见部分。网络的设计如下，两个分支分别检测可见部分和全部的部分，其中对行人整体估计分支的具体处理流程和通用目标检测一致，说一下可见部分估计分支：</p>
+<center class="half">
+<img src="https://i.loli.net/2018/11/06/5be1b0a037fc0.png" alt="2018-11-06 23-17-30屏幕截图.png" title="2018-11-06 23-17-30屏幕截图.png" width="400/">
+</center>
+
+<p>目标候选框不仅要和整个标注框的重叠程度大于一定阈值，还要和标注框内行人可见部分的重叠程度大于一定阈值，这种设定正样本的方式显然是合理的，能够更有效地指导网络学习进而获得更强的特征判别力。也就是说这样可以避免将只有部分行人部分区域误判为行人。这里设计的回归方法是，将负样本的回归目标定义为目标候选框的中心区域，如果可见部分估计分支只为正样本分配回归目标的话，这个分支的训练将被没有遮挡的目标所主导（因为这部分目标的可见部分和整体部分基本是一致的），结果会导致预测的负样本的可见部分和整体部分是一致的，这样两个分支就不具有互补性了，具体参考来源。</p>
+<h5 id="Deep-Layer-Aggregation（2018-CVPR）"><a href="#Deep-Layer-Aggregation（2018-CVPR）" class="headerlink" title="Deep Layer Aggregation（2018 CVPR）"></a>Deep Layer Aggregation（2018 CVPR）</h5><p>来源：<a href="https://zhuanlan.zhihu.com/p/47046051" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/47046051</a><br><strong>简要思想</strong>：目前尽管跳跃连接已经被用来组合层，但是这些连接本身是“浅的”，并且只使用了简单的一步操作进行了融合。用更深层次的聚合来增强标准的网络结构，以便更好地跨层融合信息。深层聚合结构迭代和分层的合并了特征层次，使网络具有更好的准确性和更少的参数。<br>论文提出了深层聚合(DLA)的两种结构：迭代深层聚合(IDA)和层次深层聚合(HDA)。<br>IDA:迭代深度聚合(IDA)指的是网络是由某个主干体系结构的模块堆叠形成的结构</p>
+<p>根据特征分辨率的不同，将网络中堆叠起来的模块划分为各个阶段<br>更深的阶段有更多的语义信息，但在空间分辨率上更粗糙<br>跳跃连接将较浅和较深的阶段连接到一起，合并不同尺度和分辨率的信息<br>但是，现有工作中的跳跃连接都是线性的(如 FCN 、U-Net 和 FPN )，并且只是把最浅的层聚集在一起，如下图(b)所示</p>
+<p>用IDA来逐步聚合和深化特征表示<br>聚合起始于最浅的、最小的尺度，然后迭代合并更深、更大的尺度<br>通过这种方式，浅层特征在不同阶段的聚合时得到了细化<br>下图(c)说明了IDA的结构</p>
+<center class="half">
+<img src="https://i.loli.net/2018/11/07/5be23f3378602.jpg" alt="v2-b48f4afe84effcafb5ae94100f548fe5_hd.jpg" title="v2-b48f4afe84effcafb5ae94100f548fe5_hd.jpg">
+</center>
+
+<p>层次深度聚合(HDA)将不同阶段和块合并成树状，以保留和组合特征通道<br>有了HDA，浅层和深层可以被结合起来，学习到更丰富的组合，扩展更多的特征层次结构。<br>我们不只将中间的聚合送到了树的更高处，还将聚合节点的输出作为下一个子树的输入反馈回了主干网络中，如图(e)所示<br>这样做可以将前面所有块的聚合结果继续进行传播，而不是只传播前面单独一个块的结果，可以更好地保留特征<br>为了提高效率，我们合并具有相同深度的聚合节点(合并父节点和左子节点)，如图(f)所示</p>
+<center class="half">
+<img src="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg">
+</center>
+
+<p>聚合节点的主要功能是对它们的输入进行组合和压缩。<br>节点学习选择和处理重要的信息，在输出时保持与单个输入相同的维度。<br>IDA节点总是有二个输入的；而HDA节点有可变数量的参数，取决于树的深度。<br>具体的一个结构示例如下所示：</p>
+<center class="half">
+<img src="https://pic1.zhimg.com/80/v2-5702a85b3c2da523cd3cc3a1e85da3dc_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="300/">
+</center>
+
+<h4 id="11月7日"><a href="#11月7日" class="headerlink" title="11月7日"></a>11月7日</h4><h5 id="Residual-Attention-Network（2017-CVPR）"><a href="#Residual-Attention-Network（2017-CVPR）" class="headerlink" title="Residual Attention Network（2017 CVPR）"></a>Residual Attention Network（2017 CVPR）</h5><p>来源：<a href="https://zhuanlan.zhihu.com/p/44041611" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/44041611</a><br>Residual Attention Network由多个注意力模块组成，产生注意力感知特征。不同模块的注意力感知特征会随着层的加深而自适应地变化<br><strong>contribution</strong>:<br>Stacked network structure：Residual Attention Network是由多个注意力模块堆叠而成的。叠层结构是混合注意机制的基本应用。因此不同的注意力模块能够捕获不同类型的注意力<br>Attention Residual Learning：直接堆叠注意力模块会导致性能明显下降。因此，我们提出了注意力残差学习机制来优化数百层的深层注意力残差网络<br>Bottom-up top-down feedforward attention：我们使用这种自底向上、自上而下的前馈结构（类编码-解码结构）作为注意力模块的一部分，以增加特征上的软权重。这种结构可以在一个单一的前馈过程中模拟自下而上的快速前馈过程和自顶向下的注意力反馈机制，这使得我们可以开发一个自顶向下的可训练的端到端注意力网络。<br><strong>具体细节</strong><br>每个Attention Module分为两个分支：掩模分支和主干分支<br>主干分支用来进行特征处理，可以改进成任何最先进的网络结构，输入 x 的主干分支输出是  T (x)<br>掩模分支使用类编码-解码结构，学习  T (x) 的同样大小的软加权掩模  M (x) 。类编码-解码结构模拟了快速前馈、反馈的注意力过程。输出掩模被用于主干支路神经元的控制门<br>注意力模块的最终输出  H (x) 是： $H <em>{i,c}(x) = M </em>{i,c}(x) ∗ T _{i,c} (x)$<br>在注意力模块中，每个主干分支都有自己的掩模分支来学习针对其特性而专门化的注意力。</p>
+<center class="half">
+<img src="https://pic3.zhimg.com/80/v2-0105609ba81f96535e405e207cd312de_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="500/">
+</center>
+
+<p>如图1所示，在热气球图像中，底层的蓝色特征具有对应的天空掩膜以消除背景，而上层的局部特征则由气球的实例掩模细化。<br>与残差学习的思想类似，如果软掩模单元可以构造成identical mapping，则其性能应该至少不比无注意力时差。因此，我们将注意模块的输出 H 修改为 $H <em>{i,c}(x) = (1+M </em>{i,c}(x) )∗ F _{i,c} (x)$M(X) 的取值范围为[0,1]，当 M(X) 接近0时， H(X) 将近似于原始特征 F(X),我们称这种方法为注意力残差学习。</p>
+<p>此外，堆叠注意力模块以其增量的性质增强了注意力残差学习的效果<br>注意力残差学习在保持原有特征的良好特性的同时，也赋予了它们绕过软掩模分支并前进到顶层的能力并且削弱了掩模分支的特征选择能力<br>堆叠注意力模块可以逐步的细化特征图。如图1所示，随着深度的加深，特征变得更加清晰<br>通过使用注意力残差学习，增加残差注意力网络的深度可以持续地提高性能</p>
+<h5 id="SNIP-Scale-Normalization-for-Image-Pyramids-（2018-CVPR）"><a href="#SNIP-Scale-Normalization-for-Image-Pyramids-（2018-CVPR）" class="headerlink" title="SNIP (Scale Normalization for Image Pyramids) （2018 CVPR）"></a>SNIP (Scale Normalization for Image Pyramids) （2018 CVPR）</h5><p>来源：<a href="https://zhuanlan.zhihu.com/p/47662330" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/47662330</a><br>这篇文章的主要贡献在于探究了在物体检测中CNN的尺度不变性问题，并提出了一种可以提高检测准确性（在COCO数据集上）的方法。<br>对于CNN来说，scale invariance很难被学习到。在传统的目标检测方法中，一般采用image pyramid或者feature pyramid策略来解决这个问题。Feature pyramid就是类似于Faster-RCNN的将图像输入网络，取出每个层的feature map，再用RPN做检测，融合结果。<br>论文通过实验，说明经过Fine-tuning的高分辨率分类器可以应对小图像分类。<br>如下图所示，在训练中，SNIP将图像resize到多个分辨率，每个分辨率对应一个检测框的尺寸区间。对于某一图像分辨率，若真实值样本（检测框）落在区间内，则标记为有效，否则标记为无效。在训练中，若锚点与无效的样本的IoU大于0.3就不考虑（在当前尺寸下不考虑该样本，放到其他尺寸去考虑）。检测中，将不同分辨率的图像通过网络后，再通过RPN每个分辨率下独立生成分数和偏置信息，生成检测框；同样地不考虑超出该分辨率的区间的检测框（RCN）；最后用Soft-NMS融合各个分辨率的结果。</p>
+<center class="half">
+<img src="https://pic4.zhimg.com/80/v2-162f71857e46392fa0c249c0b14e24c3_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="500/">
+</center>
+
+<p>另外，作者提到了一种解决GPU内存不足的方法。1400x2000的图像在ResNet-101 或 DPN-92上训练对于GPU内存来说太大了（可能是溢出），因此选用1000x1000的切片来代替它。每个图像生成50个随机的大小1000x1000的切片，选择包含检测框最多的一个，然后再选最多的，直到这一系列的切片包含了所有的检测框。</p>
+<h4 id="11月8日"><a href="#11月8日" class="headerlink" title="11月8日"></a>11月8日</h4><h5 id="Learning-to-Navigate-for-FGVC-2018-ECCV"><a href="#Learning-to-Navigate-for-FGVC-2018-ECCV" class="headerlink" title="Learning to Navigate for FGVC(2018 ECCV)"></a>Learning to Navigate for FGVC(2018 ECCV)</h5><p>来源：<a href="https://zhuanlan.zhihu.com/p/48800265。做细粒度图像分类。" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/48800265。做细粒度图像分类。</a><br>细粒度分类旨在区分同一超类的从属类（subordinate classes），例如， 区分野生鸟类，汽车模型等。 挑战来源于找出信息区域（informative regions）和提取其中的判别特征（discriminative features）。<br>文章提出了一种新颖的自监督（self-supervision ）机制，可以有效地定位信息区域而无需边界框/部分注释（bounding box/part annotations）。<br>NTS-Net由Navigator agent，Teacher agent和Scrutinizer agent组成。</p>
+<p>Navigator导航模型以关注最具信息性的区域：对于图像中的每个区域，Navigator预测区域的信息量，并使用预测来提出（propose）信息量最大的区域。<br>Teacher评估Navigator建议的区域并提供反馈：对于每个建议区域（proposed region），Teacher评估其属于ground-truth class的概率；置信度（confidence）评估指导Navigator使用新颖的排序一致（ordering-consistent）损失函数来提出更多信息区域。<br>Scrutinizer仔细检查Navigator中建议区域并完成细粒度分类：每个建议区域被放大到相同的大小，并且Scrutinizer提取其中的特征；区域特征和整个图像的特征被联合处理，以完成细粒度分类。<br>总的来说，本文的方法可以被视为强化学习（reinforcement learning）中的actor-critic[21]机制，其中Navigator是actor，Teacher是critic。通过Teacher提供的更精确的监督，Navigator将定位更多信息区域，这反过来将有利于Teacher。如下所示：</p>
+<center class="half">
+<img src="https://pic3.zhimg.com/80/v2-7ccb40aa733d16dc187796dcd060dc46_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="500/">
+</center>
+
+<p>本文方法依赖于一个假设，即信息区域有助于更好地表征对象，因此融合信息区域和全图像的特征将获得更好的性能。 因此，目标是定位对象的信息最丰富的区域（localize the most informative regions）。使用Navigator网络来近似信息函数（information function）I 和Teacher网络来近似置信度函数（confidence function）C.<br>随着Navigator网络根据Teacher网络的改进，它将产生更多信息区域，以帮助Scrutinizer网络产生更好的细粒度分类结果。<br>受anchors概念的启发，文章的Navigator network将图像作为输入，并产生一堆矩形区域{R’1, R’2, … R’A}，每个都有一个表示该区域信息量的分数（图2显示了anchors的设计）。对于大小为448的输入图像X，我们选择具有{48,96,192}和比率{1:1, 3:2, 2:3}的anchors，然后Navigator network将生成一个表示所有anchors的信息量的列表。 我们按照下面式子中的信息列表进行排序。 其中A是anchors的数量，I(Ri)是排序信息列表中的第i个元素。<br>为了减少区域冗余，根据其信息量对区域采用non-maximum suppression（NMS）。 然后我们采取前M个信息区域{R1, R2, … RM}并将它们输入Teacher network以获得{C(R1), C(R2）), … C(RM)}。  我们优化Navigator network使{I(R1), I(R2), … I(RM)}和{C(R1), C(R2）), … C(RM)}具有相同的顺序。 每个建议区域通过最小化ground-truth class和predicted confidence之间的交叉熵损失（cross-entropy）来用于优化Teacher。<br>如下图s所示：</p>
+<center class="half">
+<img src="https://pic2.zhimg.com/80/v2-50b5804abbe6f1e82a654e0217d7ffe1_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="500/">
+</center>
+
+<p>随着Navigator network逐渐收敛，它将产生信息性的对象特征区域，以帮助Scrutinizer network做出决策。 我们使用前K个信息区域与完整图像相结合作为输入来训练Scrutinizer network。 换句话说，那些K个区域用于促进细粒度识别。 图4证明了该过程，其中K = 3。Michael Lam等人 [25]表示，使用信息区域可以减少类内差异，并可能在正确的标签上产生更高的置信度。</p>
+<center class="half">
+<img src="https://pic2.zhimg.com/80/v2-38cef007ce203e5765f86618bb37067d_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="500/">
+</center>
+
+<h5 id="Densely-Connected-Pyramid-Dehazing-Net（CVPR2018）"><a href="#Densely-Connected-Pyramid-Dehazing-Net（CVPR2018）" class="headerlink" title="Densely Connected Pyramid Dehazing Net（CVPR2018）"></a>Densely Connected Pyramid Dehazing Net（CVPR2018）</h5><p>来源：<a href="https://zhuanlan.zhihu.com/p/45805173" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/45805173</a><br>1）网络的设计是嵌入了传统去雾方法的pipeline，【这点似乎很值得学习】，可以同时估计transmission map, atmospheric light and dehazing.<br>2） 利用dense network可以最大features from different levels, 作者提出edge-preserving 深链接的encoder-decoder structure with multi-level pyramid pooling module。<br>3） 引入edge-preserving loss。<br>4）进一步利用transmission map和dehazed result之间的结构信息，加入了一个discriminator 来判断生成的是real or fake。【实际上引入GAN是一种refinement】</p>
+<p>作者proposed的网络包含一下几个module<br>1）Pyramid densely connected network for transmission map estimation<br>a) 用dense block做CNN的基本block来提前feature，（dense block被认为是有利于融合多尺度特征）<br>b) multi-level pyramid pooling method. 是将得到的特征用不同尺寸的pooling，四个pooling layer， 4，8，16，32分别来搞，然后再upsize到原尺寸【就算多尺度的feature了。名字好高端洋气】</p>
+<center class="half">
+<img src="https://pic1.zhimg.com/80/v2-ecb969976cd276a3ef3124a333d53b70_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="500/">
+</center>
+
+<p>2） 自然光估计<br>作者同样假设大气光是均匀的e.g. A(z)=c constant。采用U-net来估计图像的大气光。<br>3）根据得到的tranmission map和大气光，按照大气散射模型，估计得到去雾图像：</p>
+<center class="half">
+<img src="https://pic3.zhimg.com/80/v2-e33ac7f0f83f8121f0ec6e563cbd09f6_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="500/">
+</center>
+
+<p>4) 增加了一个discriminator 来refine 生成的transmission map， A(z)。 Discriminator的作用就是让产生的transmission map 和 A(z) 像ground-truth 靠拢，而更加难以分辨。<br>5） edge-preserving loss L^{E}<br>a) 图像边沿通常可以反应在图像gradient上<br>b) 可视化CNN网络前几层可以看到，网络的前几层是在提取边沿和轮廓，因此CNN前几层可以用来做边沿检测器。比如用VGG net的某一层的输出。【这个其实在超分辨率上已经有应用了，叫perceptual loss】<br>最终的loss 是由L2 loss， 图像gradient loss， feature loss三者组合。【作者在这里把L2 loss混进去，不应该吧，L2 loss不应该算增强边缘的】<br>6) Total loss<br>transmission map 估计的L2 loss， 自然光估计的 L2 loss, 保留边缘的LE loss 以及discriminator loss。<br>这么多task同时训练不好收敛，作者提出initialization stage，先分块优化每一个小block，然后再统一训练。</p>
+<h4 id="11月9日"><a href="#11月9日" class="headerlink" title="11月9日"></a>11月9日</h4><h5 id="Burst-Denoising-with-Kernel-Prediction-Networks-2018-CVPR"><a href="#Burst-Denoising-with-Kernel-Prediction-Networks-2018-CVPR" class="headerlink" title="Burst Denoising with Kernel Prediction Networks(2018 CVPR)"></a>Burst Denoising with Kernel Prediction Networks(2018 CVPR)</h5><p>来源：<a href="https://blog.csdn.net/zbwgycm/article/details/80987721" target="_blank" rel="noopener">https://blog.csdn.net/zbwgycm/article/details/80987721</a><br>论文提出了一种CNN网络结构可以预测空间变化的核（kernel），利用得到的每个位置的Kernel对图像进行局部配准和降噪。文章基于真实噪声生成模型对ground truth图像加噪声和偏移，合成训练数据，并利用退火损失函数来引导优化过程，避免陷入局部最小值。<br>该文章的主要贡献在于：<br>1.将互联网上获得的经过后处理的图像，转换成具有线性RAW图像特性的数据。这使得训练模型可以推广到真实图像和环境中，解决了ground truth数据难以获取的问题。<br>2.提出了一种网络结构，其性能在合成数据和真实数据上都优于现有水平。其可以对每个位置生成一个3D去噪核，从而生成去噪图像。<br>3.提出了一种针对于该核预测网络的训练流程，使得网络可以利用多张图像的信息来预测滤波核，即使这些图像之间存在着未知的偏移。<br>4.证明了在训练和测试时，将输入图像的噪声水平作为网络的输入，得到的网络将会对更宽的的噪声水平范围具有鲁棒性。<br>数据处理部分略，这里看一下模型：</p>
+<center class="half">
+<img src="https://img-blog.csdn.net/20180710212049433?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pid2d5Y20=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="600/">
+</center>
+
+<p>核预测网络（KPN）生成逐像素滤波核，同时对序列图像进行配准，平均，去噪，生成参考帧的“干净”版本。KPN使用了encoder-decoder结构，并有skip connection。其有K2N个输出通道，其可以被变形为N个K×K大小线性滤波器。使用这些核对图像进行滤波然后叠加得到输出图像。<br>直接优化损失函数会收敛于局部最小值（只有参考帧核非零，其余核都变为0）。为了使得网络能充分利用其它帧的信息，文章使用退火策略，在初始时刻，使得输出的核能对图像序列中的每一帧分别配准和降噪，然后再利用各帧之间的信息做加权叠加。应用核f1,…,fNf1,…,fN于图像帧X1,…,XNX1,…,XN，生成N帧滤波图像f1(X1),…,fN(XN)f1(X1),…,fN(XN)，然后取平均得到输出Ŷ Y^。对每一帧中间结果加入损失项，并在训练过程中逐渐较小。KPN会被预先训练对每一帧图像分别配准和降噪，然后再处理整个序列。</p>
+<h5 id="FANet"><a href="#FANet" class="headerlink" title="FANet"></a>FANet</h5><p>来源：<a href="https://zhuanlan.zhihu.com/p/48860568" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/48860568</a><br>1 FANet：Feature Agglomeration Networks，特征的层次化聚集网络，本文提出的single stage人脸检测算法；<br>2 HL：Hierarchical Loss，结合fig 1理解，在层次特征金字塔上都联合了层次损失，可以更好的监督FANet模型的训练；<br>3 A-block：Agglomeration Connection，结合了1 x 3、3 x 1 conv的非对称操作，SSH这种堆叠3 x 3 conv以增加上下文信息的操作，以及 2x 的双线性上采样操作，最终融合了高低feature map上的特征，结合fig 2，比较容易理解，实验结果证明其性能优于FPN的skip-connnection；</p>
+<p>FANet的核心思想为，通过单个CNN模型来探索多尺度特征间的内在联系，操作方式为：通过融合不同尺度的高层feature map上富含高语义信息的特征，作为辅助的上下文信息，来增强低层feature map上的特征，结合fig 1可以发现，是包含3-level的特征分层聚集方式，而且增加的计算开销也不大；<br>提出 HL 进一步监督FANet的训练，使得模型更好地收敛；<br>结构如下：</p>
+<center class="half">
+<img src="https://pic1.zhimg.com/80/v2-c68cae19da95f9a24c37fdf2fb8e8cfc_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="500/">
+</center>
+
+<p>fig 1为FANet的三层层次化结构，HL作用于三层feature map上，最终的检测仅用作用于最后一层feature map；FANet的目标很简单，通过 top-down 层次化特征金字塔的建立，让参与预测的每个检测分支都享受到高语义信息所带来的恩泽；FANet使用VGG16作为主干网，类似SSD的特征金字塔方式，在最底层的特征金字塔上做多分支的人脸检测；如fig 1，在6层feature map上完成人脸检测，SSD-style检测器只有一个层次的特征金字塔，但FANet就厉害啦，建立了3层的层次化特征金字塔，通过A-block，以 top-down 方式建立高低层feature map上特征聚集，最终在3rd-level特征金字塔上做人脸检测；<br>下图为A-block:</p>
+<center class="half">
+<img src="https://pic4.zhimg.com/80/v2-91868a5543db4b3f7c285930f3493bcb_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="400/">
+</center>
+
+<p>A-block模块两个feature map的输入：来自浅层的 φ1，来自高层的 φ2，φ1 自然语义信息缺乏了，那么就通过左边红色虚线的类似Inception模块，增加 φ1 的特征表达能力；<br>作者提到SSD的缺点：各个multi-scale检测分支上都是独立做检测的，高层feature map上语义信息丰富，感受野也大，检测大尺度目标是无压力，但低层feature map上因为缺乏丰富的语义信息，导致对小尺度目标的检测性能一般；FANet通过A-block就可以避免了此类问题；<br>输入A-block的高、低层feature map通道数比例为1：8，占比比较均衡，使得高层feature map可以给低层feature map给予更多的上下文信息的助攻；<br>再就是一个重点：一般来说，更大的感受野会带来更多的上下文信息，可以有效地辅助小尺度人脸的检测，HR、MSCNN中也提到了，感受野的尺度与目标尺度的偏差不要太大，过大、过小都会影响到最终目标检测的精度；<br>HL 进一步监督FANet的训练，使用到所有层次上特征金字塔的所有feature map，使得模型训练更稳定，以提取更有判别性的特征，并能做到end2end；<br>HL对比standard single loss，有以下2个优势：<br>1 HL可以让FANet训练得更稳定，更快收敛，因为对比SSD，FANet新增了更多的分支 + 参数，如果使用SSD这种仅在一个层次上训练的方式，监督信息可能不够，无法收敛；HL可以通过层次化操作，逐步进阶地提升feature map的表达能力，而不是抓瞎all in（gradually increases the power of feature maps representation），最终就可以有种hierarchically-wise训练的效果了；<br>2 与standard single loss相比，一旦训练完成后，测试阶段HL并不会增加任何额外的计算量；</p>
+<h4 id="11月10日"><a href="#11月10日" class="headerlink" title="11月10日"></a>11月10日</h4><h5 id="ICNet（ECCV2018）"><a href="#ICNet（ECCV2018）" class="headerlink" title="ICNet（ECCV2018）"></a>ICNet（ECCV2018）</h5><p>来源：<br>在本文中，我们致力于建立一个具有良好预测精度的实用快速语义分割系统。我们开发了一种新颖而独特的图像级联网络，有效地利用了低分辨率图的语义信息和高分辨率图的细节信息，实现了图像的实时语义分割。</p>
+<p>我们在实验中采用直观的加速策略，包括降采样输入图像、缩小特征图和进行模型压缩。但是效果都不好。<br>降采样输入图像：降低输入图分辨率能大幅度的加速，但同时会让预测结果非常粗糙<br>缩小特征图：降低下采样可以加速，但同时会降低准确率，此外，即使在1:32的比例下得到最小的特征映射，系统仍然需要131 ms推理<br>压缩模型：压缩训练好的模型，但效果不佳。即使只保留四分之一的核，推理时间仍然太长；相应的分割结果也十分糟糕</p>
+<p>我们提出的图像级联网络(ICNet)并没有简单的选择其中任何一种方式。它使用了级联的图像输入(即低、中、高分辨率图像)，采用了级联的特征融合单元，训练时使用了级联的标签监督。新的架构如图2所示。全分辨率的输入图像，下采样2倍和4倍后，形成级联输入的中分辨率和低分辨率分支。</p>
+<center class="half">
+<img src="https://pic2.zhimg.com/80/v2-853cca77b6ce850000686c6626e3181d_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="600/">
+</center>
+
+<p>ICNet的三个分支<br>低分辨率分支来获取语义信息，如图2的顶部分支所示。将原图1/4大小的图像输入到PSPNet中，降采样率为8，产生了原图1/32的特征图。<br>中分辨率和高分辨率的分支进行粗糙预测的恢复和细化，图2中部和底部分支，获得高质量的分割，可以减少中部分支和下部分支的参数数目。虽然最上面的分支导致了细节缺失和边界模糊，但它已经获得了大部分语义信息。<br>高分辨率分支采用轻加权的CNNs(绿色虚线框，底部分支和中部分支)；不同分支输出的特征图采用级联特征融合单元进行融合，训练时接受梯级标签监督。</p>
+<p>为了结合来自不同分辨率输入的级联特征，我们提出了一个级联特征融合单元(CFF)，如下图所示，具体解释看图就行：</p>
+<center class="half">
+<img src="https://pic1.zhimg.com/80/v2-6963dcdc2b00b38b51bfbb0124fe0974_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="400/">
+</center>
+
+<p>测试阶段，不使用低和中阶段的指导，只保留高分辨率分支。这一策略使梯度优化更加流畅，便于训练。由于每个分支具有更强的学习能力，最终的预测图不受任何一个分支的支配。为了提高每个分支的学习过程，采用级联标签指导策略。<br>在每个分支中添加一个损失权重 $\lambda_{t}$ ，将每个分支变成加权的Softmax交叉熵损失。再优化这个损失函数。</p>
+<h5 id="几篇较新的计算机视觉Self-Attention"><a href="#几篇较新的计算机视觉Self-Attention" class="headerlink" title="几篇较新的计算机视觉Self-Attention"></a>几篇较新的计算机视觉Self-Attention</h5><p>来源：<a href="https://zhuanlan.zhihu.com/p/44031466" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/44031466</a><br><strong>[1] Non-local NN, CVPR2018</strong><br>FAIR的杰作，主要 inspired by 传统方法用non-local similarity来做图像 denoise<br>主要思想也很简单，CNN中的 convolution单元每次只关注邻域 kernel size 的区域，就算后期感受野越来越大，终究还是局部区域的运算，这样就忽略了全局其他片区（比如很远的像素）对当前区域的贡献。<br>所以 non-local blocks 要做的是，捕获这种 long-range 关系：对于2D图像，就是图像中任何像素对当前像素的关系权值；对于3D视频，就是所有帧中的所有像素，对当前帧的像素的关系权值。</p>
+<center class="half">
+<img src="https://pic4.zhimg.com/80/v2-b7805f52179e0313c97b67984866a98f_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="400/">
+</center>
+
+<p>1.首先对输入的 feature map X 进行线性映射（说白了就是 1<em>1</em>1 卷积，来压缩通道数），然后得到 $\theta$，$\phi$，g 特征<br>2.通过reshape操作，强行合并上述的三个特征除通道数外的维度，然后对 $\theta$和$\phi$ 进行矩阵点乘操作，得到类似协方差矩阵的东西（这个过程很重要，计算出特征中的自相关性，即得到每帧中每个像素对其他所有帧所有像素的关系）<br>3.然后对自相关特征 以列or以行（具体看矩阵 g 的形式而定） 进行 Softmax 操作，得到0~1的weights，这里就是我们需要的 Self-attention 系数<br>4.最后将 attention系数，对应乘回特征矩阵 g 中，然后再上扩 channel 数，与原输入 feature map X 残差一下，完整的 bottleneck<br>注：构造 $\theta，\phi$ 及点乘操作那步，超多的参数，需要耗费很大的GPU Memory~ 可后续改善<br><strong>[2]Interaction-aware Attention, ECCV2018</strong><br>在 non-local block 的协方差矩阵基础上，设计了基于 PCA 的新loss，更好地进行特征交互。作者认为，这个过程，特征会在channel维度进行更好的 non-local interact，故称为 Interaction-aware attention.<br>动作识别的主网络就与non-local中直接使用 I3D 不同，这里是使用类似 TSN 的采样Segment形式输入，然后使用2D网络提特征，再统一在Attention block进行时空聚合</p>
+<center class="half">
+<img src="https://pic2.zhimg.com/80/v2-3a16a2e9bfa0b5693101233ad19b55bd_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="400/">
+</center>
+
+<p><strong>[3]CBAM: Convolutional Block Attention Module, ECCV2018</strong><br>具体来说，文中把 channel-wise attention 看成是教网络 Look ‘what’；而spatial attention 看成是教网络 Look ‘where’，所以它比 SE Module 的主要优势就多了后者。<br>示意图如下：</p>
+<center class="half">
+<img src="https://pic1.zhimg.com/80/v2-a5ada5fb9ee0355b44e6a78f81ac1c58_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="400/">
+</center>
+
+<p>Channel Attention Module，基本和 SE-module 是一致的，就额外加入了 Maxpool 的 branch。在 Sigmoid 前，两个 branch 进行 element-wise summation 融合。<br>Spatial Attention Module, 对输入特征进行 channel 间的 AVE 和 Max pooling，然后 concatenation，再来个7*7大卷积，最后 Sigmoid。</p>
+<p><strong>[4] CDANet 2018</strong><br>主要思想也是上述文章 CBAM 和 non-local 的融合变形：<br>把deep feature map进行spatial-wise self-attention，同时也进行channel-wise self-attetnion，最后将两个结果进行 element-wise sum 融合。</p>
+<center class="half">
+<img src="https://pic2.zhimg.com/80/v2-f3a05a22ccf82a2a767c68a8b4e39b35_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="400/">
+</center>
+
+<p>这样做的好处是：<br>在 CBAM 分别进行空间和通道 self-attention的思想上，直接使用了 non-local 的自相关矩阵 Matmul 的形式进行运算，避免了 CBAM 手工设计 pooling，多层感知器 等复杂操作。</p>
+<h4 id="11月11号"><a href="#11月11号" class="headerlink" title="11月11号"></a>11月11号</h4><h5 id="理解Spatial-Transformer-Networks"><a href="#理解Spatial-Transformer-Networks" class="headerlink" title="理解Spatial Transformer Networks"></a>理解Spatial Transformer Networks</h5><p>来源：<a href="https://zhuanlan.zhihu.com/p/41738716" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/41738716</a><br>对于计算机视觉任务来说,我们希望模型可以对于物体姿势或位置的变化具有一定的不变性,从而在不同场景下实现对于物体的分析。传统CNN中使用卷积和Pooling操作在一定程度上实现了平移不变性,但这种人工设定的变换规则使得网络过分的依赖先验知识,既不能真正实现平移不变性(不变性对于平移的要求很高),又使得CNN对于旋转,扭曲等未人为设定的几何变换缺乏应有的特征不变性。<br>STN作为一种新的学习模块,具有以下特点:<br>(1) 为每一个输入提供一种对应的空间变换方式(如仿射变换)<br>(2) 变换作用于整个特征输入<br>(3) 变换的方式包括缩放、剪切、旋转、空间扭曲等等<br>具有可导性质的STN不需要多余的标注,能够自适应的学到对于不同数据的空间变换方式。它不仅可以对输入进行空间变换,同样可以作为网络模块插入到现有网络的任意层中实现对不同Feature map的空间变换。最终让网络模型学习了对平移、尺度变换、旋转和更多常见的扭曲的不变性,也使得模型在众多基准数据集上表现出了更好的效果。<br><strong>空间变换网络:</strong></p>
+<center class="half">
+<img src="https://pic4.zhimg.com/80/v2-f89a142991f0aa025dd567ff840e9f83_hd.jpg" title="https://pic2.zhimg.com/80/v2-a90299124a0359f155883d9d1623f115_hd.jpg" width="600/">
+</center>
+
+<p>ST的结构如上图所示,每一个ST模块由Localisation net, Grid generator和Sample组成, Localisation net决定输入所需变换的参数θ,Grid generator通过θ和定义的变换方式寻找输出与输入特征的映射T(θ),Sample结合位置映射和变换参数对输入特征进行选择并结合双线性插值进行输出,具体介绍见来源，这里不再赘述。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Resistence
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://kevinj-huang.github.io/2018/11/12/博客69/" title="每周AI学习（I）">http://kevinj-huang.github.io/2018/11/12/博客69/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/每周计划/" rel="tag"># 每周计划</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/12/博客68/" rel="next" title="阅读论文《Aesthetic-Driven Image Enhancement by Adversarial Learning》">
+                <i class="fa fa-chevron-left"></i> 阅读论文《Aesthetic-Driven Image Enhancement by Adversarial Learning》
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/12/博客66/" rel="prev" title="阅读论文《Exposure:A White-Box Photo Post-Processing Framework》">
+                阅读论文《Exposure:A White-Box Photo Post-Processing Framework》 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTI3OC8xMTgxNA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Resistence" />
+            
+              <p class="site-author-name" itemprop="name">Resistence</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+			<!--my custom code begin-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+			<script type="text/javascript">
+			  $("#sidebar").hover(function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 1});
+			  },function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 0});
+			  });
+			</script>
+			<div id="mydivshow" class="mydivshow">
+			<!--my custom code end-->
+			
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/KevinJ-Huang" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/huang-jie-65-63/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-bell"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="nwpuhuangjie@outlook.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/CHNguoshiwushuang" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/5376463830/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                快捷链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net" title="CSDN主页" target="_blank">CSDN主页</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhihu.com" title="知乎主页" target="_blank">知乎主页</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com" title="Github主页" target="_blank">Github主页</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+        </div>
+		<!--my custom code begin-->
+		</div>
+		<!--my custom code end-->
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#11月6日"><span class="nav-number">1.</span> <span class="nav-text">11月6日</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Bi-box行人检测（ECCV2018）"><span class="nav-number">1.1.</span> <span class="nav-text">Bi-box行人检测（ECCV2018）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Deep-Layer-Aggregation（2018-CVPR）"><span class="nav-number">1.2.</span> <span class="nav-text">Deep Layer Aggregation（2018 CVPR）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11月7日"><span class="nav-number">2.</span> <span class="nav-text">11月7日</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Residual-Attention-Network（2017-CVPR）"><span class="nav-number">2.1.</span> <span class="nav-text">Residual Attention Network（2017 CVPR）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SNIP-Scale-Normalization-for-Image-Pyramids-（2018-CVPR）"><span class="nav-number">2.2.</span> <span class="nav-text">SNIP (Scale Normalization for Image Pyramids) （2018 CVPR）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11月8日"><span class="nav-number">3.</span> <span class="nav-text">11月8日</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Learning-to-Navigate-for-FGVC-2018-ECCV"><span class="nav-number">3.1.</span> <span class="nav-text">Learning to Navigate for FGVC(2018 ECCV)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Densely-Connected-Pyramid-Dehazing-Net（CVPR2018）"><span class="nav-number">3.2.</span> <span class="nav-text">Densely Connected Pyramid Dehazing Net（CVPR2018）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11月9日"><span class="nav-number">4.</span> <span class="nav-text">11月9日</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Burst-Denoising-with-Kernel-Prediction-Networks-2018-CVPR"><span class="nav-number">4.1.</span> <span class="nav-text">Burst Denoising with Kernel Prediction Networks(2018 CVPR)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FANet"><span class="nav-number">4.2.</span> <span class="nav-text">FANet</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11月10日"><span class="nav-number">5.</span> <span class="nav-text">11月10日</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ICNet（ECCV2018）"><span class="nav-number">5.1.</span> <span class="nav-text">ICNet（ECCV2018）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#几篇较新的计算机视觉Self-Attention"><span class="nav-number">5.2.</span> <span class="nav-text">几篇较新的计算机视觉Self-Attention</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11月11号"><span class="nav-number">6.</span> <span class="nav-text">11月11号</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#理解Spatial-Transformer-Networks"><span class="nav-number">6.1.</span> <span class="nav-text">理解Spatial Transformer Networks</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Resistence</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">69.5k</span>
+  
+</div>
+
+
+
+
+
+
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+**  <span id="busuanzi_container_site_pv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+**
+</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Nq0gYzgvTOwNARshaOLO6uMo-gzGzoHsz", "R2FkCzz5AmolE24dN77lKIa7");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+  <script src="/js/src/Aplayer-Controler.js"></script>
+<div id="AP-controler"></div>
+<script type="text/javascript">
+var myapc=new APlayer_Controler({
+		APC_dom:$('#AP-controler'),
+		aplayer:ap, //此为绑定的aplayer对象
+		attach_right:false,
+		position:{top:'300px',bottom:''},
+		fixed:true,
+		btn_width:100,
+		btn_height:120,
+		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+		img_style:{repeat:'no-repeat',position:'center',size:'contain'},
+		ctrls_color:'rgba(173,255,47,0.8)',
+		ctrls_hover_color:'rgba(255,140,0,0.7)',
+		tips_on:true,
+		tips_width:140,
+		tips_height:25,
+		tips_color:'rgba(255,255,255,0.6)',
+		tips_content:{},
+		timeout:30
+	});
+</script>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+</body>
+</html>
