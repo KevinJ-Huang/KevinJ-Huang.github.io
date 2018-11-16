@@ -123,7 +123,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="每周计划," />
 
 
 
@@ -134,16 +134,23 @@
 
 
 
-<meta name="description" content="闷声不响发大财,这才是最吼的">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Resistence">
-<meta property="og:url" content="http://kevinj-huang.github.io/archives/2018/page/2/index.html">
+<meta name="description" content="什么是棋盘效应假设反卷积生成的图像中，包含1只黑猫，黑猫身体部分的像素颜色应该是平滑过渡的。或者极端的说，身体部分应该全部都是黑色的。而在实际生成的图像中，该部分却是由深深浅浅的近黑方块组成的，很像棋盘的网络。这就是所谓的棋盘效应。一个棋盘效应的例子如下所示，可以看出影响还是有的：         出现棋盘效应的原因出现棋盘效应的一个原因是，当deconv的卷积核大小不能被stride整除时，反卷">
+<meta name="keywords" content="每周计划">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反卷积里的棋盘效应">
+<meta property="og:url" content="http://kevinj-huang.github.io/2018/11/16/博客70/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="闷声不响发大财,这才是最吼的">
+<meta property="og:description" content="什么是棋盘效应假设反卷积生成的图像中，包含1只黑猫，黑猫身体部分的像素颜色应该是平滑过渡的。或者极端的说，身体部分应该全部都是黑色的。而在实际生成的图像中，该部分却是由深深浅浅的近黑方块组成的，很像棋盘的网络。这就是所谓的棋盘效应。一个棋盘效应的例子如下所示，可以看出影响还是有的：         出现棋盘效应的原因出现棋盘效应的一个原因是，当deconv的卷积核大小不能被stride整除时，反卷">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s1.ax1x.com/2018/11/16/ixnoZT.png
+">
+<meta property="og:image" content="https://s1.ax1x.com/2018/11/16/ixn2Gj.jpg">
+<meta property="og:updated_time" content="2018-11-16T05:33:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Resistence">
-<meta name="twitter:description" content="闷声不响发大财,这才是最吼的">
+<meta name="twitter:title" content="反卷积里的棋盘效应">
+<meta name="twitter:description" content="什么是棋盘效应假设反卷积生成的图像中，包含1只黑猫，黑猫身体部分的像素颜色应该是平滑过渡的。或者极端的说，身体部分应该全部都是黑色的。而在实际生成的图像中，该部分却是由深深浅浅的近黑方块组成的，很像棋盘的网络。这就是所谓的棋盘效应。一个棋盘效应的例子如下所示，可以看出影响还是有的：         出现棋盘效应的原因出现棋盘效应的一个原因是，当deconv的卷积核大小不能被stride整除时，反卷">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/11/16/ixnoZT.png
+">
 
 
 
@@ -173,13 +180,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/archives/2018/page/2/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2018/11/16/博客70/"/>
 
 
 
 
 
-  <title>归档 | Resistence</title>
+  <title>反卷积里的棋盘效应 | Resistence</title>
   
 
 
@@ -207,7 +214,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -321,410 +328,269 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/11/16/博客70/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Resistence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Resistence">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
-         
+          <h2 class="post-title" itemprop="name headline">反卷积里的棋盘效应</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-16T13:34:14+08:00">
+                2018-11-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-16T13:33:50+08:00">
+                2018-11-16
+              </time>
+            
+          </span>
+
           
-        好! 目前共计 70 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/11/16/博客70/" class="leancloud_visitors" data-flag-title="反卷积里的棋盘效应">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  460字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h5 id="什么是棋盘效应"><a href="#什么是棋盘效应" class="headerlink" title="什么是棋盘效应"></a>什么是棋盘效应</h5><p>假设反卷积生成的图像中，包含1只黑猫，黑猫身体部分的像素颜色应该是平滑过渡的。或者极端的说，身体部分应该全部都是黑色的。而在实际生成的图像中，该部分却是由深深浅浅的近黑方块组成的，很像棋盘的网络。这就是所谓的棋盘效应。<br>一个棋盘效应的例子如下所示，可以看出影响还是有的：</p>
+<center class="half">
+    <img src="https://s1.ax1x.com/2018/11/16/ixnoZT.png
+" width="400/">
+</center>
+
+<h5 id="出现棋盘效应的原因"><a href="#出现棋盘效应的原因" class="headerlink" title="出现棋盘效应的原因"></a>出现棋盘效应的原因</h5><p>出现棋盘效应的一个原因是，当deconv的卷积核大小不能被stride整除时，反卷积就会出现重叠，会出现特征图当中数值大小不均的问题。一个原理示意图如下所示，可以看出重叠部分确实出现了伪影：<br><img src="https://s1.ax1x.com/2018/11/16/ixn2Gj.jpg" alt="20180701141339877.jpeg" title="20180701141339877.jpeg"></p>
+<p>在一些成功的模型中，在堆deconvolution的时候，往往会在最后一层加入stride为1的deconvolution来消除伪影。它们可以消除频率整除其大小的棋盘效应，也可以减少其他频率小于其大小的棋盘效应，然而棋盘效应还是会出现在模型中。</p>
+<h5 id="解决棋盘效应的方法"><a href="#解决棋盘效应的方法" class="headerlink" title="解决棋盘效应的方法"></a>解决棋盘效应的方法</h5><p>第一种：调节kernel size和stride的大小关系以确保他们尽量能整除。但这个方法仍然会出现一定程度的伪影和棋盘效应。表现力相对比较强。<br>第二种：直接进行插值resize操作，然后再进行卷积操作。缺点是卷积在大图上进行，计算量比较大。表现力比较差。<br>第三种：使用subpixel conv,但是其实际上相当于对插值0的信号做卷积，而这个过程已经引入了高频信息，一旦训练不充分，就会变成artifact。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Resistence
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://kevinj-huang.github.io/2018/11/16/博客70/" title="反卷积里的棋盘效应">http://kevinj-huang.github.io/2018/11/16/博客70/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/每周计划/" rel="tag"># 每周计划</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
         
-        
+
         
 
         
           
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2018">2018</h2>
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
           </div>
         
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/15/博客62/" itemprop="url">
-              
-                <span itemprop="name">阅读论文《Gated Fusion Network for Single Image Dehazing》</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-15T23:16:21+08:00"
-              content="2018-10-15" >
-          10-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+        </div>
+      
       
 
-        
-        
-        
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/12/博客66/" rel="next" title="阅读论文《Exposure:A White-Box Photo Post-Processing Framework》">
+                <i class="fa fa-chevron-left"></i> 阅读论文《Exposure:A White-Box Photo Post-Processing Framework》
+              </a>
+            
+          </div>
 
-        
-        
+          <span class="post-nav-divider"></span>
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/15/博客61/" itemprop="url">
-              
-                <span itemprop="name">阅读论文《Deep Back-Projection Networks For Super-Resolution》</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-15T23:16:13+08:00"
-              content="2018-10-15" >
-          10-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/07/博客59/" itemprop="url">
-              
-                <span itemprop="name">岭回归</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-07T16:29:35+08:00"
-              content="2018-10-07" >
-          10-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/07/博客58/" itemprop="url">
-              
-                <span itemprop="name">正态分布随机数数目对均值和方差的影响</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-07T16:29:23+08:00"
-              content="2018-10-07" >
-          10-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/07/博客57/" itemprop="url">
-              
-                <span itemprop="name">类和对象（2）</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-07T16:29:05+08:00"
-              content="2018-10-07" >
-          10-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/07/博客53/" itemprop="url">
-              
-                <span itemprop="name">KKT条件的python解法</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-07T16:24:44+08:00"
-              content="2018-10-07" >
-          10-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/24/博客55/" itemprop="url">
-              
-                <span itemprop="name">论文随笔《Fast, Accurate, and Lightweight Super-Resolution with Cascading Residual Network》</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-24T16:47:14+08:00"
-              content="2018-09-24" >
-          09-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/24/博客56/" itemprop="url">
-              
-                <span itemprop="name">使用直方图用于图像增强浅谈</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-24T16:47:14+08:00"
-              content="2018-09-24" >
-          09-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/22/博客54/" itemprop="url">
-              
-                <span itemprop="name">阅读论文《Fast End-to-End Trainable Guided Filter》</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-22T15:49:03+08:00"
-              content="2018-09-22" >
-          09-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/22/博客17/" itemprop="url">
-              
-                <span itemprop="name">阅读论文《Loss Functions for Image Restoration With Neural Networks》</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-22T10:35:32+08:00"
-              content="2018-09-22" >
-          09-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-    </div>
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2018/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2018/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2018/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/7/">7</a><a class="extend next" rel="next" href="/archives/2018/page/3/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -732,6 +598,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTI3OC8xMTgxNA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -754,8 +629,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -890,6 +774,22 @@
 		<!--my custom code end-->
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#什么是棋盘效应"><span class="nav-number">1.</span> <span class="nav-text">什么是棋盘效应</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#出现棋盘效应的原因"><span class="nav-number">2.</span> <span class="nav-text">出现棋盘效应的原因</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解决棋盘效应的方法"><span class="nav-number">3.</span> <span class="nav-text">解决棋盘效应的方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1068,6 +968,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -1097,6 +1001,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
