@@ -134,23 +134,24 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp; 最近听几场讲座都听到了一些有关GAN的应用,今年GAN更是刷了很多会议论文,了解一些常用的GAN网络,对于后面做科研还是做工程项目都很有帮助。一般的GAN网络存在着以下一些问题：训练不稳定，需要平衡生成器和判别器之间的训练；缺乏相应指示GAN训练好坏的指标等。下面依次简要介绍目前常用的几种GAN:WGAN,LSGAN，DCGAN。 WGAN&amp;emsp;&amp;emsp; WGA">
+<meta name="description" content="题目要求如下：  首先定义激活函数，这里需要定义sigmoid激活函数和relu激活函数，以及它们的导数，如下所示： 1234567891011121314151617import numpy as npimport matplotlib.pyplot as pltdef sigmoid(x):    return 1 / (1 + np.exp(-x))def dsigmoid(y):    r">
 <meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="几种GAN的学习">
-<meta property="og:url" content="http://kevinj-huang.github.io/2018/06/30/博客25/index.html">
+<meta property="og:title" content="在MLP上实现BP">
+<meta property="og:url" content="http://kevinj-huang.github.io/2018/12/08/博客77/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="&amp;emsp;&amp;emsp; 最近听几场讲座都听到了一些有关GAN的应用,今年GAN更是刷了很多会议论文,了解一些常用的GAN网络,对于后面做科研还是做工程项目都很有帮助。一般的GAN网络存在着以下一些问题：训练不稳定，需要平衡生成器和判别器之间的训练；缺乏相应指示GAN训练好坏的指标等。下面依次简要介绍目前常用的几种GAN:WGAN,LSGAN，DCGAN。 WGAN&amp;emsp;&amp;emsp; WGA">
+<meta property="og:description" content="题目要求如下：  首先定义激活函数，这里需要定义sigmoid激活函数和relu激活函数，以及它们的导数，如下所示： 1234567891011121314151617import numpy as npimport matplotlib.pyplot as pltdef sigmoid(x):    return 1 / (1 + np.exp(-x))def dsigmoid(y):    r">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2018/06/29/5b36521284c74.png">
-<meta property="og:image" content="https://i.loli.net/2018/06/30/5b373e42ad6dc.png">
-<meta property="og:image" content="https://i.loli.net/2018/06/30/5b37544d1317a.png">
-<meta property="og:image" content="https://i.loli.net/2018/06/30/5b3754f456f7d.png">
-<meta property="og:updated_time" content="2018-06-30T10:13:55.803Z">
+<meta property="og:image" content="https://i.loli.net/2018/12/05/5c074f88c19a2.png">
+<meta property="og:image" content="https://i.loli.net/2018/12/08/5c0be7b59d5ce.png">
+<meta property="og:image" content="https://i.loli.net/2018/12/08/5c0be7b9a1f34.png">
+<meta property="og:image" content="https://i.loli.net/2018/12/08/5c0be7bf53e1f.png">
+<meta property="og:image" content="https://i.loli.net/2018/12/08/5c0be7c39bfd2.png">
+<meta property="og:updated_time" content="2018-12-08T15:49:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="几种GAN的学习">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 最近听几场讲座都听到了一些有关GAN的应用,今年GAN更是刷了很多会议论文,了解一些常用的GAN网络,对于后面做科研还是做工程项目都很有帮助。一般的GAN网络存在着以下一些问题：训练不稳定，需要平衡生成器和判别器之间的训练；缺乏相应指示GAN训练好坏的指标等。下面依次简要介绍目前常用的几种GAN:WGAN,LSGAN，DCGAN。 WGAN&amp;emsp;&amp;emsp; WGA">
-<meta name="twitter:image" content="https://i.loli.net/2018/06/29/5b36521284c74.png">
+<meta name="twitter:title" content="在MLP上实现BP">
+<meta name="twitter:description" content="题目要求如下：  首先定义激活函数，这里需要定义sigmoid激活函数和relu激活函数，以及它们的导数，如下所示： 1234567891011121314151617import numpy as npimport matplotlib.pyplot as pltdef sigmoid(x):    return 1 / (1 + np.exp(-x))def dsigmoid(y):    r">
+<meta name="twitter:image" content="https://i.loli.net/2018/12/05/5c074f88c19a2.png">
 
 
 
@@ -180,13 +181,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2018/06/30/博客25/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2018/12/08/博客77/"/>
 
 
 
 
 
-  <title>几种GAN的学习 | Resistence</title>
+  <title>在MLP上实现BP | Resistence</title>
   
 
 
@@ -342,7 +343,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/06/30/博客25/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/12/08/博客77/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -359,7 +360,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">几种GAN的学习</h2>
+          <h2 class="post-title" itemprop="name headline">在MLP上实现BP</h2>
         
 
         <div class="post-meta">
@@ -371,8 +372,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-30T18:13:55+08:00">
-                2018-06-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-08T23:50:49+08:00">
+                2018-12-08
               </time>
             
 
@@ -387,8 +388,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-30T18:13:55+08:00">
-                2018-06-30
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-08T23:49:10+08:00">
+                2018-12-08
               </time>
             
           </span>
@@ -406,8 +407,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习笔记</span>
+                  <a href="/categories/机器学习实践笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习实践笔记</span>
                   </a>
                 </span>
 
@@ -423,7 +424,7 @@
 
           
           
-             <span id="/2018/06/30/博客25/" class="leancloud_visitors" data-flag-title="几种GAN的学习">
+             <span id="/2018/12/08/博客77/" class="leancloud_visitors" data-flag-title="在MLP上实现BP">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -453,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  991字
+                  1,094字
                 </span>
               
 
@@ -469,7 +470,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4分钟
+                  6分钟
                 </span>
               
             </div>
@@ -490,33 +491,40 @@
       
 
       
-        <p>&emsp;&emsp; 最近听几场讲座都听到了一些有关GAN的应用,今年GAN更是刷了很多会议论文,了解一些常用的GAN网络,对于后面做科研还是做工程项目都很有帮助。一般的GAN网络存在着以下一些问题：训练不稳定，需要平衡生成器和判别器之间的训练；缺乏相应指示GAN训练好坏的指标等。下面依次简要介绍目前常用的几种GAN:WGAN,LSGAN，DCGAN。</p>
-<h4 id="WGAN"><a href="#WGAN" class="headerlink" title="WGAN"></a>WGAN</h4><p>&emsp;&emsp; WGAN是Wasserstein GAN的jiancheng简称，其目标是使GAN的训练达到稳定。WGAN主要从损失函数对GAN进行了改进，主要包括判别器最后一层去掉sigmoid，生成器和判别器的loss不取log，将更新后的权重限制在一定范围内，比如【-0.01,0.01】,以满足lipschitz条件。<br>&emsp;&emsp; WGAN的依据是交叉熵（JS散度）不适合衡量具有不相交部分分布之间的距离，而是使用Wasserstein距离去衡量生成数据和真实数据之间的距离，理论上解决了训练不稳定的问题。同时给定一个说明GAN训练好坏的指标，该指标越小，表明GAN训练越差。距离表达公式摘自下图。</p>
-<center class="half">
-   <img src="https://i.loli.net/2018/06/29/5b36521284c74.png" width="600/">
-</center>
-
-<p>注：Lipschitz限制是在样本空间中，要求判别器函数D(x)梯度值不大于一个有限的常数K，通过权重值限制的方式保证了权重参数的有界性，间接限制了其梯度信息。</p>
-<h4 id="DCGAN"><a href="#DCGAN" class="headerlink" title="DCGAN"></a>DCGAN</h4><p>&emsp;&emsp; DCGAN还是解决GAN训练不稳定的问题，将生成器和判别器换成了两个卷积神经网络。其结构如下图所示：</p>
-<center class="half">
-   <img src="https://i.loli.net/2018/06/30/5b373e42ad6dc.png" width="500/">
-</center>
-
-<p>DCGAN对GAN的主要变化如下：<br>1.将pooling层convolutions替代，其中，在discriminator上用strided convolutions替代，在generator上用fractional-strided convolutions替代。<br>2.在generator和discriminator上都使用batchnorm。好处是帮助梯度传播到每一层，防止generator把所有的样本都收敛到同一个点。直接将BN应用到所有层会导致样本震荡和模型不稳定，通过在generator输出层和discriminator输入层不采用BN可以防止这种现象。<br>3.移除全连接层。<br>4.此外，还在预处理中将图像scale到tanh的[-1, 1]。LeakyReLU的斜率是0.2。将momentum参数beta从0.9降为0.5来防止震荡和不稳定，等。</p>
-<h4 id="LSGAN"><a href="#LSGAN" class="headerlink" title="LSGAN"></a>LSGAN</h4><p>&emsp;&emsp; LSGANs的英文全称是Least Squares GANs。其核心思想是将GAN的目标函数由交叉熵损失换成最小二乘损失，缓解了GAN训练不稳定和生成图像质量差多样性不足的问题。<br>&emsp;&emsp; 作者认为GAN以交叉熵作为损失，会使得生成器不会再优化那些被判别器识别为真实图片的生成图片，即使这些生成图片距离判别器的决策边界仍然很远，也就是距真实数据比较远。这意味着生成器的生成图片质量并不高。为什么生成器不再优化优化生成图片呢？是因为生成器已经完成我们为它设定的目标——尽可能地混淆判别器，所以交叉熵损失已经很小了。而最小二乘就不一样了，要想最小二乘损失比较小，在混淆判别器的前提下还得让生成器把距离决策边界比较远的生成图片拉向决策边界。<br>&emsp;&emsp; 为什么最小二乘损失可以使得GAN的训练更稳定呢？作者对这一点介绍的并不是很详细，只是说sigmoid交叉熵损失很容易就达到饱和状态（饱和是指梯度为0），而最小二乘损失只在一点达到饱和，如图2所示： </p>
-<center class="half">
-   <img src="https://i.loli.net/2018/06/30/5b37544d1317a.png" width="500/">
-</center>
-
-<p>损失函数如下所示：</p>
-<center class="half">
-   <img src="https://i.loli.net/2018/06/30/5b3754f456f7d.png" width="500/">
-</center>
-
-
-
-
-<p>参考：<br>1.<a href="https://blog.csdn.net/victoriaw/article/details/56486471" target="_blank" rel="noopener">https://blog.csdn.net/victoriaw/article/details/56486471</a><br>2.<a href="https://blog.csdn.net/qq_25737169/article/details/78857788" target="_blank" rel="noopener">https://blog.csdn.net/qq_25737169/article/details/78857788</a><br>3.<a href="https://blog.csdn.net/stdcoutzyx/article/details/53872121" target="_blank" rel="noopener">https://blog.csdn.net/stdcoutzyx/article/details/53872121</a><br>4.<a href="https://blog.csdn.net/victoriaw/article/details/60755698" target="_blank" rel="noopener">https://blog.csdn.net/victoriaw/article/details/60755698</a></p>
+        <p>题目要求如下：</p>
+<p><img src="https://i.loli.net/2018/12/05/5c074f88c19a2.png" alt="2018-12-05 12-09-17屏幕截图.png" title="2018-12-05 12-09-17屏幕截图.png"></p>
+<p>首先定义激活函数，这里需要定义sigmoid激活函数和relu激活函数，以及它们的导数，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dsigmoid</span><span class="params">(y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> y * (<span class="number">1</span> - y)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">relu</span><span class="params">(y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> np.maximum(<span class="number">0.0</span>,y)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">drelu</span><span class="params">(x)</span>:</span></span><br><span class="line">    tmp = x.copy()</span><br><span class="line">    tmp[tmp &gt;= <span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">    tmp[tmp &lt; <span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> tmp</span><br></pre></td></tr></table></figure>
+<p>然后还是提供数据，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">produce_data</span><span class="params">()</span>:</span></span><br><span class="line">    X = np.array([</span><br><span class="line">    [<span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">    [<span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">     ])</span><br><span class="line">    y = np.array([[<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>]])</span><br><span class="line">    <span class="keyword">return</span> X,y</span><br><span class="line">X,y = produce_data()</span><br></pre></td></tr></table></figure>
+<p>然后就是定义神经网络的结构和训练过程，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MLP</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,hidden_num=<span class="number">2</span>,limit=<span class="number">0.01</span>,activation=<span class="string">'relu'</span>,lr=<span class="number">0.1</span>)</span>:</span></span><br><span class="line">        np.random.seed(<span class="number">8</span>)</span><br><span class="line">        self.X, self.Y = produce_data()</span><br><span class="line">        self.V = np.random.random((self.X.shape[<span class="number">1</span>], hidden_num)) * <span class="number">2</span> - <span class="number">1</span></span><br><span class="line">        self.W = np.random.random((hidden_num, <span class="number">1</span>)) * <span class="number">2</span> - <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> activation == <span class="string">'sigmoid'</span>:</span><br><span class="line">            self.activation = sigmoid</span><br><span class="line">            self.dactivation = dsigmoid</span><br><span class="line">        <span class="keyword">elif</span> activation == <span class="string">'relu'</span>:</span><br><span class="line">            self.activation = relu</span><br><span class="line">            self.dactivation = drelu</span><br><span class="line">        self.lr = lr</span><br><span class="line">        self.limit = limit</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(self)</span>:</span></span><br><span class="line">        L1 = self.activation(np.dot(self.X, self.V))</span><br><span class="line">        L2 =  self.activation(np.dot(L1, self.W))</span><br><span class="line">        L2_delta = (self.Y.T - L2) * self.dactivation(L2)</span><br><span class="line">        L1_delta = L2_delta.dot(self.W.T) * self.dactivation(L1)</span><br><span class="line">        W_C = self.lr * L1.T.dot(L2_delta)</span><br><span class="line">        V_C = self.lr * self.X.T.dot(L1_delta)</span><br><span class="line">        self.W = self.W + W_C</span><br><span class="line">        self.V = self.V + V_C</span><br><span class="line">        <span class="keyword">return</span> L2</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(self)</span>:</span></span><br><span class="line">        L2 = self.update()</span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        plt.figure()</span><br><span class="line">        error_plot = []</span><br><span class="line">        dot = []</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1</span>):</span><br><span class="line">            L2 = self.update()</span><br><span class="line">            i+=<span class="number">1</span></span><br><span class="line">            error = np.mean(np.abs(self.Y.T-L2))</span><br><span class="line">            <span class="keyword">if</span> error&lt;self.limit:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="comment">#if i%5000==0:</span></span><br><span class="line">             <span class="comment">#   print('Error:', error)</span></span><br><span class="line">            <span class="keyword">if</span> i%<span class="number">50</span> == <span class="number">0</span>:</span><br><span class="line">                error_plot.append(error)</span><br><span class="line">                dot.append(i)</span><br><span class="line">        plt.plot(np.array(dot),np.array(error_plot))</span><br><span class="line">        plt.show()</span><br><span class="line">        print(<span class="string">"迭代了%.d次收敛"</span>%i)</span><br><span class="line">        <span class="comment"># return L2</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self,data)</span>:</span></span><br><span class="line">        L1 = self.activation(np.dot(data, self.V))</span><br><span class="line">        L2 = self.activation(np.dot(L1, self.W))</span><br><span class="line">        <span class="keyword">return</span> L2</span><br></pre></td></tr></table></figure>
+<p>见上面的代码，网络设置的超参包括，隐层的神经元数目，迭代终止的阈值数，激活函数类型和学习率。这里当MLP预测的标签和真实标签之间的直小于阈值时，网络停止训练，并且打印出误差和迭代次数的曲线图，以便直观反映分类器在学习时的性能。</p>
+<p>下面代码是画图曲线，直观反映数据各个区域被划分的情况，代码如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_decision_boundary</span><span class="params">(pred_func, X, y, title=None)</span>:</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Set min and max values and give it some padding</span></span><br><span class="line">    x_min, x_max = X[:, <span class="number">0</span>].min() - <span class="number">.5</span>, X[:, <span class="number">0</span>].max() + <span class="number">.5</span></span><br><span class="line">    y_min, y_max = X[:, <span class="number">1</span>].min() - <span class="number">.5</span>, X[:, <span class="number">1</span>].max() + <span class="number">.5</span></span><br><span class="line">    h = <span class="number">0.01</span></span><br><span class="line">    <span class="comment"># Generate a grid of points with distance h between them</span></span><br><span class="line">    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))</span><br><span class="line">    <span class="comment"># Predict the function value for the whole gid</span></span><br><span class="line">    Z = pred_func(np.c_[xx.ravel(), yy.ravel()])</span><br><span class="line">    Z = Z.reshape(xx.shape)</span><br><span class="line">    <span class="comment"># Plot the contour and training examples</span></span><br><span class="line">    plt.contourf(xx, yy, Z, cmap=plt.cm.Spectral)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(y.shape[<span class="number">1</span>]):</span><br><span class="line">        plt.scatter(X[i, <span class="number">0</span>], X[i, <span class="number">1</span>],c=(<span class="string">'y'</span> <span class="keyword">if</span> y[<span class="number">0</span>][i]&gt;<span class="number">0.5</span> <span class="keyword">else</span> <span class="string">'k'</span>), s=<span class="number">40</span>,  cmap=plt.cm.Spectral)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> title:</span><br><span class="line">        plt.title(title)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tmp</span><span class="params">(pred)</span>:</span></span><br><span class="line">    sign = np.vectorize(<span class="keyword">lambda</span> x: <span class="number">1</span> <span class="keyword">if</span> x &gt;= <span class="number">0.5</span> <span class="keyword">else</span> <span class="number">0</span>)</span><br><span class="line">    ans = sign(nn.predict(pred))</span><br><span class="line">    <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<p>最后是输出结果，这里我们分成两个：</p>
+<h4 id="sigmoid激活函数输出结果"><a href="#sigmoid激活函数输出结果" class="headerlink" title="sigmoid激活函数输出结果"></a>sigmoid激活函数输出结果</h4><p>很显然，按照要求隐层的神经元数目为2，阈值设为0.01，学习率调为0.55时发现此时sigmoid收敛最快，所以测试如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nn = MLP(hidden_num=<span class="number">2</span>,limit=<span class="number">0.01</span>,activation=<span class="string">'sigmoid'</span>,lr=<span class="number">0.55</span>)</span><br><span class="line">nn.train()</span><br><span class="line">pred = nn.predict(X)</span><br><span class="line">print(pred)</span><br><span class="line">plot_decision_boundary(tmp, X, y, <span class="string">'Neural Network'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/12/08/5c0be7b59d5ce.png" alt="output_15_0.png" title="output_15_0.png"></p>
+<pre><code>迭代了584208次收敛
+[[0.0031447 ]
+ [0.98899742]
+ [0.98899742]
+ [0.0148501 ]]
+</code></pre><p><img src="https://i.loli.net/2018/12/08/5c0be7b9a1f34.png" alt="output_15_2.png" title="output_15_2.png"></p>
+<p>可以看出一共迭代了584208次才收敛，这无疑是一个很长的时间。</p>
+<h4 id="relu激活函数输出结果"><a href="#relu激活函数输出结果" class="headerlink" title="relu激活函数输出结果"></a>relu激活函数输出结果</h4><p>这里除了学习率，其他参数设置同上，这里发现学习率为0.048时对于relu函数收敛最快，测试如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nn = MLP(hidden_num=<span class="number">2</span>,limit=<span class="number">0.01</span>,activation=<span class="string">'relu'</span>,lr=<span class="number">0.048</span>)</span><br><span class="line">nn.train()</span><br><span class="line">pred = nn.predict(X)</span><br><span class="line">print(pred)</span><br><span class="line">plot_decision_boundary(tmp, X, y, <span class="string">'Neural Network'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/12/08/5c0be7bf53e1f.png" alt="output_19_0.png" title="output_19_0.png"></p>
+<pre><code>迭代了23451次收敛
+[[0.        ]
+ [0.98167616]
+ [0.97657768]
+ [0.        ]]
+</code></pre><p><img src="https://i.loli.net/2018/12/08/5c0be7c39bfd2.png" alt="output_19_2.png" title="output_19_2.png"></p>
+<p>虽然相对sigmoid迭代的很快，但是收敛过程却并不稳定。</p>
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><p>1.relu函数的收敛速度比sigmoid函数快很多，所以我们一般使用relu函数做激活函数比较多。</p>
+<p>2.sigmoid函数收敛过程比relu更加稳定，对初值的选择也不是很挑剔，其鲁棒性比较好。</p>
 
       
     </div>
@@ -537,7 +545,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2018/06/30/博客25/" title="几种GAN的学习">http://kevinj-huang.github.io/2018/06/30/博客25/</a>
+    <a href="http://kevinj-huang.github.io/2018/12/08/博客77/" title="在MLP上实现BP">http://kevinj-huang.github.io/2018/12/08/博客77/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -580,8 +588,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/27/博客23/" rel="next" title="图像采样方法">
-                <i class="fa fa-chevron-left"></i> 图像采样方法
+              <a href="/2018/12/02/博客76/" rel="next" title="阅读论文 xUnit:Learning a Spatial Activation Function for Efficient Image Restoration">
+                <i class="fa fa-chevron-left"></i> 阅读论文 xUnit:Learning a Spatial Activation Function for Efficient Image Restoration
               </a>
             
           </div>
@@ -589,10 +597,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/01/博客28/" rel="prev" title="阅读论文《LOW-LIGHT IMAGE ENHANCEMENT USING CNN AND BRIGHT CHANNEL PRIOR》">
-                阅读论文《LOW-LIGHT IMAGE ENHANCEMENT USING CNN AND BRIGHT CHANNEL PRIOR》 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -806,7 +810,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#WGAN"><span class="nav-number">1.</span> <span class="nav-text">WGAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DCGAN"><span class="nav-number">2.</span> <span class="nav-text">DCGAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LSGAN"><span class="nav-number">3.</span> <span class="nav-text">LSGAN</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#sigmoid激活函数输出结果"><span class="nav-number">1.</span> <span class="nav-text">sigmoid激活函数输出结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#relu激活函数输出结果"><span class="nav-number">2.</span> <span class="nav-text">relu激活函数输出结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结论"><span class="nav-number">3.</span> <span class="nav-text">结论</span></a></li></ol></div>
             
 
           </div>
