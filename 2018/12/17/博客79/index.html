@@ -134,24 +134,20 @@
 
 
 
-<meta name="description" content="RefineNet&amp;emsp;&amp;emsp; 这个网络主要针对使用膨胀卷积在不进行下采样扩大感受野出现的限制（限制高层特征和输出尺度只能为输入的1/8，膨胀卷积导致严重的细节损失），以及FCN8-s不能有效利用中间层信息。这里认为所有层的信息对于语义分割都是有帮助的。高层的信息识别图像的区域类别，底层有利于保留轮廓、细节等信息。RefineNet结合这些特征进行设计。&amp;emsp;&amp;emsp; 网络结">
+<meta name="description" content="&amp;emsp;&amp;emsp; 同态滤波的基本原理是：将元素灰度值看成是照度和反射率这两个组分的产物，由于照度相对变化很小，可以看作是图像低频成份，而反射率是高频成份。通过分别处理照度和反射率对元灰度值的影响，达到揭示阴影区细节特征的目的，主要是利用压缩亮度范围和增强对比度范围来实现。&amp;emsp;&amp;emsp; 一副图像可以表示为代表低频的光照分量$f_i(x,y)$和代表高频的反射部分$f_r(x,y)">
 <meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常见的图像分割网络了解（中）">
-<meta property="og:url" content="http://kevinj-huang.github.io/2018/08/11/博客40/index.html">
+<meta property="og:title" content="同态滤波">
+<meta property="og:url" content="http://kevinj-huang.github.io/2018/12/17/博客79/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="RefineNet&amp;emsp;&amp;emsp; 这个网络主要针对使用膨胀卷积在不进行下采样扩大感受野出现的限制（限制高层特征和输出尺度只能为输入的1/8，膨胀卷积导致严重的细节损失），以及FCN8-s不能有效利用中间层信息。这里认为所有层的信息对于语义分割都是有帮助的。高层的信息识别图像的区域类别，底层有利于保留轮廓、细节等信息。RefineNet结合这些特征进行设计。&amp;emsp;&amp;emsp; 网络结">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; 同态滤波的基本原理是：将元素灰度值看成是照度和反射率这两个组分的产物，由于照度相对变化很小，可以看作是图像低频成份，而反射率是高频成份。通过分别处理照度和反射率对元灰度值的影响，达到揭示阴影区细节特征的目的，主要是利用压缩亮度范围和增强对比度范围来实现。&amp;emsp;&amp;emsp; 一副图像可以表示为代表低频的光照分量$f_i(x,y)$和代表高频的反射部分$f_r(x,y)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2018/08/11/5b6eda25d519b.jpeg">
-<meta property="og:image" content="https://i.loli.net/2018/08/11/5b6ee0199ab0a.png">
-<meta property="og:image" content="https://i.loli.net/2018/08/11/5b6ee3fbd6b5f.jpeg">
-<meta property="og:image" content="https://i.loli.net/2018/08/11/5b6eed219402e.png">
-<meta property="og:image" content="https://i.loli.net/2018/08/11/5b6ef2e6e3e41.png">
-<meta property="og:updated_time" content="2018-08-11T14:39:06.463Z">
+<meta property="og:image" content="https://i.loli.net/2018/12/12/5c1121cb43166.png">
+<meta property="og:updated_time" content="2018-12-12T14:58:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="常见的图像分割网络了解（中）">
-<meta name="twitter:description" content="RefineNet&amp;emsp;&amp;emsp; 这个网络主要针对使用膨胀卷积在不进行下采样扩大感受野出现的限制（限制高层特征和输出尺度只能为输入的1/8，膨胀卷积导致严重的细节损失），以及FCN8-s不能有效利用中间层信息。这里认为所有层的信息对于语义分割都是有帮助的。高层的信息识别图像的区域类别，底层有利于保留轮廓、细节等信息。RefineNet结合这些特征进行设计。&amp;emsp;&amp;emsp; 网络结">
-<meta name="twitter:image" content="https://i.loli.net/2018/08/11/5b6eda25d519b.jpeg">
+<meta name="twitter:title" content="同态滤波">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 同态滤波的基本原理是：将元素灰度值看成是照度和反射率这两个组分的产物，由于照度相对变化很小，可以看作是图像低频成份，而反射率是高频成份。通过分别处理照度和反射率对元灰度值的影响，达到揭示阴影区细节特征的目的，主要是利用压缩亮度范围和增强对比度范围来实现。&amp;emsp;&amp;emsp; 一副图像可以表示为代表低频的光照分量$f_i(x,y)$和代表高频的反射部分$f_r(x,y)">
+<meta name="twitter:image" content="https://i.loli.net/2018/12/12/5c1121cb43166.png">
 
 
 
@@ -181,13 +177,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2018/08/11/博客40/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2018/12/17/博客79/"/>
 
 
 
 
 
-  <title>常见的图像分割网络了解（中） | Resistence</title>
+  <title>同态滤波 | Resistence</title>
   
 
 
@@ -343,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/08/11/博客40/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/12/17/博客79/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -360,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">常见的图像分割网络了解（中）</h2>
+          <h2 class="post-title" itemprop="name headline">同态滤波</h2>
         
 
         <div class="post-meta">
@@ -372,8 +368,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-11T22:39:06+08:00">
-                2018-08-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-17T23:21:21+08:00">
+                2018-12-17
               </time>
             
 
@@ -388,8 +384,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-11T22:39:06+08:00">
-                2018-08-11
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-12T22:58:08+08:00">
+                2018-12-12
               </time>
             
           </span>
@@ -407,8 +403,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习笔记</span>
+                  <a href="/categories/图像处理笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">图像处理笔记</span>
                   </a>
                 </span>
 
@@ -424,7 +420,7 @@
 
           
           
-             <span id="/2018/08/11/博客40/" class="leancloud_visitors" data-flag-title="常见的图像分割网络了解（中）">
+             <span id="/2018/12/17/博客79/" class="leancloud_visitors" data-flag-title="同态滤波">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -454,7 +450,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  793字
+                  511字
                 </span>
               
 
@@ -470,7 +466,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3分钟
+                  2分钟
                 </span>
               
             </div>
@@ -491,33 +487,16 @@
       
 
       
-        <h4 id="RefineNet"><a href="#RefineNet" class="headerlink" title="RefineNet"></a>RefineNet</h4><p>&emsp;&emsp; 这个网络主要针对使用膨胀卷积在不进行下采样扩大感受野出现的限制（限制高层特征和输出尺度只能为输入的1/8，膨胀卷积导致严重的细节损失），以及FCN8-s不能有效利用中间层信息。这里认为所有层的信息对于语义分割都是有帮助的。高层的信息识别图像的区域类别，底层有利于保留轮廓、细节等信息。RefineNet结合这些特征进行设计。<br>&emsp;&emsp; 网络结构如下所示，这里主要是将不同分辨率的特征图进行融合，最左边一栏使用的是ResNet,即将图像通过预训练好的ResNet获得特征图(这个ResNet按特征图的分辨率分成四个ResNet blocks,不同的block输出不同分辨率的特征图，这样就有高层和低层特征之分），然后向右把四个blocks分别作为4个path通过RefineNet block进行融合，最后获得一个refined特征图。除了RefineNet-4，所有的RefineNet block 都是二输入的，用于融合不同level做refine。</p>
-<center class="half">
-   <img src="https://i.loli.net/2018/08/11/5b6eda25d519b.jpeg" ,width="600/">
-</center>
-
-<p>&emsp;&emsp; RefineNet和之前分割网络的对比如下所示，可以看出其融合了各层的信息：</p>
-<center class="half">
-   <img src="https://i.loli.net/2018/08/11/5b6ee0199ab0a.png" ,width="800/">
-</center>
-
-<p>&emsp;&emsp; 具体的block如下图所示：</p>
-<center class="half">
-   <img src="https://i.loli.net/2018/08/11/5b6ee3fbd6b5f.jpeg" ,width="700/">
-</center>
-
-<p>&emsp;&emsp; 其中各部分分别是，RCU:从残差网络中提取出来的单元结构；Multi-resolution fusion：将特征图用一个卷积层自适应卷积成一样大小，再上采样，做element-wise 的相加，第一个Refine Block除外。Chained residual pooling：这里使用链式结构很容易获得背景的context,且使用大量的identity mapping这样的连接允许梯度直接传播，池化也使得模型对于学习率的变化不是那么敏感;Output convolutions：输出前再加一个RCU。<br>&emsp;&emsp; 这个网络充分融合了各层特征和上下文信息，思路值得借鉴。</p>
-<h4 id="PSPNet"><a href="#PSPNet" class="headerlink" title="PSPNet"></a>PSPNet</h4><p>&emsp;&emsp; 这个网络和上一个网络的思路不太一样，主要是考虑不同感受野下的全局信息，因此使用了金字塔池化的方法。网络结构图如下所示：</p>
-<center class="half">
-   <img src="https://i.loli.net/2018/08/11/5b6eed219402e.png" ,width="800/">
-</center>
-
-<p>&emsp;&emsp; 对于输入图像，这里首先通过ResNet网络获得特征图，这个特征图通过一个全局平均池化层之后，又通过金字塔池化层获得不同子区域的特征，然后上采样并和前面的全局特征concat在一起，这样的特征就包括了全局特征和局部特征，最后将输出通过一个卷积得到预测结果。<br>&emsp;&emsp; 这里值得一提的是对于resnet网络的训练，除了使用softmax loss,即图4中loss1训练最后的主分类器外,还引入了res4b22 residule模块,构造另一个辅助分类器,损失函数为loss2,并引入一个权重参数来控制loss2的权重,辅助分类器可以帮助优化学习过程。如下图所示：</p>
-<center class="half">
-   <img src="https://i.loli.net/2018/08/11/5b6ef2e6e3e41.png" ,width="700/">
-</center>
-
-<p>参考：<br>1.<a href="https://blog.csdn.net/qq_36165459/article/details/78345269" target="_blank" rel="noopener">https://blog.csdn.net/qq_36165459/article/details/78345269</a><br>2.<a href="https://blog.csdn.net/u010067397/article/details/78836173" target="_blank" rel="noopener">https://blog.csdn.net/u010067397/article/details/78836173</a><br>3.<a href="https://blog.csdn.net/u011961856/article/details/77165427" target="_blank" rel="noopener">https://blog.csdn.net/u011961856/article/details/77165427</a><br>4.<a href="https://blog.csdn.net/yxq5997/article/details/53695779?utm_source=itdadao&amp;utm_medium=referral" target="_blank" rel="noopener">https://blog.csdn.net/yxq5997/article/details/53695779?utm_source=itdadao&amp;utm_medium=referral</a></p>
+        <p>&emsp;&emsp; 同态滤波的基本原理是：将元素灰度值看成是照度和反射率这两个组分的产物，由于照度相对变化很小，可以看作是图像低频成份，而反射率是高频成份。通过分别处理照度和反射率对元灰度值的影响，达到揭示阴影区细节特征的目的，主要是利用压缩亮度范围和增强对比度范围来实现。<br>&emsp;&emsp; 一副图像可以表示为代表低频的光照分量$f_i(x,y)$和代表高频的反射部分$f_r(x,y)$，表示如下：</p>
+<script type="math/tex; mode=display">f(x,y)=f_i(x,y)f_r(x.y)</script><p>同态滤波的过程如下所示：<br>1.首先原图做对数变换，得到如下两个加性分量：</p>
+<script type="math/tex; mode=display">lnf(x,y)=lnf_i(x,y)+lnf_r(x.y)</script><p>2.然后对两边进行傅里叶变换，如下：</p>
+<script type="math/tex; mode=display">F(u,v)=I(u,v)+R(u,v)</script><p>3.然后使用同态滤波函数进行滤波，如下所示：</p>
+<script type="math/tex; mode=display">H(u,v)F(u,v)=H(u,v)I(u,v)+H(u,v)R(u,v)</script><p>4.反变换回空间域:</p>
+<script type="math/tex; mode=display">h_f(x,y)=h_i(x,y)+h_r(x,y)</script><p>5.两边取指数，变回。</p>
+<p>&emsp;&emsp; 从上面可以看出，同态滤波的关键在于滤波器H的设计。对于一幅光照不均匀的图像，同态滤波可同时实现亮度调整和对比度提升，从而改善图像质量。为了压制低频的亮度分量，增强高频的反射分量，滤波器H应是一个高通滤波器，但又不能完全减掉低频分量，仅作适当压制。所以同态滤波器一般如下所示：</p>
+<script type="math/tex; mode=display">H_{mo}(u,v)=(r_H-r_L)H_{hp}(u,v)+r_L</script><p>其中，选择$r<em>H &gt; 1$, $r_L &lt; 1$可以达到衰减低频，增强高频的目的，$H</em>{hp}$采用高斯高通滤波器<br>，如下所示:</p>
+<script type="math/tex; mode=display">H_{hp}=1-e^{-c\frac{(D^2(u,v))}{D_0^2}}</script><p>&emsp;&emsp; 其中c是一个常数，控制滤波器的形态，即从低频到高频过渡段的斜率，值越大，斜率越陡。D(u,v)和$D_0$与低通滤波的意义一样，分别表示和频率中心的距离和截止频率，$D_0$越大，对细节的增强越明显。<br><img src="https://i.loli.net/2018/12/12/5c1121cb43166.png" alt="2018-12-12 22-56-53屏幕截图.png" title="2018-12-12 22-56-53屏幕截图.png" width="400/"></p>
+<p>参考：<br>1.<a href="https://blog.csdn.net/piaoxuezhong/article/details/78212814" target="_blank" rel="noopener">https://blog.csdn.net/piaoxuezhong/article/details/78212814</a><br>2.<a href="https://blog.csdn.net/cjsh_123456/article/details/79351654" target="_blank" rel="noopener">https://blog.csdn.net/cjsh_123456/article/details/79351654</a><br>3.<a href="https://blog.csdn.net/sinat_34035510/article/details/51337266" target="_blank" rel="noopener">https://blog.csdn.net/sinat_34035510/article/details/51337266</a></p>
 
       
     </div>
@@ -538,7 +517,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2018/08/11/博客40/" title="常见的图像分割网络了解（中）">http://kevinj-huang.github.io/2018/08/11/博客40/</a>
+    <a href="http://kevinj-huang.github.io/2018/12/17/博客79/" title="同态滤波">http://kevinj-huang.github.io/2018/12/17/博客79/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -581,8 +560,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/11/博客39/" rel="next" title="获得tensorflow模型的参数量">
-                <i class="fa fa-chevron-left"></i> 获得tensorflow模型的参数量
+              <a href="/2018/12/10/博客78/" rel="next" title="Read paper《Global and Local Contrast Adaptive Enhancement for Non-uniform Illumination Color Images》">
+                <i class="fa fa-chevron-left"></i> Read paper《Global and Local Contrast Adaptive Enhancement for Non-uniform Illumination Color Images》
               </a>
             
           </div>
@@ -591,8 +570,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/12/博客41/" rel="prev" title="引导滤波">
-                引导滤波 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/17/boke80/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -652,17 +631,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -797,22 +767,6 @@
 		<!--my custom code end-->
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#RefineNet"><span class="nav-number">1.</span> <span class="nav-text">RefineNet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PSPNet"><span class="nav-number">2.</span> <span class="nav-text">PSPNet</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
