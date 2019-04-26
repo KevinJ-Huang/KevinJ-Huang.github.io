@@ -134,20 +134,18 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp; 最近做项目用到了这两个函数，本人经过仔细对比，认为它们的功能应该是完全一样的，都是将一个较多通道的特征变成较少通道的特征，具体定义如下：1def depth_to_space(input, block_size, name=None): &amp;emsp;&amp;emsp; block_size用来说明数据移动的方式。该函数的操作是将block_size x block_size数目">
+<meta name="description" content="&amp;emsp;&amp;emsp; HDR里会用到tone mapping,这里做一下简要了解。&amp;emsp;&amp;emsp; Tone mapping是摄影学里的一个专用术语，因为打印照片不足以表示现实世界中的亮度域，简单的将真实场景亮度域压缩到照片的亮度域会丢失许多细节，tone mapping就是为了克服这个问题，即其目的是将高动态范围的图像映射到低动态范围成像设备，可通过光圈与曝光时间的长短来控制一个合适">
 <meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tf.depth_to_space和torch.nn.pixel_shuffle">
-<meta property="og:url" content="http://kevinj-huang.github.io/2018/07/01/博客27/index.html">
+<meta property="og:title" content="tone mapping">
+<meta property="og:url" content="http://kevinj-huang.github.io/2019/04/26/博客103/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="&amp;emsp;&amp;emsp; 最近做项目用到了这两个函数，本人经过仔细对比，认为它们的功能应该是完全一样的，都是将一个较多通道的特征变成较少通道的特征，具体定义如下：1def depth_to_space(input, block_size, name=None): &amp;emsp;&amp;emsp; block_size用来说明数据移动的方式。该函数的操作是将block_size x block_size数目">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; HDR里会用到tone mapping,这里做一下简要了解。&amp;emsp;&amp;emsp; Tone mapping是摄影学里的一个专用术语，因为打印照片不足以表示现实世界中的亮度域，简单的将真实场景亮度域压缩到照片的亮度域会丢失许多细节，tone mapping就是为了克服这个问题，即其目的是将高动态范围的图像映射到低动态范围成像设备，可通过光圈与曝光时间的长短来控制一个合适">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2018/07/01/5b38e7c5482af.jpeg">
-<meta property="og:updated_time" content="2018-07-01T15:05:30.820Z">
+<meta property="og:updated_time" content="2019-04-26T14:11:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tf.depth_to_space和torch.nn.pixel_shuffle">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 最近做项目用到了这两个函数，本人经过仔细对比，认为它们的功能应该是完全一样的，都是将一个较多通道的特征变成较少通道的特征，具体定义如下：1def depth_to_space(input, block_size, name=None): &amp;emsp;&amp;emsp; block_size用来说明数据移动的方式。该函数的操作是将block_size x block_size数目">
-<meta name="twitter:image" content="https://i.loli.net/2018/07/01/5b38e7c5482af.jpeg">
+<meta name="twitter:title" content="tone mapping">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; HDR里会用到tone mapping,这里做一下简要了解。&amp;emsp;&amp;emsp; Tone mapping是摄影学里的一个专用术语，因为打印照片不足以表示现实世界中的亮度域，简单的将真实场景亮度域压缩到照片的亮度域会丢失许多细节，tone mapping就是为了克服这个问题，即其目的是将高动态范围的图像映射到低动态范围成像设备，可通过光圈与曝光时间的长短来控制一个合适">
 
 
 
@@ -177,13 +175,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2018/07/01/博客27/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2019/04/26/博客103/"/>
 
 
 
 
 
-  <title>tf.depth_to_space和torch.nn.pixel_shuffle | Resistence</title>
+  <title>tone mapping | Resistence</title>
   
 
 
@@ -339,7 +337,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/07/01/博客27/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2019/04/26/博客103/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -356,7 +354,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">tf.depth_to_space和torch.nn.pixel_shuffle</h2>
+          <h2 class="post-title" itemprop="name headline">tone mapping</h2>
         
 
         <div class="post-meta">
@@ -368,8 +366,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-01T23:05:30+08:00">
-                2018-07-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-26T22:14:03+08:00">
+                2019-04-26
               </time>
             
 
@@ -384,8 +382,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-01T23:05:30+08:00">
-                2018-07-01
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-26T22:11:48+08:00">
+                2019-04-26
               </time>
             
           </span>
@@ -403,8 +401,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tensorflow笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">tensorflow笔记</span>
+                  <a href="/categories/图像处理笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">图像处理笔记</span>
                   </a>
                 </span>
 
@@ -420,7 +418,7 @@
 
           
           
-             <span id="/2018/07/01/博客27/" class="leancloud_visitors" data-flag-title="tf.depth_to_space和torch.nn.pixel_shuffle">
+             <span id="/2019/04/26/博客103/" class="leancloud_visitors" data-flag-title="tone mapping">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -450,7 +448,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  556字
+                  880字
                 </span>
               
 
@@ -487,15 +485,19 @@
       
 
       
-        <p>&emsp;&emsp; 最近做项目用到了这两个函数，本人经过仔细对比，认为它们的功能应该是完全一样的，都是将一个较多通道的特征变成较少通道的特征，具体定义如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">depth_to_space</span><span class="params">(input, block_size, name=None)</span>:</span></span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp; block_size用来说明数据移动的方式。该函数的操作是将block_size x block_size数目的特征图转换成一个不重叠的特征，新的特征高度为input_heigh x block_size，宽度为input_width x block_size，其中block_size大小一定是大于1的整数，为了观察该函数的效果，本人写了如下一段程序：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">x = tf.constant([[[[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">15</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">16</span>]],</span><br><span class="line">      [[<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">17</span>], [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>]]]])</span><br><span class="line">print(x.shape)</span><br><span class="line">y = tf.depth_to_space(x,<span class="number">2</span>)</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">     z = sess.run(y)</span><br><span class="line">print(z)</span><br><span class="line">输出结果为：</span><br><span class="line">[[[[ <span class="number">1</span>]</span><br><span class="line">   [ <span class="number">2</span>]</span><br><span class="line">   [ <span class="number">4</span>]</span><br><span class="line">   [ <span class="number">5</span>]]</span><br><span class="line"></span><br><span class="line">  [[ <span class="number">3</span>]</span><br><span class="line">   [<span class="number">15</span>]</span><br><span class="line">   [ <span class="number">6</span>]</span><br><span class="line">   [<span class="number">16</span>]]</span><br><span class="line"></span><br><span class="line">  [[ <span class="number">7</span>]</span><br><span class="line">   [ <span class="number">8</span>]</span><br><span class="line">   [<span class="number">10</span>]</span><br><span class="line">   [<span class="number">11</span>]]</span><br><span class="line"></span><br><span class="line">  [[ <span class="number">9</span>]</span><br><span class="line">   [<span class="number">17</span>]</span><br><span class="line">   [<span class="number">12</span>]</span><br><span class="line">   [<span class="number">13</span>]]]]</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp; 我做了一下模拟，大概是以下这样的：</p>
-<center class="half">
-   <img src="https://i.loli.net/2018/07/01/5b38e7c5482af.jpeg" width="400/">
-</center>
-
-<p>&emsp;&emsp; 方块是原来的特征图，该操作就是将圈里的部分重新组合成一行，总共四行，从四个2x2特征图变成一个4x4的特征图。对于pixel_shuffle,效果完全一样，其定义如下所示：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pixel_shuffle</span><span class="params">(input, upscale_factor)</span>:</span></span><br><span class="line">    <span class="string">r"""Rearranges elements in a tensor of shape ``[*, C*r^2, H, W]`` to a</span></span><br><span class="line"><span class="string">    tensor of shape ``[C, H*r, W*r]``.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    See :class:`~torch.nn.PixelShuffle` for details.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        input (Variable): Input</span></span><br><span class="line"><span class="string">        upscale_factor (int): factor to increase spatial resolution by</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Examples::</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; ps = nn.PixelShuffle(3)</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; input = autograd.Variable(torch.Tensor(1, 9, 4, 4))</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; output = ps(input)</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; print(output.size())</span></span><br><span class="line"><span class="string">        torch.Size([1, 1, 12, 12])</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    batch_size, channels, in_height, in_width = input.size()</span><br><span class="line">    channels //= upscale_factor ** <span class="number">2</span></span><br><span class="line"></span><br><span class="line">    out_height = in_height * upscale_factor</span><br><span class="line">    out_width = in_width * upscale_factor</span><br><span class="line"></span><br><span class="line">    input_view = input.contiguous().view(</span><br><span class="line">        batch_size, channels, upscale_factor, upscale_factor,</span><br><span class="line">        in_height, in_width)</span><br><span class="line"></span><br><span class="line">    shuffle_out = input_view.permute(<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>).contiguous()</span><br><span class="line">    <span class="keyword">return</span> shuffle_out.view(batch_size, channels, out_height, out_width)</span><br></pre></td></tr></table></figure></p>
-<p>顺便也给了一个例子，这里我就不赘述了。<br>这两个函数在low_level问题里用的地方挺多的，优点很明显，不需要进行上采样恢复原来的图像尺寸，从而避免信息的损失，看来以后可以用这种方法做一下上采样的尝试。</p>
+        <p>&emsp;&emsp; HDR里会用到tone mapping,这里做一下简要了解。<br>&emsp;&emsp; Tone mapping是摄影学里的一个专用术语，因为打印照片不足以表示现实世界中的亮度域，简单的将真实场景亮度域压缩到照片的亮度域会丢失许多细节，tone mapping就是为了克服这个问题，即其目的是将高动态范围的图像映射到低动态范围成像设备，可通过光圈与曝光时间的长短来控制一个合适的亮度域，这样既保证细节不丢失，也可以不使照片失真。<br>&emsp;&emsp; 最原始的tone mapping算法就是使用简单的gamma校正，先将图像归一化到区间【0,1】，令归一化后灰度值为Vin,校正后图像灰度值为Vout,则满足下面关系：</p>
+<script type="math/tex; mode=display">
+Vout = Vin^{\gamma}</script><p>当然这样的方法很显然是有缺陷的，会导致结果图出现灰蒙蒙的感觉，一般的tone mapping方法如下所示：</p>
+<h4 id="基于全局的tone-mapping"><a href="#基于全局的tone-mapping" class="headerlink" title="基于全局的tone mapping"></a>基于全局的tone mapping</h4><p>&emsp;&emsp; 全局色调映射由于不涉及到周边像素信息的计算，运算速度较快。整张图像使用相同的映射函数方法，上面提到的gamma校正就是一种全局tone mapping。全局色调映射的特点有：<br>1.任意相同颜色的像素点，在映射后，还是相同的颜色；<br>2.全局算法一般较简单，速度快；<br>3.全局算法的性能一般劣于局部方法；<br>&emsp;&emsp; 一般的全局tone mapping方法包括对数校正，直方图均衡化等。这里简要介绍一种：首先根据当前的场景推算出场景的平均亮度，再根据这个平均亮度选取一个合适的亮度域，再将整个场景映射到这个亮度域得到正确的结果。场景的平均亮度通过如下公式获得：</p>
+<script type="math/tex; mode=display">
+\hat{L_w}=\frac{1}{N}(\Sigma_{x,y}log(\sigma+L_w(x,y)))</script><p>&emsp;&emsp; 其中Lw(x,y)是像素点x,y的亮度，N是场景内的像素数，$\sigma$是一个很小的数用来应对像素点纯黑的情况。</p>
+<script type="math/tex; mode=display">
+L(x,y) = \frac{a}{\hat{L_w}}L_w(x,y)</script><p>上述公式用来映射亮度空间，其中a用来控制场景的亮度倾向，调节偏暗或者偏亮。最后需要将亮度映射到【0,1】范围内如下所示：</p>
+<script type="math/tex; mode=display">
+L_d(x,y)=\frac{L(x,y)}{1+L(x,y)}</script><p>当然结果并不是总让人满意，下面介绍局部tone mapping。</p>
+<h4 id="基于局部的tone-apping"><a href="#基于局部的tone-apping" class="headerlink" title="基于局部的tone apping"></a>基于局部的tone apping</h4><p>&emsp;&emsp; 指的是像素所在位置不同，其映射后灰度值也可能不同的方法。像素点的映射结果，受到其他因素的影响。<br>局部方法的特点是：<br>1.映射前颜色相同的像素点，映射后颜色可能不同<br>2.局部算法一般较全局方法更复杂，速度相对较慢；<br>3.局部算法的性能一般优于全局方法；<br>4.会出现光晕等现象<br>现如今，色调映射方法的研究热点主要集中在局部方法的创新上</p>
+<h4 id="基于分离压缩的tone-mapping"><a href="#基于分离压缩的tone-mapping" class="headerlink" title="基于分离压缩的tone mapping:"></a>基于分离压缩的tone mapping:</h4><p>一般有以下一些步骤：<br>1.将HDR经过filter得到base layer，再和其相减得到detail layer。<br>2.将base layer压缩成LDR，对detail layer不处理。<br>3.最后将上述处理后的layer合成最后的LDR图。<br>使用此算法应注意halo辉光现象。这是由于在decompose时使用了不保边的滤波器造成的。</p>
+<p>参考：<br>1.<a href="http://blog.sina.com.cn/s/blog_6a5781350102w707.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_6a5781350102w707.html</a><br>3.<a href="https://gameinstitute.qq.com/community/detail/127293" target="_blank" rel="noopener">https://gameinstitute.qq.com/community/detail/127293</a><br>4.<a href="https://lealzhan.github.io/lealzhan.github.io/blog/2017/12/28/tone_mapping/" target="_blank" rel="noopener">https://lealzhan.github.io/lealzhan.github.io/blog/2017/12/28/tone_mapping/</a></p>
 
       
     </div>
@@ -516,7 +518,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2018/07/01/博客27/" title="tf.depth_to_space和torch.nn.pixel_shuffle">http://kevinj-huang.github.io/2018/07/01/博客27/</a>
+    <a href="http://kevinj-huang.github.io/2019/04/26/博客103/" title="tone mapping">http://kevinj-huang.github.io/2019/04/26/博客103/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -559,8 +561,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/01/博客21/" rel="next" title="Dncnn,U-net了解">
-                <i class="fa fa-chevron-left"></i> Dncnn,U-net了解
+              <a href="/2019/04/26/博客102/" rel="next" title="White Patch Retinex">
+                <i class="fa fa-chevron-left"></i> White Patch Retinex
               </a>
             
           </div>
@@ -568,10 +570,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/01/博客26/" rel="prev" title="常见图像格式了解">
-                常见图像格式了解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -630,8 +628,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -766,6 +773,22 @@
 		<!--my custom code end-->
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#基于全局的tone-mapping"><span class="nav-number">1.</span> <span class="nav-text">基于全局的tone mapping</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于局部的tone-apping"><span class="nav-number">2.</span> <span class="nav-text">基于局部的tone apping</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于分离压缩的tone-mapping"><span class="nav-number">3.</span> <span class="nav-text">基于分离压缩的tone mapping:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

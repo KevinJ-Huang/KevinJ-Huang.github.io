@@ -134,20 +134,18 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp; 最近做项目用到了这两个函数，本人经过仔细对比，认为它们的功能应该是完全一样的，都是将一个较多通道的特征变成较少通道的特征，具体定义如下：1def depth_to_space(input, block_size, name=None): &amp;emsp;&amp;emsp; block_size用来说明数据移动的方式。该函数的操作是将block_size x block_size数目">
+<meta name="description" content="&amp;emsp;&amp;emsp; White Patch Retinex的目的是为了恢复图像本身的色彩，因此势必会引入图像中外界光源的强度，成像表达式如下所示：  I(x_l) = G(x_{obj}) \int R(\lambda,x_{obj})L(\lambda)S(\lambda)d \lambda式中，G是图像成像的几何尺寸因子，R是物体在X位置处对波长$\lambda$的光反射系数（反射系数大">
 <meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tf.depth_to_space和torch.nn.pixel_shuffle">
-<meta property="og:url" content="http://kevinj-huang.github.io/2018/07/01/博客27/index.html">
+<meta property="og:title" content="White Patch Retinex">
+<meta property="og:url" content="http://kevinj-huang.github.io/2019/04/26/博客102/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="&amp;emsp;&amp;emsp; 最近做项目用到了这两个函数，本人经过仔细对比，认为它们的功能应该是完全一样的，都是将一个较多通道的特征变成较少通道的特征，具体定义如下：1def depth_to_space(input, block_size, name=None): &amp;emsp;&amp;emsp; block_size用来说明数据移动的方式。该函数的操作是将block_size x block_size数目">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; White Patch Retinex的目的是为了恢复图像本身的色彩，因此势必会引入图像中外界光源的强度，成像表达式如下所示：  I(x_l) = G(x_{obj}) \int R(\lambda,x_{obj})L(\lambda)S(\lambda)d \lambda式中，G是图像成像的几何尺寸因子，R是物体在X位置处对波长$\lambda$的光反射系数（反射系数大">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2018/07/01/5b38e7c5482af.jpeg">
-<meta property="og:updated_time" content="2018-07-01T15:05:30.820Z">
+<meta property="og:updated_time" content="2019-04-25T08:08:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tf.depth_to_space和torch.nn.pixel_shuffle">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 最近做项目用到了这两个函数，本人经过仔细对比，认为它们的功能应该是完全一样的，都是将一个较多通道的特征变成较少通道的特征，具体定义如下：1def depth_to_space(input, block_size, name=None): &amp;emsp;&amp;emsp; block_size用来说明数据移动的方式。该函数的操作是将block_size x block_size数目">
-<meta name="twitter:image" content="https://i.loli.net/2018/07/01/5b38e7c5482af.jpeg">
+<meta name="twitter:title" content="White Patch Retinex">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; White Patch Retinex的目的是为了恢复图像本身的色彩，因此势必会引入图像中外界光源的强度，成像表达式如下所示：  I(x_l) = G(x_{obj}) \int R(\lambda,x_{obj})L(\lambda)S(\lambda)d \lambda式中，G是图像成像的几何尺寸因子，R是物体在X位置处对波长$\lambda$的光反射系数（反射系数大">
 
 
 
@@ -177,13 +175,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2018/07/01/博客27/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2019/04/26/博客102/"/>
 
 
 
 
 
-  <title>tf.depth_to_space和torch.nn.pixel_shuffle | Resistence</title>
+  <title>White Patch Retinex | Resistence</title>
   
 
 
@@ -339,7 +337,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2018/07/01/博客27/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2019/04/26/博客102/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -356,7 +354,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">tf.depth_to_space和torch.nn.pixel_shuffle</h2>
+          <h2 class="post-title" itemprop="name headline">White Patch Retinex</h2>
         
 
         <div class="post-meta">
@@ -368,8 +366,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-01T23:05:30+08:00">
-                2018-07-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-26T22:13:45+08:00">
+                2019-04-26
               </time>
             
 
@@ -384,8 +382,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-01T23:05:30+08:00">
-                2018-07-01
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-25T16:08:10+08:00">
+                2019-04-25
               </time>
             
           </span>
@@ -403,8 +401,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tensorflow笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">tensorflow笔记</span>
+                  <a href="/categories/图像处理笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">图像处理笔记</span>
                   </a>
                 </span>
 
@@ -420,7 +418,7 @@
 
           
           
-             <span id="/2018/07/01/博客27/" class="leancloud_visitors" data-flag-title="tf.depth_to_space和torch.nn.pixel_shuffle">
+             <span id="/2019/04/26/博客102/" class="leancloud_visitors" data-flag-title="White Patch Retinex">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -450,7 +448,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  556字
+                  503字
                 </span>
               
 
@@ -466,7 +464,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3分钟
+                  2分钟
                 </span>
               
             </div>
@@ -487,15 +485,18 @@
       
 
       
-        <p>&emsp;&emsp; 最近做项目用到了这两个函数，本人经过仔细对比，认为它们的功能应该是完全一样的，都是将一个较多通道的特征变成较少通道的特征，具体定义如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">depth_to_space</span><span class="params">(input, block_size, name=None)</span>:</span></span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp; block_size用来说明数据移动的方式。该函数的操作是将block_size x block_size数目的特征图转换成一个不重叠的特征，新的特征高度为input_heigh x block_size，宽度为input_width x block_size，其中block_size大小一定是大于1的整数，为了观察该函数的效果，本人写了如下一段程序：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">x = tf.constant([[[[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">15</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">16</span>]],</span><br><span class="line">      [[<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">17</span>], [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>]]]])</span><br><span class="line">print(x.shape)</span><br><span class="line">y = tf.depth_to_space(x,<span class="number">2</span>)</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">     z = sess.run(y)</span><br><span class="line">print(z)</span><br><span class="line">输出结果为：</span><br><span class="line">[[[[ <span class="number">1</span>]</span><br><span class="line">   [ <span class="number">2</span>]</span><br><span class="line">   [ <span class="number">4</span>]</span><br><span class="line">   [ <span class="number">5</span>]]</span><br><span class="line"></span><br><span class="line">  [[ <span class="number">3</span>]</span><br><span class="line">   [<span class="number">15</span>]</span><br><span class="line">   [ <span class="number">6</span>]</span><br><span class="line">   [<span class="number">16</span>]]</span><br><span class="line"></span><br><span class="line">  [[ <span class="number">7</span>]</span><br><span class="line">   [ <span class="number">8</span>]</span><br><span class="line">   [<span class="number">10</span>]</span><br><span class="line">   [<span class="number">11</span>]]</span><br><span class="line"></span><br><span class="line">  [[ <span class="number">9</span>]</span><br><span class="line">   [<span class="number">17</span>]</span><br><span class="line">   [<span class="number">12</span>]</span><br><span class="line">   [<span class="number">13</span>]]]]</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp; 我做了一下模拟，大概是以下这样的：</p>
-<center class="half">
-   <img src="https://i.loli.net/2018/07/01/5b38e7c5482af.jpeg" width="400/">
-</center>
-
-<p>&emsp;&emsp; 方块是原来的特征图，该操作就是将圈里的部分重新组合成一行，总共四行，从四个2x2特征图变成一个4x4的特征图。对于pixel_shuffle,效果完全一样，其定义如下所示：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pixel_shuffle</span><span class="params">(input, upscale_factor)</span>:</span></span><br><span class="line">    <span class="string">r"""Rearranges elements in a tensor of shape ``[*, C*r^2, H, W]`` to a</span></span><br><span class="line"><span class="string">    tensor of shape ``[C, H*r, W*r]``.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    See :class:`~torch.nn.PixelShuffle` for details.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        input (Variable): Input</span></span><br><span class="line"><span class="string">        upscale_factor (int): factor to increase spatial resolution by</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Examples::</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; ps = nn.PixelShuffle(3)</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; input = autograd.Variable(torch.Tensor(1, 9, 4, 4))</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; output = ps(input)</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; print(output.size())</span></span><br><span class="line"><span class="string">        torch.Size([1, 1, 12, 12])</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    batch_size, channels, in_height, in_width = input.size()</span><br><span class="line">    channels //= upscale_factor ** <span class="number">2</span></span><br><span class="line"></span><br><span class="line">    out_height = in_height * upscale_factor</span><br><span class="line">    out_width = in_width * upscale_factor</span><br><span class="line"></span><br><span class="line">    input_view = input.contiguous().view(</span><br><span class="line">        batch_size, channels, upscale_factor, upscale_factor,</span><br><span class="line">        in_height, in_width)</span><br><span class="line"></span><br><span class="line">    shuffle_out = input_view.permute(<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>).contiguous()</span><br><span class="line">    <span class="keyword">return</span> shuffle_out.view(batch_size, channels, out_height, out_width)</span><br></pre></td></tr></table></figure></p>
-<p>顺便也给了一个例子，这里我就不赘述了。<br>这两个函数在low_level问题里用的地方挺多的，优点很明显，不需要进行上采样恢复原来的图像尺寸，从而避免信息的损失，看来以后可以用这种方法做一下上采样的尝试。</p>
+        <p>&emsp;&emsp; White Patch Retinex的目的是为了恢复图像本身的色彩，因此势必会引入图像中外界光源的强度，成像表达式如下所示：</p>
+<script type="math/tex; mode=display">
+I(x_l) = G(x_{obj}) \int R(\lambda,x_{obj})L(\lambda)S(\lambda)d \lambda</script><p>式中，G是图像成像的几何尺寸因子，R是物体在X位置处对波长$\lambda$的光反射系数（反射系数大小，直接决定图像亮度），L是光源强度，S是相机感光系数，最终成像为I,x分别表示像素在图像中的位置。一般RGB照相机仅仅对r,g,b三个颜色反应，即$\lambda$由三个窄带波长组成，那么上式可以表示成：</p>
+<script type="math/tex; mode=display">
+I_i(x,y) = G(x,y)R_i(x,y)L_i</script><h4 id="原始的White-patch-retinex算法"><a href="#原始的White-patch-retinex算法" class="headerlink" title="原始的White patch retinex算法"></a>原始的White patch retinex算法</h4><p>&emsp;&emsp; 该算法的主要思想是：如果有一个白色的patch在场景中，那么这个patch在每个band反射最大光照,那么这个就是就是该光照下的颜色，例如如果$R<em>i(x,y)=1$对于i属于r,g,b，且G为1，那么$I_i(x,y)=L_i$。<br>&emsp;&emsp; 如果像素的颜色和成像的I成正比，即$c_i(x,y)=I_i(x,y)$,那么有$c_i(x,y) = G(x,y)R_i(x,y)L_i$，根据white patch retinex思想，寻找图像中最亮的点，那么有$L</em>{i,max}=max(c_i(x,y))$，求得的$L_i$被作为光源的强度。恢复的图像为:</p>
+<script type="math/tex; mode=display">
+o_i(x,y)=\frac{c_i(x,y)}{L_{i,max}}=G_i(x,y)R_i(x,y)</script><h4 id="改进的White-patch-retinex算法"><a href="#改进的White-patch-retinex算法" class="headerlink" title="改进的White patch retinex算法"></a>改进的White patch retinex算法</h4><p>&emsp;&emsp; 上述的方法效果不是太好，这里改进的方法不再单纯使用最亮点来估计光源强度，而是求原始图像每个通道的累计直方图，取累计到某一个值p*n时对应的图像像素值作为$L_i$。其中p为百分值，实验中取为1%-5%,n为图像像素点数。具体如下式表示：</p>
+<script type="math/tex; mode=display">
+A_c = L_c = I_c(j_c)</script><p>其中所求像素值$j_c$应满足下列限制条件：</p>
+<script type="math/tex; mode=display">
+pn<=\Sigma^{n_b}_{k=j_c}H_c(k)且pn>=\Sigma^{n_b}_{k=j_c+1}H_c(k)</script><p>式中的$H_c$为各个通道的直方图，k为灰度级，根据上述理论就可以求得环境光。</p>
+<p>参考：<br>1.<a href="https://blog.csdn.net/u012736685/article/details/50730784" target="_blank" rel="noopener">https://blog.csdn.net/u012736685/article/details/50730784</a><br>2.<a href="https://blog.csdn.net/fightingforcv/article/details/46988431" target="_blank" rel="noopener">https://blog.csdn.net/fightingforcv/article/details/46988431</a></p>
 
       
     </div>
@@ -516,7 +517,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2018/07/01/博客27/" title="tf.depth_to_space和torch.nn.pixel_shuffle">http://kevinj-huang.github.io/2018/07/01/博客27/</a>
+    <a href="http://kevinj-huang.github.io/2019/04/26/博客102/" title="White Patch Retinex">http://kevinj-huang.github.io/2019/04/26/博客102/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -559,8 +560,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/01/博客21/" rel="next" title="Dncnn,U-net了解">
-                <i class="fa fa-chevron-left"></i> Dncnn,U-net了解
+              <a href="/2019/04/24/博客101/" rel="next" title="Retinex图像增强">
+                <i class="fa fa-chevron-left"></i> Retinex图像增强
               </a>
             
           </div>
@@ -569,8 +570,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/01/博客26/" rel="prev" title="常见图像格式了解">
-                常见图像格式了解 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/26/博客103/" rel="prev" title="tone mapping">
+                tone mapping <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -630,8 +631,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -766,6 +776,22 @@
 		<!--my custom code end-->
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#原始的White-patch-retinex算法"><span class="nav-number">1.</span> <span class="nav-text">原始的White patch retinex算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改进的White-patch-retinex算法"><span class="nav-number">2.</span> <span class="nav-text">改进的White patch retinex算法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
