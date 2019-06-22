@@ -134,18 +134,21 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp; 2019 cvpr的做图像去噪的工作，使用分数阶微分方程的理论优化，感觉使用类似理论优化网络的论文今年有不少了，论文理论部分没看懂，简要说一下其结构。&amp;emsp;&amp;emsp; 神经网络之所以在去噪上work是因为可以近似模拟微分方程。因为分数阶微分方程具有更长的记忆，可以更好的结合之前的中高频信息，所以可以采用这种策略对去噪网络进行优化，其不仅是前向优化，也可以进行后向优">
+<meta name="description" content="&amp;emsp;&amp;emsp; 两篇论文都来自ICMR，感觉这个会的论文还可以，两篇论文分别如下，这里粗略说一下它们的思想。 Progressive Image Enhancement under Aesthetic Guidance&amp;emsp;&amp;emsp; 这篇论文的思想是利用一个NIMA美学质量评价器做引导，学习自己到自己的映射，从而引导图像逐步增强，过程中给定每一步需要采取什么方式，如增强对比度等">
 <meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阅读论文《FOCENet》">
-<meta property="og:url" content="http://kevinj-huang.github.io/2019/06/19/博客155-未命名/index.html">
+<meta property="og:title" content="两篇使用美学质量评价做增强的论文">
+<meta property="og:url" content="http://kevinj-huang.github.io/2019/06/22/博客156/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="&amp;emsp;&amp;emsp; 2019 cvpr的做图像去噪的工作，使用分数阶微分方程的理论优化，感觉使用类似理论优化网络的论文今年有不少了，论文理论部分没看懂，简要说一下其结构。&amp;emsp;&amp;emsp; 神经网络之所以在去噪上work是因为可以近似模拟微分方程。因为分数阶微分方程具有更长的记忆，可以更好的结合之前的中高频信息，所以可以采用这种策略对去噪网络进行优化，其不仅是前向优化，也可以进行后向优">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; 两篇论文都来自ICMR，感觉这个会的论文还可以，两篇论文分别如下，这里粗略说一下它们的思想。 Progressive Image Enhancement under Aesthetic Guidance&amp;emsp;&amp;emsp; 这篇论文的思想是利用一个NIMA美学质量评价器做引导，学习自己到自己的映射，从而引导图像逐步增强，过程中给定每一步需要采取什么方式，如增强对比度等">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-19T03:25:48.107Z">
+<meta property="og:image" content="https://i.loli.net/2019/06/19/5d09ec6d0282c82726.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/19/5d09f09c1bb3297351.png">
+<meta property="og:updated_time" content="2019-06-19T08:43:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阅读论文《FOCENet》">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 2019 cvpr的做图像去噪的工作，使用分数阶微分方程的理论优化，感觉使用类似理论优化网络的论文今年有不少了，论文理论部分没看懂，简要说一下其结构。&amp;emsp;&amp;emsp; 神经网络之所以在去噪上work是因为可以近似模拟微分方程。因为分数阶微分方程具有更长的记忆，可以更好的结合之前的中高频信息，所以可以采用这种策略对去噪网络进行优化，其不仅是前向优化，也可以进行后向优">
+<meta name="twitter:title" content="两篇使用美学质量评价做增强的论文">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 两篇论文都来自ICMR，感觉这个会的论文还可以，两篇论文分别如下，这里粗略说一下它们的思想。 Progressive Image Enhancement under Aesthetic Guidance&amp;emsp;&amp;emsp; 这篇论文的思想是利用一个NIMA美学质量评价器做引导，学习自己到自己的映射，从而引导图像逐步增强，过程中给定每一步需要采取什么方式，如增强对比度等">
+<meta name="twitter:image" content="https://i.loli.net/2019/06/19/5d09ec6d0282c82726.png">
 
 
 
@@ -175,13 +178,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2019/06/19/博客155-未命名/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2019/06/22/博客156/"/>
 
 
 
 
 
-  <title>阅读论文《FOCENet》 | Resistence</title>
+  <title>两篇使用美学质量评价做增强的论文 | Resistence</title>
   
 
 
@@ -337,7 +340,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2019/06/19/博客155-未命名/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2019/06/22/博客156/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -354,7 +357,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">阅读论文《FOCENet》</h2>
+          <h2 class="post-title" itemprop="name headline">两篇使用美学质量评价做增强的论文</h2>
         
 
         <div class="post-meta">
@@ -366,8 +369,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-19T11:25:48+08:00">
-                2019-06-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-22T14:00:54+08:00">
+                2019-06-22
               </time>
             
 
@@ -382,7 +385,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-19T11:25:48+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-06-19T16:43:54+08:00">
                 2019-06-19
               </time>
             
@@ -418,7 +421,7 @@
 
           
           
-             <span id="/2019/06/19/博客155-未命名/" class="leancloud_visitors" data-flag-title="阅读论文《FOCENet》">
+             <span id="/2019/06/22/博客156/" class="leancloud_visitors" data-flag-title="两篇使用美学质量评价做增强的论文">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -448,7 +451,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  398字
+                  509字
                 </span>
               
 
@@ -464,7 +467,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1分钟
+                  2分钟
                 </span>
               
             </div>
@@ -485,18 +488,19 @@
       
 
       
-        <p>&emsp;&emsp; 2019 cvpr的做图像去噪的工作，使用分数阶微分方程的理论优化，感觉使用类似理论优化网络的论文今年有不少了，论文理论部分没看懂，简要说一下其结构。<br>&emsp;&emsp; 神经网络之所以在去噪上work是因为可以近似模拟微分方程。因为分数阶微分方程具有更长的记忆，可以更好的结合之前的中高频信息，所以可以采用这种策略对去噪网络进行优化，其不仅是前向优化，也可以进行后向优化。 一般DCNN里使用的是残差连接，其使用的是整数微分方程，其显然是没有分数阶微分方程有效的。此外论文还使用了多scale的策略增强整个去噪系统。两种scale之间的差别如下所示:</p>
+        <p>&emsp;&emsp; 两篇论文都来自ICMR，感觉这个会的论文还可以，两篇论文分别如下，这里粗略说一下它们的思想。</p>
+<h4 id="Progressive-Image-Enhancement-under-Aesthetic-Guidance"><a href="#Progressive-Image-Enhancement-under-Aesthetic-Guidance" class="headerlink" title="Progressive Image Enhancement under Aesthetic Guidance"></a>Progressive Image Enhancement under Aesthetic Guidance</h4><p>&emsp;&emsp; 这篇论文的思想是利用一个NIMA美学质量评价器做引导，学习自己到自己的映射，从而引导图像逐步增强，过程中给定每一步需要采取什么方式，如增强对比度等。这么做的好处是不使用成对的数据集，可以即插即用，同时也能给出具体的增强步骤，这个想法是很容易想到的，有点像ZRRS。结构图如下:</p>
 <center class="half">
-![1](/home/nwpu-ustc/KevinJ-Huang/source/_posts/博客155/1.png)
+    <img src="https://i.loli.net/2019/06/19/5d09ec6d0282c82726.png" width="600/">
 </center>
 
-<p>&emsp;&emsp; 论文的核心操作如下:</p>
-<script type="math/tex; mode=display">u_{t+1}^{l_l} = \Sigma_{k=0}^t w_k u_k^{l_l}+\sigma(\theta_t * (u_t^{l_l}+g(u_t^{l_{l+-1}})))</script><p>&emsp;&emsp; 这里$u_{t+1}^{l_l}$表示第t层的第$l_l$个scale的输出，网络结构如下所示:</p>
+<p>&emsp;&emsp; 可以看出来loss就是美学质量评价器的分数，通过一系列状态变量进行调整。总之思路简单work，还是不错的工作。</p>
+<h4 id="Naturalness-Preserved-Image-Aesthetic-Enhancement-with-Perceptual-Encoder-Constraint"><a href="#Naturalness-Preserved-Image-Aesthetic-Enhancement-with-Perceptual-Encoder-Constraint" class="headerlink" title="Naturalness Preserved Image Aesthetic Enhancement with Perceptual Encoder Constraint"></a>Naturalness Preserved Image Aesthetic Enhancement with Perceptual Encoder Constraint</h4><p>&emsp;&emsp; 这篇论文网络在UNet里加入了残差空洞卷积去获得不同的感受野，story讲了一堆，然并卵。主要的insight还是引入了一个encoder约束的loss,目的是为了解决训练数据和测试数据分布不一致的情况，避免过增强。结构图如下所示:</p>
 <center class="half">
-![2](/home/nwpu-ustc/KevinJ-Huang/source/_posts/博客155/2.png)
+    <img src="https://i.loli.net/2019/06/19/5d09f09c1bb3297351.png" width="600/">
 </center>
 
-<p>&emsp;&emsp; 可以看出不同层级的上下采样方式是pooling和unpooling。论文还分析了其和MemNet之间的关系，认为MemNet是使用长记忆连接的一种特例，但是并不solid。分析其和Unet之间的关系，认为UNet是在每个scale上只进行单步的优化，而论文提出的网络是更通用的结构（感觉和HRNet很像）,其他理论部分见论文。</p>
+<p>&emsp;&emsp; Loss包括L2 loss，基于VGG的loss,基于美学质量评价器的loss,和encoder约束的loss。这里重点说一下最后这个loss。论文分析过去增强方法在test数据上过增强的原因是encoder对训练集过拟合，出发点是encoder可以衡量两个图像在feature上的距离，如果将增强后的图像和参考图像送进encoder,它们的feature应该减小。encoder此时鲁棒因为它处于监督学习之下。这里我的理解是为了使得它们在encoder下具有相似的域，这样增强后的图像和target如果有相似的域，那么如果输入图片有略增强的图片，就可以避免过增强，从而提高网络的鲁棒性，这个思路值得借鉴。</p>
 
       
     </div>
@@ -517,7 +521,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2019/06/19/博客155-未命名/" title="阅读论文《FOCENet》">http://kevinj-huang.github.io/2019/06/19/博客155-未命名/</a>
+    <a href="http://kevinj-huang.github.io/2019/06/22/博客156/" title="两篇使用美学质量评价做增强的论文">http://kevinj-huang.github.io/2019/06/22/博客156/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -560,8 +564,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/18/博客154/" rel="next" title="阅读论文《Depth-attentional Features for Single-image Rain Removal》">
-                <i class="fa fa-chevron-left"></i> 阅读论文《Depth-attentional Features for Single-image Rain Removal》
+              <a href="/2019/06/19/博客155/" rel="next" title="阅读论文《FOCENet》">
+                <i class="fa fa-chevron-left"></i> 阅读论文《FOCENet》
               </a>
             
           </div>
@@ -569,6 +573,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/22/博客157/" rel="prev" title="CVPR2019 Workshop 几篇和图像增强相关的论文">
+                CVPR2019 Workshop 几篇和图像增强相关的论文 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -627,8 +635,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -660,7 +677,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">155</span>
+                  <span class="site-state-item-count">157</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -730,6 +747,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Progressive-Image-Enhancement-under-Aesthetic-Guidance"><span class="nav-number">1.</span> <span class="nav-text">Progressive Image Enhancement under Aesthetic Guidance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Naturalness-Preserved-Image-Aesthetic-Enhancement-with-Perceptual-Encoder-Constraint"><span class="nav-number">2.</span> <span class="nav-text">Naturalness Preserved Image Aesthetic Enhancement with Perceptual Encoder Constraint</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -757,7 +790,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">133.3k</span>
+    <span title="Site words total count">134.9k</span>
   
 </div>
 
