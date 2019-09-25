@@ -134,21 +134,20 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp; 2018 cvpr的一篇论文，做的是字体风格迁移。这里分为了两步，第一步是对整体的字体形状进行建模，第二步是迁移颜色和纹理。分别用GlyphNet和 OrnaNet 两个部分操作。整体结构如下所示：         &amp;emsp;&amp;emsp; 首先对于GlyphNet，其输入如下所示:         &amp;emsp;&amp;emsp; 该部分基于的基础是cGAN，这里将模仿的字母作">
+<meta name="description" content="&amp;emsp;&amp;emsp; 今年刚出来的一篇SR的论文，感觉idea有点意思，使用inpainting的方法用在SR里。核心思想是，将SR转换成inpainting问题，即SR是LR做stride的上采样后，中间空白部分使用inpainting的方法补上。操作步骤是先生成edge图，再使用edge map引导生成SR的图像。这个操作和inpainting的操作是非常像的，整体流程图如下所示:">
 <meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阅读论文《Multi-Content GAN for Few-Shot Font Style Transfer》">
-<meta property="og:url" content="http://kevinj-huang.github.io/2019/07/09/博客171/index.html">
+<meta property="og:title" content="阅读论文&quot;Edge-Informed Single Image Super-Resolution&quot;">
+<meta property="og:url" content="http://kevinj-huang.github.io/2019/09/25/博客187/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="&amp;emsp;&amp;emsp; 2018 cvpr的一篇论文，做的是字体风格迁移。这里分为了两步，第一步是对整体的字体形状进行建模，第二步是迁移颜色和纹理。分别用GlyphNet和 OrnaNet 两个部分操作。整体结构如下所示：         &amp;emsp;&amp;emsp; 首先对于GlyphNet，其输入如下所示:         &amp;emsp;&amp;emsp; 该部分基于的基础是cGAN，这里将模仿的字母作">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; 今年刚出来的一篇SR的论文，感觉idea有点意思，使用inpainting的方法用在SR里。核心思想是，将SR转换成inpainting问题，即SR是LR做stride的上采样后，中间空白部分使用inpainting的方法补上。操作步骤是先生成edge图，再使用edge map引导生成SR的图像。这个操作和inpainting的操作是非常像的，整体流程图如下所示:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2019/07/09/5d2481f92432f23603.png">
-<meta property="og:image" content="https://i.loli.net/2019/07/09/5d248292a8d7168640.png">
-<meta property="og:updated_time" content="2019-07-09T12:58:42.000Z">
+<meta property="og:image" content="https://i.loli.net/2019/09/21/8XC2NjmBVsvUbLg.png">
+<meta property="og:updated_time" content="2019-09-21T07:05:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阅读论文《Multi-Content GAN for Few-Shot Font Style Transfer》">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 2018 cvpr的一篇论文，做的是字体风格迁移。这里分为了两步，第一步是对整体的字体形状进行建模，第二步是迁移颜色和纹理。分别用GlyphNet和 OrnaNet 两个部分操作。整体结构如下所示：         &amp;emsp;&amp;emsp; 首先对于GlyphNet，其输入如下所示:         &amp;emsp;&amp;emsp; 该部分基于的基础是cGAN，这里将模仿的字母作">
-<meta name="twitter:image" content="https://i.loli.net/2019/07/09/5d2481f92432f23603.png">
+<meta name="twitter:title" content="阅读论文&quot;Edge-Informed Single Image Super-Resolution&quot;">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 今年刚出来的一篇SR的论文，感觉idea有点意思，使用inpainting的方法用在SR里。核心思想是，将SR转换成inpainting问题，即SR是LR做stride的上采样后，中间空白部分使用inpainting的方法补上。操作步骤是先生成edge图，再使用edge map引导生成SR的图像。这个操作和inpainting的操作是非常像的，整体流程图如下所示:">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/21/8XC2NjmBVsvUbLg.png">
 
 
 
@@ -178,13 +177,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2019/07/09/博客171/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2019/09/25/博客187/"/>
 
 
 
 
 
-  <title>阅读论文《Multi-Content GAN for Few-Shot Font Style Transfer》 | Resistence</title>
+  <title>阅读论文"Edge-Informed Single Image Super-Resolution" | Resistence</title>
   
 
 
@@ -340,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2019/07/09/博客171/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2019/09/25/博客187/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -357,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">阅读论文《Multi-Content GAN for Few-Shot Font Style Transfer》</h2>
+          <h2 class="post-title" itemprop="name headline">阅读论文"Edge-Informed Single Image Super-Resolution"</h2>
         
 
         <div class="post-meta">
@@ -369,8 +368,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-09T21:56:20+08:00">
-                2019-07-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-25T23:45:33+08:00">
+                2019-09-25
               </time>
             
 
@@ -385,8 +384,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-09T20:58:42+08:00">
-                2019-07-09
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-21T15:05:32+08:00">
+                2019-09-21
               </time>
             
           </span>
@@ -421,7 +420,7 @@
 
           
           
-             <span id="/2019/07/09/博客171/" class="leancloud_visitors" data-flag-title="阅读论文《Multi-Content GAN for Few-Shot Font Style Transfer》">
+             <span id="/2019/09/25/博客187/" class="leancloud_visitors" data-flag-title="阅读论文"Edge-Informed Single Image Super-Resolution"">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -451,7 +450,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  481字
+                  338字
                 </span>
               
 
@@ -467,7 +466,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2分钟
+                  1分钟
                 </span>
               
             </div>
@@ -488,18 +487,12 @@
       
 
       
-        <p>&emsp;&emsp; 2018 cvpr的一篇论文，做的是字体风格迁移。这里分为了两步，第一步是对整体的字体形状进行建模，第二步是迁移颜色和纹理。分别用GlyphNet和 OrnaNet 两个部分操作。整体结构如下所示：</p>
+        <p>&emsp;&emsp; 今年刚出来的一篇SR的论文，感觉idea有点意思，使用inpainting的方法用在SR里。核心思想是，将SR转换成inpainting问题，即SR是LR做stride的上采样后，中间空白部分使用inpainting的方法补上。操作步骤是先生成edge图，再使用edge map引导生成SR的图像。这个操作和inpainting的操作是非常像的，整体流程图如下所示:</p>
 <center class="half">
-    <img src="https://i.loli.net/2019/07/09/5d2481f92432f23603.png" width="600/">
+    <img src="https://i.loli.net/2019/09/21/8XC2NjmBVsvUbLg.png" width="800/">
 </center>
 
-<p>&emsp;&emsp; 首先对于GlyphNet，其输入如下所示:</p>
-<center class="half">
-    <img src="https://i.loli.net/2019/07/09/5d248292a8d7168640.png" width="400/">
-</center>
-
-<p>&emsp;&emsp; 该部分基于的基础是cGAN，这里将模仿的字母作为输入，维度为Bx26x64x64,B是batch大小，26是26个字母。这里全部输入26个字母很难获得它们之间的关联性，所以这里将它们堆在一起，在channel维度上去发掘它们之间的关联性，网络的输出也是Bx26x64x64。判别器使用局部判别和全局判别相结合。最后的loss表示为:</p>
-<script type="math/tex; mode=display">L(G_1) = \lambda L_{L_1}(G_1)+L_{LSGAN}(G_1,D_1)</script><p>其中第一项是生成和真实的L1 loss，第二项是全局和局部的LSGAN loss。这里训练好的GlyphNet称为G1’,在第二步里会去掉判别器。<br>&emsp;&emsp; 第二步只考虑OrnaNet，采用leave one out 通过GlyphNet生成字形，具体而言是观察到Tower五个字母，依次排除其中一个将另外四个输入，预测被抽出的那个字母。最后在五个字母全部都在的情况下预测其余21个字母。将预测的21个字母和前面预测的字母合在一起变为1x26x64x64作为OrnaNet的输入。也就是说，OraNet 最后的输出就是最后完整的 26 个艺术字。<br>&emsp;&emsp; 将上述输入重复成三个通道作为输入，生成图像也是三通道的彩色图。该部分的loss除了包括上面G1和GT的loss，还包括判别器D2的全局和局部LSGAN loss，以及G2输出和label之间的的L1 loss，G2输入和输出的L2 loss，和G2输入和label的loss，总之有点复杂。<br>&emsp;&emsp; 亮点还是使用留一法获得字形，分部训练进行迁移。</p>
+<p>&emsp;&emsp; 简而言之，就是首先弄到输入LR的灰度图和Canny算子获得的边缘图，上采样后输入，然后输出的是edge map。该部分使用两个loss，分别是基于GAN的hinge loss和在判别器上的feature loss。这里使用后者是因为后者的feature是基于边缘信息得到的，而VGG的feature则不是。<br>&emsp;&emsp; 对于第二个stage,将上一步获得的边缘图和stride上采样的LR结合在一起作为输入。这里stride上采样的LR中间都是0，从而第二步实际是一个inpainting的问题。输出的是目标SR图像。loss包括L1 loss，GAN的hinge loss，VGG loss和VGG特征上的style loss。两个stage的训练是分别训练的。<br>&emsp;&emsp; 虽然idea比较新，但是最后结果的PSNR drop还是比较多的，SSIM则是有了改善，毕竟是基于边缘的，SSIM有改善也比较正常。</p>
 
       
     </div>
@@ -520,7 +513,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2019/07/09/博客171/" title="阅读论文《Multi-Content GAN for Few-Shot Font Style Transfer》">http://kevinj-huang.github.io/2019/07/09/博客171/</a>
+    <a href="http://kevinj-huang.github.io/2019/09/25/博客187/" title="阅读论文"Edge-Informed Single Image Super-Resolution"">http://kevinj-huang.github.io/2019/09/25/博客187/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -563,8 +556,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/09/博客170/" rel="next" title="阅读论文《Decouple Learning for Parameterized Image Operators》">
-                <i class="fa fa-chevron-left"></i> 阅读论文《Decouple Learning for Parameterized Image Operators》
+              <a href="/2019/09/19/博客186/" rel="next" title="阅读论文“CFSNet:Toward a Controllable Feature Space for Image Restoration”">
+                <i class="fa fa-chevron-left"></i> 阅读论文“CFSNet:Toward a Controllable Feature Space for Image Restoration”
               </a>
             
           </div>
@@ -572,10 +565,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/10/博客172/" rel="prev" title="阅读论文《“Double-DIP” :Unsupervised Image Decomposition via Coupled Deep-Image-Priors》">
-                阅读论文《“Double-DIP” :Unsupervised Image Decomposition via Coupled Deep-Image-Priors》 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
