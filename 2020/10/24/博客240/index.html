@@ -123,7 +123,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="每周计划," />
 
 
 
@@ -134,20 +134,21 @@
 
 
 
-<meta name="description" content="title:阅读论文 self2self with dropout:learning self-supervised denoising from single imagecategories:论文笔记tags:每周计划 mathjax:true&amp;emsp;&amp;emsp; CVPR 2020，使用自监督学习做去噪。这篇论文的出发点是通过在网络里使用dropout最后施加平均，使得网络去噪的方差更小">
+<meta name="description" content="&amp;emsp;&amp;emsp; CVPR 2020，使用自监督学习做去噪。这篇论文的出发点是通过在网络里使用dropout最后施加平均，使得网络去噪的方差更小。在训练的时候，这里通过伯努利采样的方式构建一个自监督loss。在测试的时候，则将预测的结果进行平均，作为最终结果。网络结构如下所示:         网络上没有什么特别的地方，几个加dropout的地方需要留意一下。这里需要特别注意的是伯努利采样">
+<meta name="keywords" content="每周计划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Resistence">
-<meta property="og:url" content="http://kevinj-huang.github.io/2020/10/17/博客240/index.html">
+<meta property="og:title" content="阅读论文《self2self with dropout:learning self-supervised denoising from single image》">
+<meta property="og:url" content="http://kevinj-huang.github.io/2020/10/24/博客240/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="title:阅读论文 self2self with dropout:learning self-supervised denoising from single imagecategories:论文笔记tags:每周计划 mathjax:true&amp;emsp;&amp;emsp; CVPR 2020，使用自监督学习做去噪。这篇论文的出发点是通过在网络里使用dropout最后施加平均，使得网络去噪的方差更小">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; CVPR 2020，使用自监督学习做去噪。这篇论文的出发点是通过在网络里使用dropout最后施加平均，使得网络去噪的方差更小。在训练的时候，这里通过伯努利采样的方式构建一个自监督loss。在测试的时候，则将预测的结果进行平均，作为最终结果。网络结构如下所示:         网络上没有什么特别的地方，几个加dropout的地方需要留意一下。这里需要特别注意的是伯努利采样">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2020/09/28/H5Xymvhq4VB1RjE.png">
 <meta property="og:image" content="https://i.loli.net/2020/09/28/VrKBxSvTtRkwGgy.png">
 <meta property="og:image" content="https://i.loli.net/2020/09/28/KUcrmOo3EgsuRBt.png">
-<meta property="og:updated_time" content="2020-10-17T09:06:06.578Z">
+<meta property="og:updated_time" content="2020-10-24T11:55:19.938Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Resistence">
-<meta name="twitter:description" content="title:阅读论文 self2self with dropout:learning self-supervised denoising from single imagecategories:论文笔记tags:每周计划 mathjax:true&amp;emsp;&amp;emsp; CVPR 2020，使用自监督学习做去噪。这篇论文的出发点是通过在网络里使用dropout最后施加平均，使得网络去噪的方差更小">
+<meta name="twitter:title" content="阅读论文《self2self with dropout:learning self-supervised denoising from single image》">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; CVPR 2020，使用自监督学习做去噪。这篇论文的出发点是通过在网络里使用dropout最后施加平均，使得网络去噪的方差更小。在训练的时候，这里通过伯努利采样的方式构建一个自监督loss。在测试的时候，则将预测的结果进行平均，作为最终结果。网络结构如下所示:         网络上没有什么特别的地方，几个加dropout的地方需要留意一下。这里需要特别注意的是伯努利采样">
 <meta name="twitter:image" content="https://i.loli.net/2020/09/28/H5Xymvhq4VB1RjE.png">
 
 
@@ -178,13 +179,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2020/10/17/博客240/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2020/10/24/博客240/"/>
 
 
 
 
 
-  <title> | Resistence</title>
+  <title>阅读论文《self2self with dropout:learning self-supervised denoising from single image》 | Resistence</title>
   
 
 
@@ -340,7 +341,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2020/10/17/博客240/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2020/10/24/博客240/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -357,7 +358,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline"></h2>
+          <h2 class="post-title" itemprop="name headline">阅读论文《self2self with dropout:learning self-supervised denoising from single image》</h2>
         
 
         <div class="post-meta">
@@ -369,8 +370,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-17T17:06:06+08:00">
-                2020-10-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-24T19:55:19+08:00">
+                2020-10-24
               </time>
             
 
@@ -385,13 +386,35 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-10-17T17:06:06+08:00">
-                2020-10-17
+              <time title="更新于" itemprop="dateModified" datetime="2020-10-24T19:55:19+08:00">
+                2020-10-24
               </time>
             
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">论文笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -399,7 +422,7 @@
 
           
           
-             <span id="/2020/10/17/博客240/" class="leancloud_visitors" data-flag-title="">
+             <span id="/2020/10/24/博客240/" class="leancloud_visitors" data-flag-title="阅读论文《self2self with dropout:learning self-supervised denoising from single image》">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -429,7 +452,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  249字
+                  222字
                 </span>
               
 
@@ -466,9 +489,7 @@
       
 
       
-        <hr>
-<p>title:阅读论文 self2self with dropout:learning self-supervised denoising from single image<br>categories:论文笔记<br>tags:每周计划</p>
-<h2 id="mathjax-true"><a href="#mathjax-true" class="headerlink" title="mathjax:true"></a>mathjax:true</h2><p>&emsp;&emsp; CVPR 2020，使用自监督学习做去噪。这篇论文的出发点是通过在网络里使用dropout最后施加平均，使得网络去噪的方差更小。在训练的时候，这里通过伯努利采样的方式构建一个自监督loss。在测试的时候，则将预测的结果进行平均，作为最终结果。网络结构如下所示:</p>
+        <p>&emsp;&emsp; CVPR 2020，使用自监督学习做去噪。这篇论文的出发点是通过在网络里使用dropout最后施加平均，使得网络去噪的方差更小。在训练的时候，这里通过伯努利采样的方式构建一个自监督loss。在测试的时候，则将预测的结果进行平均，作为最终结果。网络结构如下所示:</p>
 <center class="half">
     <img src="https://i.loli.net/2020/09/28/H5Xymvhq4VB1RjE.png" width="500/">
 </center>
@@ -504,7 +525,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2020/10/17/博客240/" title="">http://kevinj-huang.github.io/2020/10/17/博客240/</a>
+    <a href="http://kevinj-huang.github.io/2020/10/24/博客240/" title="阅读论文《self2self with dropout:learning self-supervised denoising from single image》">http://kevinj-huang.github.io/2020/10/24/博客240/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -516,6 +537,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/每周计划/" rel="tag"># 每周计划</a>
+          
+        </div>
       
 
       
@@ -541,8 +568,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/10/17/博客242/" rel="next" title="阅读论文《multi-dimension modulation for image restoration with dynamic controllable residual learning》">
-                <i class="fa fa-chevron-left"></i> 阅读论文《multi-dimension modulation for image restoration with dynamic controllable residual learning》
+              <a href="/2020/10/24/博客245/" rel="next" title="阅读论文《latticenet:towards lightweight image super-resolution with lattice block》">
+                <i class="fa fa-chevron-left"></i> 阅读论文《latticenet:towards lightweight image super-resolution with lattice block》
               </a>
             
           </div>
@@ -550,10 +577,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/10/19/博客243/" rel="prev" title="阅读论文《unfolding the alternating optimization for blind super resolution》">
-                阅读论文《unfolding the alternating optimization for blind super resolution》 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -612,17 +635,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -735,22 +749,6 @@
 		<!--my custom code end-->
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mathjax-true"><span class="nav-number">1.</span> <span class="nav-text">mathjax:true</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -1135,6 +1133,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
   
 
 
