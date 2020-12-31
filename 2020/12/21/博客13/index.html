@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="UqlC4pwKIm" />
+  <meta name="baidu-site-verification" content="d3U0dGeqGw" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="1C1XSuJ8TgM2O0mcZvsgzEdy0IdRZOJfxDYPyh18U9Q" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="image restoration," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp; 这是2018CVPR的一篇论文（原论文地址：https://arxiv.org/abs/1711.06077）， 论文主要说明感知质量和图像失真程度并不是完全对应的。基于深度网络的特征失真可能更好的表示图像感知质量的好坏，而使用GAN网络可以获得具有较好感知质量效果的图像。失真-感知之间存在一个可以实现的区域，在这个可以实现的区域里失真程度和感知质量并不是完全的相关，也就">
+<meta name="keywords" content="image restoration">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阅读论文《The Perception-Distortion Tradeoff》">
+<meta property="og:url" content="http://kevinj-huang.github.io/2020/12/21/博客13/index.html">
+<meta property="og:site_name" content="Resistence">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; 这是2018CVPR的一篇论文（原论文地址：https://arxiv.org/abs/1711.06077）， 论文主要说明感知质量和图像失真程度并不是完全对应的。基于深度网络的特征失真可能更好的表示图像感知质量的好坏，而使用GAN网络可以获得具有较好感知质量效果的图像。失真-感知之间存在一个可以实现的区域，在这个可以实现的区域里失真程度和感知质量并不是完全的相关，也就">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2018/06/02/5b1294d518434.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/02/5b1295305aef5.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/02/5b12afe17c092.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/03/5b138371d5bfc.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/03/5b13886aef763.png">
+<meta property="og:updated_time" content="2020-12-20T16:43:09.070Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="阅读论文《The Perception-Distortion Tradeoff》">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 这是2018CVPR的一篇论文（原论文地址：https://arxiv.org/abs/1711.06077）， 论文主要说明感知质量和图像失真程度并不是完全对应的。基于深度网络的特征失真可能更好的表示图像感知质量的好坏，而使用GAN网络可以获得具有较好感知质量效果的图像。失真-感知之间存在一个可以实现的区域，在这个可以实现的区域里失真程度和感知质量并不是完全的相关，也就">
+<meta name="twitter:image" content="https://i.loli.net/2018/06/02/5b1294d518434.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kevinj-huang.github.io/2020/12/21/博客13/"/>
+
+
+
+
+
+  <title>阅读论文《The Perception-Distortion Tradeoff》 | Resistence</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-111723881-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Resistence</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">My Awesome Site</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2020/12/21/博客13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Resistence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Resistence">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">阅读论文《The Perception-Distortion Tradeoff》</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-21T00:43:09+08:00">
+                2020-12-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-12-21T00:43:09+08:00">
+                2020-12-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">论文笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/12/21/博客13/" class="leancloud_visitors" data-flag-title="阅读论文《The Perception-Distortion Tradeoff》">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,668字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp; 这是2018CVPR的一篇论文（原论文地址：<a href="https://arxiv.org/abs/1711.06077），" target="_blank" rel="noopener">https://arxiv.org/abs/1711.06077），</a> 论文主要说明感知质量和图像失真程度并不是完全对应的。基于深度网络的特征失真可能更好的表示图像感知质量的好坏，而使用GAN网络可以获得具有较好感知质量效果的图像。失真-感知之间存在一个可以实现的区域，在这个可以实现的区域里失真程度和感知质量并不是完全的相关，也就是失真较大时感知质量也可能比较好，论文给出的图如下所示：</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/06/02/5b1294d518434.png" width="350/">
+</center>
+
+<h4 id="失真和感知质量"><a href="#失真和感知质量" class="headerlink" title="失真和感知质量"></a>失真和感知质量</h4><p>&emsp;&emsp; 失真用来衡量给定图像和参考图像之间的差异程度。最常见的失真是MSE，但是与图像之间的语义相似性比较差。其他衡量失真的标准包括SSIM、MS-SSIM等，最近基于神经网络的距离误差可以捕获更多的语义信息，从而获得高质量的重建。<br>&emsp;&emsp; 感知质量是使图像看起来和自然图像更像而不考虑其与参考图像之间的相似性。目前主要的评价方法包括基于人类评价的质量评估方法，无参评价方法（如KL散度）和基于GAN网络的评价方法，这些方法基本都是利用统计学的知识进行评价。</p>
+<h4 id="建立问题的公式"><a href="#建立问题的公式" class="headerlink" title="建立问题的公式"></a>建立问题的公式</h4><p>&emsp;&emsp; 实际上自然图像可以看做是自然图像pX的自然分布的一个实现，可以把失真后的图像y看成是给定原图像x在条件分布pY|X下产生的结果，失真后还原的图像x’可以看成y在条件分布pX|Y产生的结果。失真的公式可以表示如下：</p>
+<script type="math/tex; mode=display">E(\triangle(X,X'))（1）</script><p>感知质量指标的表达式如下（值越低越好）：</p>
+<script type="math/tex; mode=display">d(p_{X},p_{X'})（2）</script><p>论文的目标是建立上面两个公式的平衡，首先说明为什么减少（1）不能必然导致较低的（2）。<br>&emsp;&emsp; 这里论文主要使用了两种失真方式去衡量图像失真。一种是均方误差失真（MMSE），另外一种是0-1失真（MAP）。x的原始分布是{-1,0,1}时，前者导致产生的结果是连续的，后者导致结果只有{-1,1}。换言之就是失真评估的方法会使图像掉落自然分布的”流型“，从而使分布与原始图像不同。具体见下图所示：</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/06/02/5b1295305aef5.png" width="350/">
+</center>
+
+<h4 id="感知-失真平衡"><a href="#感知-失真平衡" class="headerlink" title="感知-失真平衡"></a>感知-失真平衡</h4><p>&emsp;&emsp; 从上面可以看出低失真不一定能带来较好的感知质量，如何在给定失真的情况下得到最好的感知质量需要研究。信号恢复任务的感知-平衡函数由下式给出：</p>
+<script type="math/tex; mode=display">P(D)=min_{P_{X'|Y}}(d(p_X,p_{X'})) s.t. E(\triangle(X,X')]<=D(3)</script><p>&emsp;&emsp; 论文给了一个感知-失真平衡定理，即如果（2）中第二个参数是凸的，那么感知-失真平衡函数是：（1）不单调增的。（2）凸的。<br>&emsp;&emsp; 该定理不需要对失真度量进行假设，也就是对任意的感知-失真都存在这样的度量。虽然这并不意味着所有的失真都存在相同的感知-失真函数。P(D)的凸特性说明其在低失真和高感知的情况下存在非常严重的平衡。例如低失真情况下略微的失真改善会导致感知质量大幅度下降，同理，高感知情况下略微的感知改善会导致失真大量增加。<br>&emsp;&emsp; 然后讨论了感知-失真和速率失真理论的联系。信号的速率失真函数和互信息密切相关。当然速率失真和要讨论的情况有一些不同，这里可参考论文不再赘述。</p>
+<h4 id="通过GAN进行平衡"><a href="#通过GAN进行平衡" class="headerlink" title="通过GAN进行平衡"></a>通过GAN进行平衡</h4><p>&emsp;&emsp; 可以通过GAN来设计接近感知-失真平衡曲线的估计器。具体可以通过修改损失函数得到，如下所示：</p>
+<script type="math/tex; mode=display">l_{gen}=l_{distortion}+\lambda l_{adv}(4)</script><p>&emsp;&emsp; 第一项表示失真，第二项的生成器学习d(pX,pX’)，所以（4）式接近于学习目标：</p>
+<script type="math/tex; mode=display">l_{gen}=E[\triangle(x,x')]+\lambda d(p_X,p_{X'}) (5)</script><p>&emsp;&emsp; 这里最小化（5）可以等效为最小化（3）,变化的$\lambda$产生变化的D,从而产生感知-失真函数的估计量。可以使用这种方法去获得感知-失真平衡，通过将$\lambda$设定为[0,0.3]之间，改变参数可得到曲线，如下图所示：</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/06/02/5b12afe17c092.png" width="350/">
+</center>
+
+<p>&emsp;&emsp; 同样可以看出，失真函数使用MMSE比使用MAP在产生相同失真情况下，感知质量更好，同时也比随机抽取的失真要小。</p>
+<h4 id="实用的评估算法"><a href="#实用的评估算法" class="headerlink" title="实用的评估算法"></a>实用的评估算法</h4><p>&emsp;&emsp; 定义：如果算法A在失真和感知质量上优于算法B，则称算法A支配算法B。（注意：如果无法同时在失真和感知质量上有较好的效果，那么算法A和算法B无法一方支配另一方，认为它们具有同样好的效果）。<br>&emsp;&emsp; 定义：如果一个算法不被一组算法中的其他算法支配，那么这个算法被认为是可以接受的。<br>&emsp;&emsp; 论文这里说明失真一般通过全参考（FR）方式来度量，包括（RMSE/SSIM/MS-SSIM/IFC/VIF/VGG2.2)等。为了评价图像的感知质量，这里采用了无参考（NR)指标。这里对16种SR算法从FR和NR进行评估，结果如下图所示：</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/06/03/5b138371d5bfc.png" width="500/">
+</center>
+
+<p>&emsp;&emsp; 上图各部分都有共同的特点：（1）左下方是空白的，这反映感知-失真平面中的不可到达区域。（2）NR和FR指标是负相关的，这反映感知-失真的平衡。虽然IFC和VIF相比于SSIM和MSE可以更好的捕获视觉质量，但是也存在这种平衡。VGG2.2的平衡现象比MSE略弱，说明其是一个相对更感知评价指标。从上图中还可以看出，从左到右失真增加，但是感知质量是提高的。<br>&emsp;&emsp; 当远离不可到达区域时，FR和感知质量可以达到正相关，接近不可达达区域时却不符合，FR此时不能用来衡量图像感知质量，而NR可以用来表示感知质量好坏。因此在评估时需要对FR和NR统一进行评估，兼顾失真和感知质量。具体如下图所示：</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/06/03/5b13886aef763.png" width="300/">
+</center>
+
+<p>&emsp;&emsp; 在2017年之前，IFC指标可以很好的匹配感知质量，2017年以后就开始反相关。这篇论文说明了失真和感知质量之间存在矛盾，可以使用一对NR和FR指标进行评价比较。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Resistence
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://kevinj-huang.github.io/2020/12/21/博客13/" title="阅读论文《The Perception-Distortion Tradeoff》">http://kevinj-huang.github.io/2020/12/21/博客13/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/image-restoration/" rel="tag"># image restoration</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/12/21/博客12/" rel="next" title="使用tensorflow实现线性回归">
+                <i class="fa fa-chevron-left"></i> 使用tensorflow实现线性回归
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/12/21/博客14/" rel="prev" title="使用tensorflow实现logistic回归">
+                使用tensorflow实现logistic回归 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTI3OC8xMTgxNA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Resistence" />
+            
+              <p class="site-author-name" itemprop="name">Resistence</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+			<!--my custom code begin-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+			<script type="text/javascript">
+			  $("#sidebar").hover(function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 1});
+			  },function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 0});
+			  });
+			</script>
+			<div id="mydivshow" class="mydivshow">
+			<!--my custom code end-->
+			
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">262</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/KevinJ-Huang" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/huang-jie-65-63/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-bell"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="nwpuhuangjie@outlook.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/CHNguoshiwushuang" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/5376463830/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+        </div>
+		<!--my custom code begin-->
+		</div>
+		<!--my custom code end-->
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#失真和感知质量"><span class="nav-number">1.</span> <span class="nav-text">失真和感知质量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建立问题的公式"><span class="nav-number">2.</span> <span class="nav-text">建立问题的公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#感知-失真平衡"><span class="nav-number">3.</span> <span class="nav-text">感知-失真平衡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过GAN进行平衡"><span class="nav-number">4.</span> <span class="nav-text">通过GAN进行平衡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实用的评估算法"><span class="nav-number">5.</span> <span class="nav-text">实用的评估算法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Resistence</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">203.8k</span>
+  
+</div>
+
+
+
+
+
+
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+**  <span id="busuanzi_container_site_pv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+**
+</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Nq0gYzgvTOwNARshaOLO6uMo-gzGzoHsz", "R2FkCzz5AmolE24dN77lKIa7");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+  <script src="/js/src/Aplayer-Controler.js"></script>
+<div id="AP-controler"></div>
+<script type="text/javascript">
+var myapc=new APlayer_Controler({
+		APC_dom:$('#AP-controler'),
+		aplayer:ap, //此为绑定的aplayer对象
+		attach_right:false,
+		position:{top:'300px',bottom:''},
+		fixed:true,
+		btn_width:100,
+		btn_height:120,
+		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+		img_style:{repeat:'no-repeat',position:'center',size:'contain'},
+		ctrls_color:'rgba(173,255,47,0.8)',
+		ctrls_hover_color:'rgba(255,140,0,0.7)',
+		tips_on:true,
+		tips_width:140,
+		tips_height:25,
+		tips_color:'rgba(255,255,255,0.6)',
+		tips_content:{},
+		timeout:30
+	});
+</script>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+</body>
+</html>

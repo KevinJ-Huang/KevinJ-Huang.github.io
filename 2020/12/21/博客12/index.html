@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="UqlC4pwKIm" />
+  <meta name="baidu-site-verification" content="d3U0dGeqGw" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="1C1XSuJ8TgM2O0mcZvsgzEdy0IdRZOJfxDYPyh18U9Q" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="代码实践," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp; 线性回归的原理很简单，这里不赘述。使用tensorflow实现线性回归这个功能，麻雀虽小，五脏俱全。主要包括以下几个部分：1、产生数据。2、声明输入变量和待学习的变量。3、定义运算节点，也就是如何得到预测值。4、定义损失函数loss。5、对损失函数进行优化。&amp;emsp;&amp;emsp; 和网上一般的教程不一样，这一次我使用tensorflow的supervisor功能进行迭代">
+<meta name="keywords" content="代码实践">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用tensorflow实现线性回归">
+<meta property="og:url" content="http://kevinj-huang.github.io/2020/12/21/博客12/index.html">
+<meta property="og:site_name" content="Resistence">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; 线性回归的原理很简单，这里不赘述。使用tensorflow实现线性回归这个功能，麻雀虽小，五脏俱全。主要包括以下几个部分：1、产生数据。2、声明输入变量和待学习的变量。3、定义运算节点，也就是如何得到预测值。4、定义损失函数loss。5、对损失函数进行优化。&amp;emsp;&amp;emsp; 和网上一般的教程不一样，这一次我使用tensorflow的supervisor功能进行迭代">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2018/06/01/5b1130f11bdd5.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/01/5b11315d06d2f.png">
+<meta property="og:updated_time" content="2020-12-20T16:42:48.432Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用tensorflow实现线性回归">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 线性回归的原理很简单，这里不赘述。使用tensorflow实现线性回归这个功能，麻雀虽小，五脏俱全。主要包括以下几个部分：1、产生数据。2、声明输入变量和待学习的变量。3、定义运算节点，也就是如何得到预测值。4、定义损失函数loss。5、对损失函数进行优化。&amp;emsp;&amp;emsp; 和网上一般的教程不一样，这一次我使用tensorflow的supervisor功能进行迭代">
+<meta name="twitter:image" content="https://i.loli.net/2018/06/01/5b1130f11bdd5.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kevinj-huang.github.io/2020/12/21/博客12/"/>
+
+
+
+
+
+  <title>使用tensorflow实现线性回归 | Resistence</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-111723881-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Resistence</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">My Awesome Site</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2020/12/21/博客12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Resistence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Resistence">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">使用tensorflow实现线性回归</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-21T00:42:48+08:00">
+                2020-12-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-12-21T00:42:48+08:00">
+                2020-12-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tensorflow笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">tensorflow笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/12/21/博客12/" class="leancloud_visitors" data-flag-title="使用tensorflow实现线性回归">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,343字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp; 线性回归的原理很简单，这里不赘述。使用tensorflow实现线性回归这个功能，麻雀虽小，五脏俱全。主要包括以下几个部分：<br>1、产生数据。<br>2、声明输入变量和待学习的变量。<br>3、定义运算节点，也就是如何得到预测值。<br>4、定义损失函数loss。<br>5、对损失函数进行优化。<br>&emsp;&emsp; 和网上一般的教程不一样，这一次我使用tensorflow的supervisor功能进行迭代训练，在迭代过程中调用matplotlib库实时画出线性回归学习的过程，使用argparser方便变量传入。代码如下所示：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding(<span class="string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">logging.basicConfig(format=<span class="string">"[%(process)d] %(levelname)s %(filename)s:%(lineno)s | %(message)s"</span>)</span><br><span class="line">log = logging.getLogger(<span class="string">"train"</span>)</span><br><span class="line">log.setLevel(logging.INFO)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 产生数据</span></span><br><span class="line">N = <span class="number">200</span></span><br><span class="line">x_data = np.linspace(<span class="number">-1</span>, <span class="number">1</span>, N)</span><br><span class="line">y_data = <span class="number">2.0</span>*x_data + np.random.standard_normal(x_data.shape)*<span class="number">0.3</span> + <span class="number">0.5</span></span><br><span class="line">x_data = x_data.reshape([N, <span class="number">1</span>])</span><br><span class="line">y_data = y_data.reshape([N, <span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log_hook</span><span class="params">(sess, log_fetches)</span>:</span></span><br><span class="line">    data = sess.run(log_fetches)</span><br><span class="line">    step = data[<span class="string">'step'</span>]</span><br><span class="line">    loss = data[<span class="string">'loss'</span>]</span><br><span class="line">    log.info(<span class="string">'Step&#123;&#125; | loss = &#123;:.4f&#125;'</span>.format(step, loss))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(args)</span>:</span></span><br><span class="line">    x = tf.to_float(x_data)</span><br><span class="line">    y = tf.to_float(y_data)</span><br><span class="line">    W = tf.Variable(tf.random_normal([<span class="number">1</span>,<span class="number">1</span>],stddev=<span class="number">0.1</span>))</span><br><span class="line">    b = tf.Variable(tf.random_normal([<span class="number">1</span>],stddev=<span class="number">0.1</span>))</span><br><span class="line">    pred = tf.matmul(x, W) + b</span><br><span class="line">    loss = tf.reduce_sum(tf.pow(pred - y,<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">    global_step = tf.contrib.framework.get_or_create_global_step()</span><br><span class="line">    train_op = tf.train.GradientDescentOptimizer(args.learning_rate).minimize(loss,global_step=global_step)</span><br><span class="line">    tf.summary.scalar(<span class="string">'loss'</span>,loss)</span><br><span class="line"></span><br><span class="line">    log_fetches =&#123;</span><br><span class="line">        <span class="string">"W"</span>:W,</span><br><span class="line">        <span class="string">"b"</span>:b,</span><br><span class="line">        <span class="string">"loss"</span>:loss,</span><br><span class="line">        <span class="string">"step"</span>:global_step&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    sv = tf.train.Supervisor(logdir = args.checkpoint_dir,save_summaries_secs=args.summary_interval,</span><br><span class="line">                             save_model_secs=args.checkpoint_interval)</span><br><span class="line">    config = tf.ConfigProto()</span><br><span class="line">    config.gpu_options.allow_growth = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> sv.managed_session(config=config) <span class="keyword">as</span> sess:</span><br><span class="line">        sv.loop(args.log_interval,log_hook,(sess,log_fetches))</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            <span class="keyword">if</span> sv.should_stop():</span><br><span class="line">                log.info(<span class="string">'stopping supervisor'</span>)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                WArr, bArr, _ = sess.run([W,b,train_op])</span><br><span class="line">                plt.scatter(x_data, y_data)</span><br><span class="line">                plt.scatter(x_data, WArr*x_data+bArr)</span><br><span class="line">                plt.pause(<span class="number">0.3</span>)</span><br><span class="line">                plt.cla()</span><br><span class="line">            <span class="keyword">except</span> tf.errors.AbortedError:</span><br><span class="line">                log.error(<span class="string">'Aborted'</span>)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">except</span> KeyboardInterrupt:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        chkpt_path = os.path.join(args.checkpoint_dir, <span class="string">'on_stop.ckpt'</span>)</span><br><span class="line">        log.info(<span class="string">"Training complete, saving chkpt &#123;&#125;"</span>.format(chkpt_path))</span><br><span class="line">        sv.saver.save(sess, chkpt_path)</span><br><span class="line">        sv.request_stop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    parser = argparse.ArgumentParser()</span><br><span class="line">    parser.add_argument(<span class="string">'--learning_rate'</span>, default=<span class="number">1e-3</span>, type=float, help=<span class="string">'learning rate for the stochastic gradient update.'</span>)</span><br><span class="line">    parser.add_argument(<span class="string">'--checkpoint_dir'</span>, default=<span class="string">'summary/'</span>, help=<span class="string">'directory of summary to save.'</span>)</span><br><span class="line">    parser.add_argument(<span class="string">'--summary_interval'</span>, type=int, default=<span class="number">1</span>, help=<span class="string">'interval between tensorboard summaries (in s)'</span>)</span><br><span class="line">    parser.add_argument(<span class="string">'--log_interval'</span>, type=int, default=<span class="number">1</span>, help=<span class="string">'interval between log messages (in s).'</span>)</span><br><span class="line">    parser.add_argument(<span class="string">'--checkpoint_interval'</span>, type=int, default=<span class="number">20</span>,help=<span class="string">'interval between model checkpoints (in s)'</span>)</span><br><span class="line"></span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    main(args)</span><br></pre></td></tr></table></figure></p>
+<p>点击运行，效果如图所示（左边是开始时，右边是训练完成，可以实时显示变化过程）：</p>
+<center class="half">
+    <img src="https://i.loli.net/2018/06/01/5b1130f11bdd5.png" width="200/"> <img src="https://i.loli.net/2018/06/01/5b11315d06d2f.png" width="200/">
+</center>
+
+<p>下面具体进行分析。</p>
+<h4 id="matplotlib画出动态图"><a href="#matplotlib画出动态图" class="headerlink" title="matplotlib画出动态图"></a>matplotlib画出动态图</h4><p>&emsp;&emsp; 这里先用plt.scatter()画出散点图和拟合的直线图，然后通过plt.pause(0.3)使图像停留0.3s再更新，最后通过plt.cla()删除刚才图上的点和线，这样可以避免上一次的轨迹遗留到下一张图上。</p>
+<h4 id="argparser功能"><a href="#argparser功能" class="headerlink" title="argparser功能"></a>argparser功能</h4><p>&emsp;&emsp; 这里我通过argparser解析器传入一些参数，argparser的一般使用步骤如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse  </span><br><span class="line">parser = argparse.ArgumentParser()  </span><br><span class="line">parser.add_argument(<span class="string">"echo"</span>)  </span><br><span class="line">args = parser.parse_args()</span><br></pre></td></tr></table></figure></p>
+<p>“echo”里的内容一般有以下：<br>（1）name or flags：命令行参数名或者选项，其中命令行参数如果没给定，且没有设置defualt，则出错。但是如果是选项的话，则设置为None<br>（2）nargs：命令行参数的个数，一般使用通配符表示，其中，’?’表示只用一个，’*’表示0到多个，’+’表示至少一个<br>（3）default：默认值<br>（4）type：参数的类型，默认是字符串string类型，还有float、int等类型<br>（5）help：解释该参数的作用和意义<br>注意：name or flags里的内容前面一定要加上”—“符号否则参数会无法导入！</p>
+<h4 id="logging功能"><a href="#logging功能" class="headerlink" title="logging功能"></a>logging功能</h4><p>&emsp;&emsp; logging用来输出日志，print也可以输入日志，logging相对print来说更好控制输出在哪个地方，怎么输出及控制消息级别来过滤掉那些不需要的信息。<br>&emsp;&emsp; 这篇代码里，使用Logging的几个地方含义如下：<br>（1）logging.basicConfig(format=”[%(process)d] %(levelname)s %(filename)s:%(lineno)s | %(message)s”)<br>这里使用logging.basicConfig函数对日志的输出格式及方式做相关配置。<br>（2）log = logging.getLogger(“train”)<br>logger可以提供日志接口，供应用代码使用。可以通过logging.getLogger(name)获取logger对象。<br>（3）log.setLevel(logging.INFO)<br>指定日志的最低输出级别，默认为WARN级别，这里默认最低为INFO,低于它就不输出了。<br>（4）log.info log.error<br>日志级别的两种，一般有以下几种：<br>debug : 打印全部的日志,详细的信息,通常只出现在诊断问题上<br>info : 打印info,warning,error,critical级别的日志,确认一切按预期运行<br>warning : 打印warning,error,critical级别的日志,一个迹象表明,一些意想不到的事情发生了,或表明一些问题在不久的将来(例如。磁盘空间低”),这个软件还能按预期工作<br>error : 打印error,critical级别的日志,更严重的问题,软件没能执行一些功能<br>critical : 打印critical级别,一个严重的错误,这表明程序本身可能无法继续运行</p>
+<p>更多关于Logging可以参考网上的博文。<br>参考：<br>1、<a href="https://blog.csdn.net/freedom098/article/details/56280865/" target="_blank" rel="noopener">https://blog.csdn.net/freedom098/article/details/56280865/</a><br>2、<a href="https://blog.csdn.net/Sunshine_in_Moon/article/details/51332931" target="_blank" rel="noopener">https://blog.csdn.net/Sunshine_in_Moon/article/details/51332931</a><br>3、<a href="https://www.cnblogs.com/CJOKER/p/8295272.html" target="_blank" rel="noopener">https://www.cnblogs.com/CJOKER/p/8295272.html</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Resistence
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://kevinj-huang.github.io/2020/12/21/博客12/" title="使用tensorflow实现线性回归">http://kevinj-huang.github.io/2020/12/21/博客12/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/代码实践/" rel="tag"># 代码实践</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/12/21/博客11/" rel="next" title="opencv操作(1）：一些杂知识">
+                <i class="fa fa-chevron-left"></i> opencv操作(1）：一些杂知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/12/21/博客13/" rel="prev" title="阅读论文《The Perception-Distortion Tradeoff》">
+                阅读论文《The Perception-Distortion Tradeoff》 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTI3OC8xMTgxNA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Resistence" />
+            
+              <p class="site-author-name" itemprop="name">Resistence</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+			<!--my custom code begin-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+			<script type="text/javascript">
+			  $("#sidebar").hover(function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 1});
+			  },function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 0});
+			  });
+			</script>
+			<div id="mydivshow" class="mydivshow">
+			<!--my custom code end-->
+			
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">262</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/KevinJ-Huang" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/huang-jie-65-63/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-bell"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="nwpuhuangjie@outlook.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/CHNguoshiwushuang" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/5376463830/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+        </div>
+		<!--my custom code begin-->
+		</div>
+		<!--my custom code end-->
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#matplotlib画出动态图"><span class="nav-number">1.</span> <span class="nav-text">matplotlib画出动态图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#argparser功能"><span class="nav-number">2.</span> <span class="nav-text">argparser功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#logging功能"><span class="nav-number">3.</span> <span class="nav-text">logging功能</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Resistence</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">203.8k</span>
+  
+</div>
+
+
+
+
+
+
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+**  <span id="busuanzi_container_site_pv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+**
+</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Nq0gYzgvTOwNARshaOLO6uMo-gzGzoHsz", "R2FkCzz5AmolE24dN77lKIa7");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+  <script src="/js/src/Aplayer-Controler.js"></script>
+<div id="AP-controler"></div>
+<script type="text/javascript">
+var myapc=new APlayer_Controler({
+		APC_dom:$('#AP-controler'),
+		aplayer:ap, //此为绑定的aplayer对象
+		attach_right:false,
+		position:{top:'300px',bottom:''},
+		fixed:true,
+		btn_width:100,
+		btn_height:120,
+		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+		img_style:{repeat:'no-repeat',position:'center',size:'contain'},
+		ctrls_color:'rgba(173,255,47,0.8)',
+		ctrls_hover_color:'rgba(255,140,0,0.7)',
+		tips_on:true,
+		tips_width:140,
+		tips_height:25,
+		tips_color:'rgba(255,255,255,0.6)',
+		tips_content:{},
+		timeout:30
+	});
+</script>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+</body>
+</html>
