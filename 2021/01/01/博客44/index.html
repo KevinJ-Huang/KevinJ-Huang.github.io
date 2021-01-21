@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="UqlC4pwKIm" />
+  <meta name="baidu-site-verification" content="d3U0dGeqGw" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="1C1XSuJ8TgM2O0mcZvsgzEdy0IdRZOJfxDYPyh18U9Q" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="image enhancement," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp; 这是2017 siggraph的一篇论文，寒假boss让我看这篇论文我没怎么看懂。最近在公司实习，发现该论文的成果已经移到手机端上了，效果还非常不错。这里我重新温习了一下这篇论文，发现有许多可以借鉴的地方，是一篇非常不错的论文，这里重新叙述一下，谈谈我的理解。&amp;emsp;&amp;emsp; 首先说一下这篇文章的整体思路，这篇文章对于图像增强的方法是，将图像首先做下采样，继续卷积">
+<meta name="keywords" content="image enhancement">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阅读论文《Deep Bilateral Learning for Real-Time Image Enhancement》">
+<meta property="og:url" content="http://kevinj-huang.github.io/2021/01/01/博客44/index.html">
+<meta property="og:site_name" content="Resistence">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; 这是2017 siggraph的一篇论文，寒假boss让我看这篇论文我没怎么看懂。最近在公司实习，发现该论文的成果已经移到手机端上了，效果还非常不错。这里我重新温习了一下这篇论文，发现有许多可以借鉴的地方，是一篇非常不错的论文，这里重新叙述一下，谈谈我的理解。&amp;emsp;&amp;emsp; 首先说一下这篇文章的整体思路，这篇文章对于图像增强的方法是，将图像首先做下采样，继续卷积">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2018/08/19/5b7993e7767bb.png">
+<meta property="og:image" content="https://i.loli.net/2018/09/08/5b933dc43a4db.png">
+<meta property="og:image" content="https://i.loli.net/2018/09/08/5b9341717f78a.png">
+<meta property="og:image" content="https://i.loli.net/2018/09/08/5b938370926e1.png">
+<meta property="og:image" content="https://i.loli.net/2018/09/08/5b9384f445fd3.png">
+<meta property="og:image" content="https://i.loli.net/2018/09/08/5b9385aaf0146.png">
+<meta property="og:image" content="https://i.loli.net/2018/09/08/5b93864712a60.png">
+<meta property="og:image" content="https://i.loli.net/2018/09/08/5b938b121aa8b.png">
+<meta property="og:image" content="https://i.loli.net/2018/09/08/5b9394e95401f.png">
+<meta property="og:image" content="https://i.loli.net/2018/09/09/5b94dd28e1821.png">
+<meta property="og:image" content="https://i.loli.net/2018/09/09/5b94e10b1e6ef.png">
+<meta property="og:image" content="https://i.loli.net/2018/09/09/5b94e15892875.png">
+<meta property="og:image" content="https://i.loli.net/2018/09/09/5b94e3551897c.png">
+<meta property="og:image" content="https://i.loli.net/2018/09/09/5b94e3db8f230.png">
+<meta property="og:image" content="https://i.loli.net/2018/09/09/5b94e4c9bf989.png">
+<meta property="og:image" content="https://i.loli.net/2018/09/09/5b94e7201400f.png">
+<meta property="og:image" content="https://i.loli.net/2018/09/09/5b94e99fb4e82.png">
+<meta property="og:updated_time" content="2021-01-01T13:05:12.785Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="阅读论文《Deep Bilateral Learning for Real-Time Image Enhancement》">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 这是2017 siggraph的一篇论文，寒假boss让我看这篇论文我没怎么看懂。最近在公司实习，发现该论文的成果已经移到手机端上了，效果还非常不错。这里我重新温习了一下这篇论文，发现有许多可以借鉴的地方，是一篇非常不错的论文，这里重新叙述一下，谈谈我的理解。&amp;emsp;&amp;emsp; 首先说一下这篇文章的整体思路，这篇文章对于图像增强的方法是，将图像首先做下采样，继续卷积">
+<meta name="twitter:image" content="https://i.loli.net/2018/08/19/5b7993e7767bb.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kevinj-huang.github.io/2021/01/01/博客44/"/>
+
+
+
+
+
+  <title>阅读论文《Deep Bilateral Learning for Real-Time Image Enhancement》 | Resistence</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-111723881-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Resistence</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">My Awesome Site</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2021/01/01/博客44/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Resistence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Resistence">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">阅读论文《Deep Bilateral Learning for Real-Time Image Enhancement》</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-01T21:05:12+08:00">
+                2021-01-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-01-01T21:05:12+08:00">
+                2021-01-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">论文笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2021/01/01/博客44/" class="leancloud_visitors" data-flag-title="阅读论文《Deep Bilateral Learning for Real-Time Image Enhancement》">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,820字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp; 这是2017 siggraph的一篇论文，寒假boss让我看这篇论文我没怎么看懂。最近在公司实习，发现该论文的成果已经移到手机端上了，效果还非常不错。这里我重新温习了一下这篇论文，发现有许多可以借鉴的地方，是一篇非常不错的论文，这里重新叙述一下，谈谈我的理解。<br>&emsp;&emsp; 首先说一下这篇文章的整体思路，这篇文章对于图像增强的方法是，将图像首先做下采样，继续卷积下采样几次然后分别学习其全局特征和局部特征，并且结合之后再将其转换到双边网格之中。此外，对输入图像做仿射变换得到引导图，并将其用来引导前面的双边网格做空间和颜色深度上的插值，恢复到和原来图像一样大小。最后将得到的这个feature对原图像做仿射变换，得到输出图像。也就是说，整个过程就是再学习最后的那个变换矩阵。整体架构图如下所示：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/08/19/5b7993e7767bb.png" ,width="500/">
+</center>
+
+<p>&emsp;&emsp; 在Introduction里，论文提出了其三个策略,分别是：</p>
+<ol>
+<li>将大部分的预测在低分辨的双边网格下进行，每个像素包括的x，y维和第三维可以表示颜色功能，可以用来在对3D双边网格做slicing操作的时候考虑到输入的颜色。</li>
+<li>学习输入到输出的变换过程，而不是直接学习输出，因此整个结构学习的是一个仿射变换。</li>
+<li>虽然大部分的操作是在低分辨下进行的，但是损失函数最终建立在原来的分辨率上，从而使得低分辨下的操作去优化原分辨下的图像。</li>
+</ol>
+<p>&emsp;&emsp; 这篇文章主要是在先前的基础上进一步改进的，包括联合双边上采样（JBU)，这里是通过将双边滤波器作用在高分辨的引导图去产生局部平滑但是也保留边缘的上采样；双边引导上采样（BGU）则是引入了在双边网格里进行局部仿射变换，再通过引导图进行上采样。这篇论文实际上就是将BGU里的仿射变换操作通过网络进行学习。</p>
+<p>&emsp;&emsp; 进入正题，网络主要学习低分辨率下的仿射变换。图像增强不仅与图像局部特征有关，和图像的整体特征也有关例如直方图、平均亮度和场景类别（其实这里它就是想消除artifacts,不加global消除不了）。因此这里低分辨流的部分分成了局部特征和全局特征两个路径，最后融合成一个特征用来代表仿射变换。而对于高分辨流，这里主要的任务是在尽可能减少计算量的前提下，保留更多所需的高频部分和边缘信息，这里引入了双边网格里的slicing节点，该节点在引导图的基础上，在低分辨率网格的仿射系数中执行与数据相关的查找，从而实现上采样恢复到和原分辨率一样大的变换，最后作用在每个像素上并输出作用后的结果。</p>
+<h4 id="低分辨的特征提取"><a href="#低分辨的特征提取" class="headerlink" title="低分辨的特征提取"></a>低分辨的特征提取</h4><h5 id="1-Low-level-特征"><a href="#1-Low-level-特征" class="headerlink" title="1.Low-level 特征"></a>1.Low-level 特征</h5><p>&emsp;&emsp; 这部分没什么好说的，就是对图像进行下采样，通过一系列stride=2的卷积来实现（实际操作是先将图像resize成256x256再做这个特征下采样的），公式如下：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/09/08/5b933dc43a4db.png" ,width="500/">
+</center>
+
+<p>上式中，式中,I=1,…,$n_S$为每个卷积层的索引,c,c′为为卷积层的channels的索引.w′为卷积核权重矩阵,$b^i$为bias.激活函数σ采用ReLU,卷积时采用zero-padding。<br>&emsp;&emsp; 从这里可以看出，图像实际上是缩小了$2^{n_S}$倍，这个$n_S$有两个作用，1.其驱动学习低分辨输入和最后网格里仿射系数的学习，$n_S$越大，网格就越粗糙；2.其控制预测结果的复杂度，更深的网络层数可以获得更复杂更抽象的特征。这里论文设定$n_S$为4，卷积核大小是3x3。使用这个特征提取可以增强模型的表现力，如下图所示（和去除这部分使用a hard-coded splatting operation对比）：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/09/08/5b9341717f78a.png" ,width="500/">
+</center>
+
+<h5 id="2-局部特征"><a href="#2-局部特征" class="headerlink" title="2.局部特征"></a>2.局部特征</h5><p>&emsp;&emsp; 上部分特征进行进一步处理，通过$n_L=2$的卷积层进一步提取特征，这里设定stride=1,也就是这部分分辨率不再改变，同时通道数也不发生改变。所以加上前面的Low-Lebel那里用到的卷积的话，总共是$n_L+n_S$层卷积，如果需要提高最后网格系数的分辨率，可以通过减少$n_S$同时增加$n_L$来实现,这样总层数不变，网络的表现力也不会变化。如果没有局部特征，预测出来的系数会失去空间的位置信息。</p>
+<h5 id="3-全局特征"><a href="#3-全局特征" class="headerlink" title="3.全局特征"></a>3.全局特征</h5><p>&emsp;&emsp; 全局特征也是对Low-Level的特征进行进一步的发展，这里让$G^0:=S^{n_S}$。它包括两个stride=2的卷积层，再接着三个fc层，所以这里的全局特征一共有$n_G=5$层，当然这个fc层要求feature的大小是固定的，网络的输入图在提取特征时已经Resize成256x256了，所以这里不用考虑这个问题。<br>&emsp;&emsp; 全局特征具有的全局信息可以作为局部特征提取的先验，如果没有全局特征去描述图像信息的高维表示，网络可能会做出错误的局部特征表示，从而出现如下图的artifact:</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/09/08/5b938370926e1.png" ,width="500/">
+</center>
+
+<h5 id="4-融合和线性预测"><a href="#4-融合和线性预测" class="headerlink" title="4.融合和线性预测"></a>4.融合和线性预测</h5><p>&emsp;&emsp; 这里使用一个逐点的放射变换去融合全局特征和局部特征，使用relu函数进行激活，这里其实就是仿射相加，如下式所示：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/09/08/5b9384f445fd3.png" ,width="500/">
+</center>
+
+<p>&emsp;&emsp; 这样得到了一个16×16×64的特征矩阵,将其输入1×1的卷积层得到16×16大小,输出通道是96的特征:</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/09/08/5b9385aaf0146.png" ,width="500/">
+</center>
+
+<p>&emsp;&emsp; 网络的参数图如下所示:</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/09/08/5b93864712a60.png" ,width="500/">
+</center>
+
+<h4 id="将特征作为双边网格"><a href="#将特征作为双边网格" class="headerlink" title="将特征作为双边网格"></a>将特征作为双边网格</h4><p>&emsp;&emsp; 上述得到的融合特征可以作为第三维已经展开的双边网格：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/09/08/5b938b121aa8b.png" ,width="500/">
+</center>
+
+<p>&emsp;&emsp; 这里d=8,也就是网格的深度，通过这个转换，A可以看做是一个16x16x8的双边网格，每个格子有一个3x4的仿射颜色变换矩阵。这个转换使得前面的特征提取和操作都是在双边域中操作的，其对应于在x,y维上进行卷积，学习z和c维相互交融的特征。因此前面提取特征的操作也比使用3D卷积在双边网格中卷积更具有表现力，因为后者只能关联z维。同时其也比一般的双边网格要有效，因为其只关注c维上离散化。总之，也就是通过利用2D卷积并将最后一层作为双边网格，可以用来决定2D转换到3D的最优方式。</p>
+<h4 id="使用可训练的slicing-layer进行上采样"><a href="#使用可训练的slicing-layer进行上采样" class="headerlink" title="使用可训练的slicing layer进行上采样"></a>使用可训练的slicing layer进行上采样</h4><p>&emsp;&emsp; 这一步是要将上一步的信息转换到输入的高分辨率空间，这步操作基于双边网格里的slicing操作，通过一个单通道的引导图将A进行上采样。利用引导图g对A进行上采样，是利用A的系数进行三次线性插值，位置由g决定：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/09/08/5b9394e95401f.png" ,width="500/">
+</center>
+
+<p>&emsp;&emsp; 这里的$\tau(.)=max(1-|.|,0)$表示线性插值，$s_x$和$s_y$分别表示网格和全分辨原图的高度和宽度比例，特别的，每个像素都被分配了一个系数（这个系数应该是上面仿射变换的系数），其在网格里对应的深度由图像灰度值g(x,y)决定，也就是$A_c[i,j,g[x,y]]$。这部分有点难理解，个人理解是使用引导图对网格进行插值，插值后每个像素的深度是对应的引导图像素xd减去对应网格的深度（虽然这个深度是一个3x4的仿射变换，个人理解是对这个3x4矩阵的每个元素都做相同的操作，得到的也是一个3x4的大图）。这里的slicing使用OpenGL库完成，通过这个操作使得输出图的边缘遵循输入图的边缘，达到保边的效果，这个效应相对于反卷积来说更加明显，如下图所示。通过这个操作，可以将全分辨下复杂的操作转换成许多简单的局部操作（也就是在每个网格对应图像的操作）。</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/09/09/5b94dd28e1821.png" ,width="500/">
+</center>
+
+<h4 id="实现全分辨的最终输出"><a href="#实现全分辨的最终输出" class="headerlink" title="实现全分辨的最终输出"></a>实现全分辨的最终输出</h4><p>&emsp;&emsp; 后面的操作都是在全分辨率下进行的了，对于输入图像I,提取其特征$\phi$实现两个作用：1，它们可以用来获得引导图g；2,可以用来给上述得到的全分辨局部仿射模型做回归。</p>
+<h5 id="1-获得引导图的辅助网络"><a href="#1-获得引导图的辅助网络" class="headerlink" title="1.获得引导图的辅助网络"></a>1.获得引导图的辅助网络</h5><p>&emsp;&emsp; 这里将引导图的获得通过下面的公式，也就是对原始图像三个通道操作后相加得到：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/09/09/5b94e10b1e6ef.png" ,width="500/">
+</center>
+
+<p>其中$M<em>c^T$是一个3x3的颜色转换矩阵，b和b’是偏置，以及$\rho_c$是一个分段线性的转换模块，包括阈值$t</em>{c,i}$和梯度$a_{c,i}$，由16个relu激活的单元相加得到：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/09/09/5b94e15892875.png" ,width="500/">
+</center>
+
+<p>&emsp;&emsp; 这里的参数$M$,a,t,b,b’都是通过学习获得的，值得一提是是$\rho$限定在[0,1]之间去避免学习到一个退化的引导图。下面的两个图分别表示颜色转换矩阵，以及使用学习得到的引导图的效果：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/09/09/5b94e3551897c.png" ,width="500/">
+</center>
+
+<center class="half">
+   <img src="https://i.loli.net/2018/09/09/5b94e3db8f230.png" ,width="500/">
+</center>
+
+<h5 id="2-获得最终的输出"><a href="#2-获得最终的输出" class="headerlink" title="2.获得最终的输出"></a>2.获得最终的输出</h5><p>&emsp;&emsp; 最后的输出可以看做是对输入特征做仿射变换后的结果，如下式：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/09/09/5b94e4c9bf989.png" ,width="500/">
+</center>
+
+<p>&emsp;&emsp; 这里还对仿射变换时patch大小（这里个人理解是每个网格对应的像素范围）的尺寸做了讨论，尺寸较小时，效果也越好，但是速度较慢；尺寸较大时则正好相反。3D双边网格可视化的结果如下，其中纵轴是深度d=8，目的是进行颜色采样，横轴是仿射变换对应的值，如下图所示：</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/09/09/5b94e7201400f.png" ,width="500/">
+</center>
+
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>&emsp;&emsp; 对比实验及结果这里不再写了，这里简要说一下其限制。<br>1.可以通过对输入图做特征进一步的提取特征来增强其表达效果。例如一个网格里使用36个仿射变换系数作用在一个层级为3的高斯金字塔处理的输入图要比原始的bilateral效果更好，尽管速度会变慢，如下图所示:</p>
+<center class="half">
+   <img src="https://i.loli.net/2018/09/09/5b94e99fb4e82.png" ,width="500/">
+</center>
+
+<p>2.将该网络用在增强外的其他任务上，如色彩化、去雾、深度估计等效果较差，这是因为其有较强的假设即输出是由输入的局部仿射变换得到的。</p>
+<p>参考：<br><a href="https://blog.csdn.net/u011961856/article/details/77427977" target="_blank" rel="noopener">https://blog.csdn.net/u011961856/article/details/77427977</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Resistence
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://kevinj-huang.github.io/2021/01/01/博客44/" title="阅读论文《Deep Bilateral Learning for Real-Time Image Enhancement》">http://kevinj-huang.github.io/2021/01/01/博客44/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/image-enhancement/" rel="tag"># image enhancement</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/01/01/博客43/" rel="next" title="常见的图像分割网络了解（下）">
+                <i class="fa fa-chevron-left"></i> 常见的图像分割网络了解（下）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/01/01/博客45/" rel="prev" title="Bilateral Upsample">
+                Bilateral Upsample <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTI3OC8xMTgxNA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Resistence" />
+            
+              <p class="site-author-name" itemprop="name">Resistence</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+			<!--my custom code begin-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+			<script type="text/javascript">
+			  $("#sidebar").hover(function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 1});
+			  },function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 0});
+			  });
+			</script>
+			<div id="mydivshow" class="mydivshow">
+			<!--my custom code end-->
+			
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">262</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/KevinJ-Huang" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/huang-jie-65-63/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-bell"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="nwpuhuangjie@outlook.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/CHNguoshiwushuang" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/5376463830/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+        </div>
+		<!--my custom code begin-->
+		</div>
+		<!--my custom code end-->
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#低分辨的特征提取"><span class="nav-number">1.</span> <span class="nav-text">低分辨的特征提取</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-Low-level-特征"><span class="nav-number">1.1.</span> <span class="nav-text">1.Low-level 特征</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-局部特征"><span class="nav-number">1.2.</span> <span class="nav-text">2.局部特征</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-全局特征"><span class="nav-number">1.3.</span> <span class="nav-text">3.全局特征</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-融合和线性预测"><span class="nav-number">1.4.</span> <span class="nav-text">4.融合和线性预测</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将特征作为双边网格"><span class="nav-number">2.</span> <span class="nav-text">将特征作为双边网格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用可训练的slicing-layer进行上采样"><span class="nav-number">3.</span> <span class="nav-text">使用可训练的slicing layer进行上采样</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现全分辨的最终输出"><span class="nav-number">4.</span> <span class="nav-text">实现全分辨的最终输出</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-获得引导图的辅助网络"><span class="nav-number">4.1.</span> <span class="nav-text">1.获得引导图的辅助网络</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-获得最终的输出"><span class="nav-number">4.2.</span> <span class="nav-text">2.获得最终的输出</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">5.</span> <span class="nav-text">其他</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Resistence</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">203.8k</span>
+  
+</div>
+
+
+
+
+
+
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+**  <span id="busuanzi_container_site_pv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+**
+</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Nq0gYzgvTOwNARshaOLO6uMo-gzGzoHsz", "R2FkCzz5AmolE24dN77lKIa7");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+  <script src="/js/src/Aplayer-Controler.js"></script>
+<div id="AP-controler"></div>
+<script type="text/javascript">
+var myapc=new APlayer_Controler({
+		APC_dom:$('#AP-controler'),
+		aplayer:ap, //此为绑定的aplayer对象
+		attach_right:false,
+		position:{top:'300px',bottom:''},
+		fixed:true,
+		btn_width:100,
+		btn_height:120,
+		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+		img_style:{repeat:'no-repeat',position:'center',size:'contain'},
+		ctrls_color:'rgba(173,255,47,0.8)',
+		ctrls_hover_color:'rgba(255,140,0,0.7)',
+		tips_on:true,
+		tips_width:140,
+		tips_height:25,
+		tips_color:'rgba(255,255,255,0.6)',
+		tips_content:{},
+		timeout:30
+	});
+</script>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+</body>
+</html>

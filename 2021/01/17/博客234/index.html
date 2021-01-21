@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="UqlC4pwKIm" />
+  <meta name="baidu-site-verification" content="d3U0dGeqGw" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="1C1XSuJ8TgM2O0mcZvsgzEdy0IdRZOJfxDYPyh18U9Q" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="找工作," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="均从网上搜集而来，非本人面经，这里做简单整理，这里侧重于机器学习 PCA和SVD区别和联系：从目的上来说：SVD是一种矩阵分解方法，相当于因式分解，他的目的纯粹就是将一个矩阵拆分成多个矩阵相乘的形式。PCA从名字上就从方法上来说：找到矩阵的主成分，也就意味这从一出生这就是个降维的方法 从方法上来说：SVD可以获取另一个方向上的主成分，而PCA只能获得单个方向上的主成分 从应用上来说：SVD更适于输">
+<meta name="keywords" content="找工作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机视觉&#x2F;图像处理相关面经4">
+<meta property="og:url" content="http://kevinj-huang.github.io/2021/01/17/博客234/index.html">
+<meta property="og:site_name" content="Resistence">
+<meta property="og:description" content="均从网上搜集而来，非本人面经，这里做简单整理，这里侧重于机器学习 PCA和SVD区别和联系：从目的上来说：SVD是一种矩阵分解方法，相当于因式分解，他的目的纯粹就是将一个矩阵拆分成多个矩阵相乘的形式。PCA从名字上就从方法上来说：找到矩阵的主成分，也就意味这从一出生这就是个降维的方法 从方法上来说：SVD可以获取另一个方向上的主成分，而PCA只能获得单个方向上的主成分 从应用上来说：SVD更适于输">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-01-17T06:20:43.067Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机视觉&#x2F;图像处理相关面经4">
+<meta name="twitter:description" content="均从网上搜集而来，非本人面经，这里做简单整理，这里侧重于机器学习 PCA和SVD区别和联系：从目的上来说：SVD是一种矩阵分解方法，相当于因式分解，他的目的纯粹就是将一个矩阵拆分成多个矩阵相乘的形式。PCA从名字上就从方法上来说：找到矩阵的主成分，也就意味这从一出生这就是个降维的方法 从方法上来说：SVD可以获取另一个方向上的主成分，而PCA只能获得单个方向上的主成分 从应用上来说：SVD更适于输">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kevinj-huang.github.io/2021/01/17/博客234/"/>
+
+
+
+
+
+  <title>计算机视觉/图像处理相关面经4 | Resistence</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-111723881-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Resistence</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">My Awesome Site</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2021/01/17/博客234/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Resistence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Resistence">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">计算机视觉/图像处理相关面经4</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-17T14:20:43+08:00">
+                2021-01-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-01-17T14:20:43+08:00">
+                2021-01-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面经/" itemprop="url" rel="index">
+                    <span itemprop="name">面经</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2021/01/17/博客234/" class="leancloud_visitors" data-flag-title="计算机视觉/图像处理相关面经4">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,590字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>均从网上搜集而来，非本人面经，这里做简单整理，这里侧重于机器学习</p>
+<h4 id="PCA和SVD区别和联系："><a href="#PCA和SVD区别和联系：" class="headerlink" title="PCA和SVD区别和联系："></a>PCA和SVD区别和联系：</h4><p>从目的上来说：<br>SVD是一种矩阵分解方法，相当于因式分解，他的目的纯粹就是将一个矩阵拆分成多个矩阵相乘的形式。<br>PCA从名字上就从方法上来说：找到矩阵的主成分，也就意味这从一出生这就是个降维的方法</p>
+<p>从方法上来说：<br>SVD可以获取另一个方向上的主成分，而PCA只能获得单个方向上的主成分</p>
+<p>从应用上来说：<br>SVD更适于输入稀疏矩阵。因为PCA需要进行去均值化处理，所以不可避免的破坏了矩阵的稀疏性</p>
+<p>为什么用PCA而不是SVD，因为PCA转成协方差矩阵，是对称矩阵，特征值分解比SVD奇异值分解的计算量小的多</p>
+<h4 id="KD-Tree"><a href="#KD-Tree" class="headerlink" title="KD Tree"></a>KD Tree</h4><p>是一种分割k维数据空间的数据结构。主要应用于多维空间关键数据的搜索<br>原理：我们不比较全部的k维数据，而是选择其中某一个维度比较，根据这个维度进行空间划分。那接下来，我们需要做的是两件事：</p>
+<p>判断出在哪一个维度比较，也就是说，我们所要切割的面在哪一个维度上。当然这种切割需要遵循一个基本要求，那就是尽量通过这个维度的切割，使得数据集均分（为二）；<br>判断以哪个数据条目分依据划分。上面我们说，要使得数据集均分为二，那当然要选择一个合适的数据项，充当这个划分的“点”。</p>
+<p>思路：</p>
+<ol>
+<li>确定划分维度：这里维度的确定需要注意的是尽量要使得这个维度上所有数据项数值的分布尽可能地有大方差，也就是说，数据在这个维度上尽可能分散。这就好比是我们切东西，如果你切的是一根黄瓜，当让横着切要比竖着切更容易。所以我们应该先对所有维度的数值计算方差，选择方差最大的那个维度；</li>
+<li>选择充当切割标准的数据项：那么只需要求得这个维度上所有数值的中位数即可；</li>
+</ol>
+<p>步骤：<br>1.对于一个由n维数据构成的数据集，我们首先寻找方差最大的那个维度，设这个维度是dd，然后找出在维度dd上所有数据项的中位数mm，按mm划分数据集，一分为二，记这两个数据子集为Dl,Dr。建立树节点，存储这次划分的情况（记录划分的维度dd以及中位数mm）；<br>2.对Dl,Dr重复进行以上的划分，并且将新生成的树节点设置为上一次划分的左右孩子；<br>3.递归地进行以上两步，直到不能再划分为止（所谓不能划分是说当前节点中包含的数据项的数量小于了我们事先规定的阈值，不失一般性，我在此篇博客中默认这个阈值是2，也就是说所有叶子节点包含的数据项不会多于2条），不能再划分时，将对应的数据保存至最后的节点中，这些最后的节点也就是叶子节点。</p>
+<p>参考：<a href="https://blog.csdn.net/guoziqing506/java/article/details/54692392" target="_blank" rel="noopener">https://blog.csdn.net/guoziqing506/java/article/details/54692392</a></p>
+<h4 id="判别式模型、生成式模型"><a href="#判别式模型、生成式模型" class="headerlink" title="判别式模型、生成式模型"></a>判别式模型、生成式模型</h4><p>判别式模型是直接对条件概率p(y|x;θ)建模。常见的判别式模型有 线性回归模型、线性判别分析、支持向量机SVM、神经网络等。<br>生成式模型则会对x和y的联合分布p(x,y)建模，然后通过贝叶斯公式来求得p(yi|x)，然后选取使得p(yi|x)最大的yi。常见的生成式模型有 隐马尔可夫模型HMM、朴素贝叶斯模型、高斯混合模型GMM、LDA等。</p>
+<p>生成模型将学习数据类别，而判别模型将简单地学习不同类别数据之间的区别</p>
+<p>优缺点比较：<br>1.生成式模型最终得到的错误率会比判别式模型高, 但是其需要更少的训练样本就可以使错误率收敛<br>2.生成式模型更容易拟合, 比如在朴素贝叶斯中只需要计下数就可以, 而判别式模型通常都需要解决凸优化问题<br>3.生成式模型可以更好地利用无标签数据(比如DBN), 而判别式模型不可以<br>4.当添加新的类别时, 生成式模型不需要全部重新训练, 只需要计算新的类别<br>5.生成式模型可以体现更多数据本身的分布信息，其普适性更广。<br>6.两者的联系是：由生成式模型可以得到判别式模型，但由判别式模型不能得到生成式模型。</p>
+<h4 id="sin函数作为激活函数问题"><a href="#sin函数作为激活函数问题" class="headerlink" title="sin函数作为激活函数问题"></a>sin函数作为激活函数问题</h4><p>拿sin之类的函数去做激活函数，应当非常慎重，容易出现梯度消失的情况。而且激活函数要求单调的，不然很难优化。</p>
+<h4 id="L0-loss"><a href="#L0-loss" class="headerlink" title="L0 loss"></a>L0 loss</h4><p>计算非零个数，用于产生稀疏性，但是在实际研究中很少用，因为L0范数很难优化求解，是一个NP-hard问题，因此更多情况下我们是使用L1范数</p>
+<h4 id="梯度下降和牛顿法"><a href="#梯度下降和牛顿法" class="headerlink" title="梯度下降和牛顿法"></a>梯度下降和牛顿法</h4><p>梯度下降法更新参数的方式为目标函数在当前参数取值下的梯度值，前面再加上一个步长控制参数alpha。<br>牛顿法最初是为了求解函数值为零的时候变量的取值问题的。<br>梯度下降的目的是直接求解目标函数极小值，而牛顿法则变相地通过求解目标函数一阶导为零的参数值，进而求得目标函数最小值。</p>
+<p>通过比较牛顿法和梯度下降法的迭代公式，可以发现两者及其相似。海森矩阵的逆就好比梯度下降法的学习率参数alpha。牛顿法收敛速度相比梯度下降法很快，而且由于海森矩阵的的逆在迭代中不断减小，起到逐渐缩小步长的效果。<br>牛顿法的缺点就是计算海森矩阵的逆比较困难，消耗时间和计算资源。</p>
+<p>参考：<a href="https://blog.csdn.net/njustzj001/article/details/47402497" target="_blank" rel="noopener">https://blog.csdn.net/njustzj001/article/details/47402497</a></p>
+<h4 id="SVM核函数"><a href="#SVM核函数" class="headerlink" title="SVM核函数"></a>SVM核函数</h4><p>如果特征的数量大到和样本数量差不多，则选用LR或者线性核的SVM；<br>如果特征的数量小，样本的数量正常，则选用SVM+高斯核函数；<br>如果特征的数量小，而样本的数量很大，则需要手工添加一些特征从而变成第一种情况。</p>
+<h4 id="SVM为什么转换成对偶问题"><a href="#SVM为什么转换成对偶问题" class="headerlink" title="SVM为什么转换成对偶问题"></a>SVM为什么转换成对偶问题</h4><p>1.对偶问题将原始问题中的约束转为了对偶问题中的等式约束<br>2.方便核函数的引入<br>3.改变了问题的复杂度。由求特征向量w转化为求比例系数a，在原始问题下，求解的复杂度与样本的维度有关，即w的维度。在对偶问题下，只与样本数量有关。<br>4.求解更高效，因为只用求解比例系数a，而比例系数a只有支持向量才为非0，其他全为0.</p>
+<p>若约束条件比较复杂，则很难求解，因此我们希望把带约束的优化问题转化为无约束的优化问题。</p>
+<p>SVM为什么要引入对偶算法，原始问题无法求解吗？<br>先说结论：可以求解，SVM的本质上为凸二次优化即QP问题，大部分求解QP问题的包都可以对原始的SVM问题进行求解</p>
+<h4 id="lr为什么是凸优化问题"><a href="#lr为什么是凸优化问题" class="headerlink" title="lr为什么是凸优化问题"></a>lr为什么是凸优化问题</h4><p>损失函数是凸函数，加入正则后是严格凸函数</p>
+<h4 id="Softmax反向传播推导，求导，Sigmoid求导"><a href="#Softmax反向传播推导，求导，Sigmoid求导" class="headerlink" title="Softmax反向传播推导，求导，Sigmoid求导"></a>Softmax反向传播推导，求导，Sigmoid求导</h4><p><a href="https://blog.csdn.net/oBrightLamp/article/details/83959185" target="_blank" rel="noopener">https://blog.csdn.net/oBrightLamp/article/details/83959185</a><br><a href="https://zhuanlan.zhihu.com/p/37740860" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/37740860</a><br><a href="https://zhuanlan.zhihu.com/p/37773135" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/37773135</a><br><a href="https://www.jianshu.com/p/c02a1fbffad6" target="_blank" rel="noopener">https://www.jianshu.com/p/c02a1fbffad6</a></p>
+<h4 id="BP反向传播推导"><a href="#BP反向传播推导" class="headerlink" title="BP反向传播推导"></a>BP反向传播推导</h4><p>1.<a href="https://zhuanlan.zhihu.com/p/32819991" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32819991</a><br>2.<a href="https://juejin.im/entry/6844903586132918280" target="_blank" rel="noopener">https://juejin.im/entry/6844903586132918280</a></p>
+<h4 id="SVM-KKT条件"><a href="#SVM-KKT条件" class="headerlink" title="SVM KKT条件"></a>SVM KKT条件</h4><p>KKT用来解决不等式约束优化问题，对应求解拉格朗日时的约束，见：<a href="https://blog.csdn.net/TaoTaoFu/article/details/56843224" target="_blank" rel="noopener">https://blog.csdn.net/TaoTaoFu/article/details/56843224</a></p>
+<h4 id="为什么使用Softmax而不是多个logistic"><a href="#为什么使用Softmax而不是多个logistic" class="headerlink" title="为什么使用Softmax而不是多个logistic"></a>为什么使用Softmax而不是多个logistic</h4><p>使用 SoftMax 回归或者是多个 Logistic 回归二分类解决多分类问题，取决于类别之间是否互斥,不是互斥,使用多个Logistic 回归分类器更为合适</p>
+<h4 id="样本不平衡问题"><a href="#样本不平衡问题" class="headerlink" title="样本不平衡问题"></a>样本不平衡问题</h4><p>Loss对不同样本设置不同权重；每个batch对不同样本均匀采样</p>
+<h4 id="SVM多分类"><a href="#SVM多分类" class="headerlink" title="SVM多分类"></a>SVM多分类</h4><h4 id="LR和SVM的联系和区别"><a href="#LR和SVM的联系和区别" class="headerlink" title="LR和SVM的联系和区别"></a>LR和SVM的联系和区别</h4><p>联系：<br>1、LR和SVM都可以处理分类问题，且一般都用于处理线性二分类问题（在改进的情况下可以处理多分类问题）<br>2、两个方法都可以增加不同的正则化项，如l1、l2等等。所以在很多实验中，两种算法的结果是很接近的。<br>3、LR和SVM都可以用来做非线性分类，只要加核函数就好。<br>4、LR和SVM都是线性模型，当然这里我们不要考虑核函数<br>5、都属于判别模型</p>
+<p>区别：<br>1、LR是参数模型，SVM是非参数模型。<br>2、从目标函数来看，区别在于逻辑回归采用的是logistical loss，SVM采用的是hinge loss，这两个损失函数的目的都是增加对分类影响较大的数据点的权重，减少与分类关系较小的数据点的权重。（Hinge loss是为了使分类正确）<br>3、逻辑回归相对来说模型更简单，好理解，特别是大规模线性分类时比较方便。而SVM的理解和优化相对来说复杂一些，SVM转化为对偶问题后,分类只需要计算与少数几个支持向量的距离,这个在进行复杂核函数计算时优势很明显,能够大大简化模型和计算。<br>4、SVM不直接依赖数据分布，而LR则依赖，因为SVM只与支持向量那几个点有关系，而LR和所有点都有关系。<br>5、SVM依赖penalty系数，实验中需要做CV<br>6、SVM本身是结构风险最小化模型，而LR是经验风险最小化模型</p>
+<h4 id="手写Kmeans-KNN"><a href="#手写Kmeans-KNN" class="headerlink" title="手写Kmeans KNN"></a>手写Kmeans KNN</h4><p>从K-means里我们可以看出它其实就是EM的体现，E步是将每个数据点分配到距离它本身最近的一个簇类中，M步更新参数（中心点）来使J最小化，把K-Means看做EM算法的特例，EM算法是可以保证收敛的。<br><a href="https://blog.csdn.net/orangefly0214/article/details/86538865" target="_blank" rel="noopener">https://blog.csdn.net/orangefly0214/article/details/86538865</a><br><a href="https://blog.csdn.net/sinat_35512245/article/details/55051306" target="_blank" rel="noopener">https://blog.csdn.net/sinat_35512245/article/details/55051306</a></p>
+<h4 id="为什么svm可以用核函数，lr不可以？"><a href="#为什么svm可以用核函数，lr不可以？" class="headerlink" title="为什么svm可以用核函数，lr不可以？"></a>为什么svm可以用核函数，lr不可以？</h4><p>理论上可以，在加L2正则的逻辑回归上，w可以表示为输入x的加权和，就可以表示成点积的形式，从而使用核函数。而平时不用主要原因是1.逻辑回归本身处理的都是些高维稀疏的问题 2.计算时 逻辑回归在优化参数时所有样本点都参与了贡献，svm则只取离分离超平面最近的支持向量样本。导致使用核函数的逻辑回归计算量增大。</p>
+<h4 id="KL散度和交叉熵损失有什么不同？关系是啥？"><a href="#KL散度和交叉熵损失有什么不同？关系是啥？" class="headerlink" title="KL散度和交叉熵损失有什么不同？关系是啥？"></a>KL散度和交叉熵损失有什么不同？关系是啥？</h4><p>交叉熵是KL的一种特殊形式，即KL里去掉熵后得到，两者都具有不对称性。因为KL用来衡量两个数据之间分布的差异性，因为训练数据的熵已知，所以只需要让训练数据和训练模型的交叉熵最小，就可以得到模型参数，这就是为什么使用的是交叉熵<br><a href="https://blog.csdn.net/Dby_freedom/article/details/83374650" target="_blank" rel="noopener">https://blog.csdn.net/Dby_freedom/article/details/83374650</a></p>
+<h4 id="SVM的解是唯一的吗？"><a href="#SVM的解是唯一的吗？" class="headerlink" title="SVM的解是唯一的吗？"></a>SVM的解是唯一的吗？</h4><p>线性可分支持向量机利用间隔最大化求得最优分离超平面，解是唯一的。</p>
+<h4 id="Kmeans的K如何选择"><a href="#Kmeans的K如何选择" class="headerlink" title="Kmeans的K如何选择"></a>Kmeans的K如何选择</h4><p>各个点到cluster中心的距离的平方的和，当K变化时，曲线出现拐点的地方即为目标K，也叫elbow方法。</p>
+<h4 id="SVM-解决类别不平衡问题"><a href="#SVM-解决类别不平衡问题" class="headerlink" title="SVM 解决类别不平衡问题"></a>SVM 解决类别不平衡问题</h4><p>SVM可以解决类别不平衡问题，SVM的超平面只与支持向量有关，因此原离决策超平面的数据的多少并不重要<br>1)、对正例和负例赋予不同的C值，例如正例远少于负例，则正例的C值取得较大，这种方法的缺点是可能会偏离原始数据的概率分布；<br>2)、对训练集的数据进行预处理即对数量少的样本以某种策略进行采样，增加其数量或者减少数量多的样本，典型的方法如：随机插入法，缺点是可能出现overfitting，较好的是：Synthetic Minority Over-sampling TEchnique(SMOTE)，其缺点是只能应用在具体的特征空间中，不适合处理那些无法用特征向量表示的问题，当然增加样本也意味着训练时间可能增加；</p>
+<p>3)、基于核函数的不平衡数据处理。</p>
+<h4 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h4><p>极大似然估计，通俗理解来说，就是利用已知的样本结果信息，反推最具有可能（最大概率）导致这些样本结果出现的模型参数值！<br>换句话说，极大似然估计提供了一种给定观察数据来评估模型参数的方法，即：“模型已定，参数未知”。<br>求最大似然估计量的一般步骤：</p>
+<p>1）写出似然函数；<br>2）对似然函数取对数，并整理；<br>3）求导数；<br>4）解似然方程。</p>
+<h4 id="LR用交叉熵而不是MSE"><a href="#LR用交叉熵而不是MSE" class="headerlink" title="LR用交叉熵而不是MSE"></a>LR用交叉熵而不是MSE</h4><p>1.MSE导致梯度反传为0（<a href="https://blog.csdn.net/liuweiyuxiang/article/details/100812623）" target="_blank" rel="noopener">https://blog.csdn.net/liuweiyuxiang/article/details/100812623）</a><br>2.交叉熵损失函数由最大似然估计推出<br>3.交叉熵损失函数忽略其他分类的权重</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Resistence
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://kevinj-huang.github.io/2021/01/17/博客234/" title="计算机视觉/图像处理相关面经4">http://kevinj-huang.github.io/2021/01/17/博客234/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/找工作/" rel="tag"># 找工作</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/01/17/博客233/" rel="next" title="计算机视觉/图像处理相关面经3">
+                <i class="fa fa-chevron-left"></i> 计算机视觉/图像处理相关面经3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/01/17/博客235/" rel="prev" title="计算机视觉/图像处理相关面经5">
+                计算机视觉/图像处理相关面经5 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTI3OC8xMTgxNA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Resistence" />
+            
+              <p class="site-author-name" itemprop="name">Resistence</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+			<!--my custom code begin-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+			<script type="text/javascript">
+			  $("#sidebar").hover(function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 1});
+			  },function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 0});
+			  });
+			</script>
+			<div id="mydivshow" class="mydivshow">
+			<!--my custom code end-->
+			
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">262</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/KevinJ-Huang" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/huang-jie-65-63/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-bell"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="nwpuhuangjie@outlook.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/CHNguoshiwushuang" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/5376463830/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+        </div>
+		<!--my custom code begin-->
+		</div>
+		<!--my custom code end-->
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#PCA和SVD区别和联系："><span class="nav-number">1.</span> <span class="nav-text">PCA和SVD区别和联系：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KD-Tree"><span class="nav-number">2.</span> <span class="nav-text">KD Tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#判别式模型、生成式模型"><span class="nav-number">3.</span> <span class="nav-text">判别式模型、生成式模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sin函数作为激活函数问题"><span class="nav-number">4.</span> <span class="nav-text">sin函数作为激活函数问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L0-loss"><span class="nav-number">5.</span> <span class="nav-text">L0 loss</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降和牛顿法"><span class="nav-number">6.</span> <span class="nav-text">梯度下降和牛顿法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SVM核函数"><span class="nav-number">7.</span> <span class="nav-text">SVM核函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SVM为什么转换成对偶问题"><span class="nav-number">8.</span> <span class="nav-text">SVM为什么转换成对偶问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lr为什么是凸优化问题"><span class="nav-number">9.</span> <span class="nav-text">lr为什么是凸优化问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Softmax反向传播推导，求导，Sigmoid求导"><span class="nav-number">10.</span> <span class="nav-text">Softmax反向传播推导，求导，Sigmoid求导</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BP反向传播推导"><span class="nav-number">11.</span> <span class="nav-text">BP反向传播推导</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SVM-KKT条件"><span class="nav-number">12.</span> <span class="nav-text">SVM KKT条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么使用Softmax而不是多个logistic"><span class="nav-number">13.</span> <span class="nav-text">为什么使用Softmax而不是多个logistic</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#样本不平衡问题"><span class="nav-number">14.</span> <span class="nav-text">样本不平衡问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SVM多分类"><span class="nav-number">15.</span> <span class="nav-text">SVM多分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LR和SVM的联系和区别"><span class="nav-number">16.</span> <span class="nav-text">LR和SVM的联系和区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手写Kmeans-KNN"><span class="nav-number">17.</span> <span class="nav-text">手写Kmeans KNN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么svm可以用核函数，lr不可以？"><span class="nav-number">18.</span> <span class="nav-text">为什么svm可以用核函数，lr不可以？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KL散度和交叉熵损失有什么不同？关系是啥？"><span class="nav-number">19.</span> <span class="nav-text">KL散度和交叉熵损失有什么不同？关系是啥？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SVM的解是唯一的吗？"><span class="nav-number">20.</span> <span class="nav-text">SVM的解是唯一的吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kmeans的K如何选择"><span class="nav-number">21.</span> <span class="nav-text">Kmeans的K如何选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SVM-解决类别不平衡问题"><span class="nav-number">22.</span> <span class="nav-text">SVM 解决类别不平衡问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#极大似然估计"><span class="nav-number">23.</span> <span class="nav-text">极大似然估计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LR用交叉熵而不是MSE"><span class="nav-number">24.</span> <span class="nav-text">LR用交叉熵而不是MSE</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Resistence</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">203.8k</span>
+  
+</div>
+
+
+
+
+
+
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+**  <span id="busuanzi_container_site_pv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+**
+</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Nq0gYzgvTOwNARshaOLO6uMo-gzGzoHsz", "R2FkCzz5AmolE24dN77lKIa7");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+  <script src="/js/src/Aplayer-Controler.js"></script>
+<div id="AP-controler"></div>
+<script type="text/javascript">
+var myapc=new APlayer_Controler({
+		APC_dom:$('#AP-controler'),
+		aplayer:ap, //此为绑定的aplayer对象
+		attach_right:false,
+		position:{top:'300px',bottom:''},
+		fixed:true,
+		btn_width:100,
+		btn_height:120,
+		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+		img_style:{repeat:'no-repeat',position:'center',size:'contain'},
+		ctrls_color:'rgba(173,255,47,0.8)',
+		ctrls_hover_color:'rgba(255,140,0,0.7)',
+		tips_on:true,
+		tips_width:140,
+		tips_height:25,
+		tips_color:'rgba(255,255,255,0.6)',
+		tips_content:{},
+		timeout:30
+	});
+</script>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+</body>
+</html>
