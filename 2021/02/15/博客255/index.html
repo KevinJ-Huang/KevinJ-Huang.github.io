@@ -123,7 +123,7 @@
 
 
 
-  <meta name="keywords" content="每周计划," />
+  <meta name="keywords" content="image restoration," />
 
 
 
@@ -134,20 +134,20 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp; 这篇文章基本沿用了前面构建损失函数的一些思路，对于损失函数部分，这里的纹理损失函数仍然是基于Gram算子的，不同的是，这里的Gram算子只针对一张图作为目标，以其他图像的Gram算子和它的几何距离作为，定义如下： L_T=\sum_{l \epsilon L_T}||G^l(x)-G^l(x_0)||_2^2&amp;emsp;&amp;emsp; 这里的$x_0$就是那个选定的基准图像">
-<meta name="keywords" content="每周计划">
+<meta name="description" content="&amp;emsp;&amp;emsp; CVPR 2019，做非对齐情况下的图像反光去除。去反光的问题主要有两个，分别是恢复过程中存储歧义性（就是哪些需要被去除，哪些不需要），以及缺少真实情况下完全对齐的图片。论文使用的方法整体结构如下所示:         在网络基本的setting上，这里去掉了BN，以及将通道数从64提到了256通道，以及特征提取时使用VGG网络，因为VGG网络可以提取一些语义层面上的特征">
+<meta name="keywords" content="image restoration">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阅读论文《Texture Networks:Feed-forward Synthesis of Textures and Stylized Images》">
-<meta property="og:url" content="http://kevinj-huang.github.io/2020/12/21/博客5/index.html">
+<meta property="og:title" content="阅读论文&quot;Single Image Reflection Removal Exploiting Misaligned Training Data and Network Enhancements&quot;">
+<meta property="og:url" content="http://kevinj-huang.github.io/2021/02/15/博客255/index.html">
 <meta property="og:site_name" content="Resistence">
-<meta property="og:description" content="&amp;emsp;&amp;emsp; 这篇文章基本沿用了前面构建损失函数的一些思路，对于损失函数部分，这里的纹理损失函数仍然是基于Gram算子的，不同的是，这里的Gram算子只针对一张图作为目标，以其他图像的Gram算子和它的几何距离作为，定义如下： L_T=\sum_{l \epsilon L_T}||G^l(x)-G^l(x_0)||_2^2&amp;emsp;&amp;emsp; 这里的$x_0$就是那个选定的基准图像">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; CVPR 2019，做非对齐情况下的图像反光去除。去反光的问题主要有两个，分别是恢复过程中存储歧义性（就是哪些需要被去除，哪些不需要），以及缺少真实情况下完全对齐的图片。论文使用的方法整体结构如下所示:         在网络基本的setting上，这里去掉了BN，以及将通道数从64提到了256通道，以及特征提取时使用VGG网络，因为VGG网络可以提取一些语义层面上的特征">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2018/04/03/5ac36cd83064c.png">
-<meta property="og:updated_time" content="2020-12-20T16:40:55.970Z">
+<meta property="og:image" content="https://i.loli.net/2020/11/28/O9yEWYgKwtUdF5o.png">
+<meta property="og:updated_time" content="2021-02-15T15:41:10.951Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阅读论文《Texture Networks:Feed-forward Synthesis of Textures and Stylized Images》">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 这篇文章基本沿用了前面构建损失函数的一些思路，对于损失函数部分，这里的纹理损失函数仍然是基于Gram算子的，不同的是，这里的Gram算子只针对一张图作为目标，以其他图像的Gram算子和它的几何距离作为，定义如下： L_T=\sum_{l \epsilon L_T}||G^l(x)-G^l(x_0)||_2^2&amp;emsp;&amp;emsp; 这里的$x_0$就是那个选定的基准图像">
-<meta name="twitter:image" content="https://i.loli.net/2018/04/03/5ac36cd83064c.png">
+<meta name="twitter:title" content="阅读论文&quot;Single Image Reflection Removal Exploiting Misaligned Training Data and Network Enhancements&quot;">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; CVPR 2019，做非对齐情况下的图像反光去除。去反光的问题主要有两个，分别是恢复过程中存储歧义性（就是哪些需要被去除，哪些不需要），以及缺少真实情况下完全对齐的图片。论文使用的方法整体结构如下所示:         在网络基本的setting上，这里去掉了BN，以及将通道数从64提到了256通道，以及特征提取时使用VGG网络，因为VGG网络可以提取一些语义层面上的特征">
+<meta name="twitter:image" content="https://i.loli.net/2020/11/28/O9yEWYgKwtUdF5o.png">
 
 
 
@@ -177,13 +177,13 @@
 
 
 
-  <link rel="canonical" href="http://kevinj-huang.github.io/2020/12/21/博客5/"/>
+  <link rel="canonical" href="http://kevinj-huang.github.io/2021/02/15/博客255/"/>
 
 
 
 
 
-  <title>阅读论文《Texture Networks:Feed-forward Synthesis of Textures and Stylized Images》 | Resistence</title>
+  <title>阅读论文"Single Image Reflection Removal Exploiting Misaligned Training Data and Network Enhancements" | Resistence</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2020/12/21/博客5/">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2021/02/15/博客255/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Resistence">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">阅读论文《Texture Networks:Feed-forward Synthesis of Textures and Stylized Images》</h2>
+          <h2 class="post-title" itemprop="name headline">阅读论文"Single Image Reflection Removal Exploiting Misaligned Training Data and Network Enhancements"</h2>
         
 
         <div class="post-meta">
@@ -368,8 +368,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-21T00:40:55+08:00">
-                2020-12-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-15T23:41:10+08:00">
+                2021-02-15
               </time>
             
 
@@ -384,8 +384,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-12-21T00:40:55+08:00">
-                2020-12-21
+              <time title="更新于" itemprop="dateModified" datetime="2021-02-15T23:41:10+08:00">
+                2021-02-15
               </time>
             
           </span>
@@ -403,8 +403,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/style-transfer-Colorization/" itemprop="url" rel="index">
-                    <span itemprop="name">style transfer/Colorization</span>
+                  <a href="/categories/论文笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">论文笔记</span>
                   </a>
                 </span>
 
@@ -420,7 +420,7 @@
 
           
           
-             <span id="/2020/12/21/博客5/" class="leancloud_visitors" data-flag-title="阅读论文《Texture Networks:Feed-forward Synthesis of Textures and Stylized Images》">
+             <span id="/2021/02/15/博客255/" class="leancloud_visitors" data-flag-title="阅读论文"Single Image Reflection Removal Exploiting Misaligned Training Data and Network Enhancements"">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -450,7 +450,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  344字
+                  371字
                 </span>
               
 
@@ -487,10 +487,12 @@
       
 
       
-        <p>&emsp;&emsp; 这篇文章基本沿用了前面构建损失函数的一些思路，对于损失函数部分，这里的纹理损失函数仍然是基于Gram算子的，不同的是，这里的Gram算子只针对一张图作为目标，以其他图像的Gram算子和它的几何距离作为，定义如下：</p>
-<script type="math/tex; mode=display">L_T=\sum_{l \epsilon L_T}||G^l(x)-G^l(x_0)||_2^2</script><p>&emsp;&emsp; 这里的$x_0$就是那个选定的基准图像，x是生成的图像，下同。<br>&emsp;&emsp; 对于内容损失，同前面论文，还是定义在CNN的某几层上面，定义如下：</p>
-<script type="math/tex; mode=display">L_{C}(x;y)=\sum_{l \epsilon L_C}\sum_{i=1}^{N_1}||F_i^l(x)-F_i^l(y)||^2_2</script><p>&emsp;&emsp; 论文发现使用多尺度架构可以在减少参数的情况下产生更小的纹理损失和训练的更快，网络架构如下所示：<br><img src="https://i.loli.net/2018/04/03/5ac36cd83064c.png" alt=""><br>&emsp;&emsp; 所以在具体的网络实现上，这里的输入是若干张原图像y和噪声图z，随着join数目的加深，图像的尺寸也不断增加，这里输入图像尺寸的增加主要通过上采样的方式得到。图中每个卷积块包括两个3x3的过滤器和一个1x1的过滤器。一般输入图像y的数目控制在3个。加入的噪声和图像数目总共为5或者6.<br>&emsp;&emsp; 所以，学习目标为：</p>
-<script type="math/tex; mode=display">\theta_{x_0}=argmin_{\theta}E[L_T(g(y,z;\theta),x_0)+\alpha L_c(g(y,z;\theta),y)]</script><p>&emsp;&emsp; 通过调整参数$\alpha$可以调整生成图像纹理特征和内容特征所占比例。lun</p>
+        <p>&emsp;&emsp; CVPR 2019，做非对齐情况下的图像反光去除。去反光的问题主要有两个，分别是恢复过程中存储歧义性（就是哪些需要被去除，哪些不需要），以及缺少真实情况下完全对齐的图片。论文使用的方法整体结构如下所示:</p>
+<center class="half">
+    <img src="https://i.loli.net/2020/11/28/O9yEWYgKwtUdF5o.png">
+</center>
+
+<p>在网络基本的setting上，这里去掉了BN，以及将通道数从64提到了256通道，以及特征提取时使用VGG网络，因为VGG网络可以提取一些语义层面上的特征，可以帮助后续的去反射部分。此外，为了更加充分利用全局信息，这里还使用了channel attention和多尺度卷积。在对齐的仿真数据上，这里使用了Pixel loss，Feature loss和Adv loss。<br>&emsp;&emsp; 对于非对齐的情况下，这里论文发现高阶的语义特征对于非对齐情况下不敏感，但是可以有效帮助语义恢复，因此，这里使用VGG高层语义loss和Adv loss。在非对齐数据上训练时，这里在对齐情况下训练好的网络上进行finetune。<br>&emsp;&emsp; 实验里，这里对于非对齐的情况还进行了仿真，即对像素进行一些偏移，然后进行训练，从而可以得到定量化的结果。总而言之，论文对于非对齐部分处理还是比较粗糙的，网络上也有许多可以改进的点。</p>
 
       
     </div>
@@ -511,7 +513,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kevinj-huang.github.io/2020/12/21/博客5/" title="阅读论文《Texture Networks:Feed-forward Synthesis of Textures and Stylized Images》">http://kevinj-huang.github.io/2020/12/21/博客5/</a>
+    <a href="http://kevinj-huang.github.io/2021/02/15/博客255/" title="阅读论文"Single Image Reflection Removal Exploiting Misaligned Training Data and Network Enhancements"">http://kevinj-huang.github.io/2021/02/15/博客255/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -526,7 +528,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/每周计划/" rel="tag"># 每周计划</a>
+            <a href="/tags/image-restoration/" rel="tag"># image restoration</a>
           
         </div>
       
@@ -554,8 +556,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/12/21/博客4/" rel="next" title="阅读论文《Exploring the structure of a real-time, arbitrary neural artistic stylization network》">
-                <i class="fa fa-chevron-left"></i> 阅读论文《Exploring the structure of a real-time, arbitrary neural artistic stylization network》
+              <a href="/2021/02/15/博客91/" rel="next" title="AI学习笔记(四)">
+                <i class="fa fa-chevron-left"></i> AI学习笔记(四)
               </a>
             
           </div>
@@ -563,10 +565,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/12/21/博客8/" rel="prev" title="BN层的学习">
-                BN层的学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -669,7 +667,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -680,7 +678,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
