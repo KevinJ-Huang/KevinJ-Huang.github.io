@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="UqlC4pwKIm" />
+  <meta name="baidu-site-verification" content="d3U0dGeqGw" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="1C1XSuJ8TgM2O0mcZvsgzEdy0IdRZOJfxDYPyh18U9Q" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="代码实践," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="首先还是先导入必要的包，代码如下： 1234567891011import scipy.io as siofrom scipy.misc import imread, imresizeimport tensorflow as tfimport vgg16import numpy as npimport glob as gbimport osfrom matplotlib import pyplot">
+<meta name="keywords" content="代码实践">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图像检索的简单实现">
+<meta property="og:url" content="http://kevinj-huang.github.io/2021/03/20/boke82/index.html">
+<meta property="og:site_name" content="Resistence">
+<meta property="og:description" content="首先还是先导入必要的包，代码如下： 1234567891011import scipy.io as siofrom scipy.misc import imread, imresizeimport tensorflow as tfimport vgg16import numpy as npimport glob as gbimport osfrom matplotlib import pyplot">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/02/14/5c6506f8d972b.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/14/5c6507358ec1b.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/14/5c65075278e55.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/14/5c65077014c1f.png">
+<meta property="og:updated_time" content="2021-03-18T12:27:46.598Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图像检索的简单实现">
+<meta name="twitter:description" content="首先还是先导入必要的包，代码如下： 1234567891011import scipy.io as siofrom scipy.misc import imread, imresizeimport tensorflow as tfimport vgg16import numpy as npimport glob as gbimport osfrom matplotlib import pyplot">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/14/5c6506f8d972b.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kevinj-huang.github.io/2021/03/20/boke82/"/>
+
+
+
+
+
+  <title>图像检索的简单实现 | Resistence</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-111723881-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Resistence</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">My Awesome Site</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2021/03/20/boke82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Resistence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Resistence">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">图像检索的简单实现</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-20T23:16:53+08:00">
+                2021-03-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-03-18T20:27:46+08:00">
+                2021-03-18
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习实践笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习实践笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2021/03/20/boke82/" class="leancloud_visitors" data-flag-title="图像检索的简单实现">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,306字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  28分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>首先还是先导入必要的包，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scipy.io <span class="keyword">as</span> sio</span><br><span class="line"><span class="keyword">from</span> scipy.misc <span class="keyword">import</span> imread, imresize</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> vgg16</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> glob <span class="keyword">as</span> gb</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KDTree</span><br><span class="line"><span class="keyword">import</span> linecache</span><br><span class="line"><span class="keyword">import</span> time</span><br></pre></td></tr></table></figure>
+<pre><code>/usr/local/lib/python3.5/dist-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+</code></pre><p>然后导入预训练好的vgg16网络模型，加载到网络里，并准备好所有图像，准备构建图像数据库，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sess = tf.Session()</span><br><span class="line">imgs = tf.placeholder(tf.float32, [<span class="keyword">None</span>, <span class="number">224</span>, <span class="number">224</span>, <span class="number">3</span>])</span><br><span class="line">vgg = vgg16.Vgg16(<span class="string">'vgg16.npy'</span>)</span><br><span class="line">images = tf.placeholder(<span class="string">"float"</span>, [<span class="number">1</span>, <span class="number">224</span>, <span class="number">224</span>, <span class="number">3</span>])</span><br><span class="line">vgg.build(images)</span><br><span class="line"></span><br><span class="line">file = <span class="string">'dataset/'</span></span><br><span class="line">filenames = os.listdir(file)</span><br><span class="line">filenames.sort()</span><br><span class="line"></span><br><span class="line">feature_img = np.zeros(shape=[<span class="number">1</span>,<span class="number">4096</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>npy file loaded
+build model started
+build model finished: 0s
+</code></pre><p>再接着就是将图像加载进预训练的vgg16网络里，这里使用fc7层的特征作为特征，其是大小为4096的向量，遍历所有图像，将各个图像的特征逐行保存如feature.npy文件里，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">f = open(<span class="string">'label.txt'</span>, <span class="string">'w'</span>)</span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">    img_path = gb.glob(file+filename+<span class="string">"/*.jpg"</span>)</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    img_path.sort()</span><br><span class="line">    <span class="keyword">for</span> path <span class="keyword">in</span> img_path:</span><br><span class="line">        i = i%<span class="number">51</span></span><br><span class="line">        img = imread(path, mode=<span class="string">'RGB'</span>)</span><br><span class="line">        print(filename + str(i) + <span class="string">'.jpg'</span>)</span><br><span class="line">        img = imresize(img, (<span class="number">224</span>, <span class="number">224</span>))</span><br><span class="line">        img = np.expand_dims(img,axis=<span class="number">0</span>)</span><br><span class="line">        feed_dict = &#123;images: img&#125;</span><br><span class="line">        feature = sess.run(vgg.fc7, feed_dict=feed_dict)</span><br><span class="line">        feature = np.reshape(feature, [<span class="number">1</span>,<span class="number">4096</span>])</span><br><span class="line">        feature_img = np.concatenate([feature_img,feature],axis=<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># dic = &#123;'features': feature&#125;</span></span><br><span class="line">        <span class="comment"># sio.savemat('feature/'+filename+ str(i) + '.mat', dic)</span></span><br><span class="line">        name = path+<span class="string">'\n'</span></span><br><span class="line">        f.write(name)</span><br><span class="line">        i+=<span class="number">1</span></span><br><span class="line">f.close()</span><br><span class="line">np.save(<span class="string">'feature.npy'</span>,feature_img)</span><br></pre></td></tr></table></figure>
+<p>然后就是加载测试图片，获得测试图片特征的代码如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">extract_feature</span><span class="params">(path)</span>:</span></span><br><span class="line">    img = imread(path, mode=<span class="string">'RGB'</span>)</span><br><span class="line">    img = imresize(img, (<span class="number">224</span>, <span class="number">224</span>))</span><br><span class="line">    img = np.expand_dims(img, axis=<span class="number">0</span>)</span><br><span class="line">    feed_dict = &#123;images: img&#125;</span><br><span class="line">    test_feature = sess.run(vgg.fc7, feed_dict=feed_dict)</span><br><span class="line">    test_feature = np.reshape(test_feature, [<span class="number">1</span>,<span class="number">4096</span>])</span><br><span class="line">    <span class="keyword">return</span> test_feature</span><br></pre></td></tr></table></figure>
+<p>首先测试一张图的评价指标，这里使用了airplanes/image_0001.jpg，图片展示如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.figure()</span><br><span class="line">image = plt.imread(<span class="string">'dataset/airplanes/image_0001.jpg'</span>)</span><br><span class="line">plt.imshow(image)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<center class="half">
+    <img src="https://i.loli.net/2019/02/14/5c6506f8d972b.png" width="400/">
+</center>
+
+
+<p>然后获得这张图的特征，并和前面已经获得的图像库的特征进行匹配，获得最近的十张图，结果如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">start = int(round(time.time()* <span class="number">1000</span>))</span><br><span class="line">test_feature = extract_feature(<span class="string">'dataset/airplanes/image_0001.jpg'</span>)</span><br><span class="line">feature_lib = np.load(<span class="string">'feature.npy'</span>)</span><br><span class="line">tree = KDTree(feature_lib, leaf_size=<span class="number">10</span>)</span><br><span class="line">dist, ind = tree.query(test_feature, k=<span class="number">10</span>)</span><br><span class="line">end = int(round(time.time()* <span class="number">1000</span>))</span><br><span class="line">print(<span class="string">"消耗的时间是%.f ms"</span>%(end-start))</span><br><span class="line">print(<span class="string">"距离最近的十张图距离是"</span>,dist)</span><br><span class="line">print(<span class="string">"距离最近的十张图的索引是"</span>,ind)</span><br></pre></td></tr></table></figure>
+<pre><code>/usr/local/lib/python3.5/dist-packages/ipykernel_launcher.py:2: DeprecationWarning: `imread` is deprecated!
+`imread` is deprecated in SciPy 1.0.0, and will be removed in 1.2.0.
+Use ``imageio.imread`` instead.
+
+/usr/local/lib/python3.5/dist-packages/ipykernel_launcher.py:3: DeprecationWarning: `imresize` is deprecated!
+`imresize` is deprecated in SciPy 1.0.0, and will be removed in 1.2.0.
+Use ``skimage.transform.resize`` instead.
+  This is separate from the ipykernel package so we can avoid doing imports until
+
+
+消耗的时间是816 ms
+距离最近的十张图距离是 [[    0.         31118.32060277 32061.30867895 33426.1640262
+  33756.59609599 33955.5871336  34147.39183701 34280.35701924
+  34424.74113314 34482.05957456]]
+距离最近的十张图的索引是 [[  51   66   83 1976 1855   57 1764 1897 1768   97]]
+</code></pre><p>获得其中最接近的三张图的地址，展现这些图的图片，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">theline1=linecache.getline(<span class="string">"label.txt"</span>,int(ind[<span class="number">0</span>][<span class="number">0</span>]))</span><br><span class="line">theline2=linecache.getline(<span class="string">"label.txt"</span>,int(ind[<span class="number">0</span>][<span class="number">1</span>]))</span><br><span class="line">theline3=linecache.getline(<span class="string">"label.txt"</span>,int(ind[<span class="number">0</span>][<span class="number">2</span>]))</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> [theline1,theline2,theline3]:</span><br><span class="line">    plt.figure()</span><br><span class="line">    image = plt.imread(line[:<span class="number">-1</span>])</span><br><span class="line">    plt.imshow(image)</span><br><span class="line">    print(line)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+<pre><code>dataset/airplanes/image_0001.jpg
+</code></pre><center class="half">
+    <img src="https://i.loli.net/2019/02/14/5c6507358ec1b.png" width="400/">
+</center>
+
+
+<pre><code>dataset/airplanes/image_0016.jpg
+</code></pre><center class="half">
+    <img src="https://i.loli.net/2019/02/14/5c65075278e55.png" width="400/">
+</center>
+
+
+
+<pre><code>dataset/airplanes/image_0033.jpg
+</code></pre><center class="half">
+    <img src="https://i.loli.net/2019/02/14/5c65077014c1f.png" width="400/">
+</center>
+
+
+<p>从上面可以看出，展示出的图片和测试图片类别完全一致，其中最接近测试图片的图和测试图片一模一样。</p>
+<h3 id="测试一张图片的P-K-R-K-F-K和MRR-K指标"><a href="#测试一张图片的P-K-R-K-F-K和MRR-K指标" class="headerlink" title="测试一张图片的P-K,R-K,F-K和MRR-K指标"></a>测试一张图片的P-K,R-K,F-K和MRR-K指标</h3><p>还是以刚才那张图为例，这里先以k=10为例，测试其这四个指标，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Get_score</span><span class="params">(path,ind)</span>:</span></span><br><span class="line">    rank = []</span><br><span class="line">    corre = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(ind[<span class="number">0</span>].shape[<span class="number">0</span>]):</span><br><span class="line">        <span class="keyword">if</span> int(ind[<span class="number">0</span>][i]) == <span class="number">2050</span>:</span><br><span class="line">            ind[<span class="number">0</span>][i] = <span class="number">2049</span></span><br><span class="line">        <span class="keyword">if</span>(path.split(<span class="string">'/'</span>)[<span class="number">1</span>] == linecache.getline(<span class="string">"label.txt"</span>,int(ind[<span class="number">0</span>][i])+<span class="number">1</span>).split(<span class="string">'/'</span>)[<span class="number">1</span>]):</span><br><span class="line">            corre+=<span class="number">1</span></span><br><span class="line">            rank.append(i)</span><br><span class="line"><span class="comment">#         print(linecache.getline("label.txt",int(ind[0][i])).split('/')[1])</span></span><br><span class="line">    rank = np.array(rank)</span><br><span class="line">    P_score = corre/ind[<span class="number">0</span>].shape[<span class="number">0</span>]</span><br><span class="line">    R_score = corre/<span class="number">50</span></span><br><span class="line">    <span class="keyword">if</span> P_score!=<span class="number">0</span> <span class="keyword">and</span> R_score!=<span class="number">0</span>:</span><br><span class="line">        F1_score = <span class="number">2</span>/(<span class="number">1</span>/P_score+<span class="number">1</span>/R_score)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        F1_score = <span class="number">0</span></span><br><span class="line">    MRR = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(corre):</span><br><span class="line">        MRR += <span class="number">1</span>/(rank[j]+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">if</span> corre!=<span class="number">0</span>:</span><br><span class="line">        MRR_score = MRR*<span class="number">1</span>/corre </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        MRR_score = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> P_score,R_score,F1_score,MRR_score</span><br><span class="line">P_score,R_score,F1_score,MRR_score = Get_score(<span class="string">'dataset/airplanes/imagsuose_0001.jpg'</span>,ind)</span><br><span class="line">print(<span class="string">'precision score'</span>,P_score)</span><br><span class="line">print(<span class="string">'Recall score'</span>,R_score)</span><br><span class="line">print(<span class="string">'F1 score'</span>,F1_score)</span><br><span class="line">print(<span class="string">'MRR score'</span>,MRR_score)</span><br></pre></td></tr></table></figure>
+<pre><code>precision score 0.5
+Recall score 0.1
+F1 score 0.16666666666666666
+MRR score 0.42000000000000004
+</code></pre><p>可以看出，precision的准确率为百分之50,recall率为百分之10，F1分数为0.166，MRR score为0.42</p>
+<h3 id="测试所有图片的P-K-R-K-F-K和MRR-K指标"><a href="#测试所有图片的P-K-R-K-F-K和MRR-K指标" class="headerlink" title="测试所有图片的P-K,R-K,F-K和MRR-K指标"></a>测试所有图片的P-K,R-K,F-K和MRR-K指标</h3><p>这里要测试2000张图的这四个指标，先测k=10使，各个类别的这四个指标，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">evaluate</span><span class="params">(num)</span>:</span></span><br><span class="line">    P_final = <span class="number">0</span></span><br><span class="line">    R_final = <span class="number">0</span></span><br><span class="line">    F1_final = <span class="number">0</span></span><br><span class="line">    MRR_final = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">        <span class="keyword">if</span> filename == <span class="string">'clutter'</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        img_path = gb.glob(file+filename+<span class="string">"/*.jpg"</span>)</span><br><span class="line">        img_path.sort()</span><br><span class="line">        P_total = <span class="number">0</span></span><br><span class="line">        R_total = <span class="number">0</span></span><br><span class="line">        F1_total = <span class="number">0</span></span><br><span class="line">        MRR_total = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> path <span class="keyword">in</span> img_path:</span><br><span class="line">            test_feature = extract_feature(path)</span><br><span class="line">            tree = KDTree(feature_lib, leaf_size=<span class="number">10</span>)</span><br><span class="line">            dist, ind = tree.query(test_feature, k=num)</span><br><span class="line">            P_score,R_score,F1_score,MRR_score = Get_score(path,ind)</span><br><span class="line">            P_total+=P_score</span><br><span class="line">            R_total+=R_score</span><br><span class="line">            F1_total+=F1_score</span><br><span class="line">            MRR_total+=MRR_score</span><br><span class="line">        print(<span class="string">"类别是:"</span>,filename,<span class="string">"Precision是"</span>,P_total/<span class="number">50</span>,<span class="string">"Recall是"</span>,R_total/<span class="number">50</span>,<span class="string">"F1是"</span>,F1_total/<span class="number">50</span>,<span class="string">"MRR是"</span>,MRR_total/<span class="number">50</span>)</span><br><span class="line">        P_final += P_total/<span class="number">50</span></span><br><span class="line">        R_final += R_total/<span class="number">50</span></span><br><span class="line">        F1_final += F1_total/<span class="number">50</span></span><br><span class="line">        MRR_final += MRR_total/<span class="number">50</span></span><br><span class="line">    print(<span class="string">"全部类别的指标："</span>,<span class="string">"Precision是"</span>,P_final/<span class="number">40</span>,<span class="string">"Recall是"</span>,R_final/<span class="number">40</span>,<span class="string">"F1是"</span>,F1_final/<span class="number">40</span>,<span class="string">"MRR是"</span>,MRR_final/<span class="number">40</span>)</span><br><span class="line"> </span><br><span class="line">start = int(round(time.time()))</span><br><span class="line">evaluate(<span class="number">10</span>)</span><br><span class="line">end = int(round(time.time()))</span><br><span class="line">print(<span class="string">"总共花了%s"</span>%(end-start))</span><br></pre></td></tr></table></figure>
+<pre><code>/usr/local/lib/python3.5/dist-packages/ipykernel_launcher.py:2: DeprecationWarning: `imread` is deprecated!
+`imread` is deprecated in SciPy 1.0.0, and will be removed in 1.2.0.
+Use ``imageio.imread`` instead.
+
+/usr/local/lib/python3.5/dist-packages/ipykernel_launcher.py:3: DeprecationWarning: `imresize` is deprecated!
+`imresize` is deprecated in SciPy 1.0.0, and will be removed in 1.2.0.
+Use ``skimage.transform.resize`` instead.
+  This is separate from the ipykernel package so we can avoid doing imports until
+
+
+类别是: accordion Precision是 0.9119999999999996 Recall是 0.1824 F1是 0.3040000000000002 MRR是 0.31084929453262794
+类别是: airplanes Precision是 0.7879999999999999 Recall是 0.15759999999999996 F1是 0.2626666666666666 MRR是 0.3427124842529605
+类别是: bass Precision是 0.49000000000000005 Recall是 0.09800000000000003 F1是 0.16333333333333333 MRR是 0.4784389928193498
+类别是: bonsai Precision是 0.632 Recall是 0.12639999999999998 F1是 0.21066666666666667 MRR是 0.4131869457042076
+类别是: brain Precision是 0.748 Recall是 0.14960000000000007 F1是 0.24933333333333332 MRR是 0.3603971844293272
+类别是: buddha Precision是 0.6760000000000003 Recall是 0.1352 F1是 0.2253333333333333 MRR是 0.4248558673469389
+类别是: butterfly Precision是 0.5000000000000001 Recall是 0.1 F1是 0.16666666666666663 MRR是 0.5168516502897456
+类别是: camera Precision是 0.862 Recall是 0.17240000000000003 F1是 0.28733333333333344 MRR是 0.3502130133534896
+类别是: car_side Precision是 0.996 Recall是 0.19919999999999993 F1是 0.33200000000000024 MRR是 0.2917294532627866
+类别是: cellphone Precision是 0.8819999999999995 Recall是 0.17639999999999997 F1是 0.29400000000000026 MRR是 0.31348964474678753
+类别是: chair Precision是 0.618 Recall是 0.12359999999999999 F1是 0.20600000000000002 MRR是 0.4246199987402368
+类别是: chandelier Precision是 0.5499999999999997 Recall是 0.11 F1是 0.18333333333333332 MRR是 0.4211596434870244
+类别是: cougar_face Precision是 0.8099999999999998 Recall是 0.16200000000000003 F1是 0.27000000000000013 MRR是 0.3646421296296296
+类别是: crab Precision是 0.446 Recall是 0.08920000000000002 F1是 0.14866666666666667 MRR是 0.4940006456286218
+类别是: crayfish Precision是 0.4620000000000001 Recall是 0.0924 F1是 0.154 MRR是 0.47644240677752564
+类别是: crocodile Precision是 0.522 Recall是 0.1044 F1是 0.17400000000000002 MRR是 0.40280735071806495
+类别是: crocodile_head Precision是 0.57 Recall是 0.114 F1是 0.19000000000000006 MRR是 0.3809484095490048
+类别是: cup Precision是 0.738 Recall是 0.1476 F1是 0.24600000000000005 MRR是 0.3578660777273872
+类别是: dalmatian Precision是 0.8879999999999997 Recall是 0.17759999999999998 F1是 0.29600000000000015 MRR是 0.3110384920634921
+类别是: dollar_bill Precision是 0.9159999999999995 Recall是 0.18319999999999997 F1是 0.3053333333333336 MRR是 0.31037669753086417
+类别是: dolphin Precision是 0.6400000000000001 Recall是 0.12799999999999997 F1是 0.2133333333333333 MRR是 0.4083196995464852
+类别是: dragonfly Precision是 0.628 Recall是 0.12559999999999996 F1是 0.20933333333333334 MRR是 0.4042844135802469
+类别是: electric_guitar Precision是 0.748 Recall是 0.14960000000000007 F1是 0.24933333333333338 MRR是 0.3705190570672712
+类别是: elephant Precision是 0.6859999999999996 Recall是 0.13720000000000002 F1是 0.2286666666666666 MRR是 0.4180562578735197
+类别是: emu Precision是 0.7700000000000001 Recall是 0.15400000000000003 F1是 0.25666666666666665 MRR是 0.3568952947845803
+类别是: euphonium Precision是 0.848 Recall是 0.1696 F1是 0.2826666666666668 MRR是 0.3418799067775258
+类别是: ewer Precision是 0.8559999999999997 Recall是 0.17120000000000005 F1是 0.28533333333333355 MRR是 0.3479175485008819
+类别是: faces Precision是 0.9799999999999998 Recall是 0.19599999999999998 F1是 0.32666666666666694 MRR是 0.29173280423280423
+类别是: ferry Precision是 0.8919999999999998 Recall是 0.17840000000000003 F1是 0.29733333333333356 MRR是 0.3101462144116906
+类别是: flamingo Precision是 0.7120000000000001 Recall是 0.14240000000000003 F1是 0.23733333333333342 MRR是 0.38784880007558575
+类别是: gramophone Precision是 0.5519999999999999 Recall是 0.11040000000000001 F1是 0.18399999999999989 MRR是 0.4415120622323005
+类别是: grand_piano Precision是 0.8819999999999999 Recall是 0.17639999999999997 F1是 0.2940000000000002 MRR是 0.33017158289241627
+类别是: hawksbill Precision是 0.814 Recall是 0.1628 F1是 0.2713333333333334 MRR是 0.3493394935752078
+类别是: hedgehog Precision是 0.8639999999999997 Recall是 0.17280000000000004 F1是 0.2880000000000001 MRR是 0.3293413422776518
+类别是: helicopter Precision是 0.6 Recall是 0.12000000000000002 F1是 0.19999999999999996 MRR是 0.3974647833207358
+类别是: ibis Precision是 0.7920000000000001 Recall是 0.15840000000000004 F1是 0.264 MRR是 0.3453355190224237
+类别是: joshua_tree Precision是 0.9199999999999997 Recall是 0.184 F1是 0.30666666666666687 MRR是 0.30409257054673733
+类别是: kangaroo Precision是 0.834 Recall是 0.1668 F1是 0.2780000000000001 MRR是 0.3316776549508692
+类别是: ketch Precision是 0.9139999999999996 Recall是 0.18279999999999996 F1是 0.30466666666666686 MRR是 0.31019097379692623
+类别是: lamp Precision是 0.6719999999999997 Recall是 0.1344 F1是 0.22399999999999995 MRR是 0.4075556311413455
+全部类别的指标： Precision是 0.7402499999999999 Recall是 0.14805000000000004 F1是 0.24675000000000002 MRR是 0.37327269982993194
+总共花了1586
+</code></pre><p>当k=20时，测试代码和结果如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">start = int(round(time.time()))</span><br><span class="line">evaluate(<span class="number">20</span>)</span><br><span class="line">end = int(round(time.time()))</span><br><span class="line">print(<span class="string">"总共花了%s"</span>%(end-start))</span><br></pre></td></tr></table></figure>
+<pre><code>/usr/local/lib/python3.5/dist-packages/ipykernel_launcher.py:2: DeprecationWarning: `imread` is deprecated!
+`imread` is deprecated in SciPy 1.0.0, and will be removed in 1.2.0.
+Use ``imageio.imread`` instead.
+
+/usr/local/lib/python3.5/dist-packages/ipykernel_launcher.py:3: DeprecationWarning: `imresize` is deprecated!
+`imresize` is deprecated in SciPy 1.0.0, and will be removed in 1.2.0.
+Use ``skimage.transform.resize`` instead.
+  This is separate from the ipykernel package so we can avoid doing imports until
+
+
+类别是: accordion Precision是 0.857 Recall是 0.3428 F1是 0.48971428571428577 MRR是 0.20539066307175557
+类别是: airplanes Precision是 0.6599999999999998 Recall是 0.264 F1是 0.3771428571428572 MRR是 0.23312569236496805
+类别是: bass Precision是 0.3520000000000001 Recall是 0.14079999999999995 F1是 0.20114285714285707 MRR是 0.3725550250665459
+类别是: bonsai Precision是 0.509 Recall是 0.20359999999999992 F1是 0.290857142857143 MRR是 0.3002244396294538
+类别是: brain Precision是 0.6759999999999999 Recall是 0.2704 F1是 0.3862857142857142 MRR是 0.254187180757293
+类别是: buddha Precision是 0.576 Recall是 0.23039999999999997 F1是 0.3291428571428572 MRR是 0.2896625758002827
+类别是: butterfly Precision是 0.3960000000000001 Recall是 0.15839999999999999 F1是 0.22628571428571423 MRR是 0.37848773777990524
+类别是: camera Precision是 0.8119999999999998 Recall是 0.3248000000000002 F1是 0.46400000000000013 MRR是 0.23347394360475007
+类别是: car_side Precision是 0.997 Recall是 0.39879999999999993 F1是 0.5697142857142863 MRR是 0.1792328247913529
+类别是: cellphone Precision是 0.843 Recall是 0.3372000000000001 F1是 0.48171428571428593 MRR是 0.20429811849339785
+类别是: chair Precision是 0.4710000000000003 Recall是 0.1884 F1是 0.26914285714285713 MRR是 0.33504755371157635
+类别是: chandelier Precision是 0.4390000000000001 Recall是 0.17560000000000003 F1是 0.2508571428571427 MRR是 0.2868489698847877
+类别是: cougar_face Precision是 0.7630000000000001 Recall是 0.3052 F1是 0.4360000000000001 MRR是 0.2412218469423665
+类别是: crab Precision是 0.349 Recall是 0.13959999999999995 F1是 0.19942857142857143 MRR是 0.3480324817189515
+类别是: crayfish Precision是 0.36800000000000005 Recall是 0.14719999999999997 F1是 0.2102857142857143 MRR是 0.33955418488231237
+类别是: crocodile Precision是 0.42400000000000004 Recall是 0.1696 F1是 0.24228571428571433 MRR是 0.28930749379460363
+类别是: crocodile_head Precision是 0.5259999999999999 Recall是 0.21039999999999992 F1是 0.30057142857142854 MRR是 0.2615118611954065
+类别是: cup Precision是 0.6459999999999999 Recall是 0.2584 F1是 0.36914285714285705 MRR是 0.24596421538677773
+类别是: dalmatian Precision是 0.8470000000000002 Recall是 0.3388000000000002 F1是 0.48400000000000026 MRR是 0.2047244990867052
+类别是: dollar_bill Precision是 0.8670000000000004 Recall是 0.34680000000000016 F1是 0.4954285714285718 MRR是 0.1991986558251109
+类别是: dolphin Precision是 0.5379999999999999 Recall是 0.21520000000000003 F1是 0.3074285714285714 MRR是 0.28793062262240343
+类别是: dragonfly Precision是 0.5370000000000001 Recall是 0.21480000000000005 F1是 0.3068571428571429 MRR是 0.2896271859115977
+类别是: electric_guitar Precision是 0.6270000000000001 Recall是 0.2508 F1是 0.3582857142857143 MRR是 0.24706146727997996
+类别是: elephant Precision是 0.6129999999999999 Recall是 0.24520000000000003 F1是 0.3502857142857142 MRR是 0.31357805277960843
+类别是: emu Precision是 0.66 Recall是 0.26400000000000007 F1是 0.37714285714285706 MRR是 0.2562631926574002
+类别是: euphonium Precision是 0.7899999999999998 Recall是 0.316 F1是 0.4514285714285715 MRR是 0.23728301946965857
+类别是: ewer Precision是 0.8059999999999998 Recall是 0.3224000000000001 F1是 0.4605714285714288 MRR是 0.22706734081527205
+类别是: faces Precision是 0.9530000000000005 Recall是 0.3812000000000001 F1是 0.544571428571429 MRR是 0.18352354358387135
+类别是: ferry Precision是 0.8269999999999998 Recall是 0.3308000000000002 F1是 0.47257142857142864 MRR是 0.2019892275742634
+类别是: flamingo Precision是 0.6220000000000001 Recall是 0.24880000000000002 F1是 0.35542857142857137 MRR是 0.27999955089261086
+类别是: gramophone Precision是 0.428 Recall是 0.17119999999999994 F1是 0.24457142857142852 MRR是 0.321210878485727
+类别是: grand_piano Precision是 0.805 Recall是 0.32200000000000023 F1是 0.46000000000000013 MRR是 0.228530350482945
+类别是: hawksbill Precision是 0.7440000000000001 Recall是 0.29760000000000014 F1是 0.4251428571428572 MRR是 0.23961314379373044
+类别是: hedgehog Precision是 0.7769999999999999 Recall是 0.3108000000000001 F1是 0.444 MRR是 0.22917637257178725
+类别是: helicopter Precision是 0.4809999999999999 Recall是 0.19240000000000002 F1是 0.2748571428571429 MRR是 0.26922481396817177
+类别是: ibis Precision是 0.685 Recall是 0.2740000000000001 F1是 0.3914285714285714 MRR是 0.2492651484526271
+类别是: joshua_tree Precision是 0.8970000000000001 Recall是 0.3588000000000002 F1是 0.5125714285714289 MRR是 0.1905144055309088
+类别是: kangaroo Precision是 0.731 Recall是 0.2924000000000001 F1是 0.4177142857142858 MRR是 0.23588099861154674
+类别是: ketch Precision是 0.86 Recall是 0.34400000000000014 F1是 0.4914285714285718 MRR是 0.2035065874260235
+类别是: lamp Precision是 0.575 Recall是 0.22999999999999993 F1是 0.3285714285714286 MRR是 0.292364211133484
+全部类别的指标： Precision是 0.6583500000000001 Recall是 0.2633400000000001 F1是 0.37620000000000015 MRR是 0.259641501945798
+总共花了1606
+</code></pre><p>当k=50时，测试代码和结果如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">start = int(round(time.time()))</span><br><span class="line">evaluate(<span class="number">50</span>)</span><br><span class="line">end = int(round(time.time()))</span><br><span class="line">print(<span class="string">"总共花了%s"</span>%(end-start))</span><br></pre></td></tr></table></figure>
+<pre><code>/usr/local/lib/python3.5/dist-packages/ipykernel_launcher.py:2: DeprecationWarning: `imread` is deprecated!
+`imread` is deprecated in SciPy 1.0.0, and will be removed in 1.2.0.
+Use ``imageio.imread`` instead.
+
+/usr/local/lib/python3.5/dist-packages/ipykernel_launcher.py:3: DeprecationWarning: `imresize` is deprecated!
+`imresize` is deprecated in SciPy 1.0.0, and will be removed in 1.2.0.
+Use ``skimage.transform.resize`` instead.
+  This is separate from the ipykernel package so we can avoid doing imports until
+
+
+类别是: accordion Precision是 0.6419999999999999 Recall是 0.6419999999999999 F1是 0.6419999999999999 MRR是 0.13524435187251646
+类别是: airplanes Precision是 0.42760000000000015 Recall是 0.42760000000000015 F1是 0.42760000000000015 MRR是 0.15611472394371254
+类别是: bass Precision是 0.22399999999999992 Recall是 0.22399999999999992 F1是 0.22399999999999987 MRR是 0.2459831025114453
+类别是: bonsai Precision是 0.3396 Recall是 0.3396 F1是 0.3396 MRR是 0.16641227976837342
+类别是: brain Precision是 0.43079999999999996 Recall是 0.43079999999999996 F1是 0.43079999999999996 MRR是 0.17243015347578314
+类别是: buddha Precision是 0.36999999999999994 Recall是 0.36999999999999994 F1是 0.36999999999999994 MRR是 0.19101866884066498
+类别是: butterfly Precision是 0.24959999999999996 Recall是 0.24959999999999996 F1是 0.24959999999999996 MRR是 0.2558937748144347
+类别是: camera Precision是 0.6276 Recall是 0.6276 F1是 0.6275999999999999 MRR是 0.1525350277841781
+类别是: car_side Precision是 0.9231999999999998 Recall是 0.9231999999999998 F1是 0.9231999999999998 MRR是 0.09586743969932714
+类别是: cellphone Precision是 0.6244 Recall是 0.6244 F1是 0.6244 MRR是 0.12794734392911913
+类别是: chair Precision是 0.28919999999999996 Recall是 0.28919999999999996 F1是 0.28919999999999996 MRR是 0.2598573776970831
+类别是: chandelier Precision是 0.31000000000000005 Recall是 0.31000000000000005 F1是 0.31000000000000005 MRR是 0.1808264760517882
+类别是: cougar_face Precision是 0.5480000000000002 Recall是 0.5480000000000002 F1是 0.5480000000000002 MRR是 0.16039140243647507
+类别是: crab Precision是 0.23800000000000002 Recall是 0.23800000000000002 F1是 0.23800000000000002 MRR是 0.20398167167240952
+类别是: crayfish Precision是 0.24239999999999998 Recall是 0.24239999999999998 F1是 0.24239999999999998 MRR是 0.21794387980394123
+类别是: crocodile Precision是 0.31880000000000014 Recall是 0.31880000000000014 F1是 0.3188000000000001 MRR是 0.16377485897743327
+类别是: crocodile_head Precision是 0.3824000000000001 Recall是 0.3824000000000001 F1是 0.3824000000000001 MRR是 0.15999989480834342
+类别是: cup Precision是 0.4528000000000001 Recall是 0.4528000000000001 F1是 0.4528000000000001 MRR是 0.16832274718912343
+类别是: dalmatian Precision是 0.6856000000000002 Recall是 0.6856000000000002 F1是 0.6856000000000002 MRR是 0.13038107788414918
+类别是: dollar_bill Precision是 0.6992000000000002 Recall是 0.6992000000000002 F1是 0.6992000000000002 MRR是 0.1230311724451443
+类别是: dolphin Precision是 0.3472000000000001 Recall是 0.3472000000000001 F1是 0.34720000000000006 MRR是 0.185102586671417
+类别是: dragonfly Precision是 0.3636000000000001 Recall是 0.3636000000000001 F1是 0.3636000000000001 MRR是 0.18336640828208575
+类别是: electric_guitar Precision是 0.4156 Recall是 0.4156 F1是 0.4156 MRR是 0.16112480696341586
+类别是: elephant Precision是 0.4388 Recall是 0.4388 F1是 0.4388 MRR是 0.19226995610666886
+类别是: emu Precision是 0.46280000000000016 Recall是 0.46280000000000016 F1是 0.46280000000000016 MRR是 0.1727423329572902
+类别是: euphonium Precision是 0.5331999999999999 Recall是 0.5331999999999999 F1是 0.5331999999999999 MRR是 0.16508289859996736
+类别是: ewer Precision是 0.6156 Recall是 0.6156 F1是 0.6156 MRR是 0.1484146198122631
+类别是: faces Precision是 0.8291999999999997 Recall是 0.8291999999999997 F1是 0.8291999999999997 MRR是 0.1034398902906862
+类别是: ferry Precision是 0.5984 Recall是 0.5984 F1是 0.5984 MRR是 0.13050126647346258
+类别是: flamingo Precision是 0.4736000000000001 Recall是 0.4736000000000001 F1是 0.4736000000000001 MRR是 0.17999585678937785
+类别是: gramophone Precision是 0.27079999999999993 Recall是 0.27079999999999993 F1是 0.27079999999999993 MRR是 0.21110128986305046
+类别是: grand_piano Precision是 0.5628 Recall是 0.5628 F1是 0.5628 MRR是 0.16429422826486662
+类别是: hawksbill Precision是 0.522 Recall是 0.522 F1是 0.522 MRR是 0.14423908077953893
+类别是: hedgehog Precision是 0.568 Recall是 0.568 F1是 0.568 MRR是 0.15742682542564843
+类别是: helicopter Precision是 0.33080000000000004 Recall是 0.33080000000000004 F1是 0.33080000000000004 MRR是 0.1642027888118308
+类别是: ibis Precision是 0.4879999999999999 Recall是 0.4879999999999999 F1是 0.4879999999999999 MRR是 0.16840193197102116
+类别是: joshua_tree Precision是 0.7495999999999999 Recall是 0.7495999999999999 F1是 0.7495999999999999 MRR是 0.10702191326474143
+类别是: kangaroo Precision是 0.5000000000000001 Recall是 0.5000000000000001 F1是 0.5000000000000001 MRR是 0.16308041702731674
+类别是: ketch Precision是 0.7024000000000001 Recall是 0.7024000000000001 F1是 0.7023999999999999 MRR是 0.12742134275609873
+类别是: lamp Precision是 0.38799999999999996 Recall是 0.38799999999999996 F1是 0.38799999999999996 MRR是 0.2064639804390264
+全部类别的指标： Precision是 0.4796400000000001 Recall是 0.4796400000000001 F1是 0.4796400000000001 MRR是 0.16759129617888052
+总共花了1584
+</code></pre><p>当k=100时，测试代码和结果如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">start = int(round(time.time()))</span><br><span class="line">evaluate(<span class="number">100</span>)</span><br><span class="line">end = int(round(time.time()))</span><br><span class="line">print(<span class="string">"总共花了%s"</span>%(end-start))</span><br></pre></td></tr></table></figure>
+<pre><code>/usr/local/lib/python3.5/dist-packages/ipykernel_launcher.py:2: DeprecationWarning: `imread` is deprecated!
+`imread` is deprecated in SciPy 1.0.0, and will be removed in 1.2.0.
+Use ``imageio.imread`` instead.
+
+/usr/local/lib/python3.5/dist-packages/ipykernel_launcher.py:3: DeprecationWarning: `imresize` is deprecated!
+`imresize` is deprecated in SciPy 1.0.0, and will be removed in 1.2.0.
+Use ``skimage.transform.resize`` instead.
+  This is separate from the ipykernel package so we can avoid doing imports until
+
+
+类别是: accordion Precision是 0.37520000000000003 Recall是 0.7504000000000001 F1是 0.5002666666666666 MRR是 0.1089526687599054
+类别是: airplanes Precision是 0.28240000000000004 Recall是 0.5648000000000001 F1是 0.3765333333333333 MRR是 0.1169019750148541
+类别是: bass Precision是 0.14980000000000004 Recall是 0.2996000000000001 F1是 0.1997333333333334 MRR是 0.17176894130050305
+类别是: bonsai Precision是 0.2378 Recall是 0.4756 F1是 0.3170666666666667 MRR是 0.11599950521883272
+类别是: brain Precision是 0.25460000000000005 Recall是 0.5092000000000001 F1是 0.3394666666666668 MRR是 0.13976041912502468
+类别是: buddha Precision是 0.23559999999999998 Recall是 0.47119999999999995 F1是 0.3141333333333333 MRR是 0.14234849465205957
+类别是: butterfly Precision是 0.1656 Recall是 0.3312 F1是 0.22080000000000005 MRR是 0.18328774522576705
+类别是: camera Precision是 0.3538 Recall是 0.7076 F1是 0.47173333333333345 MRR是 0.13082315151269644
+类别是: car_side Precision是 0.4807999999999996 Recall是 0.9615999999999992 F1是 0.6410666666666662 MRR是 0.09198318332532594
+类别是: cellphone Precision是 0.3669999999999999 Recall是 0.7339999999999998 F1是 0.4893333333333334 MRR是 0.10767332455027613
+类别是: chair Precision是 0.18839999999999993 Recall是 0.37679999999999986 F1是 0.25120000000000003 MRR是 0.17609480911920505
+类别是: chandelier Precision是 0.20939999999999995 Recall是 0.4187999999999999 F1是 0.2792 MRR是 0.13734513592599634
+类别是: cougar_face Precision是 0.30920000000000003 Recall是 0.6184000000000001 F1是 0.4122666666666666 MRR是 0.13185920156678382
+类别是: crab Precision是 0.1702 Recall是 0.3404 F1是 0.22693333333333332 MRR是 0.13999293047235378
+类别是: crayfish Precision是 0.1704 Recall是 0.3408 F1是 0.2272000000000001 MRR是 0.15203942791240327
+类别是: crocodile Precision是 0.225 Recall是 0.45 F1是 0.3 MRR是 0.11640589232915156
+类别是: crocodile_head Precision是 0.2584000000000001 Recall是 0.5168000000000001 F1是 0.34453333333333336 MRR是 0.11119901333165677
+类别是: cup Precision是 0.2852 Recall是 0.5704 F1是 0.38026666666666675 MRR是 0.13574036756164565
+类别是: dalmatian Precision是 0.37200000000000005 Recall是 0.7440000000000001 F1是 0.4959999999999999 MRR是 0.1171433385854654
+类别是: dollar_bill Precision是 0.4028 Recall是 0.8056 F1是 0.5370666666666666 MRR是 0.10390731615749678
+类别是: dolphin Precision是 0.22279999999999997 Recall是 0.44559999999999994 F1是 0.29706666666666676 MRR是 0.14018084092512578
+类别是: dragonfly Precision是 0.23659999999999998 Recall是 0.47319999999999995 F1是 0.3154666666666667 MRR是 0.13990322726250679
+类别是: electric_guitar Precision是 0.26719999999999994 Recall是 0.5343999999999999 F1是 0.35626666666666656 MRR是 0.12416552351690571
+类别是: elephant Precision是 0.27119999999999994 Recall是 0.5423999999999999 F1是 0.36160000000000003 MRR是 0.14391679295668197
+类别是: emu Precision是 0.294 Recall是 0.588 F1是 0.39199999999999996 MRR是 0.13093700660434973
+类别是: euphonium Precision是 0.30000000000000004 Recall是 0.6000000000000001 F1是 0.4 MRR是 0.12798189953664224
+类别是: ewer Precision是 0.36400000000000005 Recall是 0.7280000000000001 F1是 0.48533333333333323 MRR是 0.12132977227837438
+类别是: faces Precision是 0.4406000000000001 Recall是 0.8812000000000002 F1是 0.5874666666666665 MRR是 0.09713941810197513
+类别是: ferry Precision是 0.3617999999999999 Recall是 0.7235999999999998 F1是 0.48239999999999994 MRR是 0.10755851523534302
+类别是: flamingo Precision是 0.3152 Recall是 0.6304 F1是 0.42026666666666673 MRR是 0.13850208527481236
+类别是: gramophone Precision是 0.17759999999999998 Recall是 0.35519999999999996 F1是 0.23680000000000004 MRR是 0.15839726580505067
+类别是: grand_piano Precision是 0.31919999999999993 Recall是 0.6383999999999999 F1是 0.4256000000000001 MRR是 0.132432426952128
+类别是: hawksbill Precision是 0.3161999999999999 Recall是 0.6323999999999999 F1是 0.4216000000000001 MRR是 0.11732087662937214
+类别是: hedgehog Precision是 0.3166 Recall是 0.6332 F1是 0.4221333333333336 MRR是 0.13394856501359767
+类别是: helicopter Precision是 0.24340000000000003 Recall是 0.48680000000000007 F1是 0.32453333333333334 MRR是 0.11387951623132996
+类别是: ibis Precision是 0.31920000000000004 Recall是 0.6384000000000001 F1是 0.4256 MRR是 0.12984272526796853
+类别是: joshua_tree Precision是 0.44099999999999995 Recall是 0.8819999999999999 F1是 0.5880000000000003 MRR是 0.0920799595960934
+类别是: kangaroo Precision是 0.30080000000000007 Recall是 0.6016000000000001 F1是 0.4010666666666666 MRR是 0.13307640433603413
+类别是: ketch Precision是 0.3904000000000001 Recall是 0.7808000000000002 F1是 0.5205333333333333 MRR是 0.11346268784318259
+类别是: lamp Precision是 0.24999999999999997 Recall是 0.49999999999999994 F1是 0.3333333333333334 MRR是 0.14451757985277888
+全部类别的指标： Precision是 0.29103500000000004 Recall是 0.5820700000000001 F1是 0.3880466666666666 MRR是 0.1292949982716914
+总共花了1573
+</code></pre><h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>从上面的k=10,20,50,100的结果，可以得到以下一些结论：</p>
+<p>1.随着K的增加，这2000张图整体的precision下降，recall是上升的，F1指标也是上升的，MRR指标是下降的。</p>
+<p>2.各个类别的分数在上面的结果里已经列出，可以看出car_side的precision是最高的，其recall也是最高的，F1 score也是最高的，MRR最高的是butterfly</p>
+<p>3.测试时间上，上述各个k的值最终结果都在1600s前后，可以说很慢了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Resistence
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://kevinj-huang.github.io/2021/03/20/boke82/" title="图像检索的简单实现">http://kevinj-huang.github.io/2021/03/20/boke82/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/代码实践/" rel="tag"># 代码实践</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/03/20/博客73/" rel="next" title="实现Adaboost">
+                <i class="fa fa-chevron-left"></i> 实现Adaboost
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/03/20/博客255/" rel="prev" title="阅读论文"Single Image Reflection Removal Exploiting Misaligned Training Data and Network Enhancements"">
+                阅读论文"Single Image Reflection Removal Exploiting Misaligned Training Data and Network Enhancements" <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTI3OC8xMTgxNA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Resistence" />
+            
+              <p class="site-author-name" itemprop="name">Resistence</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+			<!--my custom code begin-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+			<script type="text/javascript">
+			  $("#sidebar").hover(function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 1});
+			  },function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 0});
+			  });
+			</script>
+			<div id="mydivshow" class="mydivshow">
+			<!--my custom code end-->
+			
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">266</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/KevinJ-Huang" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/huang-jie-65-63/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-bell"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="nwpuhuangjie@outlook.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/CHNguoshiwushuang" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/5376463830/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+        </div>
+		<!--my custom code begin-->
+		</div>
+		<!--my custom code end-->
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试一张图片的P-K-R-K-F-K和MRR-K指标"><span class="nav-number">1.</span> <span class="nav-text">测试一张图片的P-K,R-K,F-K和MRR-K指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试所有图片的P-K-R-K-F-K和MRR-K指标"><span class="nav-number">2.</span> <span class="nav-text">测试所有图片的P-K,R-K,F-K和MRR-K指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">3.</span> <span class="nav-text">结论</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Resistence</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">205.7k</span>
+  
+</div>
+
+
+
+
+
+
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+**  <span id="busuanzi_container_site_pv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+**
+</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Nq0gYzgvTOwNARshaOLO6uMo-gzGzoHsz", "R2FkCzz5AmolE24dN77lKIa7");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+  <script src="/js/src/Aplayer-Controler.js"></script>
+<div id="AP-controler"></div>
+<script type="text/javascript">
+var myapc=new APlayer_Controler({
+		APC_dom:$('#AP-controler'),
+		aplayer:ap, //此为绑定的aplayer对象
+		attach_right:false,
+		position:{top:'300px',bottom:''},
+		fixed:true,
+		btn_width:100,
+		btn_height:120,
+		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+		img_style:{repeat:'no-repeat',position:'center',size:'contain'},
+		ctrls_color:'rgba(173,255,47,0.8)',
+		ctrls_hover_color:'rgba(255,140,0,0.7)',
+		tips_on:true,
+		tips_width:140,
+		tips_height:25,
+		tips_color:'rgba(255,255,255,0.6)',
+		tips_content:{},
+		timeout:30
+	});
+</script>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+</body>
+</html>
