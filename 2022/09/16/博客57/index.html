@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="UqlC4pwKIm" />
+  <meta name="baidu-site-verification" content="d3U0dGeqGw" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="1C1XSuJ8TgM2O0mcZvsgzEdy0IdRZOJfxDYPyh18U9Q" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="代码实践," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="类成员的可访问范围&amp;emsp;&amp;emsp; 在类的定义中，用下列访问范围关键字来说明类成员可被访问的范围:  private:私有成员，只能在成员函数内访问。 public:公有成员，可以在任何地方访问。 protected:保护成员。  如果某个成员前面没有上述关键字，则缺省的被默认为是私有成员。12345678class Man&amp;#123;  int nAge;//私有成员  char szN">
+<meta name="keywords" content="代码实践">
+<meta property="og:type" content="article">
+<meta property="og:title" content="类和对象（2）">
+<meta property="og:url" content="http://kevinj-huang.github.io/2022/09/16/博客57/index.html">
+<meta property="og:site_name" content="Resistence">
+<meta property="og:description" content="类成员的可访问范围&amp;emsp;&amp;emsp; 在类的定义中，用下列访问范围关键字来说明类成员可被访问的范围:  private:私有成员，只能在成员函数内访问。 public:公有成员，可以在任何地方访问。 protected:保护成员。  如果某个成员前面没有上述关键字，则缺省的被默认为是私有成员。12345678class Man&amp;#123;  int nAge;//私有成员  char szN">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-03-18T12:27:46.655Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="类和对象（2）">
+<meta name="twitter:description" content="类成员的可访问范围&amp;emsp;&amp;emsp; 在类的定义中，用下列访问范围关键字来说明类成员可被访问的范围:  private:私有成员，只能在成员函数内访问。 public:公有成员，可以在任何地方访问。 protected:保护成员。  如果某个成员前面没有上述关键字，则缺省的被默认为是私有成员。12345678class Man&amp;#123;  int nAge;//私有成员  char szN">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kevinj-huang.github.io/2022/09/16/博客57/"/>
+
+
+
+
+
+  <title>类和对象（2） | Resistence</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-111723881-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Resistence</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">My Awesome Site</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2022/09/16/博客57/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Resistence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Resistence">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">类和对象（2）</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-09-16T00:37:26+08:00">
+                2022-09-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-03-18T20:27:46+08:00">
+                2021-03-18
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-初学笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">C++初学笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2022/09/16/博客57/" class="leancloud_visitors" data-flag-title="类和对象（2）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,272字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="类成员的可访问范围"><a href="#类成员的可访问范围" class="headerlink" title="类成员的可访问范围"></a>类成员的可访问范围</h4><p>&emsp;&emsp; 在类的定义中，用下列访问范围关键字来说明类成员可被访问的范围:</p>
+<ul>
+<li>private:私有成员，只能在成员函数内访问。</li>
+<li>public:公有成员，可以在任何地方访问。</li>
+<li>protected:保护成员。</li>
+</ul>
+<p>如果某个成员前面没有上述关键字，则缺省的被默认为是私有成员。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Man</span>&#123;</span></span><br><span class="line">  <span class="keyword">int</span> nAge;<span class="comment">//私有成员</span></span><br><span class="line">  <span class="keyword">char</span> szName[<span class="number">20</span>];<span class="comment">//私有成员</span></span><br><span class="line">  <span class="keyword">public</span>：</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SetName</span><span class="params">(<span class="keyword">char</span> * szName)</span></span>&#123;</span><br><span class="line">      <span class="built_in">strcpy</span>(Man::szName,szName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在类的成员函数内部，能够访问:</p>
+<ul>
+<li>当前对象的全部属性、函数；</li>
+<li>同类其他对象的全部属性、函数。<br>在类的成员函数以外的地方，只能够访问该类对象的公有成员。一个例子如下:</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CEmployee</span>&#123;</span></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">char</span> szName[<span class="number">30</span>];</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="keyword">int</span> salary;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">setName</span><span class="params">(<span class="keyword">char</span> *name)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">getName</span><span class="params">(<span class="keyword">char</span> *name)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">averageSalary</span><span class="params">(CEmployee e1,CEmployee e2)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">void</span> CEmployee::setName(<span class="keyword">char</span> *name)&#123;</span><br><span class="line">    <span class="built_in">strcpy</span>(szName,name);<span class="comment">//ok</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> CEmployee::getName(<span class="keyword">char</span> *name)&#123;</span><br><span class="line">    <span class="built_in">strcpy</span>(name,szName);<span class="comment">//ok</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> CEmployee::averageSalary(CEmployee e1,CEmployee e2)&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; e1.szName;</span><br><span class="line">    salary = (e1.salary + e2.salary)/<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    CEmployee e;</span><br><span class="line">    <span class="built_in">strcpy</span>(e.szName,<span class="string">"Tom1234567889"</span>);<span class="comment">//编译错，不能访问私有成员</span></span><br><span class="line">    e.setName(<span class="string">"Tom"</span>); <span class="comment">//ok</span></span><br><span class="line">    e.salary = <span class="number">5000</span>;<span class="comment">//ok</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>设置私有成员的机制，叫“隐藏”<br>“隐藏”的目的是强制对成员变量的访问一定要通过成员函数进行，那么以后成员变量的类型属性修改后，只需要更改成员函数即可。否则，所有访问成员变量的语句都需要修改。</p>
+<h5 id="“隐藏”的作用"><a href="#“隐藏”的作用" class="headerlink" title="“隐藏”的作用"></a>“隐藏”的作用</h5><p>如果将上述的程序移植到内存紧张的手持设备上，希望将szName改为szName[5],若szName不是私有，那么就要找出所有类似于 strcpy(e.szName,”Tom1234567899”); 这样的语句进行修改，以防止数组越界。这样做很麻烦。<br>如果将szName变为私有，那么程序中就不可能再出现strcpy(e.szName,”Tom1234567899”);所有对szName的访问都是通过成员函数来进行，比如:<br>e.setName(“Tom1234567899”);<br>那么，就算szName改短了，上面的语句也不需要找出来修改，只要改setName成员函数，在里面确保不越界就可以了。</p>
+<h5 id="用struct定义类"><a href="#用struct定义类" class="headerlink" title="用struct定义类"></a>用struct定义类</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CEmployee</span>&#123;</span></span><br><span class="line">       <span class="keyword">char</span> szName[<span class="number">30</span>];<span class="comment">//公有</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">       <span class="keyword">int</span> salary;</span><br><span class="line">       <span class="function"><span class="keyword">void</span> <span class="title">setName</span><span class="params">(<span class="keyword">char</span> *name)</span></span>;</span><br><span class="line">       <span class="function"><span class="keyword">void</span> <span class="title">getName</span><span class="params">(<span class="keyword">char</span> *name)</span></span>;</span><br><span class="line">       <span class="function"><span class="keyword">void</span> <span class="title">averageSalary</span><span class="params">(CEmployee e1,CEmployee e2)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和class的唯一区别是，就是未说明是公有还是私有的成员，就是公有。</p>
+<h4 id="成员函数的重载和参数缺省"><a href="#成员函数的重载和参数缺省" class="headerlink" title="成员函数的重载和参数缺省"></a>成员函数的重载和参数缺省</h4><p>成员函数也可以重载。<br>成员函数可以带缺省参数。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Location</span>&#123;</span></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">int</span> x,y;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> x = <span class="number">0</span>,<span class="keyword">int</span> y = <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">valueX</span><span class="params">(<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">            x = val;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">valueX</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> x;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> Location::init(<span class="keyword">int</span> X,<span class="keyword">int</span> Y)&#123;</span><br><span class="line">    x = X;</span><br><span class="line">    y = Y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Location A,B;</span><br><span class="line">	A.init(<span class="number">5</span>);</span><br><span class="line">	A.valueX(<span class="number">5</span>);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; A.valueX();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果为5<br>注意：使用缺省参数要注意避免有函数重载时的二义性<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Location</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span> :</span><br><span class="line"><span class="keyword">int</span> x, y;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">( <span class="keyword">int</span> x =<span class="number">0</span>, <span class="keyword">int</span> y = <span class="number">0</span> )</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">valueX</span><span class="params">( <span class="keyword">int</span> val = <span class="number">0</span>)</span> </span>&#123; x = val; &#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">valueX</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> x; &#125;</span><br><span class="line">&#125;;</span><br><span class="line">Location A;</span><br><span class="line">A.valueX(); <span class="comment">//错误，编译器无法判断调用哪个valueX</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><h5 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h5><p>&emsp;&emsp; 是成员函数的一种：1.名字与类名相同，可以有参数，不能有返回值（void也不行）；2.作用是对对象进行初始化，如给成员变量赋初值；3.如果定义类时没写构造函数，则编译器生成一个默认的无参数的构造函数：默认构造函数无参数，不做任何操作。<br>如果定义了构造函数，则编译器不生成默认的无参数的构造函数。<br>对象生成时构造函数自动被调用。对象一旦生成，就再也不能在其上执行构造函数。<br>一个类可以有多个构造函数。<br>为什么需要构造函数：<br>1.构造函数执行必要的初始化工作，有了构造函数，就不必专门再写初始化函数，也不用忘记调用初始化函数。<br>2.有时对象没被初始化就使用，会导致程序出错。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">double</span> real,imag;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Set</span><span class="params">(<span class="keyword">double</span> r,<span class="keyword">double</span> i)</span></span>;</span><br><span class="line">&#125;;<span class="comment">//编译器自动生成默认的构造函数</span></span><br><span class="line"></span><br><span class="line">Complex c1;<span class="comment">//默认构造函数被调用</span></span><br><span class="line">Complex *pc = <span class="keyword">new</span> Complex;<span class="comment">//默认构造函数被调用</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">double</span> real,imag;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Complex(<span class="keyword">double</span> r,<span class="keyword">double</span> i = <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br><span class="line">Complex::Complex(<span class="keyword">double</span> r,<span class="keyword">double</span> i)&#123; <span class="comment">// 构造函数</span></span><br><span class="line">    real = r;</span><br><span class="line">    imag = i;</span><br><span class="line">&#125;</span><br><span class="line">Complex c1;<span class="comment">//error,缺少构造函数的参数</span></span><br><span class="line">Complex *pc = <span class="keyword">new</span> Complex;<span class="comment">//error,没有参数</span></span><br><span class="line"><span class="function">Complex <span class="title">c1</span><span class="params">(<span class="number">2</span>)</span></span>;<span class="comment">//OK</span></span><br><span class="line">Complex c1(2,4),c2(3,5);</span><br><span class="line">Complex *pc = <span class="keyword">new</span> Complex(<span class="number">3</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+<p>可以有多个构造函数，参数个数或类型不同<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">double</span> real,imag;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Set</span><span class="params">(<span class="keyword">double</span> r,<span class="keyword">double</span> i)</span></span>;</span><br><span class="line">    Complex(<span class="keyword">double</span> r,<span class="keyword">double</span> i);</span><br><span class="line">    Complex(<span class="keyword">double</span> r);</span><br><span class="line">    Complex(Complex c1,Complex c2);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Complex::Complex(<span class="keyword">double</span> r,<span class="keyword">double</span> i)&#123;</span><br><span class="line">    real = r;imag = i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Complex::Complex(<span class="keyword">double</span> r)&#123;</span><br><span class="line">    real = r;</span><br><span class="line">    imag = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Complex::Complex(Complex c1,Complex c2)&#123;</span><br><span class="line">    real = c1.real+c2.real;</span><br><span class="line">    imag = c1.imag+c2.imag;</span><br><span class="line">&#125;</span><br><span class="line">Complex c1(3),c2(1,0),c3(c1,c2);</span><br><span class="line"><span class="comment">//c1 =&#123;3,0&#125;,c2=&#123;1,0&#125;,c3=&#123;4,0&#125;;</span></span><br></pre></td></tr></table></figure></p>
+<p>构造函数最好是public的，private的构造函数不能直接用来初始化对象<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CSample</span>&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    CSample()&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    CSample Obj;<span class="comment">//err.唯一的构造函数是private</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="构造函数在数组中的使用"><a href="#构造函数在数组中的使用" class="headerlink" title="构造函数在数组中的使用"></a>构造函数在数组中的使用</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CSample</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    CSample()&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Constructor 1 Called"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    CSample(<span class="keyword">int</span> n)&#123;</span><br><span class="line">        x = n;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Constructed 2 Called"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    CSample array1[<span class="number">2</span>];</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"step1"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    CSample array2[<span class="number">2</span>] =&#123;<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"step2"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    CSample array3[<span class="number">2</span>]=&#123;<span class="number">3</span>&#125;;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"step3"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    CSample *array4=<span class="keyword">new</span> CSample[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">delete</span> []array4;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果输出:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">输出：</span><br><span class="line">Constructor <span class="number">1</span> Called</span><br><span class="line">Constructor <span class="number">1</span> Called</span><br><span class="line">step1</span><br><span class="line">Constructor <span class="number">2</span> Called</span><br><span class="line">Constructor <span class="number">2</span> Called</span><br><span class="line">step2</span><br><span class="line">Constructor <span class="number">2</span> Called</span><br><span class="line">Constructor <span class="number">1</span> Called</span><br><span class="line">step3</span><br><span class="line">Constructor <span class="number">1</span> Called</span><br><span class="line">Constructor <span class="number">1</span> Called</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Test(<span class="keyword">int</span> n)&#123;&#125;   <span class="comment">//(1)</span></span><br><span class="line">    Test(<span class="keyword">int</span> n,<span class="keyword">int</span> m) <span class="comment">//(2)</span></span><br><span class="line">    Test()&#123;&#125;   <span class="comment">//(3)</span></span><br><span class="line">&#125;;</span><br><span class="line">Test array1[<span class="number">3</span>]=&#123;<span class="number">1</span>,Test(<span class="number">1</span>,<span class="number">2</span>)&#125;;</span><br><span class="line"><span class="comment">//三个元素分别用（1）（2）（3）初始化</span></span><br><span class="line">Test array2[<span class="number">3</span>]=&#123;Test(<span class="number">2</span>,<span class="number">3</span>),Test(<span class="number">1</span>,<span class="number">2</span>),<span class="number">1</span>&#125;;</span><br><span class="line"><span class="comment">//三个元素分别用(2)(2)(1)初始化</span></span><br><span class="line">Test *pArray[<span class="number">3</span>]=&#123;<span class="keyword">new</span> Test(<span class="number">4</span>),<span class="keyword">new</span> Test(<span class="number">1</span>,<span class="number">2</span>)&#125;;</span><br><span class="line"><span class="comment">//两个元素分别用(1)(2)初始化</span></span><br></pre></td></tr></table></figure>
+<h4 id="复制构造函数"><a href="#复制构造函数" class="headerlink" title="复制构造函数"></a>复制构造函数</h4><h5 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h5><p>只有一个参数，即对同类对象的引用。<br>形如 X::X(X&amp;)或X::X(const X &amp;),二者选一，后者能以常量对象作为参数<br>如果没有定义复制构造函数，那么编译器生成默认复制构造函数。默认的复制构造函数完成复制功能。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">double</span> real,imag;</span><br><span class="line">&#125;;</span><br><span class="line">Complex c1;<span class="comment">//调用缺省无参构造函数</span></span><br><span class="line"><span class="function">Complex <span class="title">c2</span><span class="params">(c1)</span></span>;<span class="comment">//调用缺省的复制构造函数，将c2初始化成和c1一样</span></span><br></pre></td></tr></table></figure></p>
+<p>如果定义的自己的复制构造函数，则默认的复制构造函数不存在。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">double</span> real,imag;</span><br><span class="line">Complex()&#123;&#125;</span><br><span class="line">Complex(<span class="keyword">const</span> Complex &amp;c)&#123;</span><br><span class="line">    real = c.real;</span><br><span class="line">    imag = c.imag;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Copy Constructor called"</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line">Complex c1;</span><br><span class="line"><span class="function">Complex <span class="title">c2</span><span class="params">(c1)</span></span>;<span class="comment">//调用自己定义的复制构造函数，输出Copy Constructor called</span></span><br></pre></td></tr></table></figure></p>
+<p>不允许有形如X::X(X)的构造函数。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CSample</span>&#123;</span></span><br><span class="line">    CSample(CSample c)&#123;</span><br><span class="line">    &#125;<span class="comment">//错，不允许这样的构造函数</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h5 id="复制构造函数起作用的三种情况"><a href="#复制构造函数起作用的三种情况" class="headerlink" title="复制构造函数起作用的三种情况"></a>复制构造函数起作用的三种情况</h5><p>1）当用一个对象去初始化同类的另一个对象时。<br>Complex c2(c1);<br>Complex c2=c1;//初始化语句，非赋值语句<br>2）如果某函数有一个参数是类A的对象，那么该函数被调用时，类A的复制构造函数将被调用。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    A()&#123;&#125;;</span><br><span class="line">    A(A&amp;a)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"Copy constructor called"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func</span><span class="params">(A a1)</span></span>&#123; &#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    A a2;</span><br><span class="line">    Func(a2);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>程序输出结果为:Copy constructor called<br>3)如果函数的返回值是类A的对象时，则函数返回时，A的复制构造函数被调用：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"><span class="keyword">int</span> v;</span><br><span class="line">A(<span class="keyword">int</span> n) &#123; v = n; &#125;;</span><br><span class="line">A( <span class="keyword">const</span> A &amp; a) &#123;</span><br><span class="line">v = a.v;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"Copy constructor called"</span> &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">A <span class="title">Func</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="function">A <span class="title">b</span><span class="params">(<span class="number">4</span>)</span></span>;</span><br><span class="line"><span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; Func().v &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">输出结果：</span><br><span class="line">Copy constructor called</span><br><span class="line"><span class="number">4</span> <span class="number">6</span></span><br></pre></td></tr></table></figure></p>
+<p>注意:对象间赋值并不导致复制构造函数被调用<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CMyclass</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    CMyclass() &#123;&#125;;</span><br><span class="line">    CMyclass(CMyclass &amp;c)&#123;</span><br><span class="line">        n = <span class="number">2</span>*c.n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    CMyclass c1,c2;</span><br><span class="line">    c1.n = <span class="number">5</span>;</span><br><span class="line">    c2 = c1;</span><br><span class="line">    <span class="function">CMyclass <span class="title">c3</span><span class="params">(c1)</span></span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"c2.n="</span>&lt;&lt;c2.n&lt;&lt;<span class="string">","</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"c3.n="</span>&lt;&lt;c3.n&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">输出： c2.n=<span class="number">5</span>,c3.n=<span class="number">10</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="常量引用参数的使用"><a href="#常量引用参数的使用" class="headerlink" title="常量引用参数的使用"></a>常量引用参数的使用</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(Cmyclass obj_)</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt;<span class="string">"fun"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样的函数，调用时生成形参会引发复制构造函数的调用，开销比较大。<br>所以可以考虑使用CMyclass &amp;引用类型作为参数。<br>如果希望确保实参的值在函数中不应被改变，可以加上const关键字：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">const</span> CMyclass &amp;obj)</span></span>&#123;</span><br><span class="line">    <span class="comment">//函数中任何试图改变obj值的语句都将是变成非法。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="类型转换构造函数"><a href="#类型转换构造函数" class="headerlink" title="类型转换构造函数"></a>类型转换构造函数</h4><p>定义转换构造函数的目的是为了实现类型的自动转换。<br>只有一个参数，而且不是复制构造函数的构造函数，一般就可以看做是转换构造函数。<br>当需要的时候，编译系统会自动调用转换构造函数，建立一个无名的临时对象（或临时变量）。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">double</span> real,imag;</span><br><span class="line">    Complex(<span class="keyword">int</span> i)&#123;<span class="comment">//类型转换构造函数</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"IntConstructor called"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        real = i;imag = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Complex(<span class="keyword">double</span> r,<span class="keyword">double</span> i)&#123;</span><br><span class="line">        real = r;imag = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">Complex <span class="title">c1</span><span class="params">(<span class="number">7</span>,<span class="number">8</span>)</span></span>;</span><br><span class="line">    Complex c2=<span class="number">12</span>;</span><br><span class="line">    c1 = <span class="number">9</span>;<span class="comment">//9被自动转换成一个临时Complex对象</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;c1.real&lt;&lt;<span class="string">","</span>&lt;&lt;c1.imag&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h4><h5 id="析构函数-1"><a href="#析构函数-1" class="headerlink" title="析构函数"></a>析构函数</h5><p>1.名字与类名相同，在前面加上‘～’，没有参数和返回值，一个类最多只有一个析构函数。<br>2.析构函数对象消亡即自动被调用。可以定义析构函数来在对象消亡前后做善后工作，比如释放分配的空间等。<br>3.如果定义类时没写析构函数，则编译器生成缺省析构函数。缺省析构函数什么也不做。<br>4.如果定义了析构函数，则编译器不生成缺省析构函数。<br>一个示例如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">String</span>&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">char</span> *p;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    String()&#123;</span><br><span class="line">        p = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">10</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    ~ String();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">String::~ String()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">delete</span> []p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对象数组生命期结束时，对象数组的每个元素的析构函数都会被调用。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ctest</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ~Ctest()&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"destructor called"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Ctest <span class="built_in">array</span>[<span class="number">2</span>];</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt;<span class="string">"End Main"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">输出:</span><br><span class="line">End Main</span><br><span class="line">destructor called</span><br><span class="line">destructor called</span><br></pre></td></tr></table></figure></p>
+<p>delete 运算导致析构函数调用。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Ctest *pTest;</span><br><span class="line">pTest = <span class="keyword">new</span> Ctest;<span class="comment">//构造函数调用</span></span><br><span class="line"><span class="keyword">delete</span> pTest;<span class="comment">//析构函数调用</span></span><br><span class="line"></span><br><span class="line">pTest = <span class="keyword">new</span> Ctest[<span class="number">3</span>];<span class="comment">//构造函数调用3次</span></span><br><span class="line"><span class="keyword">delete</span> []pTest;<span class="comment">//析构函数调用3次</span></span><br></pre></td></tr></table></figure></p>
+<p>若new一个对象数组，那么用delete释放时应该写[]。否则只delete一个对象(调用一次析构函数)<br>析构函数在对象作为函数返回值后被调用<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CMyclass</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ~CMyclass()&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"destructor"</span>&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">CMyclass obj;</span><br><span class="line"><span class="function">CMyclass <span class="title">fun</span><span class="params">(CMyclass sobj)</span></span>&#123;<span class="comment">//参数对象消亡也会导致析构函数被调用</span></span><br><span class="line">    <span class="keyword">return</span> sobj;<span class="comment">//函数调用返回时生成临时对象返回</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    obj = fun(obj);<span class="comment">//函数调用的返回值（临时对象）被用过后，该临时对象析构函数被调用</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">输出:</span><br><span class="line">destructor</span><br><span class="line">destructor</span><br><span class="line">destructor</span><br></pre></td></tr></table></figure></p>
+<h5 id="析构函数和析构函数什么时候被调用"><a href="#析构函数和析构函数什么时候被调用" class="headerlink" title="析构函数和析构函数什么时候被调用"></a>析构函数和析构函数什么时候被调用</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Demo(<span class="keyword">int</span> i)&#123;</span><br><span class="line">        id = i;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"id="</span>&lt;&lt;id&lt;&lt;<span class="string">" constructed"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ~Demo()&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"id="</span>&lt;&lt;id&lt;&lt;<span class="string">" destructed"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">Demo <span class="title">d1</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> Demo <span class="title">d2</span><span class="params">(<span class="number">2</span>)</span></span>;</span><br><span class="line">    <span class="function">Demo <span class="title">d3</span><span class="params">(<span class="number">3</span>)</span></span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"func"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">Demo <span class="title">d4</span><span class="params">(<span class="number">4</span>)</span></span>;</span><br><span class="line">    d4 = <span class="number">6</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"main"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function">Demo <span class="title">d5</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Func();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt;<span class="string">"main ends"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">输出依次为:</span><br><span class="line">id=<span class="number">1</span> constructed</span><br><span class="line">id=<span class="number">4</span> constructed</span><br><span class="line">id=<span class="number">6</span> constructed</span><br><span class="line">id=<span class="number">6</span> destructed</span><br><span class="line">main</span><br><span class="line">id=<span class="number">5</span> constructed</span><br><span class="line">id=<span class="number">5</span> destructed</span><br><span class="line">id=<span class="number">2</span> constructed</span><br><span class="line">id=<span class="number">3</span> constructed</span><br><span class="line">func</span><br><span class="line">id=<span class="number">3</span> destructed</span><br><span class="line">main ends</span><br><span class="line">id=<span class="number">6</span> destructed</span><br><span class="line">id=<span class="number">2</span> destructed</span><br><span class="line">id=<span class="number">1</span> destructed</span><br></pre></td></tr></table></figure>
+<h4 id="关于复制构造函数和析构函数的又一个例子"><a href="#关于复制构造函数和析构函数的又一个例子" class="headerlink" title="关于复制构造函数和析构函数的又一个例子"></a>关于复制构造函数和析构函数的又一个例子</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CMyclass</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    CMyclass()&#123;&#125;;</span><br><span class="line">    CMyclass(CMyclass &amp; c)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"copy constructor"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ~CMyclass()&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"destructor"</span>&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(CMyclass obj_)</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"fun"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line">CMyclass c;</span><br><span class="line"><span class="function">CMyclass <span class="title">Test</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"test"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    CMyclass c1;</span><br><span class="line">    fun(c1);</span><br><span class="line">    Test();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">输出结果：</span><br><span class="line">copy constructor</span><br><span class="line">fun</span><br><span class="line">destructor <span class="comment">//参数消亡</span></span><br><span class="line">test</span><br><span class="line">copy constructor</span><br><span class="line">destructor <span class="comment">// 返回值临时对象消亡</span></span><br><span class="line">destructor <span class="comment">// 局部变量消亡</span></span><br><span class="line">destructor <span class="comment">// 全局变量消亡</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Resistence
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://kevinj-huang.github.io/2022/09/16/博客57/" title="类和对象（2）">http://kevinj-huang.github.io/2022/09/16/博客57/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/代码实践/" rel="tag"># 代码实践</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/09/16/博客54/" rel="next" title="阅读论文《Fast End-to-End Trainable Guided Filter》">
+                <i class="fa fa-chevron-left"></i> 阅读论文《Fast End-to-End Trainable Guided Filter》
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/09/16/博客58/" rel="prev" title="正态分布随机数数目对均值和方差的影响">
+                正态分布随机数数目对均值和方差的影响 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTI3OC8xMTgxNA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Resistence" />
+            
+              <p class="site-author-name" itemprop="name">Resistence</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+			<!--my custom code begin-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+			<script type="text/javascript">
+			  $("#sidebar").hover(function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 1});
+			  },function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 0});
+			  });
+			</script>
+			<div id="mydivshow" class="mydivshow">
+			<!--my custom code end-->
+			
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">272</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/KevinJ-Huang" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/huang-jie-65-63/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-bell"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="nwpuhuangjie@outlook.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/CHNguoshiwushuang" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/5376463830/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+        </div>
+		<!--my custom code begin-->
+		</div>
+		<!--my custom code end-->
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#类成员的可访问范围"><span class="nav-number">1.</span> <span class="nav-text">类成员的可访问范围</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#“隐藏”的作用"><span class="nav-number">1.1.</span> <span class="nav-text">“隐藏”的作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用struct定义类"><span class="nav-number">1.2.</span> <span class="nav-text">用struct定义类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#成员函数的重载和参数缺省"><span class="nav-number">2.</span> <span class="nav-text">成员函数的重载和参数缺省</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数"><span class="nav-number">3.</span> <span class="nav-text">构造函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本概念"><span class="nav-number">3.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#构造函数在数组中的使用"><span class="nav-number">3.2.</span> <span class="nav-text">构造函数在数组中的使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复制构造函数"><span class="nav-number">4.</span> <span class="nav-text">复制构造函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本概念-1"><span class="nav-number">4.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#复制构造函数起作用的三种情况"><span class="nav-number">4.2.</span> <span class="nav-text">复制构造函数起作用的三种情况</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常量引用参数的使用"><span class="nav-number">4.3.</span> <span class="nav-text">常量引用参数的使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型转换构造函数"><span class="nav-number">5.</span> <span class="nav-text">类型转换构造函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#析构函数"><span class="nav-number">6.</span> <span class="nav-text">析构函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#析构函数-1"><span class="nav-number">6.1.</span> <span class="nav-text">析构函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#析构函数和析构函数什么时候被调用"><span class="nav-number">6.2.</span> <span class="nav-text">析构函数和析构函数什么时候被调用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于复制构造函数和析构函数的又一个例子"><span class="nav-number">7.</span> <span class="nav-text">关于复制构造函数和析构函数的又一个例子</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Resistence</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">208.2k</span>
+  
+</div>
+
+
+
+
+
+
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+**  <span id="busuanzi_container_site_pv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+**
+</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Nq0gYzgvTOwNARshaOLO6uMo-gzGzoHsz", "R2FkCzz5AmolE24dN77lKIa7");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+  <script src="/js/src/Aplayer-Controler.js"></script>
+<div id="AP-controler"></div>
+<script type="text/javascript">
+var myapc=new APlayer_Controler({
+		APC_dom:$('#AP-controler'),
+		aplayer:ap, //此为绑定的aplayer对象
+		attach_right:false,
+		position:{top:'300px',bottom:''},
+		fixed:true,
+		btn_width:100,
+		btn_height:120,
+		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+		img_style:{repeat:'no-repeat',position:'center',size:'contain'},
+		ctrls_color:'rgba(173,255,47,0.8)',
+		ctrls_hover_color:'rgba(255,140,0,0.7)',
+		tips_on:true,
+		tips_width:140,
+		tips_height:25,
+		tips_color:'rgba(255,255,255,0.6)',
+		tips_content:{},
+		timeout:30
+	});
+</script>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+</body>
+</html>

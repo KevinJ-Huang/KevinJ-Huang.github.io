@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="UqlC4pwKIm" />
+  <meta name="baidu-site-verification" content="d3U0dGeqGw" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="1C1XSuJ8TgM2O0mcZvsgzEdy0IdRZOJfxDYPyh18U9Q" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="代码实践," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="运算符重载基本概念运算符重载的需求C + +预定义的运算符，只能用于基本数据类型的运算：整型、实型、字符型、逻辑型等。在数学上，两个复数可以直接进行+、-等运算。但是在C++中，直接将+或-用于复数对象是不允许的。有时希望，让对象也能通过运算符进行运算。这样代码更简洁，容易理解。例如：complex_a和complex_b是两个复数对象；求两个复数的和, 希望能直接写：complex_a + co">
+<meta name="keywords" content="代码实践">
+<meta property="og:type" content="article">
+<meta property="og:title" content="运算符的重载">
+<meta property="og:url" content="http://kevinj-huang.github.io/2022/09/16/博客189/index.html">
+<meta property="og:site_name" content="Resistence">
+<meta property="og:description" content="运算符重载基本概念运算符重载的需求C + +预定义的运算符，只能用于基本数据类型的运算：整型、实型、字符型、逻辑型等。在数学上，两个复数可以直接进行+、-等运算。但是在C++中，直接将+或-用于复数对象是不允许的。有时希望，让对象也能通过运算符进行运算。这样代码更简洁，容易理解。例如：complex_a和complex_b是两个复数对象；求两个复数的和, 希望能直接写：complex_a + co">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-03-18T12:27:46.644Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="运算符的重载">
+<meta name="twitter:description" content="运算符重载基本概念运算符重载的需求C + +预定义的运算符，只能用于基本数据类型的运算：整型、实型、字符型、逻辑型等。在数学上，两个复数可以直接进行+、-等运算。但是在C++中，直接将+或-用于复数对象是不允许的。有时希望，让对象也能通过运算符进行运算。这样代码更简洁，容易理解。例如：complex_a和complex_b是两个复数对象；求两个复数的和, 希望能直接写：complex_a + co">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kevinj-huang.github.io/2022/09/16/博客189/"/>
+
+
+
+
+
+  <title>运算符的重载 | Resistence</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-111723881-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Resistence</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">My Awesome Site</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kevinj-huang.github.io/2022/09/16/博客189/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Resistence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Resistence">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">运算符的重载</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-09-16T00:37:25+08:00">
+                2022-09-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-03-18T20:27:46+08:00">
+                2021-03-18
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-初学笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">C++初学笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2022/09/16/博客189/" class="leancloud_visitors" data-flag-title="运算符的重载">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,638字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="运算符重载基本概念"><a href="#运算符重载基本概念" class="headerlink" title="运算符重载基本概念"></a>运算符重载基本概念</h4><h5 id="运算符重载的需求"><a href="#运算符重载的需求" class="headerlink" title="运算符重载的需求"></a>运算符重载的需求</h5><p>C + +预定义的运算符，只能用于基本数据类型的运算：整型、实型、字符型、逻辑型等。<br>在数学上，两个复数可以直接进行+、-等运算。但是在C++中，直接将+或-用于复数对象是不允许的。<br>有时希望，让对象也能通过运算符进行运算。这样代码更简洁，容易理解。<br>例如：complex_a和complex_b是两个复数对象；求两个复数的和, 希望能直接写：<br>complex_a + complex_b</p>
+<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>运算符重载，就是对已有的运算符(C + +中预定义的运算符)赋予多重的含义，使同一运算符作用于不同类型的数据时导致不同类型的行为。<br>运算符重载的目的是：扩展C++中提供的运算符的适用范围，使之作用于对象。<br>同一个运算符，对不同类型操作数，所发生的行为不同。</p>
+<h5 id="运算符重载的形式"><a href="#运算符重载的形式" class="headerlink" title="运算符重载的形式"></a>运算符重载的形式</h5><p>运算符重载的实质是函数重载<br>可以重载为普通函数，也可以重载为成员函数<br>把含运算符的表达式转换成对运算符函数的调用<br>把运算符的操作数转换成运算符函数的参数<br>运算符被多次重载时，根据实参的类型决定调用哪个运算符函数。<br>返回值类型 operator 运算符（形参表）<br>{<br>……<br>}</p>
+<h5 id="运算符重载示例"><a href="#运算符重载示例" class="headerlink" title="运算符重载示例"></a>运算符重载示例</h5><p>重载为成员函数时， 参数个数为运算符目数减一。<br>重载为普通函数时， 参数个数为运算符目数。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">double</span> real,imag;</span><br><span class="line">    Complex(<span class="keyword">double</span> r=<span class="number">0.0</span>,<span class="keyword">double</span> i=<span class="number">0.0</span>):real(r),imag(i)&#123; &#125;</span><br><span class="line">    Complex <span class="keyword">operator</span>-(<span class="keyword">const</span> Complex &amp; c);</span><br><span class="line">&#125;;</span><br><span class="line">Complex <span class="keyword">operator</span>+(<span class="keyword">const</span> Complex &amp;a,<span class="keyword">const</span> Complex &amp;b)&#123;</span><br><span class="line">    <span class="keyword">return</span> Complex(a.real+b.real,a.imag+b.imag);</span><br><span class="line">&#125;</span><br><span class="line">Complex Complex::<span class="keyword">operator</span>-(<span class="keyword">const</span> Complex &amp;c)&#123;</span><br><span class="line">    <span class="keyword">return</span> Complex(real-c.real,imag-c.imag);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Complex a(4,4),b(1,1),c;</span><br><span class="line">    c = a + b; <span class="comment">//等价于c=operator+(a,b);</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; c.real &lt;&lt; <span class="string">","</span> &lt;&lt; c.imag &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (a-b).real &lt;&lt; <span class="string">","</span> &lt;&lt; (a-b).imag &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//a-b等价于a.operator-(b)</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="赋值运算符的重载"><a href="#赋值运算符的重载" class="headerlink" title="赋值运算符的重载"></a>赋值运算符的重载</h4><h5 id="赋值运算符-‘-’重载"><a href="#赋值运算符-‘-’重载" class="headerlink" title="赋值运算符 ‘ =’重载"></a>赋值运算符 ‘ =’重载</h5><p>有时候希望赋值运算符两边的类型可以不匹配，比如，把一个int类型变量赋值给一个Complex对象，或把一个char*类型的字符串赋值给一个字符串对象，此时就需要重载赋值运算符“=”。赋值运算符“=”只能重载为成员函数。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">String</span>&#123;</span></span><br><span class="line">       <span class="keyword">private</span>:</span><br><span class="line">             <span class="keyword">char</span> *str;</span><br><span class="line">       <span class="keyword">public</span>:</span><br><span class="line">             String (): str(<span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">1</span>]) &#123;</span><br><span class="line">                   str[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="function"><span class="keyword">const</span> <span class="keyword">char</span> * <span class="title">c_str</span><span class="params">()</span></span>&#123;</span><br><span class="line">                   <span class="keyword">return</span> str;</span><br><span class="line">             &#125;</span><br><span class="line">             String &amp; <span class="keyword">operator</span> = (<span class="keyword">const</span> <span class="keyword">char</span> *s);</span><br><span class="line">             String::~String() &#123;<span class="keyword">delete</span> [] str;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">String &amp; String::<span class="keyword">operator</span> = (<span class="keyword">const</span> <span class="keyword">char</span> *s)&#123;</span><br><span class="line">      <span class="keyword">delete</span> [] str;</span><br><span class="line">      str = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="built_in">strlen</span>(s)+<span class="number">1</span>];</span><br><span class="line">      <span class="built_in">strcpy</span>(str, s);</span><br><span class="line">      <span class="keyword">return</span> * <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    String s;</span><br><span class="line">    s = <span class="string">"Good Luck"</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; s.c_str &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    s = <span class="string">"Shenzhou 8!"</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; s.c_str()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a>浅拷贝和深拷贝</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">String</span>&#123;</span></span><br><span class="line">       <span class="keyword">private</span>:</span><br><span class="line">            <span class="keyword">char</span> *str;</span><br><span class="line">       <span class="keyword">public</span>:</span><br><span class="line">             String ():str(<span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">1</span>]) &#123;str[<span class="number">0</span>] = <span class="number">0</span>;&#125;</span><br><span class="line">             <span class="function"><span class="keyword">const</span> <span class="keyword">char</span> *<span class="title">c_str</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> str;&#125;;</span><br><span class="line">             String &amp; <span class="keyword">operator</span> = (<span class="keyword">const</span> <span class="keyword">char</span> *s)&#123;</span><br><span class="line">                   <span class="keyword">delete</span> [] str;</span><br><span class="line">                   str = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="built_in">strlen</span>(s)+<span class="number">1</span>];</span><br><span class="line">                   <span class="built_in">strcpy</span>(str, s);</span><br><span class="line">                   <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">             &#125;;</span><br><span class="line">             ~String() &#123;<span class="keyword">delete</span> [] str;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果不定义自己的赋值运算符，那么S1 = S2实际上导致S1.str和S2.str指向同一个地方。<br>如果S1对象消亡，析构函数将释放S1.str指向的空间，则S2消亡时还要释放一次，不妥。<br>另外，如果执行S1 = “other”,会导致S2.str指向的地方被delete掉。因此要在class String里添加成员函数：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String &amp; <span class="keyword">operator</span> = (<span class="keyword">const</span> <span class="keyword">char</span> *s)&#123;</span><br><span class="line">                   <span class="keyword">delete</span> [] str;</span><br><span class="line">                   str = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="built_in">strlen</span>(s)+<span class="number">1</span>];</span><br><span class="line">                   <span class="built_in">strcpy</span>(str, s);</span><br><span class="line">                   <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">             &#125;;</span><br></pre></td></tr></table></figure></p>
+<h5 id="对operator-返回值类型的讨论"><a href="#对operator-返回值类型的讨论" class="headerlink" title="对operator = 返回值类型的讨论"></a>对operator = 返回值类型的讨论</h5><p>对运算符进行重载的时候，好的风格是应该尽量保留运算符原本的特性。</p>
+<h4 id="运算符重载为友元函数"><a href="#运算符重载为友元函数" class="headerlink" title="运算符重载为友元函数"></a>运算符重载为友元函数</h4><p>一般情况下，将运算符重载为类的成员函数，是较好的选择。<br>但有时，重载为成员函数不能满足使用要求，重载为普通函数，又不能访问类的私有成员，所以需要将运算符重载为友元。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>&#123;</span></span><br><span class="line">      <span class="keyword">double</span> real,imag;</span><br><span class="line">      <span class="keyword">public</span>:</span><br><span class="line">          Complex(<span class="keyword">double</span> r,<span class="keyword">double</span> i):real(r),imag(i)&#123; &#125;;</span><br><span class="line">          Complex <span class="keyword">operator</span>+(<span class="keyword">double</span> r);</span><br><span class="line">&#125;;</span><br><span class="line">Complex Complex::<span class="keyword">operator</span>+(<span class="keyword">double</span> r)&#123;</span><br><span class="line">       <span class="keyword">return</span> Complex(real+r,imag);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>经过上述重载后：Complex c;c = c+5;有定义，相当于c = c.operator+(5);但是c=5+c报错；<br>所以，为了使得上述的表达式能成立，需要将+重载为普通函数。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Complex <span class="keyword">operator</span>+ (<span class="keyword">double</span> r,<span class="keyword">const</span> Complex &amp;c)&#123;</span><br><span class="line">       <span class="keyword">return</span> Complex(c.real+r,c.imag);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是普通函数又不能访问私有成员，所以，需要将运算符+重载为友元。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>&#123;</span></span><br><span class="line">      <span class="keyword">double</span> real,imag;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">      Complex(<span class="keyword">double</span> r,<span class="keyword">double</span> i):real(r),imag(i)&#123;&#125;;</span><br><span class="line">      Complex <span class="keyword">operator</span>+(<span class="keyword">double</span> r);</span><br><span class="line">      <span class="keyword">friend</span> Complex <span class="keyword">operator</span> +(<span class="keyword">double</span> r,<span class="keyword">const</span> Complex &amp; c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="流插入运算符和流提取运算符的重载"><a href="#流插入运算符和流提取运算符的重载" class="headerlink" title="流插入运算符和流提取运算符的重载"></a>流插入运算符和流提取运算符的重载</h4><h5 id="流插入运算符的重载"><a href="#流插入运算符的重载" class="headerlink" title="流插入运算符的重载"></a>流插入运算符的重载</h5><p>cout &lt;&lt; 5 &lt;&lt; “this”;<br>cout是在iostream中定义的，ostream类的对象。 “&lt;&lt;” 能用在count上，是因为在iostream里对”&lt;&lt;”进行了重载<br>cout &lt;&lt; 5;即cout.operator&lt;&lt;(5);<br>cout &lt;&lt; “this”;即cout.operator&lt;&lt;(“this”);<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ostream &amp; ostream::<span class="keyword">operator</span>&lt;&lt;(<span class="keyword">int</span> n)&#123;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span></span><br><span class="line">&#125;</span><br><span class="line">ostream &amp; ostream::<span class="keyword">operator</span>&lt;&lt;(<span class="keyword">const</span> <span class="keyword">char</span> *s)&#123;</span><br><span class="line">         <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>cout&lt;&lt;5&lt;&lt;”this”本质是 cout.operator&lt;&lt;(5).operator&lt;&lt;(“this”);</p>
+<h4 id="类型转换运算符和自增、自减运算符的重载"><a href="#类型转换运算符和自增、自减运算符的重载" class="headerlink" title="类型转换运算符和自增、自减运算符的重载"></a>类型转换运算符和自增、自减运算符的重载</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>&#123;</span></span><br><span class="line">    <span class="keyword">double</span> real,imag;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">          Complex(<span class="keyword">double</span> r=<span class="number">0</span>,<span class="keyword">double</span> i=<span class="number">0</span>):real(r),imag(i) &#123; &#125;;</span><br><span class="line">          <span class="function"><span class="keyword">operator</span> <span class="title">double</span> <span class="params">()</span> </span>&#123;<span class="keyword">return</span> real; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">     <span class="function">Complex <span class="title">c</span><span class="params">(<span class="number">1.2</span>,<span class="number">3.4</span>)</span></span>;</span><br><span class="line">     <span class="built_in">cout</span> &lt;&lt; (<span class="keyword">double</span>)c &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">     <span class="keyword">double</span> n = <span class="number">2</span> + c;</span><br><span class="line">     <span class="built_in">cout</span> &lt;&lt; n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>自增运算符++、自减运算符—有前置、后置之分，为了区分所重载的是前置运算符还是后置运算符，C++规定:<br>前置运算符作为一元运算符重载：<br>重载为成员函数: T &amp; operator++();T &amp; operator—();<br>重载为全局函数： T1 &amp; operator++(T2); T1 &amp; operator—(T2);<br>后置运算符作为二元运算符重载，多写一个没用的参数 int<br>类型强制转换运算符被重载时不能写返回值类型，实际上其返回值类型就是该类型强制转换运算符代表的类型<br>注意:</p>
+<ol>
+<li>C++不允许定义新的运算符</li>
+<li>重载后的运算符含义应该符合日常习惯</li>
+<li>运算符重载不改变运算符的优先级</li>
+<li>以下运算符不能被重载: “.”、“：：”等</li>
+<li>重载运算符()、[]、-&gt;或者赋值运算符=时，运算符重载函数必须声明为类的成员函数。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Resistence
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://kevinj-huang.github.io/2022/09/16/博客189/" title="运算符的重载">http://kevinj-huang.github.io/2022/09/16/博客189/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/代码实践/" rel="tag"># 代码实践</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/09/16/博客188/" rel="next" title="最近阅读的两篇论文(去马赛和增强)">
+                <i class="fa fa-chevron-left"></i> 最近阅读的两篇论文(去马赛和增强)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/09/16/博客190/" rel="prev" title="阅读论文"Kernel Modeling Super-Resolution on Real Low-Resolution Images"">
+                阅读论文"Kernel Modeling Super-Resolution on Real Low-Resolution Images" <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTI3OC8xMTgxNA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Resistence" />
+            
+              <p class="site-author-name" itemprop="name">Resistence</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+			<!--my custom code begin-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+			<script type="text/javascript">
+			  $("#sidebar").hover(function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 1});
+			  },function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 0});
+			  });
+			</script>
+			<div id="mydivshow" class="mydivshow">
+			<!--my custom code end-->
+			
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">272</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/KevinJ-Huang" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/huang-jie-65-63/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-bell"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="nwpuhuangjie@outlook.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/CHNguoshiwushuang" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/5376463830/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+        </div>
+		<!--my custom code begin-->
+		</div>
+		<!--my custom code end-->
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符重载基本概念"><span class="nav-number">1.</span> <span class="nav-text">运算符重载基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#运算符重载的需求"><span class="nav-number">1.1.</span> <span class="nav-text">运算符重载的需求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#定义"><span class="nav-number">1.2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运算符重载的形式"><span class="nav-number">1.3.</span> <span class="nav-text">运算符重载的形式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运算符重载示例"><span class="nav-number">1.4.</span> <span class="nav-text">运算符重载示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#赋值运算符的重载"><span class="nav-number">2.</span> <span class="nav-text">赋值运算符的重载</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#赋值运算符-‘-’重载"><span class="nav-number">2.1.</span> <span class="nav-text">赋值运算符 ‘ =’重载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#浅拷贝和深拷贝"><span class="nav-number">2.2.</span> <span class="nav-text">浅拷贝和深拷贝</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对operator-返回值类型的讨论"><span class="nav-number">2.3.</span> <span class="nav-text">对operator = 返回值类型的讨论</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符重载为友元函数"><span class="nav-number">3.</span> <span class="nav-text">运算符重载为友元函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流插入运算符和流提取运算符的重载"><span class="nav-number">4.</span> <span class="nav-text">流插入运算符和流提取运算符的重载</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#流插入运算符的重载"><span class="nav-number">4.1.</span> <span class="nav-text">流插入运算符的重载</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型转换运算符和自增、自减运算符的重载"><span class="nav-number">5.</span> <span class="nav-text">类型转换运算符和自增、自减运算符的重载</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Resistence</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">208.2k</span>
+  
+</div>
+
+
+
+
+
+
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+**  <span id="busuanzi_container_site_pv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+**
+</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Nq0gYzgvTOwNARshaOLO6uMo-gzGzoHsz", "R2FkCzz5AmolE24dN77lKIa7");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+  <script src="/js/src/Aplayer-Controler.js"></script>
+<div id="AP-controler"></div>
+<script type="text/javascript">
+var myapc=new APlayer_Controler({
+		APC_dom:$('#AP-controler'),
+		aplayer:ap, //此为绑定的aplayer对象
+		attach_right:false,
+		position:{top:'300px',bottom:''},
+		fixed:true,
+		btn_width:100,
+		btn_height:120,
+		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+		img_style:{repeat:'no-repeat',position:'center',size:'contain'},
+		ctrls_color:'rgba(173,255,47,0.8)',
+		ctrls_hover_color:'rgba(255,140,0,0.7)',
+		tips_on:true,
+		tips_width:140,
+		tips_height:25,
+		tips_color:'rgba(255,255,255,0.6)',
+		tips_content:{},
+		timeout:30
+	});
+</script>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+</body>
+</html>
